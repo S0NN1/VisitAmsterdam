@@ -23,19 +23,19 @@ public class PointOfInterest {
     private String description;
     @OneToOne
     private VisitInfo visitInfo;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JsonManagedReference
-    private List<POITag> tags;
-    @OneToMany
+    private List<PointOfInterestTag> tags;
+    @OneToMany(cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Picture> pictures;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     @JsonManagedReference
     private List<Event> events;
 
     protected PointOfInterest() {}
 
-    public PointOfInterest(String name, String address, double latitude, double longitude, String description, List<POITag> tags, List<Picture> pictures, List<Event> events) {
+    public PointOfInterest(String name, String address, double latitude, double longitude, String description, List<PointOfInterestTag> tags, List<Picture> pictures, List<Event> events) {
         this.name = name;
         this.address = address;
         this.latitude = latitude;
@@ -90,11 +90,11 @@ public class PointOfInterest {
         this.description = description;
     }
 
-    public List<POITag> getTags() {
+    public List<PointOfInterestTag> getTags() {
         return tags;
     }
 
-    public void setTags(List<POITag> tags) {
+    public void setTags(List<PointOfInterestTag> tags) {
         this.tags = tags;
     }
 
@@ -122,7 +122,7 @@ public class PointOfInterest {
         this.pictures.add(picture);
     }
 
-    public void addTag(POITag tag) {
+    public void addTag(PointOfInterestTag tag) {
         this.tags.add(tag);
     }
 }

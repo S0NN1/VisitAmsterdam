@@ -7,24 +7,15 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 @Entity
-public class EventTag {
+public class PointOfInterestTag {
     @Id
     private String name;
     @ManyToOne
     @JsonBackReference
-    private Event event;
+    private PointOfInterest pointOfInterest;
+    public PointOfInterestTag(){}
 
-    public EventTag(String name) {
-        this.name = name;
-    }
-
-    protected EventTag() {}
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
+    public PointOfInterestTag(String name) {
         this.name = name;
     }
 }

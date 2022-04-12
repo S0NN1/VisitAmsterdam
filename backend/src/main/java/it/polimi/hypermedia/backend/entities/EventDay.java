@@ -1,8 +1,11 @@
 package it.polimi.hypermedia.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.sql.Date;
 import java.sql.Time;
 
@@ -14,7 +17,9 @@ public class EventDay {
     private Date date;
     private Time startTime;
     private Time endTime;
-
+    @ManyToOne
+    @JsonBackReference
+    private Event event;
     protected EventDay() {}
 
     public EventDay(Date date, Time startTime, Time endTime) {
