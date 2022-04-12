@@ -12,7 +12,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
         auth.inMemoryAuthentication().withUser("user")
-                .password(new PasswordEncoder().passwordEncoder().encode("password")).roles("USER");
+                .password(new SpringBeans().passwordEncoder().encode("password")).roles("USER");
     }
 
     protected void configure(HttpSecurity security) throws Exception {
