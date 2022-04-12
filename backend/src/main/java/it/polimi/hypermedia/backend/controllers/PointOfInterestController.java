@@ -1,6 +1,7 @@
 package it.polimi.hypermedia.backend.controllers;
 
 import it.polimi.hypermedia.backend.entities.PointOfInterest;
+import it.polimi.hypermedia.backend.exception.PointOfInterestAlreadyFoundException;
 import it.polimi.hypermedia.backend.repositories.PointOfInterestRepository;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -18,6 +19,9 @@ public class PointOfInterestController {
 
     @PostMapping(value = "/add", consumes = "application/json", produces = "application/json")
     PointOfInterest newPointOfInterest(@RequestBody PointOfInterest newPointOfInterest){
+        if(poiRepository.findByLatitudeAndLongitude(newPointOfInterest.getLatitude(), newPointOfInterest.getLongitude()).isPresent()){
+            throw new PointOfInterestAlreadyFoundException(newPointOfInterest.getLatitude(), newPointOfInterest.getLongitude());
+        }
         return poiRepository.save(newPointOfInterest);
     }
 }
