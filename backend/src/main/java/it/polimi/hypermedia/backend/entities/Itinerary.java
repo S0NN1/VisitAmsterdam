@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.Positive;
 import java.util.List;
 
 @Entity
@@ -21,8 +22,13 @@ public class Itinerary {
     @OneToMany
     private List<ItineraryTag> tags;
     @NotNull
+    @Positive
     private int duration;
     private String heroImage;
+
+    @NotNull
+    @OneToMany
+    private List<PointOfInterest> stops;
 
     public Itinerary(String name, String description, List<ItineraryTag> tags, int duration, String heroImage) {
         this.name = name;
@@ -32,7 +38,8 @@ public class Itinerary {
         this.heroImage = heroImage;
     }
 
-    protected Itinerary() {}
+    protected Itinerary() {
+    }
 
     public Long getId() {
         return id;
@@ -76,5 +83,13 @@ public class Itinerary {
 
     public void setHeroImage(String heroImage) {
         this.heroImage = heroImage;
+    }
+
+    public List<PointOfInterest> getStops() {
+        return stops;
+    }
+
+    public void setStops(List<PointOfInterest> stops) {
+        this.stops = stops;
     }
 }
