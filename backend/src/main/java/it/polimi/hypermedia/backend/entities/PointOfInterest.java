@@ -58,71 +58,11 @@ public class PointOfInterest {
         this.name = name;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
-
     public double getLatitude() {
         return latitude;
     }
 
-    public void setLatitude(double latitude) {
-        this.latitude = latitude;
-    }
-
     public double getLongitude() {
         return longitude;
-    }
-
-    public void setLongitude(double longitude) {
-        this.longitude = longitude;
-    }
-
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
-
-    public List<PointOfInterestTag> getTags() {
-        return tags;
-    }
-
-    public void setTags(List<PointOfInterestTag> tags) {
-        this.tags = tags;
-    }
-
-    public List<Picture> getPictures() {
-        return pictures;
-    }
-
-    public void setPictures(List<Picture> pictures) {
-        this.pictures = pictures;
-    }
-
-    public List<Event> getEvents() {
-        return events;
-    }
-
-    public void setEvents(List<Event> events) {
-        this.events = events;
-    }
-
-    public void addEvents(Event event) {
-        this.events.add(event);
-    }
-
-    public void addPicture(Picture picture) {
-        this.pictures.add(picture);
-    }
-
-    public void addTag(PointOfInterestTag tag) {
-        this.tags.add(tag);
     }
 }

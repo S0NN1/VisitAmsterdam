@@ -9,5 +9,7 @@ import java.util.Optional;
 
 public interface PointOfInterestRepository extends JpaRepository<PointOfInterest, Long> {
     List<PointOfInterest> findAllByTagsIn(List<PointOfInterestTag> tags);
+    List<PointOfInterest> findAllByNameContaining(String name);
     Optional<PointOfInterest> findByLatitudeAndLongitude(double latitude, double longitude);
+    List<PointOfInterest> findAllByOrderByName();
 }
