@@ -1,12 +1,10 @@
 package it.polimi.hypermedia.backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity
 public class Picture {
@@ -17,8 +15,14 @@ public class Picture {
     private String path;
     private String description;
     @ManyToOne
-    @JsonBackReference
+    @JsonBackReference("picture-poi")
     private PointOfInterest pointOfInterest;
+
+    @ManyToOne
+    @JoinColumn(name = "event_id", nullable = false)
+    @JsonBackReference("event-picture")
+    private Event event;
+
     public Picture(){}
 
     public Picture(String path, String description) {

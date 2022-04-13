@@ -23,6 +23,7 @@ public class Event {
 
     private String heroImageUrl;
     @OneToMany
+    @JsonManagedReference("event-picture")
     private List<Picture> pictures;
 
     private URL infoUrl;
@@ -30,32 +31,16 @@ public class Event {
 
     @NotNull
     @OneToMany
-    @JsonManagedReference
+    @JsonManagedReference("event-category")
     private List<EventTag> categories;
 
-    @OneToMany
-    @JsonManagedReference
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
+    @JsonManagedReference("event-day")
     private List<EventDay> eventDays;
 
     @ManyToOne
-    @JsonBackReference
+    @JoinColumn(name = "poi_id", nullable = false)
     private PointOfInterest location;
-
-    protected Event() {
-    }
-
-    public Event(String name, String description, double price, String heroImageUrl, List<Picture> pictures, URL infoUrl, URL bookingUrl, List<EventTag> categories, List<EventDay> eventDays, PointOfInterest pointOfInterest) {
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.heroImageUrl = heroImageUrl;
-        this.pictures = new ArrayList<Picture>();
-        this.infoUrl = infoUrl;
-        this.bookingUrl = bookingUrl;
-        this.categories = new ArrayList<EventTag>();
-        this.eventDays = new ArrayList<EventDay>();
-        this.location = pointOfInterest;
-    }
 
     public Long getId() {
         return id;
@@ -135,9 +120,5 @@ public class Event {
 
     public PointOfInterest getLocation() {
         return location;
-    }
-
-    public void setLocation(PointOfInterest location) {
-        this.location = location;
     }
 }

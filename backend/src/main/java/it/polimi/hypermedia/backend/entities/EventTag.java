@@ -11,7 +11,7 @@ public class EventTag {
     @Id
     private String name;
     @ManyToOne
-    @JsonBackReference
+    @JsonBackReference("event-category")
     private Event event;
 
     public EventTag(String name) {
