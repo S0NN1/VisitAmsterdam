@@ -30,7 +30,7 @@ public class PointOfInterestAdvice {
     }
     @ResponseBody
     @ExceptionHandler(PointOfInterestNotFoundException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    @ResponseStatus(HttpStatus.NOT_FOUND)
     String poiNotFoundHandler(PointOfInterestNotFoundException ex){
         return "{\n" +
                 "   \"error_message\": " +
