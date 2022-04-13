@@ -1,5 +1,7 @@
 package it.polimi.hypermedia.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 
@@ -27,23 +29,20 @@ public class PointOfInterest {
     @JsonManagedReference
     private List<PointOfInterestTag> tags;
     @OneToMany(cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonManagedReference("picture-poi")
     private List<Picture> pictures;
-    @OneToMany(cascade = CascadeType.ALL)
+
+    @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
     @JsonManagedReference
+    @JsonIgnore
     private List<Event> events;
 
-    protected PointOfInterest() {}
+    public PointOfInterest() {
+    }
 
-    public PointOfInterest(String name, String address, double latitude, double longitude, String description, List<PointOfInterestTag> tags, List<Picture> pictures, List<Event> events) {
-        this.name = name;
-        this.address = address;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.description = description;
-        this.tags = tags;
-        this.pictures = pictures;
-        this.events = events;
+    public PointOfInterest(Long id) {
+        super();
+        this.id = id;
     }
 
     public Long getId() {
@@ -106,7 +105,7 @@ public class PointOfInterest {
         this.pictures = pictures;
     }
 
-    public List<Event> getEvents() {
+/*    public List<Event> getEvents() {
         return events;
     }
 
@@ -116,7 +115,7 @@ public class PointOfInterest {
 
     public void addEvents(Event event) {
         this.events.add(event);
-    }
+    }*/
 
     public void addPicture(Picture picture) {
         this.pictures.add(picture);
