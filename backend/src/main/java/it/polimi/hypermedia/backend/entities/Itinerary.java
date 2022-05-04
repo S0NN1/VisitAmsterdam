@@ -2,10 +2,7 @@ package it.polimi.hypermedia.backend.entities;
 
 import com.sun.istack.NotNull;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import javax.validation.constraints.Positive;
 import java.util.List;
 
@@ -19,7 +16,7 @@ public class Itinerary {
     @NotNull
     private String description;
     @NotNull
-    @OneToMany
+    @ManyToMany
     private List<ItineraryTag> tags;
     @NotNull
     @Positive

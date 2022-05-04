@@ -4,15 +4,17 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import java.util.List;
 
 @Entity
 public class ItineraryTag {
     @Id
     private String name;
-    @ManyToOne
+    @ManyToMany
     @JsonBackReference
-    private Itinerary itinerary;
+    private List<Itinerary> itineraries;
     public ItineraryTag(String name) {
         this.name = name;
     }

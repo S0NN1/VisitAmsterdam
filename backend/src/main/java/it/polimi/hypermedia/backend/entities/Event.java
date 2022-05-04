@@ -30,7 +30,7 @@ public class Event {
     private URL bookingUrl;
 
     @NotNull
-    @OneToMany
+    @ManyToMany
     @JsonManagedReference("event-category")
     private List<EventTag> categories;
 
