@@ -1,5 +1,5 @@
 <template>
-  <h1>Index Page </h1>
+  <CarouselItem></CarouselItem>
 </template>
 
 <script lang="ts">

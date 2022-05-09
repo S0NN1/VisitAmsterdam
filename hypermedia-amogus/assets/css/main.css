@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom CSS */
+.carousel-btn.btn-active {
+  background-color: hsl(var(--s));
+  border: none;
+}
