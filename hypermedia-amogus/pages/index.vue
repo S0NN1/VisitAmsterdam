@@ -1,5 +1,7 @@
 <template>
-  <h1>Index Page </h1>
+  <div>
+    <header-nav active="home"/>
+  </div>
 </template>
 
 <script lang="ts">
