@@ -1,6 +1,6 @@
 <template>
   <div>
-    <header-nav active="home"/>
+    SAS
   </div>
 </template>
 

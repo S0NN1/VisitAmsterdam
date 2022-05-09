@@ -1,10 +1,10 @@
 <template>
-  <header-nav active="events"/>
+  <div />
 </template>
 
 <script>
 export default {
-  name: "events"
+  name: 'Events'
 }
 </script>
 
