@@ -1,5 +1,7 @@
 <template>
-  <CarouselItem></CarouselItem>
+  <div style="height: 100vh">
+    <CarouselItem />
+  </div>
 </template>
 
 <script lang="ts">

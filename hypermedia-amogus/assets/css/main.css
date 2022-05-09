@@ -7,3 +7,16 @@
   background-color: hsl(var(--s));
   border: none;
 }
+
+.carousel-card {
+  max-height: 350px;
+  min-width: auto;
+}
+
+.box-shadow-card {
+  box-shadow: 0px 0px 20px rgba(120, 124, 170, 0.19);
+}
+
+.box-shadow-card-figure {
+  box-shadow: 0 10px 0 0 hsl(var(--s));
+}

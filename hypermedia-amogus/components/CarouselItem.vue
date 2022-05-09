@@ -1,6 +1,6 @@
 <template>
   <div v-if="isComplex">
-    <div class="carousel w-full">
+    <div class="carousel w-full carousel-container pb-3">
       <div
         v-for="(image, index) in carouselImages"
         :id="'imageCarousel' + index"
@@ -11,7 +11,7 @@
         <CardItem class="flex-none w-fit max-w-2xl" :is-figure="false" />
       </div>
     </div>
-    <div class="flex justify-center w-full py-2 gap-2">
+    <div class="flex justify-center w-full gap-2">
       <a
         v-for="(image, index) in carouselImages"
         :key="'imageCarousel' + index"
