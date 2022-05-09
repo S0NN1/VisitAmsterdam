@@ -1,36 +1,33 @@
 <template>
-  <div v-if="isFigure" class="card w-96 bg-base-100 shadow-xl">
-    <figure><img :src="object.image" alt="object.name"></figure>
-    <!--    <div class="card-body">-->
-    <!--      <h2 class="card-title">-->
-    <!--        Shoes!-->
-    <!--      </h2>-->
-    <!--      <p>If a dog chews shoes whose shoes does he choose?</p>-->
-    <!--      <div class="card-actions justify-end">-->
-    <!--        <button class="btn btn-primary">-->
-    <!--          Buy Now-->
-    <!--        </button>-->
-    <!--      </div>-->
-    <!--    </div>-->
+  <div
+    v-if="isFigure"
+    class="card w-96 bg-base-100 shadow-xl bg-contain"
+    :style="{ 'background-image': 'url(' + object.image + ')' }"
+  >
+    <!--    <figure class="h-100">-->
+    <!--      <img :src="object.image" :alt="object.name">-->
+    <!--    </figure>-->
   </div>
   <div v-else class="card w-96 bg-base-100 shadow-xl">
-    <figure><img src="https://via.placeholder.com/1920x1080" alt="Shoes"></figure>
-    <!--    <div class="card-body">-->
-    <!--      <h2 class="card-title">-->
-    <!--        Shoes!-->
-    <!--      </h2>-->
-    <!--      <p>If a dog chews shoes whose shoes does he choose?</p>-->
-    <!--      <div class="card-actions justify-end">-->
-    <!--        <button class="btn btn-primary">-->
-    <!--          Buy Now-->
-    <!--        </button>-->
-    <!--      </div>-->
-    <!--    </div>-->
+    <div class="card-body">
+      <h2 class="card-title">
+        {{ object.name }}
+      </h2>
+      <p>
+        {{ object.description }}
+      </p>
+    </div>
+    <div class="card-actions justify-end m-5">
+      <h3 class="truncate">
+        {{ object.date }} - {{ object.time }}h
+      </h3>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
 import Vue from 'vue'
+import { Paragraph } from 'beemovie'
 
 export default Vue.extend({
   props: {
@@ -40,8 +37,7 @@ export default Vue.extend({
     },
     object: {
       type: Object,
-      default: () => {
-      }
+      default: () => JSON.parse('{ "image": "https://via.placeholder.com/1920x1080", "name": "sus", "description": "' + Paragraph() + '", "date": "Wednesday 17", "time": "20.30"}')
     }
   },
   data () {

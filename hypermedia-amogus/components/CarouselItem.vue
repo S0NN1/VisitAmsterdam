@@ -9,7 +9,8 @@
       <!--      >-->
       <!--        <img :src="image.path" class="w-full">-->
       <!--      </div>-->
-      <CardItem />
+      <CardItem class="mr-5" />
+      <CardItem :is-figure="false" />
     </div>
     <div class="flex justify-center w-full py-2 gap-2">
       <a
