@@ -2,11 +2,10 @@
   <div
     v-if="isFigure"
     class="card w-96 bg-base-100 shadow-xl bg-contain"
-    :style="{ 'background-image': 'url(' + object.image + ')' }"
   >
-    <!--    <figure class="h-100">-->
-    <!--      <img :src="object.image" :alt="object.name">-->
-    <!--    </figure>-->
+    <figure class="">
+      <img :src="object.image" :alt="object.name">
+    </figure>
   </div>
   <div v-else class="card w-96 bg-base-100 shadow-xl">
     <div class="card-body">
@@ -27,7 +26,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { Paragraph } from 'beemovie'
+import {Paragraph} from 'beemovie'
 
 export default Vue.extend({
   props: {
@@ -37,10 +36,10 @@ export default Vue.extend({
     },
     object: {
       type: Object,
-      default: () => JSON.parse('{ "image": "https://via.placeholder.com/1920x1080", "name": "sus", "description": "' + Paragraph() + '", "date": "Wednesday 17", "time": "20.30"}')
+      default: () => JSON.parse('{ "image": "https://via.placeholder.com/1920x1080", "name": "sus", "description": "' + Paragraph() + '", "date": "Wednesday 17", "time": "20.30", "link": "https://google.com"}')
     }
   },
-  data () {
+  data() {
     return {}
   },
   methods: {}

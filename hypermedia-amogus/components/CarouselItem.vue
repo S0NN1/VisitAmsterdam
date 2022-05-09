@@ -1,6 +1,6 @@
 <template>
   <div v-if="isComplex">
-    <div class="carousel w-full">
+    <div class="carousel w-full justify-center p-4">
       <!--      <div-->
       <!--        v-for="(image, index) in carouselImages"-->
       <!--        :id="'imageCarousel' + index"-->
@@ -9,8 +9,8 @@
       <!--      >-->
       <!--        <img :src="image.path" class="w-full">-->
       <!--      </div>-->
-      <CardItem class="mr-5" />
-      <CardItem :is-figure="false" />
+      <CardItem class="flex-none mr-10 w-fit max-w-2xl h-fit"/>
+      <CardItem class="flex-none w-fit max-w-2xl" :is-figure="false" />
     </div>
     <div class="flex justify-center w-full py-2 gap-2">
       <a
