@@ -1,16 +1,15 @@
 <template>
   <div v-if="isComplex">
-    <div class="carousel w-full justify-center p-4">
-      <!--      <div-->
-      <!--        v-for="(image, index) in carouselImages"-->
-      <!--        :id="'imageCarousel' + index"-->
-      <!--        :key="index"-->
-      <!--        class="carousel-item w-full"-->
-      <!--      >-->
-      <!--        <img :src="image.path" class="w-full">-->
-      <!--      </div>-->
-      <CardItem class="flex-none mr-10 w-fit max-w-2xl h-fit"/>
-      <CardItem class="flex-none w-fit max-w-2xl" :is-figure="false" />
+    <div class="carousel w-full">
+      <div
+        v-for="(image, index) in carouselImages"
+        :id="'imageCarousel' + index"
+        :key="index"
+        class="carousel-item w-full justify-center p-4"
+      >
+        <CardItem class="flex-none mr-10 w-fit max-w-2xl h-fit" />
+        <CardItem class="flex-none w-fit max-w-2xl" :is-figure="false" />
+      </div>
     </div>
     <div class="flex justify-center w-full py-2 gap-2">
       <a
@@ -49,12 +48,34 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import { Paragraph } from 'beemovie'
 
 export default Vue.extend({
   props: {
     carouselImages: {
       type: Array,
-      default: () => [{ path: 'https://via.placeholder.com/1920x1080' }, { path: 'https://via.placeholder.com/1920x1080' }, { path: 'https://via.placeholder.com/1920x1080' }]
+      default: () => [{
+        image: 'https://via.placeholder.com/1920x1080',
+        name: 'sus',
+        description: +Paragraph(),
+        date: 'Wednesday 17',
+        time: '20.30',
+        link: 'https://google.com'
+      }, {
+        image: 'https://via.placeholder.com/1920x1080',
+        name: 'sus',
+        description: +Paragraph(),
+        date: 'Wednesday 17',
+        time: '20.30',
+        link: 'https://google.com'
+      }, {
+        image: 'https://via.placeholder.com/1920x1080',
+        name: 'sus',
+        description: +Paragraph(),
+        date: 'Wednesday 17',
+        time: '20.30',
+        link: 'https://google.com'
+      }]
     },
     imagesLength: {
       type: Number,
