@@ -8,7 +8,7 @@
         class="carousel-item w-full justify-center p-4"
       >
         <CardItem class="flex-none mr-10 w-fit max-w-2xl h-fit" />
-        <CardItem class="flex-none w-fit max-w-2xl" :card-type="'COMPLEX'" />
+        <CardItem class="flex-none w-fit max-w-2xl" :card-type="'ITINERARY'" />
       </div>
     </div>
     <div class="flex justify-center w-full gap-2">

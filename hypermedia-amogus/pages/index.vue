@@ -1,6 +1,6 @@
 <template>
   <div style="height: 100vh; width: 100vw; padding-left: 100px; padding-top: 100px">
-    <CardItem card-type="ITINERARY" />
+    <CarouselItem />
   </div>
 </template>
 

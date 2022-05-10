@@ -8,12 +8,12 @@
     </figure>
   </div>
   <div v-else-if="cardType==='EVENT'" class="card w-96 bg-base-100 box-shadow-card carousel-card">
-    <div class="card-body" style="max-height: 80%">
+    <div class="card-body line-clamp-3" style="max-height: 80%">
       <h2 class="card-title">
         {{ object.name }}
       </h2>
       <p>
-        {{ object.description.substring(0, 700) }}{{ object.description.length > 700 ? '...' : '' }}
+        {{ object.description }}
         <!--        //TODO STA MERDA DI TRUNCATE-->
       </p>
     </div>
@@ -40,7 +40,7 @@
     class="card min-w-fit bg-base-100 box-shadow-card carousel-card no-rounded-left aspect-video"
   >
     <div class="box-shadow-card-figure-alt h-full">
-      <div class="card-body" style="min-height: 80%">
+      <div class="card-body line-clamp-3" style="min-height: 80%">
         <h2 class="card-title">
           {{ object.name }}
         </h2>
