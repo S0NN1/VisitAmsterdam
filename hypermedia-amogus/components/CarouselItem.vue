@@ -8,7 +8,7 @@
         class="carousel-item w-full justify-center p-4"
       >
         <CardItem class="flex-none mr-10 w-fit max-w-2xl h-fit" />
-        <CardItem class="flex-none w-fit max-w-2xl" :card-type="'ITINERARY'" />
+        <CardItem class="flex-none w-fit max-w-2xl" :card-type="'EVENT'" />
       </div>
     </div>
     <div class="flex justify-center w-full gap-2">
@@ -77,10 +77,6 @@ export default Vue.extend({
         link: 'https://google.com'
       }]
     },
-    imagesLength: {
-      type: Number,
-      default: 3
-    },
     isComplex: {
       type: Boolean,
       default: true
@@ -88,12 +84,42 @@ export default Vue.extend({
   },
   data () {
     return {
-      activeIndex: 0
+      activeIndex: 0,
+      timerId: undefined
     }
+  },
+  mounted () {
+    this.timer()
   },
   methods: {
     selectedIndex (index: number) {
       this.activeIndex = index
+      this.clearTimer()
+    },
+    timer () {
+      this.timerId = setTimeout(() => {
+        if (this.activeIndex === this.carouselImages?.length - 1) {
+          this.activeIndex = 0
+        } else {
+          this.activeIndex++
+        }
+        this.scrollToElement('#imageCarousel' + this.activeIndex)
+        this.timer()
+      }, 5000)
+    },
+    clearTimer () {
+      window.clearTimeout(this.timerId)
+      this.timer()
+    },
+    scrollToElement (id: any) {
+      // takes input id with hash
+      // eg. #cafe-menu
+      const el = document.querySelector(id)
+      el && el.scrollIntoView({
+        behavior: 'smooth',
+        block: 'nearest',
+        inline: 'nearest'
+      })
     }
   }
 })
