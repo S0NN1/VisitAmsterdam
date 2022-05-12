@@ -14,7 +14,6 @@
       </h2>
       <p>
         {{ object.description }}
-        <!--        //TODO STA MERDA DI TRUNCATE-->
       </p>
     </div>
     <div class="card-actions justify-end m-5" style="max-height: 20%">
