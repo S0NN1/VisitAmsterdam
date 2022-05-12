@@ -1,6 +1,6 @@
 <template />
 <div>
-SAS
+<h1>Hello, world!</h1>
 </div>
 <script>
 export default {
