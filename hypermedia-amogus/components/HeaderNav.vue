@@ -1,7 +1,7 @@
 <template>
   <div>
-    <div class="flex w-100 pl-10 mt-0 h-auto" style="background-color: #f05a28">
-      <div class="w-3/5 flex items-center">
+    <div class="flex w-full pl-10 mt-0 h-auto" style="background-color: #f05a28">
+      <div class="w-3/12 flex items-center">
         <span class="flex text-2xl text-white">
           <svg width="2.3rem" height="2.3rem" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -16,26 +16,32 @@
           <b>Amsterdam</b>
         </span>
       </div>
-      <div class="flex-none mr-5">
-        <div class="flex appearance-none my-1 sm:max-w-screen-sm text-stone-900 border-b-2">
+      <div class="flex w-4/12" />
+      <div class="flex w-5/12 mr-5 justify-end">
+        <div class="flex appearance-none my-1 sm:max-w-screen-sm text-stone-900 border-b-2 mr-12">
           <input
             type="text"
             class="text-white placeholder-white appearance-none bg-transparent py-1 w-64"
             placeholder=""
           >
-          <button class="flex items-center justify-center text-white">
-            <svg class="w-6 h-6" fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-              <path
-                d="M16.32 14.9l5.39 5.4a1 1 0 0 1-1.42 1.4l-5.38-5.38a8 8 0 1 1 1.41-1.41zM10 16a6 6 0 1 0 0-12 6 6 0 0 0 0 12z"
-              />
-            </svg>
+          <button class="flex items-center justify-center text-white fill-white">
+            <SearchIcon />
           </button>
         </div>
-      </div>
-      <div class="flex-1 flex items-center">
-        <p class="">
-          Icone
-        </p>
+        <div class="w-fit flex items-center fill-white pr-4">
+          <div class="mx-4">
+            <IconsPhoneIcon class="icon-shadow" width="1.5rem" height="1.5rem" />
+          </div>
+          <div class="mx-4">
+            <IconsQuestionIcon class="icon-shadow" width="1.5rem" height="1.5rem" />
+          </div>
+          <div class="mx-4">
+            <IconsWorldwideIcon class="icon-shadow" width="1.5rem" height="1.5rem" />
+          </div>
+          <div class="mx-4">
+            <IconsUserIcon class="icon-shadow" width="1.5rem" height="1.5rem" />
+          </div>
+        </div>
       </div>
     </div>
     <div class="w-100 flex justify-end">
@@ -79,9 +85,11 @@
 
 <script lang="ts">
 import Vue from 'vue'
+import SearchIcon from '~/components/icons/SearchIcon.vue'
 
 export default Vue.extend({
-  name: 'HeaderNav'
+  name: 'HeaderNav',
+  components: { SearchIcon }
 })
 </script>
 
