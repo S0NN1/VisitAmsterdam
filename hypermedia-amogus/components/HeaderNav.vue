@@ -43,7 +43,7 @@
         <ul class="menu menu-horizontal p-0 text-sm">
           <li>
             <NuxtLink to="/">
-              <b :class="$nuxt.$route.name==='index' ? 'underline decoration-2 decoration-sky-500' : ''">Home</b>
+              <b :class="$nuxt.$route.name==='home' ? 'underline decoration-2 decoration-sky-500' : ''">Home</b>
             </NuxtLink>
           </li>
           <li tabindex="0">
