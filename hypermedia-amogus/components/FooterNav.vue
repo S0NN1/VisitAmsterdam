@@ -83,35 +83,45 @@
       </div>
       <div class="flex w-full" />
       <div class="col-span-2 h-16 bg-base-100 w-full box-shadow-card rounded-3xl">
-        <div class="grid grid-cols-5 w-full p-2 h-full">
+        <div class="grid grid-cols-5 w-full p-2 h-full align-middle">
           <div class="flex" />
-          <div class="col-span-3 grid grid-cols-4 grid-rows-2 w-full h-full align-middle">
+          <div class="col-span-3 grid grid-cols-4 grid-rows-2 w-full h-full">
             <div class="col-span-4">
               <p class="text-center">
                 Follow Us
               </p>
             </div>
-            <IconsSocialFacebookIcon
-              class="rounded-full icon-footer fill-white p-1"
-              width="1.5rem"
-              height="1.5rem"
-            />
+            <div class="flex justify-center">
+              <IconsSocialFacebookIcon
+                class="rounded-full icon-footer fill-white p-1"
+                width="1.5rem"
+                height="1.5rem"
+              />
+            </div>
+            <div class="flex justify-center">
+              <IconsSocialInstagramIcon
+                class="rounded-full icon-footer fill-white p-1"
+                width="1.5rem"
+                height="1.5rem"
+              />
+            </div>
 
-            <IconsSocialInstagramIcon
-              class="rounded-full icon-footer fill-white p-1"
-              width="1.5rem"
-              height="1.5rem"
-            />
-            <IconsSocialTwitterIcon
-              class="rounded-full icon-footer fill-white p-0"
-              width="1.5rem"
-              height="1.5rem"
-            />
-            <IconsSocialYoutubeIcon
-              class="rounded-full icon-footer fill-white p-1"
-              width="1.5rem"
-              height="1.5rem"
-            />
+            <div class="flex justify-center">
+              <IconsSocialTwitterIcon
+                class="rounded-full icon-footer fill-white p-0"
+                width="1.5rem"
+                height="1.5rem"
+              />
+            </div>
+
+            <div class="flex justify-center">
+              <IconsSocialYoutubeIcon
+                class="rounded-full icon-footer fill-white p-1"
+                width="1.5rem"
+                height="1.5rem"
+              />
+            </div>
+
             <div class="flex" />
           </div>
         </div>
