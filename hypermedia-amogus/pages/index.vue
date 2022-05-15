@@ -11,16 +11,16 @@
         <div class="flex w-full p-6">
           <div class="flex fill-white">
             <div class="mx-6">
-              <InstagramIcon width="2rem" height="2rem" />
+              <IconsSocialInstagramIcon width="2rem" height="2rem" />
             </div>
             <div class="mx-6">
-              <YoutubeIcon width="2rem" height="2rem" />
+              <IconsSocialYoutubeIcon width="2rem" height="2rem" />
             </div>
             <div class="mx-6">
-              <FacebookIcon width="2rem" height="2rem" />
+              <IconsSocialFacebookIcon width="2rem" height="2rem" />
             </div>
             <div class="mx-6">
-              <TwitterIcon width="2rem" height="2rem" />
+              <IconsSocialTwitterIcon width="2rem" height="2rem" />
             </div>
           </div>
         </div>
@@ -41,14 +41,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import InstagramIcon from '~/components/icons/social/InstagramIcon.vue'
-import YoutubeIcon from '~/components/icons/social/YoutubeIcon.vue'
-import FacebookIcon from '~/components/icons/social/FacebookIcon.vue'
-import TwitterIcon from '~/components/icons/social/TwitterIcon.vue'
 
 export default Vue.extend({
   name: 'IndexPage',
-  components: { TwitterIcon, FacebookIcon, YoutubeIcon, InstagramIcon },
   layout: 'empty'
 })
 </script>
