@@ -25,7 +25,7 @@
             placeholder=""
           >
           <button class="flex items-center justify-center text-white fill-white">
-            <SearchIcon />
+            <IconsSearchIcon />
           </button>
         </div>
         <div class="w-fit flex items-center fill-white pr-4">
@@ -85,11 +85,9 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import SearchIcon from '~/components/icons/SearchIcon.vue'
 
 export default Vue.extend({
-  name: 'HeaderNav',
-  components: { SearchIcon }
+  name: 'HeaderNav'
 })
 </script>
 
