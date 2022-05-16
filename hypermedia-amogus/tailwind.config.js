@@ -18,7 +18,7 @@ module.exports = {
       {
         'hyp-theme': {
 
-          primary: '#6419E6',
+          primary: '#F15A28',
 
           secondary: '#0d99ff',
 
