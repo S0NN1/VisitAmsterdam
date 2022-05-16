@@ -64,39 +64,31 @@
           </div>
           <div class="flex col-span-2" />
           <div class="col-span-3 h-16 bg-base-100 w-full box-shadow-card rounded-3xl">
-            <div class="grid grid-cols-5 w-full p-2 h-full align-middle">
+            <div class="grid grid-cols-5 w-full p-1 h-full align-middle">
               <div class="flex" />
-              <div class="col-span-3 grid grid-cols-4 grid-rows-2 w-full h-full">
-                <div class="col-span-4">
+              <div class="col-span-3 grid grid-cols-6 grid-rows-3 w-full h-full items-center">
+                <div class="col-span-6">
                   <p class="text-center text-sm">
                     Follow Us
                   </p>
                 </div>
-                <div class="flex" />
-                <div class="flex col-span-2 justify-center gap-2 grid-cols-4">
+                <div />
+                <div class="flex col-span-4 row-span-2 justify-center gap-2 grid-cols-4">
                   <IconsSocialFacebookIcon
-                    class="rounded-full icon-footer fill-white p-1"
-                    width="1.5rem"
-                    height="1.5rem"
+                    class="rounded-full icon-footer fill-white p-1 aspect-square"
                   />
                   <IconsSocialInstagramIcon
-                    class="rounded-full icon-footer fill-white p-1"
-                    width="1.5rem"
-                    height="1.5rem"
+                    class="rounded-full icon-footer fill-white p-1 aspect-square"
                   />
                   <IconsSocialTwitterIcon
-                    class="rounded-full icon-footer fill-white p-0"
-                    width="1.5rem"
-                    height="1.5rem"
+                    class="rounded-full icon-footer fill-white p-0 aspect-square"
                   />
                   <IconsSocialYoutubeIcon
-                    class="rounded-full icon-footer fill-white p-1"
-                    width="1.5rem"
-                    height="1.5rem"
+                    class="rounded-full icon-footer fill-white p-1 aspect-square"
                   />
                 </div>
 
-                <div class="flex" />
+                <div />
               </div>
             </div>
           </div>
