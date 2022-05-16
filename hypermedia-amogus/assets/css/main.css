@@ -1,6 +1,24 @@
+@import url('https://fonts.googleapis.com/css2?family=Radio+Canada:wght@500&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h1 {
+  font-family: 'Radio Canada', sans-serif;
+  font-size: 4rem;
+  font-weight: bold;
+}
+
+h2 {
+  font-family: 'Radio Canada', sans-serif;
+  font-size: 2rem;
+}
+
+h3 {
+  font-family: "Radio Canada", sans-serif;
+  font-size: 1.5rem;
+}
 
 .box-shadow-card {
   box-shadow: 0px 0px 20px rgb(97, 188, 255, 0.19);
@@ -35,4 +53,9 @@
 
 .no-rounded-left {
   border-radius: 0 0.75rem 0.75rem 0;
+}
+
+.hero-image-container {
+  background-size: cover;
+  margin-top: -2.75rem
 }

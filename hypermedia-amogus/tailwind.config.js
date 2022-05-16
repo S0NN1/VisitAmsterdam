@@ -18,13 +18,13 @@ module.exports = {
       {
         'hyp-theme': {
 
-          primary: '#6419E6',
+          primary: '#f15a28',
 
           secondary: '#0d99ff',
 
           accent: '#1FB2A6',
 
-          neutral: '#191D24',
+          neutral: '#e4e5ee',
 
           'base-100': '#ffffff',
 

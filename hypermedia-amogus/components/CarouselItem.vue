@@ -1,6 +1,6 @@
 <template>
   <div v-if="isComplex">
-    <div class="carousel w-full carousel-container pb-3">
+    <div id="carousel" class="carousel w-full carousel-container pb-3">
       <div
         v-for="(image, index) in carouselImages"
         :id="'imageCarousel' + index"
@@ -98,18 +98,30 @@ export default Vue.extend({
     },
     timer () {
       this.timerId = setTimeout(() => {
-        if (this.activeIndex === this.carouselImages?.length - 1) {
-          this.activeIndex = 0
-        } else {
-          this.activeIndex++
+        if (this.isElementInViewport(document.getElementById('carousel'))) {
+          if (this.activeIndex === this.carouselImages?.length - 1) {
+            this.activeIndex = 0
+          } else {
+            this.activeIndex++
+          }
+          this.scrollToElement('#imageCarousel' + this.activeIndex)
         }
-        this.scrollToElement('#imageCarousel' + this.activeIndex)
         this.timer()
-      }, 5000)
+      }, 10000)
     },
     clearTimer () {
       window.clearTimeout(this.timerId)
       this.timer()
+    },
+    isElementInViewport (el: any) {
+      const rect = el.getBoundingClientRect()
+
+      return (
+        rect.top >= 0 &&
+        rect.left >= 0 &&
+        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /* or $(window).height() */
+        rect.right <= (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */
+      )
     },
     scrollToElement (id: any) {
       // takes input id with hash

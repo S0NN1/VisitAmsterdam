@@ -44,8 +44,8 @@
         </div>
       </div>
     </div>
-    <div class="w-100 flex justify-end">
-      <div class="bg-base-100 w-fit drop-shadow-lg rounded-xl">
+    <div class="w-100 flex justify-end h-11">
+      <div class="bg-base-100 w-fit drop-shadow-lg rounded-xl h-full">
         <ul class="menu menu-horizontal p-0 text-sm">
           <li>
             <NuxtLink to="/">
