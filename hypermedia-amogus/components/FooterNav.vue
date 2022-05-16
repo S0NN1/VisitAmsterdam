@@ -6,14 +6,14 @@
         <div class="grid grid-cols-12">
           <div class="col-span-7 h-16 bg-base-100 w-full box-shadow-card rounded-3xl">
             <div class="grid grid-rows-2 grid-cols-5 gap-2 p-2 h-full flex">
-              <div class="row-span-2 flex border-r-2 border-r-warning items-center mr-6">
+              <div class="row-span-2 flex border-r-2 border-r-warning items-center mr-3">
                 <IconsSiteLogo class="m-3" width="auto" height="75%" />
               </div>
               <NuxtLink class="flex" to="/home">
                 <p
-                  class="text-sm font-medium"
+                  class="text-sm font-medium text-error"
                 >
-                  Home
+                  <b>Home</b>
                 </p>
               </NuxtLink>
               <NuxtLink class="flex" to="itinerary">
@@ -72,23 +72,28 @@
                     Follow Us
                   </p>
                 </div>
-                <div />
-                <div class="flex col-span-4 row-span-2 justify-center gap-2 grid-cols-4">
+                <div class="flex col-span-6 row-span-2 justify-center">
                   <IconsSocialFacebookIcon
-                    class="rounded-full icon-footer fill-white p-1 aspect-square"
+                    class="rounded-full icon-footer fill-white p-1 aspect-square mx-2"
+                    width="1.7rem"
+                    height="1.7rem"
                   />
                   <IconsSocialInstagramIcon
-                    class="rounded-full icon-footer fill-white p-1 aspect-square"
+                    class="rounded-full icon-footer fill-white p-1 aspect-square mx-2"
+                    width="1.7rem"
+                    height="1.7rem"
                   />
                   <IconsSocialTwitterIcon
-                    class="rounded-full icon-footer fill-white p-0 aspect-square"
+                    class="rounded-full icon-footer fill-white p-0 aspect-square mx-2"
+                    width="1.7rem"
+                    height="1.7rem"
                   />
                   <IconsSocialYoutubeIcon
-                    class="rounded-full icon-footer fill-white p-1 aspect-square"
+                    class="rounded-full icon-footer fill-white p-1 aspect-square mx-2"
+                    width="1.7rem"
+                    height="1.7rem"
                   />
                 </div>
-
-                <div />
               </div>
             </div>
           </div>
