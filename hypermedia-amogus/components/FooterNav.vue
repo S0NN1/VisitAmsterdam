@@ -5,33 +5,32 @@
       <div class="col-span-8 flex">
         <div class="grid grid-cols-12">
           <div class="col-span-7 h-16 bg-base-100 w-full box-shadow-card rounded-3xl">
-            <div class="grid grid-rows-2 grid-cols-5 gap-2 p-2 h-full flex justify-center">
-              <div class="row-span-2 flex items-center justify-center">
-                <IconsSiteLogo width="auto" height="75%" />
-                <div class="divider divider-horizontal before:bg-warning after:bg-warning" />
+            <div class="grid grid-rows-2 grid-cols-5 gap-2 p-2 h-full flex">
+              <div class="row-span-2 flex border-r-2 border-r-warning items-center mr-6">
+                <IconsSiteLogo class="m-3" width="auto" height="75%" />
               </div>
-              <NuxtLink class="flex justify-center" to="/home">
+              <NuxtLink class="flex" to="/home">
                 <p
                   class="text-sm font-medium"
                 >
                   Home
                 </p>
               </NuxtLink>
-              <NuxtLink class="flex justify-center" to="itinerary">
+              <NuxtLink class="flex" to="itinerary">
                 <p
                   class="text-sm font-medium"
                 >
                   Itinerary
                 </p>
               </NuxtLink>
-              <NuxtLink class="flex justify-center" to="about">
+              <NuxtLink class="flex" to="about">
                 <p
                   class="text-sm font-medium"
                 >
                   About Us
                 </p>
               </NuxtLink>
-              <NuxtLink class="flex justify-center" to="privacy">
+              <NuxtLink class="flex" to="privacy">
                 <p
                   class="text-sm font-medium"
                 >
@@ -39,14 +38,14 @@
                   Policy
                 </p>
               </NuxtLink>
-              <NuxtLink class="flex justify-center" to="events">
+              <NuxtLink class="flex" to="events">
                 <p
                   class="text-sm font-medium"
                 >
                   Events
                 </p>
               </NuxtLink>
-              <NuxtLink class="flex justify-center" to="pois">
+              <NuxtLink class="flex" to="pois">
                 <p
                   class="text-sm font-medium"
                 >
@@ -54,7 +53,7 @@
                   Interest
                 </p>
               </NuxtLink>
-              <NuxtLink class="flex justify-center" to="contacts">
+              <NuxtLink class="flex" to="contacts">
                 <p
                   class="text-sm font-medium"
                 >
