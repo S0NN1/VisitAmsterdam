@@ -124,8 +124,8 @@ export default {
     to top,
     #f05a28 0%,
     #f05a28 50%,
-    white 50%,
-    white 100%
+    transparent 50%,
+    transparent 100%
   );
 }
 </style>
