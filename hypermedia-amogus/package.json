@@ -14,6 +14,7 @@
   "dependencies": {
     "@nuxtjs/axios": "^5.13.6",
     "@tailwindcss/line-clamp": "^0.4.0",
+    "ap-style-title-case": "^1.1.2",
     "beemovie": "^1.0.4",
     "core-js": "^3.19.3",
     "daisyui": "^2.14.3",

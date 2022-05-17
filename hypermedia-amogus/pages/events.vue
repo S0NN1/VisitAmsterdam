@@ -1,9 +1,7 @@
 <template>
-  <client-only>
-    <MapItem
-      class="card h-96 w-96"
-    />
-  </client-only>
+  <div>
+    <BreadcrumbsItem />
+  </div>
 </template>
 
 <script>
