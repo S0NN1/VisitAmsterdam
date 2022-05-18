@@ -4,6 +4,22 @@
 @tailwind components;
 @tailwind utilities;
 
+
+@layer base {
+
+  h1 {
+    @apply font-extrabold;
+    @apply text-4xl;
+    color: #16215B;
+  }
+
+  h3 {
+    @apply font-bold;
+    @apply text-2xl;
+    color: #16215B;
+  }
+}
+
 .box-shadow-card {
   box-shadow: 0px 0px 20px rgb(97, 188, 255, 0.19);
 }
@@ -45,4 +61,8 @@
 
 .basic-layout {
   margin-top: -2.75rem;
+}
+
+.tag-badge:not(.badge-primary) {
+  color: #787CAA;
 }

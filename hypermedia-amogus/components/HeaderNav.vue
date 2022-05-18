@@ -61,7 +61,7 @@
             </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="#">
+            <NuxtLink to="/itineraries">
               <b :class="$nuxt.$route.name==='itineraries' ? 'underline decoration-2 decoration-sky-500' : ''">Itineraries</b>
             </NuxtLink>
           </li>
