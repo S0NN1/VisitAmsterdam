@@ -1,5 +1,5 @@
 <template>
-  <div class="flex w-full justify-start mt-10 mb-10 ml-24">
+  <div class="flex w-full justify-start mt-10 mb-10">
     <NuxtLink to="/home">
       <span class="text-base text-secondary">Home</span>
     </NuxtLink>
