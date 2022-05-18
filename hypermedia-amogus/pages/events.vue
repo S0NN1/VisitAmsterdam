@@ -66,6 +66,12 @@ import Vue from 'vue'
 
 export default Vue.extend({
   name: 'EventsPage',
+  props: {
+    filters: {
+      type: Array,
+      default: () => []
+    }
+  },
   data () {
     return {
       filter: 'All'
