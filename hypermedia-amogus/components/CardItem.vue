@@ -40,12 +40,12 @@
   >
     <div class="box-shadow-card-figure-alt h-full">
       <div class="card-body">
-        <h2 class="card-title">
+        <h3>
           {{ object.name }}
-        </h2>
-        <h3 class="mb-2 card-title">
-          Duration: {{ object.duration }}h
         </h3>
+        <h4 class="mb-2">
+          Duration: {{ object.duration }}h
+        </h4>
         <p class="line-clamp-3 justify-end">
           {{ object.description }}
         </p>
