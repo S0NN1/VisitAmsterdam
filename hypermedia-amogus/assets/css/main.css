@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Radio+Canada:wght@500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -53,6 +53,14 @@ h3 {
 
 .no-rounded-left {
   border-radius: 0 0.75rem 0.75rem 0;
+}
+
+.icon-footer {
+  background-color: #263049;
+}
+
+.basic-layout {
+  margin-top: -2.75rem;
 }
 
 .hero-image-container {

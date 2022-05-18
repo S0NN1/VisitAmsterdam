@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="flex w-full pl-10 mt-0 h-auto" style="background-color: #f05a28">
+    <div class="flex w-full pl-10 mt-0 h-auto bg-primary">
       <div class="w-3/12 flex items-center">
         <span class="flex text-2xl text-white">
           <svg width="2.3rem" height="2.3rem" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">

@@ -1,3 +1,4 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
 module.exports = {
   content: [
     './components/**/*.{js,vue,ts}',
@@ -7,7 +8,10 @@ module.exports = {
     './nuxt.config.{js,ts}'
   ],
   theme: {
-    extend: {}
+    extend: {},
+    fontFamily: {
+      sans: ['Montserrat', ...defaultTheme.fontFamily.sans]
+    }
   },
   plugins: [
     require('daisyui'),
@@ -18,7 +22,7 @@ module.exports = {
       {
         'hyp-theme': {
 
-          primary: '#f15a28',
+          primary: '#F15A28',
 
           secondary: '#0d99ff',
 
