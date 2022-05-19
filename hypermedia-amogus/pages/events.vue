@@ -5,16 +5,16 @@
           />
     </client-only>-->
   <div>
-    <HeroImage />
+    <HeroImage/>
     <div class="m-6">
       <h2 class="mx-6">
         Hottest events
       </h2>
       <div class="m-4">
-        <CarouselItem />
+        <CarouselItem/>
       </div>
     </div>
-    <div class="divider m-6" />
+    <div class="divider m-6"/>
     <div class="m-6">
       <h2 class="mx-6">
         All events
@@ -59,7 +59,7 @@
           Autumn
         </div>
       </div>
-      <div class="divider mx-6" />
+      <div class="divider mx-6"/>
       <div class="w-full justify-center text-right">
         <p class="mx-6 text-lg">
           <b>{{ filter }} | {{ eventArray.length }} results</b>
@@ -67,7 +67,11 @@
       </div>
       <div class="flex justify-center">
         <div class="w-3/4 grid gap-32 grid-cols-3 mb-20">
-          <CardItem v-for="event in eventArray" :key="event.id" :object="event" card-type="MULTIPLE" />
+          <div v-for="event in eventArray" :key="event.id">
+            <NuxtLink :to="'event?id=' + event.id">
+              <CardItem :object="event" card-type="MULTIPLE"/>
+            </NuxtLink>
+          </div>
         </div>
       </div>
     </div>
@@ -76,113 +80,64 @@
 
 <script>
 
+import {BACKEND_URL} from "assets/js/constants";
+
 export default {
   name: 'EventsPage',
   props: {},
-  data () {
+  data() {
     return {
       filter: 'ALL',
       eventArray: [],
-      eventList: [
-        {
-          id: 1,
-          name: 'Test Event',
-          description: 'Well, that\'s a test description!',
-          price: 0.0,
-          heroImageUrl: 'https://via.placeholder.com/1920x1080',
-          pictures: [],
-          infoUrl: 'https://lucapirovano.com',
-          bookingUrl: 'https://lucapirovano.com',
-          categories: [
-            {
-              '@UUID': '23b98170-d3d5-41e7-84da-121350ae7944',
-              name: 'SUMMER'
-            }
-          ],
-          eventDays: [
-            {
-              id: 7,
-              date: '2022-04-12',
-              startTime: '10:00:00',
-              endTime: '12:00:00'
-            },
-            {
-              id: 8,
-              date: '2022-04-13',
-              startTime: '10:00:00',
-              endTime: '12:00:00'
-            }
-          ],
-          location: {
-            id: 4,
-            name: 'sus',
-            latitude: 90.0,
-            longitude: 141.0,
-            tags: [],
-            pictures: [
-              {}
-            ]
-          }
-        }
-      ]
+      events: []
     }
   },
-  mounted () {
+  mounted() {
     this.fetchEvents()
   },
   methods: {
-    fetchEvents () {
+    craftEventObj(item) {
+      return {
+        id: item.id,
+        image: item.heroImageUrl,
+        name: item.name,
+        description: item.description,
+        date: 'Wednesday 17',
+        time: '20.30',
+        link: item.infoUrl,
+        duration: 8
+      }
+    },
+    async fetchEvents() {
       const that = this
-      this.eventList.forEach(function (item, index) {
-        const obj = {
-          image: item.heroImageUrl,
-          name: item.name,
-          description: item.description,
-          date: 'Wednesday 17',
-          time: '20.30',
-          link: item.infoUrl,
-          duration: 8
-        }
+      this.events = await this.$axios.$get(BACKEND_URL + '/api/v1/event/getAll')
+      console.log(this.events)
+      this.events.forEach(function (item, index) {
+        const obj = that.craftEventObj(item)
         that.eventArray.push(obj)
       })
     },
-    applyFilter (filter) {
+    applyFilter(filter) {
       this.filter = filter
       // console.log(this.eventList.filter(item => item.categories.filter(cat => cat.name === filter)))
-      const results = this.eventList.filter((event) => {
+      const results = this.events.filter((event) => {
         return event.categories.some((item) => {
-          return item.name === filter
+          return item.name.toUpperCase() === filter.toUpperCase()
         })
       })
       this.eventArray = []
       const that = this
       results.forEach(function (item, index) {
-        const obj = {
-          image: item.heroImageUrl,
-          name: item.name,
-          description: item.description,
-          date: 'Wednesday 17',
-          time: '20.30',
-          link: item.infoUrl,
-          duration: 8
-        }
+        const obj = that.craftEventObj(item)
         that.eventArray.push(obj)
       })
     },
-    resetFilter () {
+    resetFilter() {
       this.filter = 'ALL'
       this.eventArray = []
       const that = this
-      this.eventList.forEach(function (item, index) {
-        const obj = {
-          image: item.heroImageUrl,
-          name: item.name,
-          description: item.description,
-          date: 'Wednesday 17',
-          time: '20.30',
-          link: item.infoUrl,
-          duration: 8
-        }
+      this.events.forEach(function (item, index) {
+        const obj = that.craftEventObj(item)
         that.eventArray.push(obj)
       })
     }

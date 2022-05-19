@@ -1,6 +1,6 @@
 <template>
   <div class="hero min-h-screen" :style="{'background-image': 'url(' + require('@/static/img/amsterdam.jpg') + ')'}">
-    <div class="hero-overlay">
+    <div class="hero-overlay" style="background-color: transparent !important;">
       <div class="flex w-full h-fit">
         <HeaderIndexNav />
       </div>
@@ -28,7 +28,7 @@
     </div>
     <div class="hero-content text-center text-neutral-content">
       <div class="w-fit justify-center">
-        <h1 class="mb-5 text-8xl font-bold">
+        <h1 class="mb-5 text-8xl font-bold text-white drop-shadow-lg">
           Amsterdam
         </h1>
         <button class="btn btn-primary">
