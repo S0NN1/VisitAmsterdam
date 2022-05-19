@@ -46,7 +46,7 @@
         </p>
       </div>
       <div class="flex justify-center">
-        <div class="w-3/4 grid gap-32 grid-cols-3">
+        <div class="w-3/4 grid gap-32 grid-cols-3 mb-20">
           <CardItem :card-type="'MULTIPLE'" />
           <CardItem :card-type="'MULTIPLE'" />
           <CardItem :card-type="'MULTIPLE'" />
@@ -74,7 +74,13 @@ export default Vue.extend({
   },
   data () {
     return {
-      filter: 'All'
+      filter: 'All',
+      events: {
+        type: Array,
+        default: () => [
+          {}
+        ]
+      }
     }
   }
 })
