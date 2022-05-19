@@ -1,7 +1,9 @@
 package it.polimi.hypermedia.backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -10,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.UUIDGenerator.class, property = "@UUID")
 public class Event {
     @Id
     @GeneratedValue
@@ -31,7 +34,7 @@ public class Event {
 
     @NotNull
     @ManyToMany
-    @JsonManagedReference("event-category")
+//    @JsonManagedReference("event-category")
     private List<EventTag> categories;
 
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
