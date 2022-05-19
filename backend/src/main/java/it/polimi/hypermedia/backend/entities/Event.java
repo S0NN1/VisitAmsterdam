@@ -1,6 +1,5 @@
 package it.polimi.hypermedia.backend.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
@@ -8,7 +7,6 @@ import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.net.URL;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -25,15 +23,15 @@ public class Event {
     private double price = 0.0;
 
     private String heroImageUrl;
-    @OneToMany
+    @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
     @JsonManagedReference("event-picture")
-    private List<Picture> pictures;
+    private List<EventPicture> eventPictures;
 
     private URL infoUrl;
     private URL bookingUrl;
 
     @NotNull
-    @ManyToMany
+    @ManyToMany(cascade = CascadeType.DETACH)
 //    @JsonManagedReference("event-category")
     private List<EventTag> categories;
 
@@ -81,12 +79,12 @@ public class Event {
         this.heroImageUrl = heroImageUrl;
     }
 
-    public List<Picture> getPictures() {
-        return pictures;
+    public List<EventPicture> getPictures() {
+        return eventPictures;
     }
 
-    public void addPicture(Picture picture) {
-        this.pictures.add(picture);
+    public void addPicture(EventPicture eventPicture) {
+        this.eventPictures.add(eventPicture);
     }
 
     public URL getInfoUrl() {
