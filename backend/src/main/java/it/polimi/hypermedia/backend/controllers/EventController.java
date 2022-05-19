@@ -26,6 +26,11 @@ public class EventController {
         return eventRepository.findAll();
     }
 
+    @GetMapping(value = "/getById")
+    public Event getById(@RequestParam long id) {
+        return eventRepository.findById(id).get();
+    }
+
     @GetMapping(value = "/getUpcoming")
     public List<Event> getUpcomingEvents() {
         return eventRepository.findAllByEventDays_DateGreaterThanEqualOrderByEventDays_DateAsc(new Date(new java.util.Date().getTime()));
