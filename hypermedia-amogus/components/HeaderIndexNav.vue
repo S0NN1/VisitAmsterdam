@@ -1,7 +1,7 @@
 <template>
   <div class="w-full flex">
     <div class="flex w-full drop-shadow-lg rounded-xl">
-      <div class="w-2/5 p-4">
+      <div class="w-3/12 p-4">
         <svg id="a" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2500 735.36" width="4rem">
           <defs>
             <style>.b {
@@ -15,7 +15,7 @@
         </svg>
       </div>
 
-      <div class="flex w-3/5 justify-end">
+      <div class="flex w-9/12 justify-end">
         <div class="w-9/12">
           <ul class="menu menu-horizontal p-0 text-sm text-white">
             <li class="mx-4">
@@ -37,8 +37,13 @@
               </NuxtLink>
             </li>
             <li class="mx-5">
-              <NuxtLink to="#">
+              <NuxtLink to="pointsOfInterest">
                 <b>Point of Interests</b>
+              </NuxtLink>
+            </li>
+            <li class="mx-5">
+              <NuxtLink to="services">
+                <b>Services</b>
               </NuxtLink>
             </li>
             <li class="mx-5">
