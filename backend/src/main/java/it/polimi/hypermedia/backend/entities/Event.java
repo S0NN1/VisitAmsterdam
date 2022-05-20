@@ -18,6 +18,8 @@ public class Event {
     @NotNull
     private String name;
     @NotNull
+    @Lob
+    @Column(length = 2048)
     private String description;
     @NotNull
     private double price = 0.0;
@@ -27,8 +29,8 @@ public class Event {
     @JsonManagedReference("event-picture")
     private List<EventPicture> eventPictures;
 
-    private URL infoUrl;
-    private URL bookingUrl;
+    private String infoUrl;
+    private String bookingUrl;
 
     @NotNull
     @ManyToMany(cascade = CascadeType.DETACH)
@@ -87,19 +89,19 @@ public class Event {
         this.eventPictures.add(eventPicture);
     }
 
-    public URL getInfoUrl() {
+    public String getInfoUrl() {
         return infoUrl;
     }
 
-    public void setInfoUrl(URL infoUrl) {
+    public void setInfoUrl(String infoUrl) {
         this.infoUrl = infoUrl;
     }
 
-    public URL getBookingUrl() {
+    public String getBookingUrl() {
         return bookingUrl;
     }
 
-    public void setBookingUrl(URL bookingUrl) {
+    public void setBookingUrl(String bookingUrl) {
         this.bookingUrl = bookingUrl;
     }
 
