@@ -69,7 +69,7 @@
         <div class="w-3/4 grid gap-32 grid-cols-3 mb-20">
           <div v-for="event in eventArray" :key="event.id">
             <NuxtLink :to="'event?id=' + event.id">
-              <CardItem :object="event" card-type="MULTIPLE"/>
+              <CardItem :object="event" card-type="MULTIPLE" class="hover:shadow-2xl transition ease-in-out duration-200"/>
             </NuxtLink>
           </div>
         </div>

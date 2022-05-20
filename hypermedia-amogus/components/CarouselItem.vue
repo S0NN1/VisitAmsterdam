@@ -30,7 +30,7 @@
         :key="index"
         class="carousel-item w-full"
         :style="{'background-image': 'url(\'' + image.image + '\')'}"
-        style="background-position: center; background-size: coverc"
+        style="background-position: center; background-size: cover"
       >
       </div>
     </div>
