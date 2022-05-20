@@ -2,6 +2,7 @@
   <div>
     <CarouselItem class="w-full" :is-complex="false" style="height: 25vw" :carousel-images="carouselImages" />
     <div v-if="ready" class="container mx-auto w-10/12 justify-center mt-14 mb-24">
+      <!--      TODO breadcrumbs-->
       <div class="grid grid-cols-10">
         <div class="col-span-4">
           <h1>{{ eventDetails.name }}</h1>
@@ -46,7 +47,10 @@
             <h2>Booking Details</h2>
             <div class="mb-4">
               <div v-for="day in eventDetails.eventDays" class="badge badge-lg m-2 p-4">
-                {{ day.date }} &bull; {{ day.startTime.substring(0, 5) }} - {{ day.endTime.substring(0, 5) }}
+                {{
+                  new Date(day.date).getDate() + '/' + new Date(day.date).getMonth() + '/' + new Date(day.date).getFullYear()
+                }} &bull;
+                {{ day.startTime.substring(0, 5) }} - {{ day.endTime.substring(0, 5) }}
               </div>
             </div>
             <h3><b>Price:</b> &euro; {{ parseFloat(eventDetails.price).toFixed(2) }}</h3>
