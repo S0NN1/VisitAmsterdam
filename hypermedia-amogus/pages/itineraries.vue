@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto w-10/12 justify-center">
+  <div class="container mx-auto w-10/12 justify-center mb-40">
     <h1 class="flex w-full mb-9">
       All itineraries
     </h1>
