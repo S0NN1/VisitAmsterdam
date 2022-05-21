@@ -1,6 +1,5 @@
 <template>
   <div class="container mx-auto w-10/12 justify-center">
-    <BreadcrumbsItem />
     <h1 class="flex w-full mb-9">
       All itineraries
     </h1>

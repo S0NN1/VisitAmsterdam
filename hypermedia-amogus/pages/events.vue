@@ -1,6 +1,5 @@
 <template>
   <div>
-    <BreadcrumbsItem />
   </div>
 </template>
 
