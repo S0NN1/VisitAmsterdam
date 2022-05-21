@@ -32,7 +32,7 @@
               </NuxtLink>
             </li>
             <li class="mx-5">
-              <NuxtLink to="#">
+              <NuxtLink to="/itineraries">
                 <b>Itineraries</b>
               </NuxtLink>
             </li>
@@ -80,7 +80,12 @@ import UserIcon from '@/components/icons/UserIcon'
 
 export default {
   name: 'HeaderIndexNav',
-  components: { UserIcon, WorldwideIcon, QuestionIcon, PhoneIcon }
+  components: {
+    UserIcon,
+    WorldwideIcon,
+    QuestionIcon,
+    PhoneIcon
+  }
 }
 </script>
 
