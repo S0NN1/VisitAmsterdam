@@ -28,13 +28,13 @@ module.exports = {
 
           accent: '#1FB2A6',
 
-          neutral: '#191D24',
+          neutral: '#e4e5ee',
 
           'base-100': '#ffffff',
 
           info: '#3ABFF8',
 
-          success: '#36D399',
+          success: '#31c68f',
 
           warning: '#FBBD23',
 

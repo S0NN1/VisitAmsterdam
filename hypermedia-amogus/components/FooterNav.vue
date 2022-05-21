@@ -23,6 +23,35 @@
                   Itinerary
                 </p>
               </NuxtLink>
+              <NuxtLink class="flex" to="services">
+                <p
+                  class="text-sm font-medium truncate"
+                >
+                  Services
+                </p>
+              </NuxtLink>
+              <NuxtLink class="flex" to="contacts">
+                <p
+                  class="text-sm font-medium truncate"
+                >
+                  Contacts
+                </p>
+              </NuxtLink>
+              <NuxtLink class="flex" to="events">
+                <p
+                  class="text-sm font-medium truncate"
+                >
+                  Events
+                </p>
+              </NuxtLink>
+              <NuxtLink class="flex" to="pointsOfInterest">
+                <p
+                  class="text-sm font-medium truncate"
+                >
+                  Point of
+                  Interest
+                </p>
+              </NuxtLink>
               <NuxtLink class="flex" to="about">
                 <p
                   class="text-sm font-medium truncate"
@@ -36,28 +65,6 @@
                 >
                   Privacy
                   Policy
-                </p>
-              </NuxtLink>
-              <NuxtLink class="flex" to="events">
-                <p
-                  class="text-sm font-medium truncate"
-                >
-                  Events
-                </p>
-              </NuxtLink>
-              <NuxtLink class="flex" to="pois">
-                <p
-                  class="text-sm font-medium truncate"
-                >
-                  Point of
-                  Interest
-                </p>
-              </NuxtLink>
-              <NuxtLink class="flex" to="contacts">
-                <p
-                  class="text-sm font-medium truncate"
-                >
-                  Contacts
                 </p>
               </NuxtLink>
             </div>

@@ -44,8 +44,8 @@
         </div>
       </div>
     </div>
-    <div class="w-100 flex justify-end">
-      <div class="bg-base-100 w-fit drop-shadow-lg rounded-xl">
+    <div class="w-100 flex justify-end h-11">
+      <div class="bg-base-100 w-fit drop-shadow-lg rounded-xl h-full">
         <ul class="menu menu-horizontal p-0 text-sm">
           <li>
             <NuxtLink to="/">
@@ -66,9 +66,14 @@
             </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="#">
-              <b :class="$nuxt.$route.name==='pois' ? 'underline decoration-2 decoration-sky-500' : ''">Point of
+            <NuxtLink to="pointsOfInterest">
+              <b :class="$nuxt.$route.name==='pointsOfInterest' ? 'underline decoration-2 decoration-sky-500' : ''">Point of
                 Interests</b>
+            </NuxtLink>
+          </li>
+          <li>
+            <NuxtLink to="services">
+              <b :class="$nuxt.$route.name==='services' ? 'underline decoration-2 decoration-sky-500' : ''">Services</b>
             </NuxtLink>
           </li>
           <li>

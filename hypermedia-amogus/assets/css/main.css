@@ -24,7 +24,12 @@
     @apply text-base;
     color: #16215B;
   }
+
+  p {
+    font-size: 1.15rem;
+  }
 }
+
 
 .box-shadow-card {
   box-shadow: 0px 0px 20px rgb(97, 188, 255, 0.19);
@@ -67,8 +72,4 @@
 
 .basic-layout {
   margin-top: -2.75rem;
-}
-
-.tag-badge:not(.badge-primary) {
-  color: #787CAA;
 }

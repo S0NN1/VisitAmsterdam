@@ -23,7 +23,7 @@
     </div>
   </div>
   <div v-else-if="cardType==='MULTIPLE'">
-    <div class="card w-64 aspect-square bg-base-100 shadow-xl no-rounded-bottom">
+    <div class="card w-full aspect-square bg-base-100 shadow-xl no-rounded-bottom">
       <figure class="box-shadow-card-figure">
         <img :src="object.image" :alt="object.name">
       </figure>
