@@ -55,7 +55,7 @@
             </div>
             <h3><b>Price:</b> &euro; {{ parseFloat(eventDetails.price).toFixed(2) }}</h3>
             <h3>
-              <b>Availability:</b>
+              <b>Availability: </b>
               <div class="badge badge-lg badge-success text-white">
                 Yes
               </div>
