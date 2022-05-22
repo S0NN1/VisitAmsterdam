@@ -34,7 +34,7 @@ module.exports = {
 
           info: '#3ABFF8',
 
-          success: '#36D399',
+          success: '#31c68f',
 
           warning: '#FBBD23',
 

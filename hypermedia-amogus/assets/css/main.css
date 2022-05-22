@@ -4,21 +4,32 @@
 @tailwind components;
 @tailwind utilities;
 
-h1 {
-  font-family: 'Radio Canada', sans-serif;
-  font-size: 4rem;
-  font-weight: bold;
+
+@layer base {
+
+  h1 {
+    @apply font-extrabold;
+    @apply text-4xl;
+    color: #16215B;
+  }
+
+  h3 {
+    @apply font-bold;
+    @apply text-2xl;
+    color: #16215B;
+  }
+
+  h4 {
+    @apply font-bold;
+    @apply text-base;
+    color: #16215B;
+  }
+
+  p {
+    font-size: 1.15rem;
+  }
 }
 
-h2 {
-  font-family: 'Radio Canada', sans-serif;
-  font-size: 2rem;
-}
-
-h3 {
-  font-family: "Radio Canada", sans-serif;
-  font-size: 1.5rem;
-}
 
 .box-shadow-card {
   box-shadow: 0px 0px 20px rgb(97, 188, 255, 0.19);
@@ -61,9 +72,4 @@ h3 {
 
 .basic-layout {
   margin-top: -2.75rem;
-}
-
-.hero-image-container {
-  background-size: cover;
-  margin-top: -2.75rem
 }

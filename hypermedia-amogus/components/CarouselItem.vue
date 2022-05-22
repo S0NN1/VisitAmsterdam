@@ -23,14 +23,15 @@
     </div>
   </div>
   <div v-else>
-    <div class="carousel w-full">
+    <div class="carousel w-full h-full">
       <div
         v-for="(image, index) in carouselImages"
         :id="'imageCarousel' + index"
         :key="index"
         class="carousel-item w-full"
+        :style="{'background-image': 'url(\'' + image.image + '\')'}"
+        style="background-position: center; background-size: cover"
       >
-        <img :src="image.path" class="w-full">
       </div>
     </div>
     <div class="flex justify-center w-full py-2 gap-2">
