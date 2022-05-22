@@ -11,7 +11,7 @@
         Hottest events
       </h2>
       <div class="m-4">
-        <CarouselItem />
+        <CarouselItem :carousel-images="hottestEvents" />
       </div>
     </div>
     <div class="divider m-6" />
@@ -84,7 +84,7 @@
 
 <script>
 
-import { BACKEND_URL } from 'assets/js/constants'
+import { BACKEND_URL, MONTHS, WEEK_DAYS } from 'assets/js/constants'
 
 export default {
   name: 'EventsPage',
@@ -93,7 +93,8 @@ export default {
     return {
       filter: 'ALL',
       eventArray: [],
-      events: []
+      events: [],
+      hottestEvents: []
     }
   },
   mounted () {
@@ -112,14 +113,40 @@ export default {
         duration: 8
       }
     },
+    /**
+     * Populate two different lists:
+     * - events, containing all the upcoming events
+     * - hotEvents, containing a small collection of the previous category
+     * @returns {Promise<void>}
+     */
     async fetchEvents () {
       const that = this
-      this.events = await this.$axios.$get(BACKEND_URL + '/api/v1/event/getAll')
-      console.log(this.events)
+      this.events = await this.$axios.$get(BACKEND_URL + '/api/v1/event/getUpcoming')
       this.events.forEach(function (item, index) {
         const obj = that.craftEventObj(item)
         that.eventArray.push(obj)
       })
+      const chosenEvents = []
+      for (let counter = 0; (counter < 3 && counter < this.events.length); counter = counter + 1) {
+        let random = Math.floor(Math.random() * this.events.length)
+        let event = this.events[random]
+        const eventDate = new Date(event.eventDays[0].date)
+        if (chosenEvents.find(chosen => event.id === chosen)) {
+          while (chosenEvents.find(chosen => event.id === chosen)) {
+            random = Math.floor(Math.random() * this.events.length)
+            event = this.events[random]
+          }
+        }
+        this.hottestEvents.push({
+          image: event.heroImageUrl,
+          name: event.name,
+          description: event.description,
+          date: WEEK_DAYS[eventDate.getDay()] + ' ' + eventDate.getDate() + ' ' + MONTHS[eventDate.getMonth()],
+          time: event.eventDays[0].startTime.substring(0, 5),
+          link: '/events/' + event.id
+        })
+        chosenEvents.push(event.id)
+      }
     },
     applyFilter (filter) {
       this.filter = filter

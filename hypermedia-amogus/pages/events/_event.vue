@@ -116,6 +116,7 @@ export default Vue.extend({
     }
   },
   async mounted () {
+    // eslint-disable-next-line nuxt/no-env-in-hooks
     if (process.client) {
       this.mediaQuery = matchMedia('(max-width: 700px)')
       this.mobileDev = this.mediaQuery.matches
@@ -131,7 +132,7 @@ export default Vue.extend({
   methods: {
     craftCarouselImages (event: { type?: ObjectConstructor; default?: null; pictures?: any; }) {
       const pictureObj: any[] = []
-      event.pictures.forEach(function (picture, index) {
+      event.pictures.forEach(function (picture: { path: any }, index: any) {
         pictureObj.push(
           {
             image: picture.path,
