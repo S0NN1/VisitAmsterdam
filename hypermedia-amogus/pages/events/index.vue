@@ -5,16 +5,16 @@
           />
     </client-only>-->
   <div>
-    <HeroImage/>
+    <HeroImage />
     <div class="m-6">
       <h2 class="mx-6">
         Hottest events
       </h2>
       <div class="m-4">
-        <CarouselItem/>
+        <CarouselItem />
       </div>
     </div>
-    <div class="divider m-6"/>
+    <div class="divider m-6" />
     <div class="m-6">
       <h2 class="mx-6">
         All events
@@ -59,7 +59,7 @@
           Autumn
         </div>
       </div>
-      <div class="divider mx-6"/>
+      <div class="divider mx-6" />
       <div class="w-full justify-center text-right">
         <p class="mx-6 text-lg">
           <b>{{ filter }} | {{ eventArray.length }} results</b>
@@ -68,8 +68,12 @@
       <div class="flex justify-center">
         <div class="w-3/4 grid gap-32 grid-cols-3 mb-20">
           <div v-for="event in eventArray" :key="event.id">
-            <NuxtLink :to="'event?id=' + event.id">
-              <CardItem :object="event" card-type="MULTIPLE" class="hover:shadow-2xl transition ease-in-out duration-200"/>
+            <NuxtLink :to="'events/' + event.id">
+              <CardItem
+                :object="event"
+                card-type="MULTIPLE"
+                class="hover:shadow-2xl transition ease-in-out duration-200"
+              />
             </NuxtLink>
           </div>
         </div>
@@ -80,23 +84,23 @@
 
 <script>
 
-import {BACKEND_URL} from "assets/js/constants";
+import { BACKEND_URL } from 'assets/js/constants'
 
 export default {
   name: 'EventsPage',
   props: {},
-  data() {
+  data () {
     return {
       filter: 'ALL',
       eventArray: [],
       events: []
     }
   },
-  mounted() {
+  mounted () {
     this.fetchEvents()
   },
   methods: {
-    craftEventObj(item) {
+    craftEventObj (item) {
       return {
         id: item.id,
         image: item.heroImageUrl,
@@ -108,7 +112,7 @@ export default {
         duration: 8
       }
     },
-    async fetchEvents() {
+    async fetchEvents () {
       const that = this
       this.events = await this.$axios.$get(BACKEND_URL + '/api/v1/event/getAll')
       console.log(this.events)
@@ -117,7 +121,7 @@ export default {
         that.eventArray.push(obj)
       })
     },
-    applyFilter(filter) {
+    applyFilter (filter) {
       this.filter = filter
       // console.log(this.eventList.filter(item => item.categories.filter(cat => cat.name === filter)))
       const results = this.events.filter((event) => {
@@ -132,7 +136,7 @@ export default {
         that.eventArray.push(obj)
       })
     },
-    resetFilter() {
+    resetFilter () {
       this.filter = 'ALL'
       this.eventArray = []
       const that = this

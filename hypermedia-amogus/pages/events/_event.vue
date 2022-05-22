@@ -95,7 +95,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { BACKEND_URL, MONTHS } from 'assets/js/constants'
+import { BACKEND_URL, MONTHS } from '~/assets/js/constants'
 
 export default Vue.extend({
   name: 'EventPage',
@@ -124,7 +124,7 @@ export default Vue.extend({
         that.mobileDev = that.mediaQuery.matches
       })
     }
-    this.eventDetails = await this.$axios.$get(BACKEND_URL + '/api/v1/event/getById?id=' + this.$route.query.id)
+    this.eventDetails = await this.$axios.$get(BACKEND_URL + '/api/v1/event/getById?id=' + this.$route.params.event)
     this.carouselImages = this.craftCarouselImages(this.eventDetails)
     this.ready = true
   },
