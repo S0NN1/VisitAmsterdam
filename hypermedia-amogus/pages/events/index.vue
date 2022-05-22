@@ -24,36 +24,36 @@
       </h3>
       <div class="ml-8">
         <div
-          class="badge badge-lg p-3 mr-4 w-20 cursor-pointer hover-bordered filter-shadow"
-          :class="filter==='ALL' ? 'badge-primary' : 'badge-neutral'"
+          class="badge badge-lg p-4 mr-4 w-20 cursor-pointer hover-bordered filter-shadow"
+          :class="[filter==='ALL' ? 'badge-primary' : 'badge-neutral', mobileDev ? 'my-1' : '']"
           @click="resetFilter"
         >
           All
         </div>
         <div
-          class="badge badge-lg p-3 mr-4 w-20 cursor-pointer filter-shadow"
-          :class="filter==='SUMMER' ? 'badge-primary' : 'badge-neutral'"
+          class="badge badge-lg p-4 mr-4 w-20 cursor-pointer filter-shadow"
+          :class="[filter==='SUMMER' ? 'badge-primary' : 'badge-neutral',mobileDev ? 'my-1' : '']"
           @click="applyFilter('SUMMER')"
         >
           Summer
         </div>
         <div
-          class="badge badge-lg p-3 mr-4 w-20 cursor-pointer filter-shadow"
-          :class="filter==='WINTER' ? 'badge-primary' : 'badge-neutral'"
+          class="badge badge-lg p-4 mr-4 w-20 cursor-pointer filter-shadow"
+          :class="[filter==='WINTER' ? 'badge-primary' : 'badge-neutral', mobileDev ? 'my-1' : '']"
           @click="applyFilter('WINTER')"
         >
           Winter
         </div>
         <div
-          class="badge badge-lg p-3 mr-4 w-20 cursor-pointer filter-shadow"
-          :class="filter==='SPRING' ? 'badge-primary' : 'badge-neutral'"
+          class="badge badge-lg p-4 mr-4 w-20 cursor-pointer filter-shadow"
+          :class="[filter==='SPRING' ? 'badge-primary' : 'badge-neutral', mobileDev ? 'my-1' : '']"
           @click="applyFilter('SPRING')"
         >
           Spring
         </div>
         <div
-          class="badge badge-lg p-3 mr-4 w-20 cursor-pointer filter-shadow"
-          :class="filter==='AUTUMN' ? 'badge-primary' : 'badge-neutral'"
+          class="badge badge-lg p-4 mr-4 w-20 cursor-pointer filter-shadow"
+          :class="[filter==='AUTUMN' ? 'badge-primary' : 'badge-neutral', mobileDev ? 'my-1' : '']"
           @click="applyFilter('AUTUMN')"
         >
           Autumn
@@ -61,12 +61,12 @@
       </div>
       <div class="divider mx-6" />
       <div class="w-full justify-center text-right">
-        <p class="mx-6 text-lg">
+        <p class="mx-6 my-2 text-lg">
           <b>{{ filter }} | {{ eventArray.length }} results</b>
         </p>
       </div>
       <div class="flex justify-center">
-        <div class="w-3/4 grid gap-32 grid-cols-3 mb-20">
+        <div class="w-3/4 grid gap-32 grid-cols-3 mb-20" :class="mobileDev ? 'grid-cols-1' : 'grid-cols-3'">
           <div v-for="event in eventArray" :key="event.id">
             <NuxtLink :to="'events/' + event.id">
               <CardItem
@@ -94,10 +94,20 @@ export default {
       filter: 'ALL',
       eventArray: [],
       events: [],
-      hottestEvents: []
+      hottestEvents: [],
+      mediaQuery: null,
+      mobileDev: false
     }
   },
   mounted () {
+    if (process.client) {
+      this.mediaQuery = matchMedia('(max-width: 700px)')
+      this.mobileDev = this.mediaQuery.matches
+      const that = this
+      this.mediaQuery.addListener(() => {
+        that.mobileDev = that.mediaQuery.matches
+      })
+    }
     this.fetchEvents()
   },
   methods: {
@@ -122,7 +132,7 @@ export default {
     async fetchEvents () {
       const that = this
       this.events = await this.$axios.$get(BACKEND_URL + '/api/v1/event/getUpcoming')
-      this.events.forEach(function (item, index) {
+      this.events.forEach(function (item) {
         const obj = that.craftEventObj(item)
         that.eventArray.push(obj)
       })
@@ -158,7 +168,7 @@ export default {
       })
       this.eventArray = []
       const that = this
-      results.forEach(function (item, index) {
+      results.forEach(function (item) {
         const obj = that.craftEventObj(item)
         that.eventArray.push(obj)
       })
@@ -167,7 +177,7 @@ export default {
       this.filter = 'ALL'
       this.eventArray = []
       const that = this
-      this.events.forEach(function (item, index) {
+      this.events.forEach(function (item) {
         const obj = that.craftEventObj(item)
         that.eventArray.push(obj)
       })

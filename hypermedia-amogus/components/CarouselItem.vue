@@ -1,3 +1,4 @@
+<!--TODO: Responsive-->
 <template>
   <div v-if="isComplex">
     <div id="carousel" class="carousel w-full carousel-container pb-3">

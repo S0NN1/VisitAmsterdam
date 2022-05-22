@@ -1,3 +1,4 @@
+<!--TODO: Responsive-->
 <template>
   <div
     v-if="cardType==='FIGURE'"
