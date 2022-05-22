@@ -24,39 +24,13 @@
       </h3>
       <div class="ml-8">
         <div
+          v-for="filterName in filters"
+          :key="filterName.tag"
           class="badge badge-lg p-4 mr-4 w-20 cursor-pointer hover-bordered filter-shadow"
-          :class="[filter==='ALL' ? 'badge-primary' : 'badge-neutral', mobileDev ? 'my-1' : '']"
-          @click="resetFilter"
+          :class="[filter===filterName.tag ? 'badge-primary' : 'badge-neutral', mobileDev ? 'my-1' : '']"
+          @click="applyFilter(filterName.tag)"
         >
-          All
-        </div>
-        <div
-          class="badge badge-lg p-4 mr-4 w-20 cursor-pointer filter-shadow"
-          :class="[filter==='SUMMER' ? 'badge-primary' : 'badge-neutral',mobileDev ? 'my-1' : '']"
-          @click="applyFilter('SUMMER')"
-        >
-          Summer
-        </div>
-        <div
-          class="badge badge-lg p-4 mr-4 w-20 cursor-pointer filter-shadow"
-          :class="[filter==='WINTER' ? 'badge-primary' : 'badge-neutral', mobileDev ? 'my-1' : '']"
-          @click="applyFilter('WINTER')"
-        >
-          Winter
-        </div>
-        <div
-          class="badge badge-lg p-4 mr-4 w-20 cursor-pointer filter-shadow"
-          :class="[filter==='SPRING' ? 'badge-primary' : 'badge-neutral', mobileDev ? 'my-1' : '']"
-          @click="applyFilter('SPRING')"
-        >
-          Spring
-        </div>
-        <div
-          class="badge badge-lg p-4 mr-4 w-20 cursor-pointer filter-shadow"
-          :class="[filter==='AUTUMN' ? 'badge-primary' : 'badge-neutral', mobileDev ? 'my-1' : '']"
-          @click="applyFilter('AUTUMN')"
-        >
-          Autumn
+          {{ filterName.name }}
         </div>
       </div>
       <div class="divider mx-6" />
@@ -96,7 +70,33 @@ export default {
       events: [],
       hottestEvents: [],
       mediaQuery: null,
-      mobileDev: false
+      mobileDev: false,
+      filters: [
+        {
+          name: 'All',
+          tag: 'ALL'
+        },
+        {
+          name: 'Summer',
+          tag: 'SUMMER'
+        },
+        {
+          name: 'Winter',
+          tag: 'WINTER'
+        },
+        {
+          name: 'Spring',
+          tag: 'SPRING'
+        },
+        {
+          name: 'Autumn',
+          tag: 'AUTUMN'
+        },
+        {
+          name: 'Festival',
+          tag: 'FESTIVAL'
+        }
+      ]
     }
   },
   mounted () {
@@ -159,6 +159,10 @@ export default {
       }
     },
     applyFilter (filter) {
+      if (filter === 'ALL') {
+        this.resetFilter()
+        return
+      }
       this.filter = filter
       // console.log(this.eventList.filter(item => item.categories.filter(cat => cat.name === filter)))
       const results = this.events.filter((event) => {

@@ -86,7 +86,11 @@
         </div>
       </div>
       <div class="divider" />
-      <div v-for="category in eventDetails.categories" class="badge badge-lg badge-neutral p-4">
+      <div
+        v-for="category in eventDetails.categories"
+        :key="category.name"
+        class="badge badge-lg badge-neutral p-4 m-2"
+      >
         <b>{{ category.name }}</b>
       </div>
     </div>
