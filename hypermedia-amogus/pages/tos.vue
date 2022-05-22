@@ -17,15 +17,18 @@
       <p>
         Permission is granted to temporarily download one copy of the materials on Amogus's Website for personal,
         non-commercial transitory viewing only. This is the grant of a license, not a transfer of title, and under this
-        license you may not:
+        license you may not
       </p>
 
-      <ul>
+      <ul class="list-disc list-inside">
         <li>modify or copy the materials;</li>
         <li>use the materials for any commercial purpose or for any public display;</li>
         <li>attempt to reverse engineer any software contained on Amogus's Website;</li>
         <li>remove any copyright or other proprietary notations from the materials; or</li>
-        <li>transferring the materials to another person or "mirror" the materials on any other server.</li>
+        <li>
+          transferring the materials to another person or "mirror" the materials on any other
+          server.
+        </li>
       </ul>
 
       <p>
