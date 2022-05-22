@@ -11,7 +11,7 @@ public interface EventRepository extends JpaRepository<Event, Long> {
 
     List<Event> findDistinctByOrderByEventDays_DateAsc();
 
-    List<Event> findAllByEventDays_DateGreaterThanEqualOrderByEventDays_DateAsc(Date eventDays_date);
+    List<Event> findDistinctByEventDays_DateGreaterThanEqualOrderByEventDays_DateAsc(Date eventDays_date);
 
     List<Event> findAllByLocation_IdAndEventDays_DateGreaterThanEqualOrderByEventDays_DateAsc(Long locationId, Date eventDaysDate);
 }

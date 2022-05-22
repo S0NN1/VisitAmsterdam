@@ -10,7 +10,6 @@ import javax.persistence.ManyToMany;
 import java.util.List;
 
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.UUIDGenerator.class, property = "@UUID")
 
 public class EventTag {
     @Id

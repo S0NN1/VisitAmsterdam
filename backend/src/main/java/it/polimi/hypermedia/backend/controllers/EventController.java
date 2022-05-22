@@ -40,7 +40,7 @@ public class EventController {
 
     @GetMapping(value = "/getUpcoming")
     public List<Event> getUpcomingEvents() {
-        return eventRepository.findAllByEventDays_DateGreaterThanEqualOrderByEventDays_DateAsc(new Date(new java.util.Date().getTime()));
+        return eventRepository.findDistinctByEventDays_DateGreaterThanEqualOrderByEventDays_DateAsc(new Date(new java.util.Date().getTime()));
     }
 
     @GetMapping(value = "/getHosted")
