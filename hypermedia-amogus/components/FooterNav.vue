@@ -16,11 +16,11 @@
                   <b>Home</b>
                 </p>
               </NuxtLink>
-              <NuxtLink class="flex" to="itinerary">
+              <NuxtLink class="flex" to="itineraries">
                 <p
                   class="text-sm font-medium truncate"
                 >
-                  Itinerary
+                  Itineraries
                 </p>
               </NuxtLink>
               <NuxtLink class="flex" to="services">
