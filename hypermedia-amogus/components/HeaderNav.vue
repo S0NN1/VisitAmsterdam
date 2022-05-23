@@ -66,8 +66,8 @@
             </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="/pointsOfInterest">
-              <b :class="$nuxt.$route.name==='pointsOfInterest' ? 'underline decoration-2 decoration-sky-500' : ''">Point
+            <NuxtLink to="/points-of-interest">
+              <b :class="$nuxt.$route.name==='points-of-interest' ? 'underline decoration-2 decoration-sky-500' : ''">Point
                 of
                 Interests</b>
             </NuxtLink>

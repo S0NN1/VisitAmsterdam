@@ -1,9 +1,9 @@
 <template>
   <div class="container mx-auto w-10/12 justify-center">
     <div class="m-6">
-      <h2 class="mx-6">
+      <h1 class="mx-6">
         All points of interest
-      </h2>
+      </h1>
       <h3 class="mx-6">
         Filters
       </h3>
@@ -52,7 +52,13 @@
       </div>
       <div class="flex justify-center">
         <div class="w-3/4 grid gap-32 grid-cols-3 mb-20">
-          <CardItem v-for="event in eventArray" :key="event.id" :object="event" card-type="MULTIPLE" />
+          <NuxtLink
+            v-for="event in eventArray"
+            :key="event.id"
+            :to="'/points-of-interest/'+ event.name + '?id=' + event.id"
+          >
+            <CardItem :object="event" card-type="MULTIPLE" />
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -143,6 +149,7 @@ export default {
       const that = this
       results.forEach(function (item, index) {
         const obj = {
+          id: 1,
           image: item.heroImageUrl,
           name: item.name,
           description: item.description,
