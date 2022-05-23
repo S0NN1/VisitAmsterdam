@@ -21,7 +21,7 @@ frontend-deploy:
   only:
     - dev
   script:
-    - cd frontend
+    - cd hypermedia-amogus
     - export HOST=0.0.0.0
     - npm install
     - pm2 kill
