@@ -1,5 +1,5 @@
 before_script:
-  - cd /usr/local/bin
+  - cd /usr/local/bin/hyp-project
 
 stages:
   - backend
