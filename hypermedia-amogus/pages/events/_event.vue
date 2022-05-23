@@ -1,7 +1,7 @@
 <template>
   <div>
     <CarouselItem class="w-full" :is-complex="false" style="height: 45vh" :carousel-images="carouselImages" />
-    <div v-if="ready" class="container mx-auto w-10/12 justify-center mt-14 mb-24">
+    <div class="container mx-auto w-10/12 justify-center mt-14 mb-24">
       <!--      TODO breadcrumbs-->
       <div class="grid grid-cols-10">
         <div :class="!mobileDev ? 'col-span-4' : 'col-span-10'">
@@ -55,7 +55,7 @@
             </div>
             <h3><b>Price:</b> &euro; {{ parseFloat(eventDetails.price).toFixed(2) }}</h3>
             <h3>
-              <b>Availability:</b>
+              <b>Availability: </b>
               <div class="badge badge-lg badge-success text-white">
                 Yes
               </div>
@@ -86,7 +86,11 @@
         </div>
       </div>
       <div class="divider" />
-      <div v-for="category in eventDetails.categories" class="badge badge-lg badge-neutral p-4">
+      <div
+        v-for="category in eventDetails.categories"
+        :key="category.name"
+        class="badge badge-lg badge-neutral p-4 m-2"
+      >
         <b>{{ category.name }}</b>
       </div>
     </div>
@@ -95,18 +99,34 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { BACKEND_URL, MONTHS } from 'assets/js/constants'
+import { BACKEND_URL, MONTHS } from '~/assets/js/constants'
 
 export default Vue.extend({
   name: 'EventPage',
+  async asyncData ({ params }) {
+    const eventDetailsData = await fetch(BACKEND_URL + '/api/v1/event/getById?id=' + params.event).then(
+      res => res.json()
+    )
+    const carouselImagesData: any[] = []
+    eventDetailsData.pictures.forEach(function (picture: { path: any }) {
+      carouselImagesData.push(
+        {
+          image: picture.path,
+          name: '',
+          description: '',
+          date: '',
+          time: '',
+          link: ''
+        }
+      )
+    })
+    return {
+      eventDetails: eventDetailsData,
+      carouselImages: carouselImagesData
+    }
+  },
   data () {
     return {
-      eventDetails: {
-        type: Object,
-        default: null
-      },
-      carouselImages: [] as Array<any>,
-      ready: false,
       months: MONTHS,
       mediaQuery: {
         type: Object,
@@ -115,7 +135,7 @@ export default Vue.extend({
       mobileDev: false
     }
   },
-  async mounted () {
+  mounted () {
     if (process.client) {
       this.mediaQuery = matchMedia('(max-width: 700px)')
       this.mobileDev = this.mediaQuery.matches
@@ -124,28 +144,6 @@ export default Vue.extend({
         that.mobileDev = that.mediaQuery.matches
       })
     }
-    this.eventDetails = await this.$axios.$get(BACKEND_URL + '/api/v1/event/getById?id=' + this.$route.query.id)
-    this.carouselImages = this.craftCarouselImages(this.eventDetails)
-    this.ready = true
-  },
-  methods: {
-    craftCarouselImages (event: { type?: ObjectConstructor; default?: null; pictures?: any; }) {
-      const pictureObj: any[] = []
-      event.pictures.forEach(function (picture, index) {
-        pictureObj.push(
-          {
-            image: picture.path,
-            name: '',
-            description: '',
-            date: '',
-            time: '',
-            link: ''
-          }
-        )
-      })
-      return pictureObj
-    }
-
   }
 })
 </script>
