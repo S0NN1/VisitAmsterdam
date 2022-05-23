@@ -44,12 +44,8 @@
           <h1 class="my-8" :class="mobileDev ? 'text-center' : ''">
             Interactive Map & Infopoint
           </h1>
-          <!--          TODO: fix map-->
           <client-only>
-            <MapItem
-              class="card w-full"
-              style="height: 40vh"
-            />
+            <!-- TODO map -->
           </client-only>
         </div>
         <div />
