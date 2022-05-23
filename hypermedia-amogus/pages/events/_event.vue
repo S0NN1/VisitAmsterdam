@@ -55,7 +55,7 @@
             </div>
             <h3><b>Price:</b> &euro; {{ parseFloat(eventDetails.price).toFixed(2) }}</h3>
             <h3>
-              <b>Availability:</b>
+              <b>Availability: </b>
               <div class="badge badge-lg badge-success text-white">
                 Yes
               </div>
@@ -86,7 +86,11 @@
         </div>
       </div>
       <div class="divider" />
-      <div v-for="category in eventDetails.categories" class="badge badge-lg badge-neutral p-4">
+      <div
+        v-for="category in eventDetails.categories"
+        :key="category.name"
+        class="badge badge-lg badge-neutral p-4 m-2"
+      >
         <b>{{ category.name }}</b>
       </div>
     </div>
@@ -95,7 +99,7 @@
 
 <script lang="ts">
 import Vue from 'vue'
-import { BACKEND_URL, MONTHS } from 'assets/js/constants'
+import { BACKEND_URL, MONTHS } from '~/assets/js/constants'
 
 export default Vue.extend({
   name: 'EventPage',
@@ -124,14 +128,14 @@ export default Vue.extend({
         that.mobileDev = that.mediaQuery.matches
       })
     }
-    this.eventDetails = await this.$axios.$get(BACKEND_URL + '/api/v1/event/getById?id=' + this.$route.query.id)
+    this.eventDetails = await this.$axios.$get(BACKEND_URL + '/api/v1/event/getById?id=' + this.$route.params.event)
     this.carouselImages = this.craftCarouselImages(this.eventDetails)
     this.ready = true
   },
   methods: {
     craftCarouselImages (event: { type?: ObjectConstructor; default?: null; pictures?: any; }) {
       const pictureObj: any[] = []
-      event.pictures.forEach(function (picture, index) {
+      event.pictures.forEach(function (picture: { path: any }, index: any) {
         pictureObj.push(
           {
             image: picture.path,
