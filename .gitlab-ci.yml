@@ -24,6 +24,7 @@ frontend-deploy:
     - cd hypermedia-amogus
     - export PATH="$PATH:/home/piro/.nvm/versions/node/v16.15.0/bin/npm"
     - export HOST=0.0.0.0
+    - echo $PATH
     - npm install
     - pm2 kill
     - pm2 start app-config.json
