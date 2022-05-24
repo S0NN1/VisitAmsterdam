@@ -14,7 +14,8 @@ public class PoiPicture {
     private String path;
     private String description;
     @ManyToOne
-    @JsonBackReference("picture-poi")
+    @JoinColumn(name = "point_of_interest_id", nullable = false)
+    @JsonBackReference("poi-picture")
     private PointOfInterest pointOfInterest;
 
     public PoiPicture(){}
@@ -22,5 +23,37 @@ public class PoiPicture {
     public PoiPicture(String path, String description) {
         this.path = path;
         this.description = description;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public PointOfInterest getPointOfInterest() {
+        return pointOfInterest;
+    }
+
+    public void setPointOfInterest(PointOfInterest pointOfInterest) {
+        this.pointOfInterest = pointOfInterest;
     }
 }
