@@ -28,7 +28,7 @@ public class PointOfInterest {
     @JsonManagedReference
     private List<PointOfInterestTag> tags;
     @OneToMany(cascade = CascadeType.ALL)
-    @JsonManagedReference("picture-poi")
+    @JsonManagedReference("poi-picture")
     private List<PoiPicture> poiPictures;
 
     @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
@@ -62,5 +62,13 @@ public class PointOfInterest {
 
     public double getLongitude() {
         return longitude;
+    }
+
+    public List<PoiPicture> getPoiPictures() {
+        return poiPictures;
+    }
+
+    public void setPoiPictures(List<PoiPicture> poiPictures) {
+        this.poiPictures = poiPictures;
     }
 }
