@@ -11,35 +11,30 @@
         <div
           class="badge badge-lg p-3 mr-4 w-20 cursor-pointer hover-bordered filter-shadow"
           :class="filter==='ALL' ? 'badge-primary' : 'badge-neutral'"
-          @click="resetFilter"
         >
           All
         </div>
         <div
           class="badge badge-lg p-3 mr-4 w-20 cursor-pointer filter-shadow"
           :class="filter==='SUMMER' ? 'badge-primary' : 'badge-neutral'"
-          @click="applyFilter('SUMMER')"
         >
           Summer
         </div>
         <div
           class="badge badge-lg p-3 mr-4 w-20 cursor-pointer filter-shadow"
           :class="filter==='WINTER' ? 'badge-primary' : 'badge-neutral'"
-          @click="applyFilter('WINTER')"
         >
           Winter
         </div>
         <div
           class="badge badge-lg p-3 mr-4 w-20 cursor-pointer filter-shadow"
           :class="filter==='SPRING' ? 'badge-primary' : 'badge-neutral'"
-          @click="applyFilter('SPRING')"
         >
           Spring
         </div>
         <div
           class="badge badge-lg p-3 mr-4 w-20 cursor-pointer filter-shadow"
           :class="filter==='AUTUMN' ? 'badge-primary' : 'badge-neutral'"
-          @click="applyFilter('AUTUMN')"
         >
           Autumn
         </div>
@@ -47,17 +42,17 @@
       <div class="divider mx-6" />
       <div class="w-full justify-center text-right">
         <p class="mx-6 text-lg">
-          <b>{{ filter }} | {{ eventArray.length }} results</b>
+          <b>{{ filter }} | {{ pois.length }} results</b>
         </p>
       </div>
       <div class="flex justify-center">
         <div class="w-3/4 grid gap-32 grid-cols-3 mb-20">
           <NuxtLink
-            v-for="event in eventArray"
-            :key="event.id"
-            :to="'/points-of-interest/'+ event.name + '?id=' + event.id"
+            v-for="poi in pois"
+            :key="poi.id"
+            :to="'/points-of-interest/' + poi.id"
           >
-            <CardItem :object="event" card-type="MULTIPLE" />
+            <CardItem :object="poi" card-type="MULTIPLE" />
           </NuxtLink>
         </div>
       </div>
@@ -65,123 +60,35 @@
   </div>
 </template>
 
-<script>
+<script lang="ts">
 
-export default {
+import Vue from 'vue'
+import { BACKEND_URL } from '~/assets/js/constants'
+
+export default Vue.extend({
   name: 'PointsOfInterestPage',
-  props: {},
+  async asyncData () {
+    const pois = await fetch(BACKEND_URL + '/api/v1/poi/getAll').then(
+      res => res.json()
+    )
+    const craftedPois: any[] = []
+    pois.forEach(
+      (poi: any) => {
+        craftedPois.push({
+          id: poi.id,
+          name: poi.name,
+          image: poi.poiPictures[0].path
+        })
+      }
+    )
+    return {
+      pois: craftedPois
+    }
+  },
   data () {
     return {
-      filter: 'ALL',
-      eventArray: [],
-      eventList: [
-        {
-          id: 1,
-          name: 'Test Event',
-          description: 'Well, that\'s a test description!',
-          price: 0.0,
-          heroImageUrl: 'https://via.placeholder.com/1920x1080',
-          pictures: [],
-          infoUrl: 'https://lucapirovano.com',
-          bookingUrl: 'https://lucapirovano.com',
-          categories: [
-            {
-              '@UUID': '23b98170-d3d5-41e7-84da-121350ae7944',
-              name: 'SUMMER'
-            }
-          ],
-          eventDays: [
-            {
-              id: 7,
-              date: '2022-04-12',
-              startTime: '10:00:00',
-              endTime: '12:00:00'
-            },
-            {
-              id: 8,
-              date: '2022-04-13',
-              startTime: '10:00:00',
-              endTime: '12:00:00'
-            }
-          ],
-          location: {
-            id: 4,
-            name: 'sus',
-            latitude: 90.0,
-            longitude: 141.0,
-            tags: [],
-            pictures: [
-              {}
-            ]
-          }
-        }
-      ]
-    }
-  },
-  mounted () {
-    this.fetchEvents()
-  },
-  methods: {
-    fetchEvents () {
-      const that = this
-      this.eventList.forEach(function (item, index) {
-        const obj = {
-          image: item.heroImageUrl,
-          name: item.name,
-          description: item.description,
-          date: 'Wednesday 17',
-          time: '20.30',
-          link: item.infoUrl,
-          duration: 8
-        }
-        that.eventArray.push(obj)
-      })
-    },
-    applyFilter (filter) {
-      this.filter = filter
-      // console.log(this.eventList.filter(item => item.categories.filter(cat => cat.name === filter)))
-      const results = this.eventList.filter((event) => {
-        return event.categories.some((item) => {
-          return item.name === filter
-        })
-      })
-      this.eventArray = []
-      const that = this
-      results.forEach(function (item, index) {
-        const obj = {
-          id: 1,
-          image: item.heroImageUrl,
-          name: item.name,
-          description: item.description,
-          date: 'Wednesday 17',
-          time: '20.30',
-          link: item.infoUrl,
-          duration: 8
-        }
-        that.eventArray.push(obj)
-      })
-    },
-    resetFilter () {
-      this.filter = 'ALL'
-      this.eventArray = []
-      const that = this
-      this.eventList.forEach(function (item, index) {
-        const obj = {
-          image: item.heroImageUrl,
-          name: item.name,
-          description: item.description,
-          date: 'Wednesday 17',
-          time: '20.30',
-          link: item.infoUrl,
-          duration: 8
-        }
-        that.eventArray.push(obj)
-      })
+      filter: 'All'
     }
   }
-}
+})
 </script>
-
-<style scoped>
-
-</style>
