@@ -26,11 +26,13 @@
           v-for="element in elementsFiltered"
           :key="element.id"
           class="flex w-full justify-center"
-          :class="{'mb-10' : pageType.toUpperCase()==='ITINERARY'}"
         >
-          <NuxtLink :to="pageType + '?id=' + element.id">
-            <CardItem :object="element" :card-type="pageCardType[pageType]" :class="pageType.toUpperCase()!=='ITINERARY' ? 'hover:shadow-2xl transition ease-in-out duration-200' : 'mr-4'" />
-            <CardItem v-if="pageType.toUpperCase()==='ITINERARY'" card-type="COMPLEX" />
+          <NuxtLink v-if="pageType.toUpperCase()!=='ITINERARY'" :to="pageType + '?id=' + element.id">
+            <CardItem :object="element" :card-type="pageCardType[pageType]" class="hover:shadow-2xl transition ease-in-out duration-200" />
+          </NuxtLink>
+          <NuxtLink v-else :to="pageType + '?id=' + element.id" class="flex mb-10">
+            <CardItem :object="element" :card-type="pageCardType[pageType]" class="mr-4" />
+            <CardItem card-type="COMPLEX" />
           </NuxtLink>
         </div>
       </div>
@@ -46,7 +48,7 @@ export default {
   props: {
     pageType: {
       type: String,
-      default: 'itinerary'
+      default: 'event'
     },
     elements: {
       type: Array,
