@@ -1,13 +1,16 @@
 package it.polimi.hypermedia.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
+@JsonIdentityInfo(generator = ObjectIdGenerators.UUIDGenerator.class, property = "@UUID")
 public class PointOfInterest {
     @Id
     @GeneratedValue
@@ -22,10 +25,10 @@ public class PointOfInterest {
     private double longitude;
     @NotNull
     private String description;
-    @OneToOne
+    @OneToOne(cascade = CascadeType.ALL)
     private VisitInfo visitInfo;
-    @OneToMany(cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @NotNull
+    @ManyToMany(cascade = CascadeType.DETACH)
     private List<PointOfInterestTag> tags;
     @OneToMany(cascade = CascadeType.ALL)
     @JsonManagedReference("poi-picture")
@@ -70,5 +73,57 @@ public class PointOfInterest {
 
     public void setPoiPictures(List<PoiPicture> poiPictures) {
         this.poiPictures = poiPictures;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public void setLatitude(double latitude) {
+        this.latitude = latitude;
+    }
+
+    public void setLongitude(double longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public VisitInfo getVisitInfo() {
+        return visitInfo;
+    }
+
+    public void setVisitInfo(VisitInfo visitInfo) {
+        this.visitInfo = visitInfo;
+    }
+
+    public List<PointOfInterestTag> getTags() {
+        return tags;
+    }
+
+    public void setTags(List<PointOfInterestTag> tags) {
+        this.tags = tags;
+    }
+
+    public List<Event> getEvents() {
+        return events;
+    }
+
+    public void setEvents(List<Event> events) {
+        this.events = events;
     }
 }
