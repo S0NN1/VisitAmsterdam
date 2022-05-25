@@ -15,7 +15,7 @@ public class VisitInfo {
     private double price;
     @NotNull
     private URL url;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     private List<Day> openingHours;
 
     public Long getId() {
@@ -44,5 +44,9 @@ public class VisitInfo {
 
     public void setOpeningHours(List<Day> openingHours) {
         this.openingHours = openingHours;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 }
