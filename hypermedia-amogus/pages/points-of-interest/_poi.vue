@@ -40,6 +40,13 @@
           </div>
         </div>
       </div>
+      <div v-if="poiDetails.visitInfo.url!==''" class="flex w-full justify-center mt-5 sm:mt-0 sm:justify-end">
+        <a :href="poiDetails.visitInfo.url" target="_blank">
+          <div class="btn btn-md btn-secondary rounded-full text-white normal-case">
+            <b class="text-base">Visit the site</b>
+          </div>
+        </a>
+      </div>
     </div>
   </div>
 </template>
