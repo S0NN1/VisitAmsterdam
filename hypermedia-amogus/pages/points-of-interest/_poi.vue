@@ -3,22 +3,25 @@
     <CarouselItem class="w-full" :is-complex="false" style="height: 45vh" :carousel-images="carouselImages" />
     <div class="container mx-auto w-10/12 justify-center mt-14 mb-24">
       <!--      TODO breadcrumbs-->
-      <div class="grid grid-cols-10">
-        <div class="col-span-10 justify-start">
+      <div class="grid grid-cols-1 sm:grid-cols-10 ">
+        <div class="flex sm:col-span-10 justify-start">
           <h1>{{ poiDetails.name }}</h1>
         </div>
-        <div class="divider col-span-5" />
-        <div class="flex col-span-5 justify-center">
+        <div class="flex divider sm:col-span-5" />
+        <div v-if="!mobileDev" class="flex sm:col-span-5 justify-center">
           <h3>Booking Details</h3>
         </div>
-        <div class="flex justify-start col-span-5">
+        <div class="flex justify-start sm:col-span-5">
           <h4><b>{{ poiDetails.address }}</b></h4>
         </div>
-        <div class="flex col-span-5" />
-        <div class="mt-4 text-justify col-span-5">
+        <div class="flex sm:col-span-5" />
+        <div class="mt-4 text-justify sm:col-span-5">
           <p>{{ poiDetails.description }}</p>
         </div>
-        <div class="flex col-span-5 justify-center grid grid-rows-7 grid-cols-1">
+        <div v-if="mobileDev" class="flex justify-center mt-5">
+          <h3>Booking Details</h3>
+        </div>
+        <div class="flex mt-5 sm:mt-0 sm:col-span-5 justify-center grid grid-rows-7 grid-cols-1">
           <div
             v-for="day in poiDetails.visitInfo.openingHours"
             :key="day.day"
@@ -31,9 +34,9 @@
               <div class="divider divider-horizontal before:bg-secondary after:bg-secondary" />
             </div>
 
-            <div class="flex col-span-3 justify-start w-full">
+            <p class="flex col-span-3 justify-start w-full">
               {{ day.openingHours.substring(0, 5) }}h - {{ day.closingHours.substring(0, 5) }}h
-            </div>
+            </p>
           </div>
         </div>
       </div>

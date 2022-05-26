@@ -27,8 +27,12 @@
           :key="element.id"
           class="flex w-full justify-center"
         >
-          <NuxtLink v-if="pageType.toUpperCase()!=='ITINERARY'" :to="pageType + '?id=' + element.id">
-            <CardItem :object="element" :card-type="pageCardType[pageType]" class="hover:shadow-2xl transition ease-in-out duration-200" />
+          <NuxtLink v-if="pageType.toUpperCase()!=='ITINERARY'" :to="element.id">
+            <CardItem
+              :object="element"
+              :card-type="pageCardType[pageType]"
+              class="hover:shadow-2xl transition ease-in-out duration-200"
+            />
           </NuxtLink>
           <NuxtLink v-else :to="pageType + '?id=' + element.id" class="flex mb-10">
             <CardItem :object="element" :card-type="pageCardType[pageType]" class="mr-4" />
@@ -86,7 +90,8 @@ export default {
         categories: item.categories
       }
     },
-    /* async */ fetchElements () {
+    /* async */
+    fetchElements () {
       const that = this
       this.elements.forEach(function (item) {
         const obj = that.craftEventObj(item)
