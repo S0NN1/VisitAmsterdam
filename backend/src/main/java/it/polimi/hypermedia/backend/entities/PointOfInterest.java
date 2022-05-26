@@ -24,6 +24,8 @@ public class PointOfInterest {
     @NotNull
     private double longitude;
     @NotNull
+    @Lob
+    @Column(length = 2048)
     private String description;
     @OneToOne(cascade = CascadeType.ALL)
     private VisitInfo visitInfo;

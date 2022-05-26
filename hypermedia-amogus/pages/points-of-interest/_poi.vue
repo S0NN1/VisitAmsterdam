@@ -4,15 +4,37 @@
     <div class="container mx-auto w-10/12 justify-center mt-14 mb-24">
       <!--      TODO breadcrumbs-->
       <div class="grid grid-cols-10">
-        <div :class="!mobileDev ? 'col-span-4' : 'col-span-10'">
+        <div class="col-span-10 justify-start">
           <h1>{{ poiDetails.name }}</h1>
-          <div class="divider" />
-          <div class="flex items-center">
-            <h4><b>{{ poiDetails.address }}</b></h4>
-          </div>
         </div>
-        <div class="mt-4 text-justify">
+        <div class="divider col-span-5" />
+        <div class="flex col-span-5 justify-center">
+          <h3>Booking Details</h3>
+        </div>
+        <div class="flex justify-start col-span-5">
+          <h4><b>{{ poiDetails.address }}</b></h4>
+        </div>
+        <div class="flex col-span-5" />
+        <div class="mt-4 text-justify col-span-5">
           <p>{{ poiDetails.description }}</p>
+        </div>
+        <div class="flex col-span-5 justify-center grid grid-rows-7 grid-cols-1">
+          <div
+            v-for="day in poiDetails.visitInfo.openingHours"
+            :key="day.day"
+            class="flex grid-rows-1 grid-cols-5 justify-center"
+          >
+            <div class="flex col-span-2 w-full justify-end">
+              <p>
+                {{ day.day.charAt(0).toUpperCase() + day.day.substring(1, 3).toLowerCase() }}
+              </p>
+              <div class="divider divider-horizontal before:bg-secondary after:bg-secondary" />
+            </div>
+
+            <div class="flex col-span-3 justify-start w-full">
+              {{ day.openingHours.substring(0, 5) }}h - {{ day.closingHours.substring(0, 5) }}h
+            </div>
+          </div>
         </div>
       </div>
     </div>
