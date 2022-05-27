@@ -32,20 +32,22 @@ export default {
     }).addTo(amsterdamMap)
     if (this.markers.length > 0) {
       this.markers.forEach(function (marker) {
-        L.marker([marker.latitude, marker.longitude]).addTo(amsterdamMap).bindPopup(marker.address).openPopup()
+        L.marker([marker.latitude, marker.longitude]).addTo(amsterdamMap).bindPopup(marker.address).openPopup().on('click', function () {
+          window.open('https://www.google.com/maps/dir/?api=1&destination=' + marker.address + '&travelmode=walking&dir_action=navigate', '_blank')
+        })
       })
     }
     if (this.waypoints.length > 0) {
       const leafletWaypoints = []
-      const leafletWaypointsAddresses = []
       this.waypoints.forEach(function (waypoint) {
         leafletWaypoints.push(L.latLng(waypoint.latitude, waypoint.longitude))
-        leafletWaypointsAddresses.push(waypoint.address)
       })
       const routing = L.Routing.control({
         createMarker (waypointIndex, waypoint) {
           return L.marker(waypoint.latLng)
-            .bindPopup(leafletWaypointsAddresses[waypointIndex]).openPopup()
+            .bindPopup(this.waypoints[waypointIndex].address).openPopup().on('click', function () {
+              window.open('https://www.google.com/maps/dir/?api=1&destination=' + this.waypoints[waypointIndex] + '&travelmode=walking&dir_action=navigate', '_blank')
+            })
         },
         waypoints: leafletWaypoints,
         lineOptions: {

@@ -55,10 +55,11 @@
         <div
           v-for="(tag, index) in poiDetails.tags"
           :key="tag+index"
-          class="badge mr-4 p-5 font-bold tag-badge text-white cursor-pointer"
+          class="badge mr-4 p-5 font-bold tag-badge text-white cursor-pointer hover:bg-primary"
         >
-          <NuxtLink :to="'/points-of-interests?tag=' + tag.name" />
-          {{ tag.name }}
+          <NuxtLink :to="'/points-of-interests?tag=' + tag.name">
+            {{ tag.name }}
+          </NuxtLink>
         </div>
       </div>
     </div>
