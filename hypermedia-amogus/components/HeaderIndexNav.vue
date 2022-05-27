@@ -51,6 +51,11 @@
                 <b>About</b>
               </NuxtLink>
             </li>
+            <li class="mx-5">
+              <NuxtLink to="/tos">
+                <b>Terms of Use</b>
+              </NuxtLink>
+            </li>
           </ul>
         </div>
         <div class="w-fit flex items-center fill-white">
