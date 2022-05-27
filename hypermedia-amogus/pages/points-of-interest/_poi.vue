@@ -47,6 +47,9 @@
           </div>
         </a>
       </div>
+      <MapItem
+        :markers="[{latitude: poiDetails.latitude, longitude: poiDetails.longitude, address: poiDetails.address}]"
+      />
     </div>
   </div>
 </template>
