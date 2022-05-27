@@ -14,7 +14,7 @@
   }
 
   h2 {
-    @apply font-extrabold;
+    @apply font-bold;
     @apply text-3xl;
     color: #16215B;
   }
@@ -33,6 +33,12 @@
 
   p {
     font-size: 1.15rem;
+    color: #16215B;
+  }
+
+  li {
+    font-size: 1.15rem;
+    color: #16215B;
   }
 }
 

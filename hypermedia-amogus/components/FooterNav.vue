@@ -59,7 +59,7 @@
                   About Us
                 </p>
               </NuxtLink>
-              <NuxtLink class="flex" to="/privacy">
+              <NuxtLink class="flex" to="tos">
                 <p
                   class="text-sm font-medium truncate"
                 >
