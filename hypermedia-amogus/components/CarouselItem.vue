@@ -1,3 +1,4 @@
+<!--TODO: Responsive-->
 <template>
   <div v-if="isComplex">
     <div id="carousel" class="carousel w-full carousel-container pb-3">
@@ -7,8 +8,8 @@
         :key="index"
         class="carousel-item w-full justify-center p-4"
       >
-        <CardItem class="flex-none mr-10 w-fit max-w-2xl h-fit" />
-        <CardItem class="flex-none w-fit max-w-2xl" :card-type="'EVENT'" />
+        <CardItem class="flex-none mr-10 w-fit max-w-2xl h-fit" :object="image" />
+        <CardItem class="flex-none w-fit max-w-2xl" :card-type="'EVENT'" :object="image" />
       </div>
     </div>
     <div class="flex justify-center w-full gap-2">
@@ -31,8 +32,7 @@
         class="carousel-item w-full"
         :style="{'background-image': 'url(\'' + image.image + '\')'}"
         style="background-position: center; background-size: cover"
-      >
-      </div>
+      />
     </div>
     <div class="flex justify-center w-full py-2 gap-2">
       <a
