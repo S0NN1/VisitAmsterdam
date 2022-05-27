@@ -1,11 +1,11 @@
 package it.polimi.hypermedia.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 import it.polimi.hypermedia.backend.model.enums.ServiceType;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 public class Service {
@@ -23,6 +23,9 @@ public class Service {
     @NotNull
     private double longitude;
 
+    @OneToMany(cascade = CascadeType.ALL)
+    @JsonManagedReference("service-picture")
+    private List<ServicePicture> servicePicture;
     public Service(String name, ServiceType serviceType, String address, double latitude, double longitude) {
         this.name = name;
         this.serviceType = serviceType;
@@ -75,5 +78,13 @@ public class Service {
 
     public void setLongitude(double longitude) {
         this.longitude = longitude;
+    }
+
+    public List<ServicePicture> getServicePicture() {
+        return servicePicture;
+    }
+
+    public void setServicePicture(List<ServicePicture> servicePicture) {
+        this.servicePicture = servicePicture;
     }
 }
