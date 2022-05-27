@@ -16,9 +16,9 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/itinerary")
+@RequestMapping("/api/v1/itineraries")
 public class ItineraryController {
-    private ItineraryRepository itineraryRepository;
+    private final ItineraryRepository itineraryRepository;
 
     public ItineraryController(ItineraryRepository itineraryRepository) {
         this.itineraryRepository = itineraryRepository;

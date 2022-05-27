@@ -4,7 +4,7 @@
       <h2 class="flex w-full mb-9">
         All services
       </h2>
-      <AllCardsSection :page-type="'SERVICES'" :elements="services" />
+      <AllCardsSection :page-type="'services'" :elements="services" />
     </div>
   </div>
 </template>
