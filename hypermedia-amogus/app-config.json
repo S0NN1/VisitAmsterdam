@@ -1,0 +1,9 @@
+{
+  "apps": [
+    {
+      "name": "Hypermedia-Frontend",
+      "script": "npm",
+      "args": "run dev"
+    }
+  ]
+}
