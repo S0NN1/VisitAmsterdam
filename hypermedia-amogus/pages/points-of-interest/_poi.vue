@@ -50,6 +50,17 @@
       <MapItem
         :markers="[{latitude: poiDetails.latitude, longitude: poiDetails.longitude, address: poiDetails.address}]"
       />
+      <div class="flex divider" />
+      <div class="flex w-full justify-start">
+        <div
+          v-for="(tag, index) in poiDetails.tags"
+          :key="tag+index"
+          class="badge mr-4 p-5 font-bold tag-badge text-white cursor-pointer"
+        >
+          <NuxtLink :to="'/points-of-interests?tag=' + tag.name" />
+          {{ tag.name }}
+        </div>
+      </div>
     </div>
   </div>
 </template>
