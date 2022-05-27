@@ -16,43 +16,43 @@
                   <b>Home</b>
                 </p>
               </NuxtLink>
-              <NuxtLink class="flex" to="itinerary">
+              <NuxtLink class="flex" to="/itineraries">
                 <p
                   class="text-sm font-medium truncate"
                 >
-                  Itinerary
+                  Itineraries
                 </p>
               </NuxtLink>
-              <NuxtLink class="flex" to="services">
+              <NuxtLink class="flex" to="/services">
                 <p
                   class="text-sm font-medium truncate"
                 >
                   Services
                 </p>
               </NuxtLink>
-              <NuxtLink class="flex" to="contacts">
+              <NuxtLink class="flex" to="/contacts">
                 <p
                   class="text-sm font-medium truncate"
                 >
                   Contacts
                 </p>
               </NuxtLink>
-              <NuxtLink class="flex" to="events">
+              <NuxtLink class="flex" to="/events">
                 <p
                   class="text-sm font-medium truncate"
                 >
                   Events
                 </p>
               </NuxtLink>
-              <NuxtLink class="flex" to="pointsOfInterest">
+              <NuxtLink class="flex" to="/points-of-interest">
                 <p
                   class="text-sm font-medium truncate"
                 >
-                  Point of
+                  Points of
                   Interest
                 </p>
               </NuxtLink>
-              <NuxtLink class="flex" to="about">
+              <NuxtLink class="flex" to="/about">
                 <p
                   class="text-sm font-medium truncate"
                 >
