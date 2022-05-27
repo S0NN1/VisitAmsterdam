@@ -18,6 +18,7 @@
     <div class="flex w-full justify-end font-bold mb-5">
       <span>{{ activeFilter }}</span>
       <span class="divider divider-horizontal before:bg-secondary after:bg-secondary" />
+      <span class="divider divider-horizontal before:bg-secondary after:bg-secondary" />
       <span>{{ elementsFiltered.length }}   {{ elementsFiltered.length > 1 ? 'results' : 'result' }}</span>
     </div>
     <div class="flex justify-center">
@@ -27,14 +28,14 @@
           :key="element.id"
           class="flex w-full justify-center"
         >
-          <NuxtLink v-if="pageType.toUpperCase()!=='ITINERARY'" :to="element.id">
+          <NuxtLink v-if="pageType.toUpperCase()!=='ITINERARY'" :to="'/' + pageType + '/' + element.id.toString()">
             <CardItem
               :object="element"
               :card-type="pageCardType[pageType]"
               class="hover:shadow-2xl transition ease-in-out duration-200"
             />
           </NuxtLink>
-          <NuxtLink v-else :to="pageType + '?id=' + element.id" class="flex mb-10">
+          <NuxtLink v-else :to="'/itineraries/' + element.id.toString()" class="flex mb-10">
             <CardItem :object="element" :card-type="pageCardType[pageType]" class="mr-4" />
             <CardItem card-type="COMPLEX" />
           </NuxtLink>
