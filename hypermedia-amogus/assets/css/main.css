@@ -13,6 +13,12 @@
     color: #16215B;
   }
 
+  h2 {
+    @apply font-extrabold;
+    @apply text-3xl;
+    color: #16215B;
+  }
+
   h3 {
     @apply font-bold;
     @apply text-2xl;

@@ -1,12 +1,15 @@
 package it.polimi.hypermedia.backend.controllers;
 
+import it.polimi.hypermedia.backend.entities.PointOfInterest;
 import it.polimi.hypermedia.backend.entities.Service;
+import it.polimi.hypermedia.backend.exception.PointOfInterestNotFoundException;
 import it.polimi.hypermedia.backend.exception.ServiceAlreadyFoundException;
 import it.polimi.hypermedia.backend.exception.WrongCoordinatesException;
 import it.polimi.hypermedia.backend.model.enums.ServiceType;
 import it.polimi.hypermedia.backend.repositories.ServiceRepository;
 import org.springframework.web.bind.annotation.*;
 
+import javax.management.ServiceNotFoundException;
 import java.util.List;
 
 @RestController
@@ -33,4 +36,17 @@ public class ServiceController {
     public List<Service> getServiceByType(@RequestParam ServiceType type) {
         return serviceRepository.findAllByServiceType(type);
     }
-}
+
+    @GetMapping(value = "/getAll", produces = "application/json")
+    List<Service> allServices(){
+        return serviceRepository.findAllByOrderByName();
+    }
+
+    @GetMapping(value = "/get", produces = "application/json")
+    Service getService(@RequestParam Long id) throws ServiceNotFoundException {
+        if(serviceRepository.findById(id).isPresent()){
+            return serviceRepository.findById(id).get();
+        }
+        throw new ServiceNotFoundException();
+    }
+    }
