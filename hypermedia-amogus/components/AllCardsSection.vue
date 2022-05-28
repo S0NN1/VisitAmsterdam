@@ -18,7 +18,6 @@
     <div class="flex w-full justify-end font-bold mb-5">
       <span>{{ activeFilter }}</span>
       <span class="divider divider-horizontal before:bg-secondary after:bg-secondary" />
-      <span class="divider divider-horizontal before:bg-secondary after:bg-secondary" />
       <span>{{ elementsFiltered.length }}   {{ elementsFiltered.length > 1 ? 'results' : 'result' }}</span>
     </div>
     <div class="flex justify-center">
@@ -78,24 +77,62 @@ export default {
     this.fetchElements()
   },
   methods: {
-    craftEventObj (item) {
-      return {
-        id: item.id,
-        image: item.heroImageUrl,
-        name: item.name,
-        description: item.description,
-        date: 'Wednesday 17',
-        time: '20.30',
-        link: item.infoUrl,
-        duration: 8,
-        categories: item.categories
+    craftElementObj (item, pageType) {
+      switch (pageType.toLowerCase()) {
+        case 'event':
+          return {
+            id: item.id,
+            name: item.name,
+            description: item.description,
+            price: item.price,
+            heroImageUrl: item.heroImageUrl,
+            eventPictures: item.eventPictures,
+            infoUrl: item.infoUrl,
+            bookingUrl: item.bookingUrl,
+            categories: item.categories,
+            eventDays: item.eventDays
+          }
+        case 'itinerary':
+          return {
+            id: item.id,
+            name: item.name,
+            description: item.description,
+            tags: item.tags,
+            duration: item.duration,
+            heroImage: item.heroImage,
+            stops: item.stops
+          }
+        case 'points-of-interest':
+          return {
+            id: item.id,
+            name: item.name,
+            address: item.address,
+            latitude: item.latitude,
+            longitude: item.longitude,
+            description: item.description,
+            visitInfo: item.visitInfo,
+            tags: item.tags,
+            poiPictures: item.poiPictures,
+            events: item.events
+          }
+        case 'services':
+          return {
+            id: item.id,
+            name: item.name,
+            serviceType: item.serviceType,
+            address: item.address,
+            latitude: item.latitude,
+            longitude: item.longitude,
+            visitInfo: item.visitInfo,
+            servicePicture: item.servicePicture
+          }
       }
     },
     /* async */
     fetchElements () {
       const that = this
       this.elements.forEach(function (item) {
-        const obj = that.craftEventObj(item)
+        const obj = that.craftElementObj(item, that.pageType)
         that.elementsFiltered.push(obj)
       })
     },
@@ -105,7 +142,7 @@ export default {
       const that = this
       if (filter === 'ALL') {
         this.elements.forEach(function (item) {
-          const obj = that.craftEventObj(item)
+          const obj = that.craftElementObj(item, that.pageType)
           that.elementsFiltered.push(obj)
         })
       } else {
@@ -115,7 +152,7 @@ export default {
           })
         })
         filteredTemp.forEach(function (item) {
-          const obj = that.craftEventObj(item)
+          const obj = that.craftElementObj(item, that.pageType)
           that.elementsFiltered.push(obj)
         })
       }
