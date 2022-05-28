@@ -26,7 +26,7 @@ export default Vue.extend({
         craftedPois.push({
           id: poi.id,
           name: poi.name,
-          image: poi.poiPictures[0].path
+          //image: poi.poiPictures[0].path
         })
       }
     )
