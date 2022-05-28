@@ -2,7 +2,6 @@ package it.polimi.hypermedia.backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
-import it.polimi.hypermedia.backend.model.enums.ServiceType;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,8 +13,10 @@ public class Service {
     private Long id;
     @NotNull
     private String name;
+    @ManyToOne()
+    @JoinColumn(name = "service_id")
     @NotNull
-    private ServiceType serviceType;
+    private ServiceTag serviceType;
     @NotNull
     private String address;
     @NotNull
@@ -28,7 +29,7 @@ public class Service {
     @JsonManagedReference("service-picture")
     private List<ServicePicture> servicePicture;
 
-    public Service(String name, ServiceType serviceType, String address, double latitude, double longitude) {
+    public Service(String name, ServiceTag serviceType, String address, double latitude, double longitude) {
         this.name = name;
         this.serviceType = serviceType;
         this.address = address;
@@ -49,14 +50,6 @@ public class Service {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public ServiceType getServiceType() {
-        return serviceType;
-    }
-
-    public void setServiceType(ServiceType serviceType) {
-        this.serviceType = serviceType;
     }
 
     public String getAddress() {
@@ -101,5 +94,13 @@ public class Service {
 
     public void setVisitInfo(VisitInfo visitInfo) {
         this.visitInfo = visitInfo;
+    }
+
+    public ServiceTag getServiceType() {
+        return serviceType;
+    }
+
+    public void setServiceType(ServiceTag serviceType) {
+        this.serviceType = serviceType;
     }
 }

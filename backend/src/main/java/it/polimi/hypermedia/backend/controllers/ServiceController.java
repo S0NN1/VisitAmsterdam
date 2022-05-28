@@ -1,9 +1,9 @@
 package it.polimi.hypermedia.backend.controllers;
 
 import it.polimi.hypermedia.backend.entities.Service;
+import it.polimi.hypermedia.backend.entities.ServiceTag;
 import it.polimi.hypermedia.backend.exception.ServiceAlreadyFoundException;
 import it.polimi.hypermedia.backend.exception.WrongCoordinatesException;
-import it.polimi.hypermedia.backend.model.enums.ServiceType;
 import it.polimi.hypermedia.backend.repositories.ServiceRepository;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,8 +31,8 @@ public class ServiceController {
     }
 
     @GetMapping("/getByType")
-    public List<Service> getServiceByType(@RequestParam ServiceType type) {
-        return serviceRepository.findAllByServiceType(type);
+    public List<Service> getServiceByType(@RequestParam ServiceTag type) {
+        return serviceRepository.findAllByServiceTag(type);
     }
 
     @GetMapping(value = "/getAll", produces = "application/json")
