@@ -1,8 +1,6 @@
 package it.polimi.hypermedia.backend.entities;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.sun.istack.NotNull;
 import it.polimi.hypermedia.backend.model.enums.ServiceType;
 
