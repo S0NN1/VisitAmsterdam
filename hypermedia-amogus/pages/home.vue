@@ -30,11 +30,12 @@
 
     <div
       class="hero p-32 mt-16"
-      style="background-image: url(https://cdn.discordapp.com/attachments/494952466459394059/980026520519180318/map.png); background-position: center; background-size: cover"
+      style="background-position: center; background-size: cover"
+      :style="{'background-image': 'url(\'' + require('@/static/img/map.png') + '\')'}"
     >
       <div class="hero-content text-center text-neutral-content">
         <div class="w-full">
-          <h1 class="mb-5 text-5xl font-bold">
+          <h1 class="mb-5 text-5xl font-bold text-white">
             Build your own itinerary!
           </h1>
           <button
