@@ -22,13 +22,26 @@
           </div>
         </div>
         <div class="flex justify-center">
-          <CardItem type="FIGURE" class="w-3/4" />
+          <CardItem type="FIGURE" class="w-3/4" :object="amsterdamImage" />
         </div>
       </div>
     </div>
     <div class="w-full" />
     <div class="container mx-auto w-10/12 justify-center mt-20">
       <h2>Services provided by the city</h2>
+      <div class="flex justify-center">
+        <div class="w-full grid gap-32 mb-20 m-4 grid-cols-1 sm:grid-cols-3">
+          <div v-for="service in services" :key="service.id">
+            <NuxtLink :to="'/services/' + service.id">
+              <CardItem
+                :object="service"
+                card-type="MULTIPLE"
+                class="hover:shadow-2xl transition ease-in-out duration-200"
+              />
+            </NuxtLink>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </template>
@@ -55,6 +68,31 @@ export default Vue.extend({
     )
     return {
       services: craftedServices
+    }
+  },
+  data () {
+    return {
+      amsterdamImage: {
+        image: 'https://images.unsplash.com/photo-1605101100278-5d1deb2b6498?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+        name: '',
+        description: '',
+        date: '',
+        time: '',
+        link: '',
+        duration: 0
+      },
+      mediaQuery: null,
+      mobileDev: false
+    }
+  },
+  mounted () {
+    if (process.client) {
+      this.mediaQuery = matchMedia('(max-width: 700px)')
+      this.mobileDev = this.mediaQuery.matches
+      const that = this
+      this.mediaQuery.addListener(() => {
+        that.mobileDev = that.mediaQuery.matches
+      })
     }
   }
 })

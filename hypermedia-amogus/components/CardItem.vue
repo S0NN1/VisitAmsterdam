@@ -2,13 +2,13 @@
 <template>
   <div
     v-if="cardType==='FIGURE'"
-    class="card w-96 bg-base-100 shadow-xl bg-contain box-shadow-card-figure carousel-card"
+    class="card w-full bg-base-100 shadow-xl bg-contain box-shadow-card-figure carousel-card"
   >
     <figure>
       <img :src="object.image" :alt="object.name">
     </figure>
   </div>
-  <div v-else-if="cardType==='EVENT'" class="card w-96 bg-base-100 box-shadow-card carousel-card">
+  <div v-else-if="cardType==='EVENT'" class="card w-full bg-base-100 box-shadow-card carousel-card">
     <div class="card-body line-clamp-3" style="max-height: 80%">
       <h2 class="card-title">
         {{ object.name }}
