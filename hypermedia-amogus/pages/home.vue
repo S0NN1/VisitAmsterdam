@@ -16,8 +16,9 @@
             and Bongo Joe Records). The record took them to stages all over Europe.
           </p>
           <div class="text-center">
-            <div class="btn btn-lg btn-primary rounded-full">
-              Discover
+            <div class="btn btn-lg btn-primary rounded-full fill-white">
+              Discover &emsp;
+              <IconsPaperPlane width="1.7rem" height="1.7rem" />
             </div>
           </div>
         </div>
