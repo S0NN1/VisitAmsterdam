@@ -10,7 +10,6 @@ import java.net.URL;
 import java.util.List;
 
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.UUIDGenerator.class, property = "@UUID")
 public class Event {
     @Id
     @GeneratedValue
