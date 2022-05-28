@@ -53,7 +53,7 @@
             </NuxtLink>
           </li>
           <li tabindex="0">
-            <NuxtLink to="events">
+            <NuxtLink to="/events">
               <b :class="$nuxt.$route.name==='events' ? 'underline decoration-2 decoration-sky-500' : ''">Events</b>
               <!--              <svg class="fill-current" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
                               <path d="M7.41,8.58L12,13.17L16.59,8.58L18,10L12,16L6,10L7.41,8.58Z"/>
@@ -66,13 +66,14 @@
             </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="pointsOfInterest">
-              <b :class="$nuxt.$route.name==='pointsOfInterest' ? 'underline decoration-2 decoration-sky-500' : ''">Point of
+            <NuxtLink to="/points-of-interest">
+              <b :class="$nuxt.$route.name==='points-of-interest' ? 'underline decoration-2 decoration-sky-500' : ''">Point
+                of
                 Interests</b>
             </NuxtLink>
           </li>
           <li>
-            <NuxtLink to="services">
+            <NuxtLink to="/services">
               <b :class="$nuxt.$route.name==='services' ? 'underline decoration-2 decoration-sky-500' : ''">Services</b>
             </NuxtLink>
           </li>

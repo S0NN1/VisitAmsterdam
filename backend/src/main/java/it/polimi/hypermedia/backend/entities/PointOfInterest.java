@@ -1,16 +1,13 @@
 package it.polimi.hypermedia.backend.entities;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.UUIDGenerator.class, property = "@UUID")
 public class PointOfInterest {
     @Id
     @GeneratedValue
@@ -24,6 +21,8 @@ public class PointOfInterest {
     @NotNull
     private double longitude;
     @NotNull
+    @Lob
+    @Column(length = 2048)
     private String description;
     @OneToOne(cascade = CascadeType.ALL)
     private VisitInfo visitInfo;

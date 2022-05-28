@@ -1,15 +1,7 @@
 const leaflet = require('leaflet')
 <template>
-  <div>
-    <div id="map-wrap" style="height: 100vh">
-      <client-only>
-        <l-map ref="myMap" :zoom="13" :center="[latitude,longitude]" @ready="onMapReady">
-          <l-tile-layer
-            url="https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=6UTZST2LyhoL0xf1DsSd#12.9/50.86639/4.31451"
-          />
-        </l-map>
-      </client-only>
-    </div>
+  <div class="mt-10">
+    <div id="mapid" ref="mapElement" class="flex w-full z-0" />
   </div>
 </template>
 
@@ -20,29 +12,49 @@ if (process.browser) {
 }
 export default {
   props: {
-    latitude: {
-      type: Number,
-      default: 52.379189
+    markers: {
+      type: Array,
+      default: () => []
     },
-    longitude: {
-      type: Number,
-      default: 4.899431
+    waypoints: {
+      type: Array,
+      default: () => []
     }
   },
-  methods: {
-    onMapReady () {
-      const mapTemp = this.$refs.myMap.mapObject
-      console.log(mapTemp)
+  mounted () {
+    // center map to Amsterdam
+    const amsterdamMap = L.map(this.$refs.mapElement).setView([52.3676, 4.9041], 13)
+    L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=6UTZST2LyhoL0xf1DsSd#12.9/50.86639/4.31451', {
+      maxZoom: 18,
+      id: 'mapbox/streets-v11',
+      tileSize: 512,
+      zoomOffset: -1
+    }).addTo(amsterdamMap)
+    if (this.markers.length > 0) {
+      this.markers.forEach(function (marker) {
+        L.marker([marker.latitude, marker.longitude]).addTo(amsterdamMap).bindPopup(marker.address).openPopup().on('click', function () {
+          window.open('https://www.google.com/maps/dir/?api=1&destination=' + marker.address + '&travelmode=walking&dir_action=navigate', '_blank')
+        })
+      })
+    }
+    if (this.waypoints.length > 0) {
+      const leafletWaypoints = []
+      this.waypoints.forEach(function (waypoint) {
+        leafletWaypoints.push(L.latLng(waypoint.latitude, waypoint.longitude))
+      })
       const routing = L.Routing.control({
-        waypoints: [
-          L.latLng(57.74, 11.949),
-          L.latLng(57.72, 11.949)
-        ],
+        createMarker (waypointIndex, waypoint) {
+          return L.marker(waypoint.latLng)
+            .bindPopup(this.waypoints[waypointIndex].address).openPopup().on('click', function () {
+              window.open('https://www.google.com/maps/dir/?api=1&destination=' + this.waypoints[waypointIndex] + '&travelmode=walking&dir_action=navigate', '_blank')
+            })
+        },
+        waypoints: leafletWaypoints,
         lineOptions: {
           addWaypoints: false
         },
         draggableWaypoints: false
-      }).addTo(mapTemp)
+      }).addTo(amsterdamMap)
 
       const routingControlContainer = routing.getContainer()
       const controlContainerParent = routingControlContainer.parentNode
@@ -53,5 +65,8 @@ export default {
 </script>
 
 <style scoped>
-
+#mapid {
+  height: 40rem;
+  width: 100%;
+}
 </style>
