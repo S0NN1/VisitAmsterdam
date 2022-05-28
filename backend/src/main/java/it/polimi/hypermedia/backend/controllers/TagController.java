@@ -27,7 +27,7 @@ public class TagController {
         this.itineraryTagRepository = itineraryTagRepository;
     }
 
-    @GetMapping("/points-of-interest/getAll")
+    @GetMapping("/pois/getAll")
     public List<PointOfInterestTag> getPoiTags() {
         return pointOfInterestTagRepository.findAll();
     }
