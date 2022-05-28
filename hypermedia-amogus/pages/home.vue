@@ -27,7 +27,25 @@
         </div>
       </div>
     </div>
-    <div class="w-full" />
+
+    <div
+      class="hero p-32 mt-16"
+      style="background-image: url(https://cdn.discordapp.com/attachments/494952466459394059/980026520519180318/map.png); background-position: center; background-size: cover"
+    >
+      <div class="hero-content text-center text-neutral-content">
+        <div class="w-full">
+          <h1 class="mb-5 text-5xl font-bold">
+            Build your own itinerary!
+          </h1>
+          <button
+            class="btn btn-lg btn-primary rounded-full bg-white border-none customItinerary mt-6"
+          >
+            Start now!
+          </button>
+        </div>
+      </div>
+    </div>
+
     <div class="container mx-auto w-10/12 justify-center mt-20">
       <h2>Services provided by the city</h2>
       <div class="flex justify-center">
@@ -100,5 +118,12 @@ export default Vue.extend({
 </script>
 
 <style scoped>
+.customItinerary {
+  color: #F15A28;
+  font-size: 1.5rem;
+}
 
+.customItinerary:hover {
+  color: #ffffff;
+}
 </style>
