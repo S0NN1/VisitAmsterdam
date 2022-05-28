@@ -1,16 +1,13 @@
 package it.polimi.hypermedia.backend.entities;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
 import java.util.List;
 
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.UUIDGenerator.class, property = "@UUID")
 public class PointOfInterest {
     @Id
     @GeneratedValue
@@ -37,7 +34,7 @@ public class PointOfInterest {
     private List<PoiPicture> poiPictures;
 
     @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
-    @JsonManagedReference
+    @JsonManagedReference("poi-id")
     @JsonIgnore
     private List<Event> events;
 
