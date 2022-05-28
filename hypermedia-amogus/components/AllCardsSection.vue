@@ -90,8 +90,7 @@ export default {
             infoUrl: item.infoUrl,
             bookingUrl: item.bookingUrl,
             categories: item.categories,
-            eventDays: item.eventDays,
-            pictures: item.pictures
+            eventDays: item.eventDays
           }
         case 'itinerary':
           return {

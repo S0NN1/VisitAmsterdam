@@ -20,18 +20,8 @@ export default Vue.extend({
     const pois = await fetch(BACKEND_URL + '/api/v1/poi/getAll').then(
       res => res.json()
     )
-    const craftedPois: any[] = []
-    pois.forEach(
-      (poi: any) => {
-        craftedPois.push({
-          id: poi.id,
-          name: poi.name,
-          //image: poi.poiPictures[0].path
-        })
-      }
-    )
     return {
-      pois: craftedPois
+      pois
     }
   },
   data () {
