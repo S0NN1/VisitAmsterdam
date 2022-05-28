@@ -16,7 +16,7 @@ public class Service {
     @ManyToOne()
     @JoinColumn(name = "service_id")
     @NotNull
-    private ServiceTag serviceType;
+    private ServiceTag serviceTag;
     @NotNull
     private String address;
     @NotNull
@@ -29,9 +29,9 @@ public class Service {
     @JsonManagedReference("service-picture")
     private List<ServicePicture> servicePicture;
 
-    public Service(String name, ServiceTag serviceType, String address, double latitude, double longitude) {
+    public Service(String name, ServiceTag serviceTag, String address, double latitude, double longitude) {
         this.name = name;
-        this.serviceType = serviceType;
+        this.serviceTag = serviceTag;
         this.address = address;
         this.latitude = latitude;
         this.longitude = longitude;
@@ -96,11 +96,11 @@ public class Service {
         this.visitInfo = visitInfo;
     }
 
-    public ServiceTag getServiceType() {
-        return serviceType;
+    public ServiceTag getServiceTag() {
+        return serviceTag;
     }
 
-    public void setServiceType(ServiceTag serviceType) {
-        this.serviceType = serviceType;
+    public void setServiceTag(ServiceTag serviceTag) {
+        this.serviceTag = serviceTag;
     }
 }
