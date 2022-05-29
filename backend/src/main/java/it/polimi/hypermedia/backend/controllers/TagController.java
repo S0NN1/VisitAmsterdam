@@ -8,9 +8,7 @@ import it.polimi.hypermedia.backend.repositories.EventTagRepository;
 import it.polimi.hypermedia.backend.repositories.ItineraryTagRepository;
 import it.polimi.hypermedia.backend.repositories.PointOfInterestTagRepository;
 import it.polimi.hypermedia.backend.repositories.ServiceTagRepository;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -29,9 +27,15 @@ public class TagController {
         this.itineraryTagRepository = itineraryTagRepository;
     }
 
-    @GetMapping("/pois/getAll")
+    @GetMapping("/points-of-interest/getAll")
     public List<PointOfInterestTag> getPoiTags() {
         return pointOfInterestTagRepository.findAll();
+    }
+
+    @PostMapping(value = "/points-of-interest/add", consumes = "application/json", produces = "application/json")
+    public PointOfInterestTag addPoiTag(@RequestBody PointOfInterestTag tag) {
+        pointOfInterestTagRepository.save(tag);
+        return tag;
     }
 
     @GetMapping("/services/getAll")
@@ -39,13 +43,31 @@ public class TagController {
         return serviceTagRepository.findAll();
     }
 
+    @PostMapping(value = "/services/add", consumes = "application/json", produces = "application/json")
+    public ServiceTag addServiceTag(@RequestBody ServiceTag tag) {
+        serviceTagRepository.save(tag);
+        return tag;
+    }
+
     @GetMapping("/events/getAll")
     public List<EventTag> getEventTags() {
         return eventTagRepository.findAll();
     }
 
+    @PostMapping(value = "/events/add", consumes = "application/json", produces = "application/json")
+    public EventTag addEventTag(@RequestBody EventTag tag) {
+        eventTagRepository.save(tag);
+        return tag;
+    }
+
     @GetMapping("/itineraries/getAll")
     public List<ItineraryTag> getItineraryTags() {
         return itineraryTagRepository.findAll();
+    }
+
+    @PostMapping(value = "/itineraries/add", consumes = "application/json", produces = "application/json")
+    public ItineraryTag addServiceTag(@RequestBody ItineraryTag tag) {
+        itineraryTagRepository.save(tag);
+        return tag;
     }
 }

@@ -10,7 +10,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/event")
+@RequestMapping("/api/v1/events")
 public class EventController {
     private final EventRepository eventRepository;
 
@@ -28,10 +28,10 @@ public class EventController {
         return eventRepository.findAll();
     }
 
-    @GetMapping(value = "/getById")
+    @GetMapping(value = "/get")
     public Event getById(@RequestParam long id) {
         Optional<Event> event = eventRepository.findById(id);
-        if(event.isPresent()) {
+        if (event.isPresent()) {
             return event.get();
         } else {
             throw new EventNotFoundException();

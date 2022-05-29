@@ -4,7 +4,7 @@
       <h2 class="flex w-full mb-9">
         All points of interest
       </h2>
-      <AllCardsSection :page-type="'points-of-interest'" :elements="pois" />
+      <AllCardsSection :page-type="'points-of-interest'" :elements="pois"/>
     </div>
   </div>
 </template>
@@ -17,7 +17,7 @@ import { BACKEND_URL } from '~/assets/js/constants'
 export default Vue.extend({
   name: 'PointsOfInterestPage',
   async asyncData () {
-    const pois = await fetch(BACKEND_URL + '/api/v1/poi/getAll').then(
+    const pois = await fetch(BACKEND_URL + '/api/v1/points-of-interest/getAll').then(
       res => res.json()
     )
     return {

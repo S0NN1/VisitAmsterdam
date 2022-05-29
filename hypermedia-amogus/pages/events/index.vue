@@ -29,7 +29,7 @@ import { BACKEND_URL, MONTHS, WEEK_DAYS } from 'assets/js/constants'
 export default Vue.extend({
   name: 'EventsPage',
   async asyncData () {
-    const events = await fetch(BACKEND_URL + '/api/v1/event/getUpcoming').then(
+    const events = await fetch(BACKEND_URL + '/api/v1/events/getUpcoming').then(
       res => res.json()
     )
     const craftedEvents: any[] = []
