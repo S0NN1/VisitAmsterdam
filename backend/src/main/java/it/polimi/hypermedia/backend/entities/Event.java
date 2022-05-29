@@ -1,6 +1,7 @@
 package it.polimi.hypermedia.backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 
@@ -40,7 +41,7 @@ public class Event {
 
     @ManyToOne
     @JoinColumn(name = "poi_id", nullable = false)
-    @JsonBackReference("poi-id")
+    @JsonIgnoreProperties("events")
     private PointOfInterest location;
 
     public Long getId() {

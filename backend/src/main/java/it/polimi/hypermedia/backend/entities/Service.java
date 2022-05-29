@@ -1,5 +1,6 @@
 package it.polimi.hypermedia.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 
@@ -13,8 +14,9 @@ public class Service {
     private Long id;
     @NotNull
     private String name;
-    @ManyToOne()
+    @ManyToOne
     @JoinColumn(name = "service_id")
+    @JsonIgnoreProperties("services")
     @NotNull
     private ServiceTag serviceTag;
     @NotNull

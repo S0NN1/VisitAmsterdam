@@ -1,6 +1,7 @@
 package it.polimi.hypermedia.backend.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 
@@ -34,8 +35,7 @@ public class PointOfInterest {
     private List<PoiPicture> poiPictures;
 
     @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
-    @JsonManagedReference("poi-id")
-    @JsonIgnore
+    @JsonIgnoreProperties("location")
     private List<Event> events;
 
     public PointOfInterest() {

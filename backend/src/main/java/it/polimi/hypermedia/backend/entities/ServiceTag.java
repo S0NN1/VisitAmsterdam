@@ -1,5 +1,7 @@
 package it.polimi.hypermedia.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -10,8 +12,9 @@ import java.util.List;
 public class ServiceTag {
     @Id
     private String name;
-    @OneToMany()
+    @OneToMany
     @JoinColumn(name = "service_id")
+    @JsonIgnoreProperties("serviceTag")
     private List<Service> services;
 
     public ServiceTag(String name) {
@@ -27,5 +30,13 @@ public class ServiceTag {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public List<Service> getServices() {
+        return services;
+    }
+
+    public void setServices(List<Service> services) {
+        this.services = services;
     }
 }
