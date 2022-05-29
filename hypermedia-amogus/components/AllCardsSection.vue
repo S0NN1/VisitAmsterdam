@@ -9,15 +9,15 @@
         :key="filter+index"
         class="badge mr-4 p-5 font-bold tag-badge text-white cursor-pointer"
         :class="activeFilter===filter ? 'badge-primary': 'text-[#787caa]'"
-        @click="applyFilter(filter)"
+        @click="applyFilter(filter, pageType)"
       >
         {{ filter }}
       </div>
     </div>
-    <div class="divider mb-5" />
+    <div class="divider mb-5"/>
     <div class="flex w-full justify-end font-bold mb-5">
       <span>{{ activeFilter }}</span>
-      <span class="divider divider-horizontal before:bg-secondary after:bg-secondary" />
+      <span class="divider divider-horizontal before:bg-secondary after:bg-secondary"/>
       <span>{{ elementsFiltered.length }}   {{ elementsFiltered.length > 1 ? 'results' : 'result' }}</span>
     </div>
     <div class="flex justify-center">
@@ -35,8 +35,8 @@
             />
           </NuxtLink>
           <NuxtLink v-else :to="'/itineraries/' + element.id.toString()" class="flex mb-10">
-            <CardItem :object="element" :card-type="pageCardType[pageType]" class="mr-4" />
-            <CardItem card-type="COMPLEX" />
+            <CardItem :object="element" :card-type="pageCardType[pageType]" class="mr-4"/>
+            <CardItem card-type="COMPLEX"/>
           </NuxtLink>
         </div>
       </div>
@@ -119,7 +119,7 @@ export default {
           return {
             id: item.id,
             name: item.name,
-            serviceType: item.serviceType,
+            serviceTag: item.serviceTag,
             address: item.address,
             latitude: item.latitude,
             longitude: item.longitude,
@@ -136,7 +136,7 @@ export default {
         that.elementsFiltered.push(obj)
       })
     },
-    applyFilter (filter) {
+    applyFilter (filter, pageType) {
       this.activeFilter = filter
       this.elementsFiltered = []
       const that = this
@@ -146,11 +146,30 @@ export default {
           that.elementsFiltered.push(obj)
         })
       } else {
-        const filteredTemp = this.elements.filter((element) => {
-          return element.categories.some((item) => {
-            return item.name.toUpperCase() === filter.toUpperCase()
-          })
-        })
+        let filteredTemp = []
+        switch (pageType.toLowerCase()) {
+          case 'event':
+            filteredTemp = this.elements.filter((element) => {
+              return element.categories.some((item) => {
+                return item.name.toUpperCase() === filter.toUpperCase()
+              })
+            })
+            break
+
+          case 'itinerary' || 'points-of-interest':
+            filteredTemp = this.elements.filter((element) => {
+              return element.tags.some((item) => {
+                return item.name.toUpperCase() === filter.toUpperCase()
+              })
+            })
+            break
+
+          case 'services':
+            filteredTemp = this.elements.filter((element) => {
+              return element.serviceTag.name.toUpperCase() === filter.toUpperCase()
+            })
+            break
+        }
         filteredTemp.forEach(function (item) {
           const obj = that.craftElementObj(item, that.pageType)
           that.elementsFiltered.push(obj)

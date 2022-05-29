@@ -54,7 +54,7 @@
       <div class="flex card-actions p-9 justify-end items-end">
         <NuxtLink
           class="flex underline decoration-2 decoration-sky-500 text-sky-500"
-          :to="`/events/${object.name}`"
+          :to="`/itineraries/${object.id}`"
         >
           See more >
         </NuxtLink>

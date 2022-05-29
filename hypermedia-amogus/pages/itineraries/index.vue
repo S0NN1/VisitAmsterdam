@@ -20,25 +20,8 @@ export default Vue.extend({
     const itineraries = await fetch(BACKEND_URL + '/api/v1/itineraries/getAll').then(
       res => res.json()
     )
-    const craftedItineraries: any[] = []
-    itineraries.forEach(
-      (itinerary: any) => {
-        const poisImages: any[] = []
-        itinerary.stops.forEach((stop) => {
-          poisImages.push(stop.poiPictures[0])
-        }
-        )
-        craftedItineraries.push({
-          id: itinerary.id,
-          name: itinerary.name,
-          description: itinerary.description,
-          duration: itinerary.duration,
-          images: poisImages
-        })
-      }
-    )
     return {
-      itineraries: craftedItineraries
+      itineraries
     }
   },
   data () {

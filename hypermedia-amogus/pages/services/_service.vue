@@ -15,8 +15,8 @@
           <div
             class="badge mr-4 p-5 font-bold tag-badge text-white cursor-pointer hover:bg-primary"
           >
-            <NuxtLink :to="'/services?tag=' + serviceDetails.serviceType.name">
-              {{ serviceDetails.serviceType.name }}
+            <NuxtLink :to="'/services?tag=' + serviceDetails.serviceTag.name">
+              {{ serviceDetails.serviceTag.name }}
             </NuxtLink>
           </div>
         </div>
