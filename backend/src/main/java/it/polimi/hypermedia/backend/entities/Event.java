@@ -1,12 +1,10 @@
 package it.polimi.hypermedia.backend.entities;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
-import java.net.URL;
 import java.util.List;
 
 @Entity
@@ -42,6 +40,7 @@ public class Event {
 
     @ManyToOne
     @JoinColumn(name = "poi_id", nullable = false)
+    @JsonBackReference("poi-id")
     private PointOfInterest location;
 
     public Long getId() {

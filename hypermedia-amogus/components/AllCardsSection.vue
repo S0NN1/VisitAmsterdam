@@ -9,16 +9,15 @@
         :key="filter+index"
         class="badge mr-4 p-5 font-bold tag-badge text-white cursor-pointer"
         :class="activeFilter===filter ? 'badge-primary': 'text-[#787caa]'"
-        @click="applyFilter(filter)"
+        @click="applyFilter(filter, pageType)"
       >
         {{ filter }}
       </div>
     </div>
-    <div class="divider mb-5" />
+    <div class="divider mb-5"/>
     <div class="flex w-full justify-end font-bold mb-5">
       <span>{{ activeFilter }}</span>
-      <span class="divider divider-horizontal before:bg-secondary after:bg-secondary" />
-      <span class="divider divider-horizontal before:bg-secondary after:bg-secondary" />
+      <span class="divider divider-horizontal before:bg-secondary after:bg-secondary"/>
       <span>{{ elementsFiltered.length }}   {{ elementsFiltered.length > 1 ? 'results' : 'result' }}</span>
     </div>
     <div class="flex justify-center">
@@ -36,8 +35,8 @@
             />
           </NuxtLink>
           <NuxtLink v-else :to="'/itineraries/' + element.id.toString()" class="flex mb-10">
-            <CardItem :object="element" :card-type="pageCardType[pageType]" class="mr-4" />
-            <CardItem card-type="COMPLEX" />
+            <CardItem :object="element" :card-type="pageCardType[pageType]" class="mr-4"/>
+            <CardItem card-type="COMPLEX"/>
           </NuxtLink>
         </div>
       </div>
@@ -53,7 +52,7 @@ export default {
   props: {
     pageType: {
       type: String,
-      default: 'event'
+      default: 'events'
     },
     elements: {
       type: Array,
@@ -66,10 +65,10 @@ export default {
       activeFilter: 'ALL',
       elementsFiltered: [],
       pageCardType: {
-        event: 'MULTIPLE',
-        itinerary: 'ITINERARY',
-        pointOfInterest: 'MULTIPLE',
-        service: 'MULTIPLE'
+        events: 'MULTIPLE',
+        itineraries: 'ITINERARY',
+        'points-of-interest': 'MULTIPLE',
+        services: 'MULTIPLE'
 
       }
     }
@@ -78,44 +77,101 @@ export default {
     this.fetchElements()
   },
   methods: {
-    craftEventObj (item) {
-      return {
-        id: item.id,
-        image: item.heroImageUrl,
-        name: item.name,
-        description: item.description,
-        date: 'Wednesday 17',
-        time: '20.30',
-        link: item.infoUrl,
-        duration: 8,
-        categories: item.categories
+    craftElementObj (item, pageType) {
+      switch (pageType.toLowerCase()) {
+        case 'events':
+          return {
+            id: item.id,
+            name: item.name,
+            description: item.description,
+            price: item.price,
+            heroImageUrl: item.heroImageUrl,
+            eventPictures: item.eventPictures,
+            infoUrl: item.infoUrl,
+            bookingUrl: item.bookingUrl,
+            categories: item.categories,
+            eventDays: item.eventDays
+          }
+        case 'itineraries':
+          return {
+            id: item.id,
+            name: item.name,
+            description: item.description,
+            tags: item.tags,
+            duration: item.duration,
+            heroImage: item.heroImage,
+            stops: item.stops
+          }
+        case 'points-of-interest':
+          return {
+            id: item.id,
+            name: item.name,
+            address: item.address,
+            latitude: item.latitude,
+            longitude: item.longitude,
+            description: item.description,
+            visitInfo: item.visitInfo,
+            tags: item.tags,
+            poiPictures: item.poiPictures,
+            events: item.events
+          }
+        case 'services':
+          return {
+            id: item.id,
+            name: item.name,
+            serviceTag: item.serviceTag,
+            address: item.address,
+            latitude: item.latitude,
+            longitude: item.longitude,
+            visitInfo: item.visitInfo,
+            servicePicture: item.servicePicture
+          }
       }
     },
     /* async */
     fetchElements () {
       const that = this
       this.elements.forEach(function (item) {
-        const obj = that.craftEventObj(item)
+        const obj = that.craftElementObj(item, that.pageType)
         that.elementsFiltered.push(obj)
       })
     },
-    applyFilter (filter) {
+    applyFilter (filter, pageType) {
       this.activeFilter = filter
       this.elementsFiltered = []
       const that = this
       if (filter === 'ALL') {
         this.elements.forEach(function (item) {
-          const obj = that.craftEventObj(item)
+          const obj = that.craftElementObj(item, that.pageType)
           that.elementsFiltered.push(obj)
         })
       } else {
-        const filteredTemp = this.elements.filter((element) => {
-          return element.categories.some((item) => {
-            return item.name.toUpperCase() === filter.toUpperCase()
-          })
-        })
+        let filteredTemp = []
+        switch (pageType.toLowerCase()) {
+          case 'events':
+            filteredTemp = this.elements.filter((element) => {
+              return element.categories.some((item) => {
+                return item.name.toUpperCase() === filter.toUpperCase()
+              })
+            })
+            break
+
+          case 'itineraries' || 'points-of-interest':
+            filteredTemp = this.elements.filter((element) => {
+              return element.tags.some((item) => {
+                return item.name.toUpperCase() === filter.toUpperCase()
+              })
+            })
+            break
+
+          case 'services':
+            filteredTemp = this.elements.filter((element) => {
+              return element.serviceTag.name.toUpperCase() === filter.toUpperCase()
+            })
+            break
+        }
         filteredTemp.forEach(function (item) {
-          const obj = that.craftEventObj(item)
+          const obj = that.craftElementObj(item, that.pageType)
           that.elementsFiltered.push(obj)
         })
       }

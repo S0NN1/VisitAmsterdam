@@ -1,12 +1,12 @@
 <template>
   <div>
-    <CarouselItem class="w-full" :is-complex="false" style="height: 45vh" :carousel-images="carouselImages" />
+    <CarouselItem class="w-full" :is-complex="false" style="height: 45vh" :carousel-images="carouselImages"/>
     <div class="container mx-auto w-10/12 justify-center mt-14 mb-24">
       <!--      TODO breadcrumbs-->
       <div class="grid grid-cols-10">
         <div :class="!mobileDev ? 'col-span-4' : 'col-span-10'">
           <h1>{{ eventDetails.name }}</h1>
-          <div class="divider" />
+          <div class="divider"/>
           <div class="grid grid-cols-10">
             <div class="flex items-center" :class="!mobileDev ? 'col-span-5' : 'col-span-10'">
               <div v-if="eventDetails.eventDays.length > 1">
@@ -31,7 +31,7 @@
                 </h4>
               </div>
             </div>
-            <div />
+            <div/>
             <!--            TODO pipe-->
             <div class="flex items-center text-right justify-end" :class="!mobileDev ? 'col-span-4' : 'col-span-10'">
               <h4><b>{{ eventDetails.location.name }}</b></h4>
@@ -41,7 +41,7 @@
             <p>{{ eventDetails.description }}</p>
           </div>
         </div>
-        <div v-if="!mobileDev" class="col-span-2" />
+        <div v-if="!mobileDev" class="col-span-2"/>
         <div :class="!mobileDev ? 'col-span-4' : 'col-span-10'">
           <div class="mt-10">
             <h2>Booking Details</h2>
@@ -85,7 +85,7 @@
           </div>
         </div>
       </div>
-      <div class="divider" />
+      <div class="divider"/>
       <div
         v-for="category in eventDetails.categories"
         :key="category.name"
@@ -104,7 +104,7 @@ import { BACKEND_URL, MONTHS } from '~/assets/js/constants'
 export default Vue.extend({
   name: 'EventPage',
   async asyncData ({ params }) {
-    const eventDetailsData = await fetch(BACKEND_URL + '/api/v1/event/getById?id=' + params.event).then(
+    const eventDetailsData = await fetch(BACKEND_URL + '/api/v1/events/get?id=' + params.event).then(
       res => res.json()
     )
     const carouselImagesData: any[] = []

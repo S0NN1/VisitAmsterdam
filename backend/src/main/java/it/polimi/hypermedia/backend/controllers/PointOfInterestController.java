@@ -18,7 +18,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/v1/poi")
+@RequestMapping("/api/v1/points-of-interest")
 public class PointOfInterestController {
     private final PointOfInterestRepository poiRepository;
 
@@ -27,34 +27,34 @@ public class PointOfInterestController {
     }
 
     @PostMapping(value = "/add", consumes = "application/json", produces = "application/json")
-    PointOfInterest newPointOfInterest(@RequestBody PointOfInterest newPointOfInterest){
-        if(poiRepository.findByLatitudeAndLongitude(newPointOfInterest.getLatitude(), newPointOfInterest.getLongitude()).isPresent()){
+    PointOfInterest newPointOfInterest(@RequestBody PointOfInterest newPointOfInterest) {
+        if (poiRepository.findByLatitudeAndLongitude(newPointOfInterest.getLatitude(), newPointOfInterest.getLongitude()).isPresent()) {
             throw new PointOfInterestAlreadyFoundException(newPointOfInterest.getLatitude(), newPointOfInterest.getLongitude());
         }
-        if(newPointOfInterest.getLatitude() < -90 || newPointOfInterest.getLatitude() > 90 || newPointOfInterest.getLongitude() < -180 || newPointOfInterest.getLongitude() > 180){
+        if (newPointOfInterest.getLatitude() < -90 || newPointOfInterest.getLatitude() > 90 || newPointOfInterest.getLongitude() < -180 || newPointOfInterest.getLongitude() > 180) {
             throw new WrongCoordinatesException(newPointOfInterest.getLatitude(), newPointOfInterest.getLongitude());
         }
         return poiRepository.save(newPointOfInterest);
     }
 
     @GetMapping(value = "/getAll", produces = "application/json")
-    List<PointOfInterest> allPointOfInterests(){
+    List<PointOfInterest> allPointOfInterests() {
         return poiRepository.findAllByOrderByName();
     }
 
     @GetMapping(value = "/getAllByName", produces = "application/json")
-    List<PointOfInterest> allPointOfInterestsByName(@RequestParam String name){
+    List<PointOfInterest> allPointOfInterestsByName(@RequestParam String name) {
         return poiRepository.findAllByNameContaining(name);
     }
 
     @GetMapping(value = "/getAllByTags", produces = "application/json")
-    List<PointOfInterest> allPointOfInterestsByTags(@RequestParam List<PointOfInterestTag> tags){
+    List<PointOfInterest> allPointOfInterestsByTags(@RequestParam List<PointOfInterestTag> tags) {
         return poiRepository.findAllByTagsIn(tags);
     }
 
     @GetMapping(value = "/get", produces = "application/json")
-    PointOfInterest pointOfInterests(@RequestParam Long id){
-        if(poiRepository.findById(id).isPresent()){
+    PointOfInterest pointOfInterests(@RequestParam Long id) {
+        if (poiRepository.findById(id).isPresent()) {
             return poiRepository.findById(id).get();
         }
         throw new PointOfInterestNotFoundException();
@@ -64,14 +64,14 @@ public class PointOfInterestController {
     public PointOfInterest updatePointOfInterest(@PathVariable Long id, @RequestBody JsonPatch patch) {
         Optional<PointOfInterest> pointOfInterest = poiRepository.findById(id);
         ObjectMapper mapper = new ObjectMapper();
-        if (pointOfInterest.isPresent()){
+        if (pointOfInterest.isPresent()) {
             PointOfInterest retrievedPointOfInterest = pointOfInterest.get();
-            try{
+            try {
                 JsonNode patched = patch.apply(mapper.convertValue(retrievedPointOfInterest, JsonNode.class));
-                retrievedPointOfInterest =  mapper.treeToValue(patched, PointOfInterest.class);
-                 poiRepository.save(retrievedPointOfInterest);
-                 return retrievedPointOfInterest;
-            } catch (JsonPatchException | JsonProcessingException e ) {
+                retrievedPointOfInterest = mapper.treeToValue(patched, PointOfInterest.class);
+                poiRepository.save(retrievedPointOfInterest);
+                return retrievedPointOfInterest;
+            } catch (JsonPatchException | JsonProcessingException e) {
                 throw new InvalidFormatException();
             }
         }

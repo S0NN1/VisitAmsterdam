@@ -18,18 +18,8 @@ export default Vue.extend({
     const services = await fetch(BACKEND_URL + '/api/v1/services/getAll').then(
       res => res.json()
     )
-    const craftedServices: any[] = []
-    services.forEach(
-      (service: any) => {
-        craftedServices.push({
-          id: service.id,
-          name: service.name,
-          image: service.servicePicture[0].path
-        })
-      }
-    )
     return {
-      services: craftedServices
+      services
     }
   },
   data () {

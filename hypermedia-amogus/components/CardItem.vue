@@ -26,7 +26,7 @@
   <div v-else-if="cardType==='MULTIPLE'">
     <div class="card w-full aspect-square bg-base-100 shadow-xl no-rounded-bottom">
       <figure class="box-shadow-card-figure">
-        <img :src="object.image" :alt="object.name">
+        <img :src="object.heroImageUrl" :alt="object.name">
       </figure>
       <div class="card-body items-center">
         <h2 class="card-title">
@@ -54,7 +54,7 @@
       <div class="flex card-actions p-9 justify-end items-end">
         <NuxtLink
           class="flex underline decoration-2 decoration-sky-500 text-sky-500"
-          :to="`/events/${object.name}`"
+          :to="`/itineraries/${object.id}`"
         >
           See more >
         </NuxtLink>
