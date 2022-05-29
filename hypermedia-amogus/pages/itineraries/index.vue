@@ -4,7 +4,7 @@
       <h2 class="flex w-full mb-9">
         All itineraries
       </h2>
-      <AllCardsSection :page-type="'itinerary'" :elements="itineraries" />
+      <AllCardsSection :page-type="'itineraries'" :elements="itineraries"/>
     </div>
   </div>
 </template>

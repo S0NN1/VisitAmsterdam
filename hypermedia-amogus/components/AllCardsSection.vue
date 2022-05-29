@@ -52,7 +52,7 @@ export default {
   props: {
     pageType: {
       type: String,
-      default: 'event'
+      default: 'events'
     },
     elements: {
       type: Array,
@@ -65,10 +65,10 @@ export default {
       activeFilter: 'ALL',
       elementsFiltered: [],
       pageCardType: {
-        event: 'MULTIPLE',
-        itinerary: 'ITINERARY',
-        pointOfInterest: 'MULTIPLE',
-        service: 'MULTIPLE'
+        events: 'MULTIPLE',
+        itineraries: 'ITINERARY',
+        'points-of-interest': 'MULTIPLE',
+        services: 'MULTIPLE'
 
       }
     }
@@ -79,7 +79,7 @@ export default {
   methods: {
     craftElementObj (item, pageType) {
       switch (pageType.toLowerCase()) {
-        case 'event':
+        case 'events':
           return {
             id: item.id,
             name: item.name,
@@ -92,7 +92,7 @@ export default {
             categories: item.categories,
             eventDays: item.eventDays
           }
-        case 'itinerary':
+        case 'itineraries':
           return {
             id: item.id,
             name: item.name,
@@ -148,7 +148,7 @@ export default {
       } else {
         let filteredTemp = []
         switch (pageType.toLowerCase()) {
-          case 'event':
+          case 'events':
             filteredTemp = this.elements.filter((element) => {
               return element.categories.some((item) => {
                 return item.name.toUpperCase() === filter.toUpperCase()
@@ -156,7 +156,7 @@ export default {
             })
             break
 
-          case 'itinerary' || 'points-of-interest':
+          case 'itineraries' || 'points-of-interest':
             filteredTemp = this.elements.filter((element) => {
               return element.tags.some((item) => {
                 return item.name.toUpperCase() === filter.toUpperCase()
