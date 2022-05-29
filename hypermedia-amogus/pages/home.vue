@@ -16,7 +16,7 @@
             and Bongo Joe Records). The record took them to stages all over Europe.
           </p>
           <div class="text-center">
-            <div class="btn btn-lg btn-primary rounded-full fill-white my-4 sm:my-0">
+            <div class="btn btn-lg btn-primary rounded-full fill-white my-4 sm:my-0 normal-case">
               Discover &emsp;
               <IconsPaperPlane width="1.7rem" height="1.7rem" />
             </div>
@@ -30,15 +30,15 @@
 
     <div
       class="hero py-32 mt-16 parallaxBg"
-      :style="{'background-image': 'url(\'' + require('@/static/img/map.png') + '\')'}"
+      :style="{'background-image': 'url(\'' + require('@/static/img/amsterdam-map.png') + '\')'}"
     >
       <div class="hero-content text-center text-neutral-content">
         <div class="w-full">
-          <h1 class="mb-5 text-5xl font-bold text-white">
+          <h1 class="mb-5 text-5xl font-bold text-white drop-shadow-xl">
             Build your own itinerary!
           </h1>
           <button
-            class="btn btn-lg btn-primary rounded-full bg-white border-none customItinerary mt-6"
+            class="btn btn-lg btn-primary rounded-full bg-white border-none customItinerary mt-6 font-bold normal-case"
           >
             Start now!
           </button>
