@@ -29,13 +29,17 @@
           <div v-if="!mobileDev" class="flex" />
           <div class="h-96 bg-base-100 w-full box-shadow-card rounded-3xl col-span-3 sm:col-span-2 px-6 py-5">
             <div class="card-body h-full text-ellipsis overflow-auto box-scrollbar p-0">
-              <div v-for="stop in itineraryDetails.stops" :key="stop.name" class="mt-5">
-                <li class="text-secondary">
-                  <b class="text-lg text-black">{{ stop.name }}</b><br>
-                  <p class="text-gray-400">
-                    {{ stop.address }}
-                  </p>
-                </li>
+              <div v-for="stop in itineraryDetails.stops" :key="stop.name" class="mt-1">
+                <NuxtLink :to="'/points-of-interest/' + stop.id">
+                  <li
+                    class="text-secondary py-2 px-3 rounded-xl hover:bg-primary group transition-all hover:text-white"
+                  >
+                    <b class="text-lg text-black group-hover:text-white">{{ stop.name }}</b><br>
+                    <p class="text-gray-400 group-hover:text-white">
+                      {{ stop.address }}
+                    </p>
+                  </li>
+                </NuxtLink>
               </div>
             </div>
           </div>
