@@ -19,7 +19,7 @@ public class ServiceController {
         this.serviceRepository = serviceRepository;
     }
 
-    @PostMapping("/new")
+    @PostMapping("/add")
     public Service createService(@RequestBody Service service) {
         if (serviceRepository.findByLatitudeAndLongitude(service.getLatitude(), service.getLongitude()).isPresent()) {
             throw new ServiceAlreadyFoundException(service.getLatitude(), service.getLongitude());
