@@ -42,7 +42,7 @@
         </div>
       </div>
       <MapItem
-        :waypoints="[]"
+        :waypoints="waypoints"
       />
       <div class="flex divider" />
       <div class="flex w-full justify-start">

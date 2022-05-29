@@ -23,7 +23,7 @@ export default {
   },
   mounted () {
     // center map to Amsterdam
-    const amsterdamMap = L.map(this.$refs.mapElement).setView([52.3676, 4.9041], 13)
+    const amsterdamMap = L.map(this.$refs.mapElement).setView([52.3676, 4.9041], 12)
     L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=6UTZST2LyhoL0xf1DsSd#12.9/50.86639/4.31451', {
       maxZoom: 18,
       id: 'mapbox/streets-v11',
@@ -32,9 +32,9 @@ export default {
     }).addTo(amsterdamMap)
     if (this.markers.length > 0) {
       this.markers.forEach(function (marker) {
-        L.marker([marker.latitude, marker.longitude]).addTo(amsterdamMap).bindPopup(marker.address).openPopup().on('click', function () {
+        L.marker([marker.latitude, marker.longitude]).addTo(amsterdamMap).bindPopup('<a href="https://www.google.com/maps/dir/?api=1&destination=' + marker.address + '&travelmode=walking&dir_action=navigate" target="_blank">' + marker.address + '</a>').openPopup()/* .on('click', function () {
           window.open('https://www.google.com/maps/dir/?api=1&destination=' + marker.address + '&travelmode=walking&dir_action=navigate', '_blank')
-        })
+        }) */
       })
     }
     if (this.waypoints.length > 0) {
@@ -42,12 +42,13 @@ export default {
       this.waypoints.forEach(function (waypoint) {
         leafletWaypoints.push(L.latLng(waypoint.latitude, waypoint.longitude))
       })
+      const that = this
       const routing = L.Routing.control({
         createMarker (waypointIndex, waypoint) {
           return L.marker(waypoint.latLng)
-            .bindPopup(this.waypoints[waypointIndex].address).openPopup().on('click', function () {
-              window.open('https://www.google.com/maps/dir/?api=1&destination=' + this.waypoints[waypointIndex] + '&travelmode=walking&dir_action=navigate', '_blank')
-            })
+            .bindPopup('<a href="https://www.google.com/maps/dir/?api=1&destination=' + that.waypoints[waypointIndex].address + '&travelmode=walking&dir_action=navigate" target="_blank">' + that.waypoints[waypointIndex].address + '</a>').openPopup()/* .on('click', function () {
+              window.open('https://www.google.com/maps/dir/?api=1&destination=' + that.waypoints[waypointIndex] + '&travelmode=walking&dir_action=navigate', '_blank')
+            }) */
         },
         waypoints: leafletWaypoints,
         lineOptions: {
