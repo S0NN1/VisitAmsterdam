@@ -5,7 +5,7 @@
       <CarouselItem />
       <div class="divider" />
 
-      <div class="grid grid-cols-2">
+      <div class="grid grid-cols-1 sm:grid-cols-2">
         <div>
           <h2>Brief history of Amsterdam</h2>
           <p class="m-4 text-justify">
@@ -16,21 +16,20 @@
             and Bongo Joe Records). The record took them to stages all over Europe.
           </p>
           <div class="text-center">
-            <div class="btn btn-lg btn-primary rounded-full fill-white">
+            <div class="btn btn-lg btn-primary rounded-full fill-white my-4 sm:my-0">
               Discover &emsp;
               <IconsPaperPlane width="1.7rem" height="1.7rem" />
             </div>
           </div>
         </div>
         <div class="flex justify-center">
-          <CardItem type="FIGURE" class="w-3/4" :object="amsterdamImage" />
+          <CardItem type="FIGURE" class="sm:w-3/4" :object="amsterdamImage" />
         </div>
       </div>
     </div>
 
     <div
-      class="hero p-32 mt-16"
-      style="background-position: center; background-size: cover"
+      class="hero py-32 mt-16 parallaxBg"
       :style="{'background-image': 'url(\'' + require('@/static/img/map.png') + '\')'}"
     >
       <div class="hero-content text-center text-neutral-content">
@@ -126,5 +125,11 @@ export default Vue.extend({
 
 .customItinerary:hover {
   color: #ffffff;
+}
+
+.parallaxBg {
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed
 }
 </style>
