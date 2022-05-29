@@ -47,3 +47,9 @@ export default Vue.extend({
   layout: 'empty'
 })
 </script>
+
+<style>
+h1 {
+  @apply text-2xl
+}
+</style>

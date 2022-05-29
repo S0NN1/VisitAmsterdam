@@ -95,5 +95,8 @@ export default {
 </script>
 
 <style scoped>
-
+li {
+  @apply text-base;
+  @apply text-white;
+}
 </style>

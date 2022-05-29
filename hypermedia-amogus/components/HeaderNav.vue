@@ -103,4 +103,8 @@ input:focus {
   outline: none;
 }
 
+li {
+  @apply text-base;
+  line-height: unset;
+}
 </style>
