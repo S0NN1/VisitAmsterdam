@@ -29,7 +29,9 @@ public class Service {
     private VisitInfo visitInfo;
     @OneToMany(cascade = CascadeType.ALL)
     @JsonManagedReference("service-picture")
-    private List<ServicePicture> servicePicture;
+    private List<ServicePicture> pictures;
+
+    private String heroImage;
 
     public Service(String name, ServiceTag serviceTag, String address, double latitude, double longitude) {
         this.name = name;
@@ -78,12 +80,12 @@ public class Service {
         this.longitude = longitude;
     }
 
-    public List<ServicePicture> getServicePicture() {
-        return servicePicture;
+    public List<ServicePicture> getPictures() {
+        return pictures;
     }
 
-    public void setServicePicture(List<ServicePicture> servicePicture) {
-        this.servicePicture = servicePicture;
+    public void setPictures(List<ServicePicture> pictures) {
+        this.pictures = pictures;
     }
 
     public void setId(Long id) {
@@ -104,5 +106,13 @@ public class Service {
 
     public void setServiceTag(ServiceTag serviceTag) {
         this.serviceTag = serviceTag;
+    }
+
+    public String getHeroImage() {
+        return heroImage;
+    }
+
+    public void setHeroImage(String heroImage) {
+        this.heroImage = heroImage;
     }
 }

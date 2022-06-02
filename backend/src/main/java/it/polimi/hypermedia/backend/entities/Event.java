@@ -1,6 +1,5 @@
 package it.polimi.hypermedia.backend.entities;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
@@ -25,7 +24,7 @@ public class Event {
     private String heroImageUrl;
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
     @JsonManagedReference("event-picture")
-    private List<EventPicture> eventPictures;
+    private List<EventPicture> pictures;
 
     private String infoUrl;
     private String bookingUrl;
@@ -81,11 +80,11 @@ public class Event {
     }
 
     public List<EventPicture> getPictures() {
-        return eventPictures;
+        return pictures;
     }
 
     public void addPicture(EventPicture eventPicture) {
-        this.eventPictures.add(eventPicture);
+        this.pictures.add(eventPicture);
     }
 
     public String getInfoUrl() {

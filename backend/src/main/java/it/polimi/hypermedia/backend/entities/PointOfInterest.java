@@ -1,6 +1,5 @@
 package it.polimi.hypermedia.backend.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
@@ -32,7 +31,9 @@ public class PointOfInterest {
     private List<PointOfInterestTag> tags;
     @OneToMany(cascade = CascadeType.ALL)
     @JsonManagedReference("poi-picture")
-    private List<PoiPicture> poiPictures;
+    private List<PoiPicture> pictures;
+
+    private String heroImage;
 
     @OneToMany(mappedBy = "location", cascade = CascadeType.ALL)
     @JsonIgnoreProperties("location")
@@ -66,12 +67,12 @@ public class PointOfInterest {
         return longitude;
     }
 
-    public List<PoiPicture> getPoiPictures() {
-        return poiPictures;
+    public List<PoiPicture> getPictures() {
+        return pictures;
     }
 
-    public void setPoiPictures(List<PoiPicture> poiPictures) {
-        this.poiPictures = poiPictures;
+    public void setPictures(List<PoiPicture> pictures) {
+        this.pictures = pictures;
     }
 
     public void setId(Long id) {
@@ -124,5 +125,13 @@ public class PointOfInterest {
 
     public void setEvents(List<Event> events) {
         this.events = events;
+    }
+
+    public String getHeroImage() {
+        return heroImage;
+    }
+
+    public void setHeroImage(String heroImage) {
+        this.heroImage = heroImage;
     }
 }
