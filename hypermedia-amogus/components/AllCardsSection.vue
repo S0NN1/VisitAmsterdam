@@ -21,13 +21,13 @@
       <span>{{ elementsFiltered.length }}   {{ elementsFiltered.length > 1 ? 'results' : 'result' }}</span>
     </div>
     <div class="flex justify-center">
-      <div :class="{'w-3/4 grid gap-32 grid-cols-3 mb-20' : pageType.toUpperCase()!=='ITINERARY'}">
+      <div :class="{'w-3/4 grid gap-32 grid-cols-3 mb-20' : pageType.toUpperCase()!=='ITINERARIES'}">
         <div
           v-for="element in elementsFiltered"
           :key="element.id"
           class="flex w-full justify-center"
         >
-          <NuxtLink v-if="pageType.toUpperCase()!=='ITINERARY'" :to="'/' + pageType + '/' + element.id.toString()">
+          <NuxtLink v-if="pageType.toUpperCase()!=='ITINERARIES'" :to="'/' + pageType + '/' + element.id.toString()">
             <CardItem
               :object="element"
               :card-type="pageCardType[pageType]"
