@@ -1,7 +1,7 @@
 const leaflet = require('leaflet')
 <template>
   <div class="mt-10">
-    <div id="mapid" ref="mapElement" class="flex w-full z-0" />
+    <div id="mapid" ref="mapElement" class="flex w-full z-0 aspect-square sm:aspect-auto" :style="'height: ' + height"/>
   </div>
 </template>
 
@@ -19,6 +19,10 @@ export default {
     waypoints: {
       type: Array,
       default: () => []
+    },
+    height: {
+      type: String,
+      default: '40rem'
     }
   },
   mounted () {
@@ -64,10 +68,3 @@ export default {
   }
 }
 </script>
-
-<style scoped>
-#mapid {
-  height: 40rem;
-  width: 100%;
-}
-</style>

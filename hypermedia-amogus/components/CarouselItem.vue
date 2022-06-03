@@ -8,8 +8,8 @@
         :key="index"
         class="carousel-item w-full justify-center p-4"
       >
-        <CardItem class="flex-none mr-10 w-fit max-w-2xl h-fit" :object="image" />
-        <CardItem class="flex-none w-fit max-w-2xl" :card-type="'EVENT'" :object="image" />
+        <CardItem class="flex-none mr-10 w-fit max-w-2xl h-fit" :object="image"/>
+        <CardItem class="flex-none w-fit max-w-2xl" :card-type="'EVENT'" :object="image"/>
       </div>
     </div>
     <div class="flex justify-center w-full gap-2">
@@ -24,7 +24,7 @@
     </div>
   </div>
   <div v-else>
-    <div class="carousel w-full h-full">
+    <div class="carousel w-full h-full rounded-3xl sm:rounded-none">
       <div
         v-for="(image, index) in carouselImages"
         :id="'imageCarousel' + index"
@@ -34,7 +34,7 @@
         style="background-position: center; background-size: cover"
       />
     </div>
-    <div class="flex justify-center w-full py-2 gap-2">
+    <div class="flex justify-center w-full py-2 gap-2" v-if="carouselImages.length>1">
       <a
         v-for="(image, index) in carouselImages"
         :key="'imageCarousel' + index"

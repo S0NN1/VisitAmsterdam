@@ -1,6 +1,7 @@
 <template>
   <div>
     <CarouselItem
+      v-if="!mobileDev"
       class="w-full"
       :is-complex="false"
       style="height: 45vh"
@@ -12,21 +13,28 @@
         <div class="flex sm:col-span-10 justify-start">
           <h1>{{ itineraryDetails.name }}</h1>
         </div>
-        <div class="flex divider sm:col-span-5" />
+        <div class="flex divider sm:col-span-5"/>
         <div v-if="!mobileDev" class="flex sm:col-span-5 start grid grid-cols-3">
-          <div class="flex" />
+          <div class="flex"/>
           <h3 class="flex col-span-2">
             Stops
           </h3>
         </div>
-        <div class="mt-4 text-justify sm:col-span-5">
+        <div class="mt-4 text-justify sm:col-span-5 mb-10 sm:mb-0">
           <p>{{ itineraryDetails.description }}</p>
         </div>
+        <CarouselItem
+          v-if="mobileDev"
+          class="w-full mb-10"
+          :is-complex="false"
+          style="height: 45vh"
+          :carousel-images="[carouselImage]"
+        />
         <div v-if="mobileDev" class="flex justify-start mt-5">
           <h3>Stops</h3>
         </div>
         <div class="flex mt-5 sm:mt-0 sm:col-span-5 justify-center grid grid-cols-3">
-          <div v-if="!mobileDev" class="flex" />
+          <div v-if="!mobileDev" class="flex"/>
           <div class="h-96 bg-base-100 w-full box-shadow-card rounded-3xl col-span-3 sm:col-span-2 px-6 py-5">
             <div class="card-body h-full text-ellipsis overflow-auto box-scrollbar p-0">
               <div v-for="stop in itineraryDetails.stops" :key="stop.name" class="mt-1">
@@ -47,8 +55,10 @@
       </div>
       <MapItem
         :waypoints="waypoints"
+        :height="mobileDev ? '15rem': ''"
+        :class="mobileDev ? 'rounded-3xl' : ''"
       />
-      <div class="flex divider" />
+      <div class="flex divider"/>
       <div class="flex w-full justify-start">
         <div
           v-for="tag in itineraryDetails.tags"
@@ -76,14 +86,14 @@ export default Vue.extend({
     )
     const waypoints: { latitude: any; longitude: any; address: any }[] = []
     itineraryDetailsData.stops.forEach((stop) => {
-      waypoints.push(
-        {
-          latitude: stop.latitude,
-          longitude: stop.longitude,
-          address: stop.address
-        }
-      )
-    }
+        waypoints.push(
+          {
+            latitude: stop.latitude,
+            longitude: stop.longitude,
+            address: stop.address
+          }
+        )
+      }
     )
     const carouselImage = {
       image: itineraryDetailsData.heroImage,
