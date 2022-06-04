@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CarouselItem class="w-full" :is-complex="false" style="height: 45vh" :carousel-images="carouselImages"/>
+    <CarouselItem class="w-full aspect-video h-96" :is-complex="false" :carousel-images="carouselImages"/>
     <div class="container mx-auto w-10/12 justify-center mt-14 mb-24">
       <!--      TODO breadcrumbs-->
       <div class="grid grid-cols-1 sm:grid-cols-10 ">

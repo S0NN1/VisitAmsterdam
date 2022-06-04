@@ -2,9 +2,8 @@
   <div>
     <CarouselItem
       v-if="!mobileDev"
-      class="w-full"
+      class="w-full aspect-video h-96"
       :is-complex="false"
-      style="height: 45vh"
       :carousel-images="[carouselImage]"
     />
     <div class="container mx-auto w-10/12 justify-center mt-14 mb-24">
