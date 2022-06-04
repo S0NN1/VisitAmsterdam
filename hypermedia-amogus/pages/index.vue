@@ -134,7 +134,7 @@
           </div>
           <div class="hero-content text-center text-neutral-content">
             <div class="w-fit justify-center">
-              <h1 class="mb-5 text-3xl sm:text-8xl font-bold text-white drop-shadow-lg">
+              <h1 class="mb-5 text-5xl sm:text-8xl font-bold text-white drop-shadow-lg">
                 Amsterdam
               </h1>
               <button class="btn btn-primary">
