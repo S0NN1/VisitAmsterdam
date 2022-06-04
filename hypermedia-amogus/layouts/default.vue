@@ -129,7 +129,7 @@
           <div class="w-1/6" />
         </div>
         <Nuxt :style="'margin-top: ' + mobileDev + '5rem' + '-1.75rem'" />
-        <FooterNav />
+        <FooterNav :mobile="mobileDev" />
       </div>
       <div class="drawer-side">
         <label for="my-drawer-3" class="drawer-overlay" />
@@ -235,8 +235,8 @@
           </li>
           <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
           <li class="flex h-full w-full align-baseline justify-center">
-            <div class=" flex h-full grid grid-rows-3">
-              <div class="flex row-span-2" />
+            <div class=" flex h-full grid grid-rows-2">
+              <div class="flex" />
               <div class=" grid grid-cols-4 gap-0 w-full h-full items-center">
                 <IconsSocialFacebookIcon
                   class="rounded-full icon-footer fill-primary p-1.5 aspect-square mx-auto my-auto h-fit"
@@ -304,7 +304,7 @@ li {
 }
 
 .sidebar-li {
-  @apply text-2xl;
+  @apply text-base;
   @apply font-bold;
   line-height: unset;
 }

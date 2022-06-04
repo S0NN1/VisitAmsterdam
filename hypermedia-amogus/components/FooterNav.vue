@@ -1,65 +1,69 @@
 <template>
   <footer class="footer w-full justify-center p-5">
     <div class="grid grid-cols-12">
-      <div class="col-span-2 flex w-full" />
-      <div class="col-span-8 flex">
-        <div class="grid grid-cols-12">
-          <div class="col-span-8 h-16 bg-base-100 w-full box-shadow-card rounded-3xl">
-            <div class="grid grid-rows-2 grid-cols-5 gap-2 p-2 h-full flex">
-              <div class="row-span-2 flex border-r-2 border-r-warning items-center mr-3">
-                <IconsSiteLogo class="m-3" width="auto" height="75%" />
+      <div :class="!mobile ? 'col-span-2' : ''" class="flex w-full" />
+      <div :class="!mobile ? 'col-span-8' : 'col-span-10'" class="flex w-full">
+        <div v-if="!mobile" class="grid grid-cols-12">
+          <div class="col-span-8 h-24 bg-base-100 w-full box-shadow-card rounded-xl">
+            <div class="grid grid-rows-2 grid-cols-5 gap-y-0 gap-x-3 py-5 px-2 h-full flex">
+              <div class="flex  h-full  row-span-2 col-span-2 items-center">
+                <IconsSiteLogo class="pr-3 mr-3 border-r-2 border-r-warning w-6/12" width="auto" height="75%" />
+
+                <div class="flex w-6/12 h-full grid grid-rows-2 gap-y-0 gap-x-3">
+                  <NuxtLink class="flex ml-5" to="/home">
+                    <p
+                      class="text-sm font-medium truncate text-error"
+                    >
+                      <b>Home</b>
+                    </p>
+                  </NuxtLink>
+                  <NuxtLink class="flex ml-5" to="/events">
+                    <p
+                      class="text-sm font-medium truncate"
+                    >
+                      Events
+                    </p>
+                  </NuxtLink>
+                </div>
               </div>
-              <NuxtLink class="flex" to="/home">
-                <p
-                  class="text-sm font-medium truncate text-error"
-                >
-                  <b>Home</b>
-                </p>
-              </NuxtLink>
-              <NuxtLink class="flex" to="/itineraries">
+
+              <NuxtLink class="flex w-full" to="/itineraries">
                 <p
                   class="text-sm font-medium truncate"
                 >
                   Itineraries
                 </p>
               </NuxtLink>
-              <NuxtLink class="flex" to="/services">
+              <NuxtLink class="flex w-full" to="/services">
                 <p
                   class="text-sm font-medium truncate"
                 >
                   Services
                 </p>
               </NuxtLink>
-              <NuxtLink class="flex" to="/contacts">
+              <NuxtLink class="flex w-full" to="/contacts">
                 <p
                   class="text-sm font-medium truncate"
                 >
                   Contacts
                 </p>
               </NuxtLink>
-              <NuxtLink class="flex" to="/events">
+              <NuxtLink class="flex w-full" to="/points-of-interest">
                 <p
                   class="text-sm font-medium truncate"
                 >
-                  Events
-                </p>
-              </NuxtLink>
-              <NuxtLink class="flex" to="/points-of-interest">
-                <p
-                  class="text-sm font-medium truncate"
-                >
-                  Points of
+                  Points of<br>
                   Interest
                 </p>
               </NuxtLink>
-              <NuxtLink class="flex" to="/about">
+              <NuxtLink class="flex w-full" to="/about">
                 <p
                   class="text-sm font-medium truncate"
                 >
                   About Us
                 </p>
               </NuxtLink>
-              <NuxtLink class="flex" to="tos">
+              <NuxtLink class="flex w-full" to="tos">
                 <p
                   class="text-sm font-medium truncate"
                 >
@@ -70,7 +74,7 @@
             </div>
           </div>
           <div class="flex col-span-1" />
-          <div class="col-span-3 h-16 bg-base-100 w-full box-shadow-card rounded-3xl">
+          <div class="col-span-3 h-16 bg-base-100 w-full box-shadow-card rounded-xl">
             <div class="grid grid-cols-5 w-full p-1 h-full align-middle">
               <div class="flex" />
               <div class="col-span-3 grid grid-cols-6 grid-rows-3 w-full h-full items-center">
@@ -105,18 +109,117 @@
             </div>
           </div>
         </div>
-      </div>
+        <div v-else class="h-72 bg-base-100 w-full box-shadow-card rounded-xl">
+          <div class="grid grid-cols-2 grid-rows-7 gap-y-2 py-5 px-10">
+            <NuxtLink class="flex w-full" to="/home">
+              <p
+                class="text-sm font-medium truncate text-error"
+              >
+                <b>Home</b>
+              </p>
+            </NuxtLink>
+            <NuxtLink class="flex w-full" to="/itineraries">
+              <p
+                class="text-sm font-medium truncate"
+              >
+                Itineraries
+              </p>
+            </NuxtLink>
+            <NuxtLink class="flex w-full" to="/events">
+              <p
+                class="text-sm font-medium truncate"
+              >
+                Events
+              </p>
+            </NuxtLink>
+            <NuxtLink class="flex w-full" to="/points-of-interest">
+              <p
+                class="text-sm font-medium truncate"
+              >
+                Points of<br>
+                Interest
+              </p>
+            </NuxtLink>
+            <NuxtLink class="flex w-full" to="/services">
+              <p
+                class="text-sm font-medium truncate"
+              >
+                Services
+              </p>
+            </NuxtLink>
+            <NuxtLink class="flex w-full" to="/contacts">
+              <p
+                class="text-sm font-medium truncate"
+              >
+                Contacts
+              </p>
+            </NuxtLink>
+            <NuxtLink class="flex w-full" to="/about">
+              <p
+                class="text-sm font-medium truncate"
+              >
+                About Us
+              </p>
+            </NuxtLink>
+            <NuxtLink class="flex w-full" to="tos">
+              <p
+                class="text-sm font-medium truncate"
+              >
+                Privacy<br>
+                Policy
+              </p>
+            </NuxtLink>
+            <div class="row-span-2 col-span-2 grid grid-rows-3 grid-cols-6 w-full mt-3 pt-3  border-t-2 border-neutral">
+              <div class="col-span-6">
+                <p class="text-center text-sm truncate">
+                  Follow Us
+                </p>
+              </div>
+              <div class="flex col-span-6 row-span-2 justify-center mt-3">
+                <IconsSocialFacebookIcon
+                  class="rounded-full icon-footer fill-white p-1.5 aspect-square mx-auto my-auto h-fit"
+                  width="2rem"
+                  height="2rem"
+                />
+                <IconsSocialInstagramIcon
+                  class="rounded-full icon-footer fill-white p-1.5 aspect-square mx-auto my-auto h-fit"
+                  width="2rem"
+                  height="2rem"
+                />
+                <IconsSocialTwitterIcon
+                  class="rounded-full icon-footer fill-white p-1.5 aspect-square mx-auto my-auto h-fit"
+                  width="2rem"
+                  height="2rem"
+                />
+                <IconsSocialYoutubeIcon
+                  class="rounded-full icon-footer fill-white p-1.5 aspect-square mx-auto my-auto h-fit"
+                  width="2rem"
+                  height="2rem"
+                />
+              </div>
+              <div />
+            </div>
+          </div>
 
-      <div class="col-span-2 flex w-full" />
+          <div :class="!mobile ? 'col-span-2' : ''" class="flex w-full" />
+        </div>
+      </div>
     </div>
   </footer>
 </template>
 
-<script>
+<script lang="ts">
+import Vue from 'vue'
 
-export default {
-  name: 'FooterNav'
-}
+export default Vue.extend({
+  name: 'FooterNav',
+  props: {
+    mobile: {
+      type: Boolean,
+      default: false
+    }
+  }
+})
 </script>
 
 <style scoped>
