@@ -146,7 +146,7 @@
       </div>
       <div class="drawer-side">
         <label for="my-drawer-3" class="drawer-overlay" />
-        <ul class="menu p-4 overflow-y-auto w-80 bg-primary rounded-tl-3xl">
+        <ul class="menu p-4 overflow-y-auto w-80 bg-primary rounded-tl-3xl items-center">
           <li class="grid grid-cols-3">
             <div class="flex justify-start">
               <label
@@ -167,7 +167,7 @@
           </li>
 
           <!-- Sidebar content here -->
-          <li class="sidebar-li">
+          <li class="sidebar-li w-full">
             <button class="flex items-center justify-center text-white">
               <div
                 class="flex appearance-none my-1 sm:max-w-screen-sm text-stone-900 border-b-2 border-[#601616] border-opacity-20"
@@ -183,87 +183,71 @@
               </div>
             </button>
           </li>
-          <li class="sidebar-li">
-            <NuxtLink to="/home">
+          <li class="sidebar-li w-full">
+            <NuxtLink to="/home" class="w-full justify-center">
               <button class="flex items-center justify-center text-white">
                 Home
               </button>
             </NuxtLink>
           </li>
-          <div class="bg-[#601616] h-0.5 bg-opacity-20 mx-4" />
-          <li class="sidebar-li">
-            <NuxtLink
-              to="/events"
-            >
-              <button
-                class="flex items-center justify-center text-white"
-              >
+          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
+          <li class="sidebar-li w-full">
+            <NuxtLink to="/events" class="w-full justify-center">
+              <button class="flex items-center justify-center text-white">
                 Events
               </button>
-            </Nuxtlink>
+            </NuxtLink>
           </li>
-          <div class="bg-[#601616] h-0.5 bg-opacity-20 mx-4" />
-          <li class="sidebar-li">
-            <NuxtLink
-              to="/itineraries"
-            >
+          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
+          <li class="sidebar-li w-full">
+            <NuxtLink to="/itineraries" class="w-full justify-center">
               <button class="flex items-center justify-center text-white">
                 Itineraries
               </button>
             </NuxtLink>
           </li>
-          <div class="bg-[#601616] h-0.5 bg-opacity-20 mx-4" />
-          <li class="sidebar-li">
-            <NuxtLink
-              to="/points-of-interest"
-            >
+          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
+          <li class="sidebar-li w-full">
+            <NuxtLink to="/points-of-interest" class="w-full justify-center">
               <button class="flex items-center justify-center text-white">
                 Points of Interest
               </button>
             </NuxtLink>
           </li>
-          <div class="bg-[#601616] h-0.5 bg-opacity-20 mx-4" />
-          <li class="sidebar-li">
-            <NuxtLink
-              to="/services"
-            >
+          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
+          <li class="sidebar-li w-full">
+            <NuxtLink to="/services" class="w-full justify-center">
               <button class="flex items-center justify-center text-white">
                 Services
               </button>
             </NuxtLink>
           </li>
-          <div class="bg-[#601616] h-0.5 bg-opacity-20 mx-4" />
-          <li class="sidebar-li">
-            <NuxtLink
-              to="/about"
-            >
+          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
+          <li class="sidebar-li w-full">
+            <NuxtLink to="/about" class="w-full justify-center">
               <button class="flex items-center justify-center text-white">
                 About Us
               </button>
             </NuxtLink>
           </li>
-          <div class="bg-[#601616] h-0.5 bg-opacity-20 mx-4" />
-          <li class="sidebar-li">
-            <NuxtLink
-              to="/contacts"
-            >
+          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
+          <li class="sidebar-li w-full">
+            <NuxtLink to="/contacts" class="w-full justify-center">
               <button class="flex items-center justify-center text-white">
                 Contacts
               </button>
             </NuxtLink>
           </li>
-          <div class="bg-[#601616] h-0.5 bg-opacity-20 mx-4" />
-          <li class="sidebar-li">
-            <NuxtLink
-              to="/tos"
-            >
+          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
+          <li class="sidebar-li w-full">
+            <NuxtLink to="/tos" class="w-full justify-center">
               <button class="flex items-center justify-center text-white">
                 Terms Of Use
               </button>
             </NuxtLink>
           </li>
-          <div class="bg-[#601616] h-0.5 bg-opacity-20 mx-4" />
-          <li class="flex h-full align-baseline justify-center">
+          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
+          <li class="flex h-full w-full align-baseline justify-center">
             <div class=" flex h-full grid grid-rows-3">
               <div class="flex row-span-2" />
               <div class=" grid grid-cols-4 gap-0 w-full h-full items-center">
