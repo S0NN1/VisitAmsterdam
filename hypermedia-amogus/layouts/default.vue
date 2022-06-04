@@ -76,22 +76,32 @@
             <ul class="menu menu-horizontal p-0 text-sm">
               <li>
                 <NuxtLink to="/">
-                  <b :class="$nuxt.$route.name==='home' ? 'underline decoration-2 decoration-sky-500' : ''">Home</b>
+                  <b
+                    class="text-[#16215b]"
+                    :class="$nuxt.$route.name==='home' ? 'underline decoration-2 decoration-sky-500' : ''"
+                  >Home</b>
                 </NuxtLink>
               </li>
               <li tabindex="0">
                 <NuxtLink to="/events">
-                  <b :class="$nuxt.$route.name==='events' ? 'underline decoration-2 decoration-sky-500' : ''">Events</b>
+                  <b
+                    class="text-[#16215b]"
+                    :class="$nuxt.$route.name==='events' ? 'underline decoration-2 decoration-sky-500' : ''"
+                  >Events</b>
                 </NuxtLink>
               </li>
               <li>
                 <NuxtLink to="/itineraries">
-                  <b :class="$nuxt.$route.name==='itineraries' ? 'underline decoration-2 decoration-sky-500' : ''">Itineraries</b>
+                  <b
+                    class="text-[#16215b]"
+                    :class="$nuxt.$route.name==='itineraries' ? 'underline decoration-2 decoration-sky-500' : ''"
+                  >Itineraries</b>
                 </NuxtLink>
               </li>
               <li>
                 <NuxtLink to="/points-of-interest">
                   <b
+                    class="text-[#16215b]"
                     :class="$nuxt.$route.name==='points-of-interest' ? 'underline decoration-2 decoration-sky-500' : ''"
                   >Point
                     of
@@ -100,12 +110,18 @@
               </li>
               <li>
                 <NuxtLink to="/services">
-                  <b :class="$nuxt.$route.name==='services' ? 'underline decoration-2 decoration-sky-500' : ''">Services</b>
+                  <b
+                    class="text-[#16215b]"
+                    :class="$nuxt.$route.name==='services' ? 'underline decoration-2 decoration-sky-500' : ''"
+                  >Services</b>
                 </NuxtLink>
               </li>
               <li>
                 <NuxtLink to="#">
-                  <b :class="$nuxt.$route.name==='about' ? 'underline decoration-2 decoration-sky-500' : ''">About</b>
+                  <b
+                    class="text-[#16215b]"
+                    :class="$nuxt.$route.name==='about' ? 'underline decoration-2 decoration-sky-500' : ''"
+                  >About</b>
                 </NuxtLink>
               </li>
             </ul>

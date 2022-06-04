@@ -81,7 +81,7 @@ export default Vue.extend({
         craftedServices.push({
           id: service.id,
           name: service.name,
-          image: service.servicePicture[0].path
+          image: service.heroImage
         })
       }
     )

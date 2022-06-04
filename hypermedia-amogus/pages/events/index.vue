@@ -1,21 +1,21 @@
 <template>
   <div>
-    <HeroImage/>
+    <HeroImage />
     <div class="container mx-auto w-10/12 justify-center">
       <div class="m-6">
         <h2 class="mx-6">
           Hottest events
         </h2>
         <div class="m-4">
-          <CarouselItem :carousel-images="hottestEvents"/>
+          <CarouselItem :carousel-images="hottestEvents" />
         </div>
       </div>
-      <div class="divider m-6"/>
+      <div class="divider m-6" />
       <div class="m-6">
         <h2 class="flex w-full mb-9">
           All events
         </h2>
-        <AllCardsSection :page-type="'events'" :elements="events"/>
+        <AllCardsSection :page-type="'events'" :elements="events" />
       </div>
     </div>
   </div>
@@ -38,7 +38,7 @@ export default Vue.extend({
         craftedEvents.push({
           id: event.id,
           name: event.name,
-          image: event.eventPictures[0].path
+          image: event.heroImage
         })
       }
     )
