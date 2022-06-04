@@ -117,7 +117,7 @@
       </div>
       <div class="drawer-side">
         <label for="my-drawer-3" class="drawer-overlay" />
-        <ul class="menu p-4 overflow-y-auto w-80 bg-primary rounded-tl-3xl">
+        <ul class="menu p-4 overflow-y-auto w-80 bg-primary rounded-tl-3xl items-center">
           <li class="grid grid-cols-3">
             <div class="flex justify-start">
               <label
@@ -159,50 +159,50 @@
               Home
             </button>
           </li>
-          <div class="bg-[#601616] h-0.5 bg-opacity-20 mx-4" />
+          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
           <li class="sidebar-li">
             <button class="flex items-center justify-center text-white">
               Events
             </button>
           </li>
-          <div class="bg-[#601616] h-0.5 bg-opacity-20 mx-4" />
+          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
           <li class="sidebar-li">
             <button class="flex items-center justify-center text-white">
               Itineraries
             </button>
           </li>
-          <div class="bg-[#601616] h-0.5 bg-opacity-20 mx-4" />
+          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
           <li class="sidebar-li">
             <button class="flex items-center justify-center text-white">
               Points of Interest
             </button>
           </li>
-          <div class="bg-[#601616] h-0.5 bg-opacity-20 mx-4" />
+          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
           <li class="sidebar-li">
             <button class="flex items-center justify-center text-white">
               Services
             </button>
           </li>
-          <div class="bg-[#601616] h-0.5 bg-opacity-20 mx-4" />
+          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
           <li class="sidebar-li">
             <button class="flex items-center justify-center text-white">
               About Us
             </button>
           </li>
-          <div class="bg-[#601616] h-0.5 bg-opacity-20 mx-4" />
+          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
           <li class="sidebar-li">
             <button class="flex items-center justify-center text-white">
               Contacts
             </button>
           </li>
-          <div class="bg-[#601616] h-0.5 bg-opacity-20 mx-4" />
+          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
           <li class="sidebar-li">
             <button class="flex items-center justify-center text-white">
               Terms Of Use
             </button>
           </li>
-          <div class="bg-[#601616] h-0.5 bg-opacity-20 mx-4" />
-          <li class="flex h-full align-baseline justify-center">
+          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
+          <li class="flex h-full w-full align-baseline justify-center">
             <div class=" flex h-full grid grid-rows-3">
               <div class="flex row-span-2" />
               <div class=" grid grid-cols-4 gap-0 w-full h-full items-center">
