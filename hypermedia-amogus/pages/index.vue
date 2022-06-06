@@ -26,6 +26,7 @@
             <label for="my-drawer-3" class="btn btn-square btn-ghost">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
+                width="2.3rem"
                 viewBox="0 0 24 24"
                 class="inline-block w-6 h-6 stroke-white"
               >
@@ -153,7 +154,7 @@
             <div class="flex justify-start">
               <label
                 for="my-drawer-3"
-                class="flex btn btn-primary border-none text-white fill-white drawer-button pl-0"
+                class="flex border-none text-white fill-white drawer-button pl-0"
               >
                 <IconsCloseIcon class="icon-shadow fill-white" width="2rem" height="2rem" />
               </label>
@@ -169,87 +170,70 @@
           </li>
 
           <!-- Sidebar content here -->
-          <li class="sidebar-li w-full">
-            <button class="flex items-center justify-center text-white">
-              <div
-                class="flex appearance-none my-1 sm:max-w-screen-sm text-stone-900"
+          <li class="sidebar-li w-full ">
+            <button
+              class="flex items-center justify-center text-white fill-white border-b-2 border-[#601616] border-opacity-20 mx-2"
+            >
+              <IconsSearchIcon />
+              <input
+                type="text"
+                class="text-white text-center placeholder-white appearance-none bg-transparent py-1 w-full"
+                placeholder="Search"
               >
-                <button class="flex items-center justify-center text-white fill-white">
-                  <IconsSearchIcon />
-                </button>
-                <input
-                  type="text"
-                  class="text-white text-center placeholder-white appearance-none bg-transparent py-1 w-full"
-                  placeholder="Search"
-                >
-              </div>
             </button>
           </li>
-          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
-          <li class="sidebar-li w-full">
-            <NuxtLink to="/home" class="w-full justify-center">
-              <button class="flex items-center justify-center text-white">
-                Home
-              </button>
+          <!--          <li class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />-->
+          <li class="sidebar-li w-full px-4">
+            <NuxtLink
+              to="/home"
+              class="w-full text-white justify-center border-b-2 border-[#601616] border-opacity-20"
+            >
+              <!--              <button class="flex items-center justify-center text-white">-->
+              Home
+              <!--              </button>-->
             </NuxtLink>
           </li>
-          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
-          <li class="sidebar-li w-full">
-            <NuxtLink to="/events" class="w-full justify-center">
-              <button class="flex items-center justify-center text-white">
-                Events
-              </button>
+          <li class="sidebar-li w-full px-4">
+            <NuxtLink to="/events" class="w-full justify-center border-b-2 border-[#601616] border-opacity-20">
+              Events
             </NuxtLink>
           </li>
-          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
-          <li class="sidebar-li w-full">
-            <NuxtLink to="/itineraries" class="w-full justify-center">
-              <button class="flex items-center justify-center text-white">
-                Itineraries
-              </button>
+          <li class="sidebar-li w-full px-4">
+            <NuxtLink
+              to="/itineraries"
+              class="w-full justify-center border-b-2 border-[#601616] border-opacity-20"
+            >
+              Itineraries
             </NuxtLink>
           </li>
-          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
-          <li class="sidebar-li w-full">
-            <NuxtLink to="/points-of-interest" class="w-full justify-center">
-              <button class="flex items-center justify-center text-white">
-                Points of Interest
-              </button>
+          <li class="sidebar-li w-full px-4">
+            <NuxtLink
+              to="/points-of-interest"
+              class="w-full justify-center border-b-2 border-[#601616] border-opacity-20"
+            >
+              Points of Interest
             </NuxtLink>
           </li>
-          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
-          <li class="sidebar-li w-full">
-            <NuxtLink to="/services" class="w-full justify-center">
-              <button class="flex items-center justify-center text-white">
-                Services
-              </button>
+          <li class="sidebar-li w-full px-4">
+            <NuxtLink to="/services" class="w-full justify-center border-b-2 border-[#601616] border-opacity-20">
+              Services
             </NuxtLink>
           </li>
-          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
-          <li class="sidebar-li w-full">
-            <NuxtLink to="/about" class="w-full justify-center">
-              <button class="flex items-center justify-center text-white">
-                About Us
-              </button>
+          <li class="sidebar-li w-full px-4">
+            <NuxtLink to="/about" class="w-full justify-center border-b-2 border-[#601616] border-opacity-20">
+              About Us
             </NuxtLink>
           </li>
-          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
-          <li class="sidebar-li w-full">
-            <NuxtLink to="/contacts" class="w-full justify-center">
-              <button class="flex items-center justify-center text-white">
-                Contacts
-              </button>
+          <li class="sidebar-li w-full px-4">
+            <NuxtLink to="/contacts" class="w-full justify-center border-b-2 border-[#601616] border-opacity-20">
+              Contacts
             </NuxtLink>
           </li>
-          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
-          <li class="sidebar-li w-full">
-            <NuxtLink to="/tos" class="w-full justify-center">
-              <button class="flex items-center justify-center text-white">
-                Terms Of Use
-              </button>
+          <li class="sidebar-li w-full px-4">
+            <NuxtLink to="/tos" class="w-full justify-center border-b-2 border-[#601616] border-opacity-20">
+              Terms Of Use
             </NuxtLink>
           </li>
-          <div class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />
           <li class="flex h-full w-full align-baseline justify-center">
             <div class=" flex h-full grid grid-rows-2">
               <div class="flex " />
