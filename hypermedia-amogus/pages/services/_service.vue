@@ -6,8 +6,8 @@
         <div class="flex sm:col-span-10 justify-start">
           <h1>{{ serviceDetails.name }}</h1>
         </div>
-        <div class="flex divider sm:col-span-5"/>
-        <div class="flexsm:col-span-5"/>
+        <div class="flex divider sm:col-span-5" />
+        <div class="flexsm:col-span-5" />
         <div class="flex justify-start sm:col-span-5 grid grid-rows-2">
           <h4 class="flex">
             <b>{{ serviceDetails.address }}</b>
@@ -44,7 +44,7 @@
                 <p>
                   {{ day.day.charAt(0).toUpperCase() + day.day.substring(1, 3).toLowerCase() }}
                 </p>
-                <div class="divider divider-horizontal before:bg-secondary after:bg-secondary"/>
+                <div class="divider divider-horizontal before:bg-secondary after:bg-secondary" />
               </div>
 
               <p class="flex col-span-3 justify-start w-full">
@@ -53,7 +53,7 @@
             </div>
           </div>
           <div v-if="serviceDetails.visitInfo.url!==''" class="flex grid grid-cols-3 justify-center mt-5 sm:mt-10 ">
-            <div class="flex col-span-2"/>
+            <div class="flex col-span-2" />
             <div class="flex">
               <div class="btn btn-md btn-secondary rounded-full text-white normal-case">
                 <a :href="serviceDetails.visitInfo.url" target="_blank">
@@ -62,7 +62,7 @@
               </div>
             </div>
           </div>
-          <div v-if="!mobileDev" class="flex"/>
+          <div v-if="!mobileDev" class="flex" />
         </div>
         <div v-if="mobileDev">
           <MapItem
@@ -74,7 +74,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
 import { BACKEND_URL, MONTHS } from 'assets/js/constants'
 
@@ -99,6 +99,7 @@ export default Vue.extend({
     }
   },
   mounted () {
+    // eslint-disable-next-line nuxt/no-env-in-hooks
     if (process.client) {
       this.mediaQuery = matchMedia('(max-width: 700px)')
       this.mobileDev = this.mediaQuery.matches

@@ -47,7 +47,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
 import { Paragraph } from 'beemovie'
 
@@ -93,7 +93,7 @@ export default Vue.extend({
     this.timer()
   },
   methods: {
-    selectedIndex (index: number) {
+    selectedIndex (index) {
       this.activeIndex = index
       this.clearTimer()
     },
@@ -114,7 +114,7 @@ export default Vue.extend({
       window.clearTimeout(this.timerId)
       this.timer()
     },
-    isElementInViewport (el: any) {
+    isElementInViewport (el) {
       const rect = el.getBoundingClientRect()
 
       return (
@@ -124,7 +124,7 @@ export default Vue.extend({
         rect.right <= (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */
       )
     },
-    scrollToElement (id: any) {
+    scrollToElement (id) {
       // takes input id with hash
       // eg. #cafe-menu
       const el = document.querySelector(id)

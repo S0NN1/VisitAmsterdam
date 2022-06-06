@@ -1,12 +1,12 @@
 <template>
   <div>
-    <CarouselItem class="w-full aspect-video h-96" :is-complex="false" :carousel-images="carouselImages"/>
+    <CarouselItem class="w-full aspect-video h-96" :is-complex="false" :carousel-images="carouselImages" />
     <div class="container mx-auto w-10/12 justify-center mt-14 mb-24">
       <!--      TODO breadcrumbs-->
       <div class="grid grid-cols-10">
         <div :class="!mobileDev ? 'col-span-4' : 'col-span-10'">
           <h1>{{ eventDetails.name }}</h1>
-          <div class="divider"/>
+          <div class="divider" />
           <div class="grid grid-cols-10">
             <div class="flex items-center" :class="!mobileDev ? 'col-span-5' : 'col-span-10'">
               <div v-if="eventDetails.eventDays.length > 1">
@@ -31,7 +31,7 @@
                 </h4>
               </div>
             </div>
-            <div/>
+            <div />
             <!--            TODO pipe-->
             <div class="flex items-center text-right justify-end" :class="!mobileDev ? 'col-span-4' : 'col-span-10'">
               <h4><b>{{ eventDetails.location.name }}</b></h4>
@@ -41,7 +41,7 @@
             <p>{{ eventDetails.description }}</p>
           </div>
         </div>
-        <div v-if="!mobileDev" class="col-span-2"/>
+        <div v-if="!mobileDev" class="col-span-2" />
         <div :class="!mobileDev ? 'col-span-4' : 'col-span-10'">
           <div class="mt-10">
             <h2>Booking Details</h2>
@@ -85,7 +85,7 @@
           </div>
         </div>
       </div>
-      <div class="divider"/>
+      <div class="divider" />
       <div
         v-for="category in eventDetails.categories"
         :key="category.name"
@@ -97,7 +97,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
 import { BACKEND_URL, MONTHS } from '~/assets/js/constants'
 
@@ -107,8 +107,8 @@ export default Vue.extend({
     const eventDetailsData = await fetch(BACKEND_URL + '/api/v1/events/get?id=' + params.event).then(
       res => res.json()
     )
-    const carouselImagesData: any[] = []
-    eventDetailsData.pictures.forEach(function (picture: { path: any }) {
+    const carouselImagesData = []
+    eventDetailsData.pictures.forEach(function (picture) {
       carouselImagesData.push(
         {
           image: picture.path,
@@ -136,6 +136,7 @@ export default Vue.extend({
     }
   },
   mounted () {
+    // eslint-disable-next-line nuxt/no-env-in-hooks
     if (process.client) {
       this.mediaQuery = matchMedia('(max-width: 700px)')
       this.mobileDev = this.mediaQuery.matches

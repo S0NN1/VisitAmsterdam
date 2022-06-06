@@ -54,7 +54,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
 
 export default Vue.extend({
@@ -66,6 +66,7 @@ export default Vue.extend({
     }
   },
   mounted () {
+    // eslint-disable-next-line nuxt/no-env-in-hooks
     if (process.client) {
       this.mediaQuery = matchMedia('(max-width: 700px)')
       this.mobileDev = this.mediaQuery.matches

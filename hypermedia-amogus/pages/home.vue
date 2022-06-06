@@ -65,7 +65,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
 import { BACKEND_URL } from '~/assets/js/constants'
 
@@ -75,9 +75,9 @@ export default Vue.extend({
     const services = await fetch(BACKEND_URL + '/api/v1/services/getAll').then(
       res => res.json()
     )
-    const craftedServices: any[] = []
+    const craftedServices = []
     services.forEach(
-      (service: any) => {
+      (service) => {
         craftedServices.push({
           id: service.id,
           name: service.name,
@@ -105,6 +105,7 @@ export default Vue.extend({
     }
   },
   mounted () {
+    // eslint-disable-next-line nuxt/no-env-in-hooks
     if (process.client) {
       this.mediaQuery = matchMedia('(max-width: 700px)')
       this.mobileDev = this.mediaQuery.matches

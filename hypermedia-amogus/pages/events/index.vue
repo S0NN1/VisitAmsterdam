@@ -1,5 +1,21 @@
 <template>
   <div>
+    <button
+      data-tooltip-target="tooltip-hover"
+      data-tooltip-trigger="hover"
+      type="button"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+    >
+      Tooltip hover
+    </button>
+    <div
+      id="tooltip-hover"
+      role="tooltip"
+      class="inline-block absolute invisible z-10 py-2 px-3 text-sm font-medium text-white bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip bg-red-400 dark:bg-gray-700"
+    >
+      Tooltip content
+      <div class="tooltip-arrow" data-popper-arrow />
+    </div>
     <HeroImage />
     <div class="container mx-auto w-10/12 justify-center">
       <div class="m-6">
@@ -21,7 +37,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 
 import Vue from 'vue'
 import { BACKEND_URL, MONTHS, WEEK_DAYS } from 'assets/js/constants'
@@ -32,9 +48,9 @@ export default Vue.extend({
     const events = await fetch(BACKEND_URL + '/api/v1/events/getUpcoming').then(
       res => res.json()
     )
-    const craftedEvents: any[] = []
+    const craftedEvents = []
     events.forEach(
-      (event: any) => {
+      (event) => {
         craftedEvents.push({
           id: event.id,
           name: event.name,
@@ -53,6 +69,7 @@ export default Vue.extend({
     }
   },
   mounted () {
+    // eslint-disable-next-line nuxt/no-env-in-hooks
     if (process.client) {
       this.mediaQuery = matchMedia('(max-width: 700px)')
       this.mobileDev = this.mediaQuery.matches
