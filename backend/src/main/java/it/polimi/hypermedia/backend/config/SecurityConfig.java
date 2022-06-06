@@ -32,7 +32,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/api/v1/tags/events/getAll",
                         "/api/v1/tags/itineraries/getAll",
                         "/api/v1/tags/points-of-interest/getAll",
-                        "/api/v1/tags/services/getAll").permitAll()
+                        "/api/v1/tags/services/getAll",
+                        "/api/v1/search/search").permitAll()
                 .anyRequest().authenticated()
                 .and().httpBasic();
     }
