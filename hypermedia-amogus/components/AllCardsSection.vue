@@ -14,10 +14,10 @@
         {{ filter }}
       </div>
     </div>
-    <div class="divider mb-5"/>
+    <div class="divider mb-5" />
     <div class="flex w-full justify-end font-bold mb-5">
       <span>{{ activeFilter }}</span>
-      <span class="divider divider-horizontal before:bg-secondary after:bg-secondary"/>
+      <span class="divider divider-horizontal before:bg-secondary after:bg-secondary" />
       <span>{{ elementsFiltered.length }}   {{ elementsFiltered.length > 1 ? 'results' : 'result' }}</span>
     </div>
     <div class="flex justify-center">
@@ -35,8 +35,8 @@
             />
           </NuxtLink>
           <NuxtLink v-else :to="'/itineraries/' + element.id.toString()" class="flex mb-10">
-            <CardItem :object="element" :card-type="pageCardType[pageType]" class="mr-4"/>
-            <CardItem card-type="COMPLEX"/>
+            <CardItem :object="element" :card-type="pageCardType[pageType]" class="mr-4" />
+            <CardItem card-type="COMPLEX" />
           </NuxtLink>
         </div>
       </div>
@@ -85,7 +85,7 @@ export default {
             name: item.name,
             description: item.description,
             price: item.price,
-            heroImageUrl: item.heroImageUrl,
+            heroImage: item.heroImage,
             eventPictures: item.eventPictures,
             infoUrl: item.infoUrl,
             bookingUrl: item.bookingUrl,
@@ -112,7 +112,7 @@ export default {
             description: item.description,
             visitInfo: item.visitInfo,
             tags: item.tags,
-            poiPictures: item.poiPictures,
+            heroImage: item.heroImage,
             events: item.events
           }
         case 'services':
@@ -124,7 +124,7 @@ export default {
             latitude: item.latitude,
             longitude: item.longitude,
             visitInfo: item.visitInfo,
-            servicePicture: item.servicePicture
+            heroImage: item.heroImage
           }
       }
     },

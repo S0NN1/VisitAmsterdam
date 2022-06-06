@@ -77,7 +77,7 @@
           <div class="bg-base-100 w-fit drop-shadow-lg rounded-xl h-full">
             <ul class="menu menu-horizontal p-0 text-sm">
               <li>
-                <NuxtLink to="/">
+                <NuxtLink to="/home">
                   <b
                     class="text-[#16215b]"
                     :class="$nuxt.$route.name==='home' ? 'underline decoration-2 decoration-sky-500' : ''"

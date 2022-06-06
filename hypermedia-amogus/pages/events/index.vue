@@ -38,7 +38,7 @@ export default Vue.extend({
         craftedEvents.push({
           id: event.id,
           name: event.name,
-          image: event.heroImage
+          heroImage: event.heroImage
         })
       }
     )
@@ -83,7 +83,7 @@ export default Vue.extend({
           }
         }
         this.hottestEvents.push({
-          image: event.heroImageUrl,
+          heroImage: event.heroImage,
           name: event.name,
           description: event.description,
           date: WEEK_DAYS[eventDate.getDay()] + ' ' + eventDate.getDate() + ' ' + MONTHS[eventDate.getMonth()],

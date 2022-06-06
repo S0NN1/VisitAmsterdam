@@ -21,7 +21,7 @@ public class Event {
     @NotNull
     private double price = 0.0;
 
-    private String heroImageUrl;
+    private String heroImage;
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
     @JsonManagedReference("event-picture")
     private List<EventPicture> pictures;
@@ -71,12 +71,12 @@ public class Event {
         this.price = price;
     }
 
-    public String getHeroImageUrl() {
-        return heroImageUrl;
+    public String getHeroImage() {
+        return heroImage;
     }
 
-    public void setHeroImageUrl(String heroImageUrl) {
-        this.heroImageUrl = heroImageUrl;
+    public void setHeroImage(String heroImageUrl) {
+        this.heroImage = heroImageUrl;
     }
 
     public List<EventPicture> getPictures() {

@@ -8,8 +8,8 @@
         :key="index"
         class="carousel-item w-full justify-center p-4"
       >
-        <CardItem class="flex-none mr-10 w-fit max-w-2xl h-fit" :object="image"/>
-        <CardItem class="flex-none w-fit max-w-2xl" :card-type="'EVENT'" :object="image"/>
+        <CardItem class="flex-none mr-10 w-fit max-w-2xl h-fit" :object="image" />
+        <CardItem class="flex-none w-fit max-w-2xl" :card-type="'EVENT'" :object="image" />
       </div>
     </div>
     <div class="flex justify-center w-full gap-2">
@@ -34,7 +34,7 @@
         style="background-position: center; background-size: cover"
       />
     </div>
-    <div class="flex justify-center w-full py-2 gap-2" v-if="carouselImages.length>1">
+    <div v-if="carouselImages.length>1" class="flex justify-center w-full py-2 gap-2">
       <a
         v-for="(image, index) in carouselImages"
         :key="'imageCarousel' + index"
@@ -56,21 +56,21 @@ export default Vue.extend({
     carouselImages: {
       type: Array,
       default: () => [{
-        image: 'https://via.placeholder.com/1920x1080',
+        heroImage: 'https://via.placeholder.com/1920x1080',
         name: 'sus',
         description: +Paragraph(),
         date: 'Wednesday 17',
         time: '20.30',
         link: 'https://google.com'
       }, {
-        image: 'https://via.placeholder.com/1920x1080',
+        heroImage: 'https://via.placeholder.com/1920x1080',
         name: 'sus',
         description: +Paragraph(),
         date: 'Wednesday 17',
         time: '20.30',
         link: 'https://google.com'
       }, {
-        image: 'https://via.placeholder.com/1920x1080',
+        heroImage: 'https://via.placeholder.com/1920x1080',
         name: 'sus',
         description: +Paragraph(),
         date: 'Wednesday 17',

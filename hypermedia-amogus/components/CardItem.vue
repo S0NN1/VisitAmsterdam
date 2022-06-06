@@ -5,7 +5,7 @@
     class="card w-full bg-base-100 shadow-xl bg-contain box-shadow-card-figure carousel-card"
   >
     <figure>
-      <img :src="object.image" :alt="object.name">
+      <img :src="object.heroImage" :alt="object.name">
     </figure>
   </div>
   <div v-else-if="cardType==='EVENT'" class="card w-full bg-base-100 box-shadow-card carousel-card">
@@ -26,7 +26,7 @@
   <div v-else-if="cardType==='MULTIPLE'">
     <div class="card w-full aspect-square bg-base-100 shadow-xl no-rounded-bottom">
       <figure class="box-shadow-card-figure">
-        <img :src="object.heroImageUrl" :alt="object.name">
+        <img :src="object.heroImage" :alt="object.name">
       </figure>
       <div class="card-body items-center">
         <h2 class="card-title">
@@ -67,13 +67,13 @@
   >
     <div class="grid w-full grid-cols-3 gap-2" style="min-height: 100%">
       <figure>
-        <img class="h-full rounded-xl" :src="object.image" :alt="object.name">
+        <img class="h-full rounded-xl" :src="object.heroImage" :alt="object.name">
       </figure>
       <figure class="col-span-2 row-span-2">
-        <img class="h-full rounded-xl" :src="object.image" :alt="object.name">
+        <img class="h-full rounded-xl" :src="object.heroImage" :alt="object.name">
       </figure>
       <figure>
-        <img :src="object.image" class="h-full rounded-xl" :alt="object.name">
+        <img :src="object.heroImage" class="h-full rounded-xl" :alt="object.name">
       </figure>
     </div>
   </div>
@@ -91,7 +91,7 @@ export default Vue.extend({
     },
     object: {
       type: Object,
-      default: () => JSON.parse('{ "image": "https://via.placeholder.com/1920x1080", "name": "sus", "description": "' + Paragraph() + '", "date": "Wednesday 17", "time": "20.30", "link": "https://google.com", "duration": 8}')
+      default: () => JSON.parse('{ "heroImage": "https://via.placeholder.com/1920x1080", "name": "sus", "description": "' + Paragraph() + '", "date": "Wednesday 17", "time": "20.30", "link": "https://google.com", "duration": 8}')
     }
   },
   data () {
