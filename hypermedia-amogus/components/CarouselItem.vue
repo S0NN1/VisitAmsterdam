@@ -1,15 +1,17 @@
 <!--TODO: Responsive-->
 <template>
   <div v-if="isComplex">
-    <div id="carousel" class="carousel w-full carousel-container pb-3">
+    <div id="carousel" class="carousel w-full h-3/4 lg:h-96 carousel-container pb-3">
       <div
         v-for="(image, index) in carouselImages"
         :id="'imageCarousel' + index"
         :key="index"
-        class="carousel-item w-full justify-center p-4"
+        class="carousel-item w-full justify-center"
       >
-        <CardItem class="flex-none mr-10 w-fit max-w-2xl h-fit" :object="image" />
-        <CardItem class="flex-none w-fit max-w-2xl" :card-type="'EVENT'" :object="image" />
+        <div class="grid grid-cols-1 gap-4 lg:grid-cols-2">
+          <CardItem class="flex w-full lg:w-fit lg:max-w-2xl lg:h-full" :object="image" />
+          <CardItem class="flex w-full lg:w-fit lg:max-w-2xl" :card-type="'EVENT'" :object="image" />
+        </div>
       </div>
     </div>
     <div class="flex justify-center w-full gap-2">

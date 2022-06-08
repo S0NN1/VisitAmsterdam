@@ -41,13 +41,18 @@
                 <div class="flex-none">
                   <div class="flex appearance-none my-1 sm:max-w-screen-sm text-stone-900 border-b-2">
                     <input
+                      id="searchField"
+                      v-model="searchField"
                       type="text"
                       class="text-white placeholder-white appearance-none bg-transparent py-1 w-64"
                       placeholder=""
+                      @keyup.enter="search()"
                     >
-                    <button class="flex items-center justify-center text-white fill-white">
-                      <IconsSearchIcon />
-                    </button>
+                    <NuxtLink :to="'/search?input=' + searchField">
+                      <button class="flex items-center justify-center text-white fill-white">
+                        <IconsSearchIcon />
+                      </button>
+                    </NuxtLink>
                   </div>
                 </div>
               </li>
@@ -259,7 +264,8 @@ export default {
   data () {
     return {
       mediaQuery: null,
-      mobileDev: false
+      mobileDev: false,
+      searchField: ''
     }
   },
   mounted () {
@@ -271,6 +277,13 @@ export default {
       this.mediaQuery.addListener(() => {
         that.mobileDev = that.mediaQuery.matches
       })
+    }
+  },
+  methods: {
+    search () {
+      if (process.client) {
+        window.location.href = '/search?input=' + this.searchField
+      }
     }
   }
 }

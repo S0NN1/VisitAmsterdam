@@ -2,23 +2,25 @@
 <template>
   <div
     v-if="cardType==='FIGURE'"
-    class="card w-full bg-base-100 shadow-xl bg-contain box-shadow-card-figure carousel-card"
+    class="card w-full bg-base-100 bg-contain box-shadow-card-figure carousel-card"
   >
     <figure>
       <img :src="object.heroImage" :alt="object.name">
     </figure>
   </div>
-  <div v-else-if="cardType==='EVENT'" class="card w-full bg-base-100 box-shadow-card carousel-card">
-    <div class="card-body line-clamp-3" style="max-height: 80%">
-      <h2 class="card-title">
+  <div v-else-if="cardType==='EVENT'" class="card w-full bg-base-100 carousel-card shadow-xl">
+    <div class="card-body" style="max-height: 80%">
+      <h2 class="card-title text-sm lg:text-2xl">
         {{ object.name }}
       </h2>
-      <p>
-        {{ object.description }}
-      </p>
+      <div class="line-clamp-5">
+        <p>
+          {{ object.description }}
+        </p>
+      </div>
     </div>
     <div class="card-actions justify-end m-5" style="max-height: 20%">
-      <h3>
+      <h3 class="text-s lg:text-xl">
         {{ object.date }} - {{ object.time }}h
       </h3>
     </div>
@@ -29,10 +31,30 @@
         <img :src="object.heroImage" :alt="object.name">
       </figure>
       <div class="card-body items-center">
-        <h2 class="card-title">
+        <h2 class="card-title text-sm lg:text-2xl">
           {{ object.name }}
         </h2>
       </div>
+    </div>
+  </div>
+  <div v-else-if="cardType==='SEARCH'">
+    <div class="card w-full aspect-square bg-base-100 shadow-xl no-rounded-bottom">
+      <div class="card-body box-shadow-card-figure-alt justify-start">
+        <h2 class="card-title text-sm lg:text-2xl">
+          {{ object.name }}
+        </h2>
+        <div class="line-clamp-3">
+          <p class="text-xs">
+            {{ object.description }}
+          </p>
+        </div>
+        <div class="badge badge-neutral">
+          {{ object.type }}
+        </div>
+      </div>
+      <figure class="box-shadow-card-figure">
+        <img :src="object.heroImage" :alt="object.name">
+      </figure>
     </div>
   </div>
   <div
