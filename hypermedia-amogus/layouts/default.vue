@@ -166,11 +166,16 @@
             <button
               class="flex items-center justify-center text-white fill-white border-b-2 border-[#601616] border-opacity-20 mx-2"
             >
-              <IconsSearchIcon />
+              <NuxtLink :to="'/search?input=' + searchField" class="fill-white">
+                <IconsSearchIcon />
+              </NuxtLink>
               <input
+                id="searchField"
+                v-model="searchField"
                 type="text"
                 class="text-white text-center placeholder-white appearance-none bg-transparent py-1 w-full"
                 placeholder="Search"
+                @keyup.enter="search()"
               >
             </button>
           </li>

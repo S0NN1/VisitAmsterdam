@@ -76,13 +76,18 @@
                 <div class="flex-none">
                   <div class="flex appearance-none my-1 sm:max-w-screen-sm text-stone-900 border-b-2">
                     <input
+                      id="searchField"
+                      v-model="searchField"
                       type="text"
                       class="text-white placeholder-white appearance-none bg-transparent py-1 w-64"
                       placeholder=""
+                      @keyup.enter="search()"
                     >
-                    <button class="flex items-center justify-center text-white fill-white">
-                      <IconsSearchIcon />
-                    </button>
+                    <NuxtLink :to="'/search?input=' + searchField">
+                      <button class="flex items-center justify-center text-white fill-white">
+                        <IconsSearchIcon />
+                      </button>
+                    </NuxtLink>
                   </div>
                 </div>
               </li>
@@ -174,11 +179,16 @@
             <button
               class="flex items-center justify-center text-white fill-white border-b-2 border-[#601616] border-opacity-20 mx-2"
             >
-              <IconsSearchIcon />
+              <NuxtLink :to="'/search?input=' + searchField" class="fill-white">
+                <IconsSearchIcon />
+              </NuxtLink>
               <input
+                id="searchField"
+                v-model="searchField"
                 type="text"
                 class="text-white text-center placeholder-white appearance-none bg-transparent py-1 w-full"
                 placeholder="Search"
+                @keyup.enter="search()"
               >
             </button>
           </li>
@@ -272,7 +282,19 @@ import Vue from 'vue'
 
 export default Vue.extend({
   name: 'IndexPage',
-  layout: 'empty'
+  layout: 'empty',
+  data () {
+    return {
+      searchField: ''
+    }
+  },
+  methods: {
+    search () {
+      if (process.client) {
+        window.location.href = '/search?input=' + this.searchField
+      }
+    }
+  }
 })
 </script>
 

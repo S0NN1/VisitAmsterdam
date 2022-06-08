@@ -39,7 +39,7 @@
         </div>
       </div>
     </div>
-    <div class="container mx-auto w-10/12 justify-center mt-16 mb-10">
+    <div class="container mx-auto w-11/12 lg:w-10/12 justify-center mt-16 mb-10">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
         <div v-for="result in searchResults" :key="result.id">
           <NuxtLink :to="result.link">

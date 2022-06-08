@@ -1,7 +1,7 @@
 <template>
   <div>
     <HeroImage />
-    <div class="container mx-auto w-10/12 justify-center">
+    <div class="container mx-auto w-11/12 lg:w-10/12 justify-center">
       <div class="m-6">
         <h2 class="mx-6">
           Hottest events

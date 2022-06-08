@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto w-10/12 justify-center">
+  <div class="container mx-auto w-11/12 lg:w-10/12 justify-center">
     <div class="m-6">
       <h2 class="flex w-full mb-9">
         All services

@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto w-10/12 justify-center mb-40">
+  <div class="container mx-auto w-11/12 lg:w-10/12 justify-center mb-40">
     <div class="mt-24">
       <h1>Terms and Conditions of Use</h1>
       <h2>Terms of Services</h2>

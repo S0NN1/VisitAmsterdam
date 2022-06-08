@@ -3,11 +3,11 @@
     <h3 class="flex w-full mb-5">
       Filters
     </h3>
-    <div class="flex w-full justify-start">
+    <div class="flex w-full grid grid-cols-4 gap-3 lg:grid-cols-10 lg:gap-10 justify-start">
       <div
         v-for="(filter, index) in filters"
         :key="filter+index"
-        class="badge mr-4 p-5 font-bold tag-badge text-white cursor-pointer"
+        class="flex w-full badge p-5 font-bold tag-badge text-white cursor-pointer text-xs lg:text-base"
         :class="activeFilter===filter ? 'badge-primary': 'text-[#787caa]'"
         @click="applyFilter(filter, pageType)"
       >
@@ -63,8 +63,8 @@ export default {
   },
   data () {
     return {
-      filters: ['ALL', 'Summer', 'Winter', 'Spring', 'Autumn'],
-      activeFilter: 'ALL',
+      filters: ['All', 'Summer', 'Winter', 'Spring', 'Autumn'],
+      activeFilter: 'All',
       elementsFiltered: [],
       pageCardType: {
         events: 'MULTIPLE',

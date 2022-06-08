@@ -1,7 +1,7 @@
 <template>
   <div>
     <CarouselItem class="w-full aspect-video h-96" :is-complex="false" :carousel-images="carouselImages" />
-    <div class="container mx-auto w-10/12 justify-center mt-14 mb-24">
+    <div class="container mx-auto w-11/12 lg:w-10/12 justify-center mt-14 mb-24">
       <!--      TODO breadcrumbs-->
       <div class="grid grid-cols-10">
         <div :class="!mobileDev ? 'col-span-4' : 'col-span-10'">

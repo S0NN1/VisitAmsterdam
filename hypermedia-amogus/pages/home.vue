@@ -1,6 +1,6 @@
 <template>
   <div class="mb-40">
-    <div class="container mx-auto w-10/12 justify-center mt-20">
+    <div class="container mx-auto w-11/12 lg:w-10/12 justify-center mt-20">
       <h2>Latest Events</h2>
       <CarouselItem />
       <div class="divider" />
@@ -46,7 +46,7 @@
       </div>
     </div>
 
-    <div class="container mx-auto w-10/12 justify-center mt-20">
+    <div class="container mx-auto w-11/12 lg:w-10/12 justify-center mt-20">
       <h2>Services provided by the city</h2>
       <div class="flex justify-center">
         <div class="w-full grid gap-32 mb-20 m-4 grid-cols-1 sm:grid-cols-3">
