@@ -20,8 +20,10 @@
       <span class="divider divider-horizontal before:bg-secondary after:bg-secondary" />
       <span>{{ elementsFiltered.length }}   {{ elementsFiltered.length > 1 ? 'results' : 'result' }}</span>
     </div>
-    <div class="flex justify-center">
-      <div :class="{'w-3/4 grid gap-32 grid-cols-3 mb-20' : pageType.toUpperCase()!=='ITINERARIES'}">
+    <div class="flex w-full justify-center">
+      <div
+        :class="{'flex grid gap-10 grid-cols-1 lg:grid-cols-3 mb-20' : pageType.toUpperCase()!=='ITINERARIES'}"
+      >
         <div
           v-for="element in elementsFiltered"
           :key="element.id"

@@ -31,7 +31,7 @@
         <img :src="object.heroImage" :alt="object.name">
       </figure>
       <div class="card-body items-center">
-        <h2 class="card-title text-sm lg:text-2xl">
+        <h2 class="card-title text-sm md:text-2xl lg:text-2xl">
           {{ object.name }}
         </h2>
       </div>
