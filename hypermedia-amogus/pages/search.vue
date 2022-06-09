@@ -1,6 +1,8 @@
 <template>
   <div v-if="ready">
-    <HeroImage :title="searchResults.length + ' results found for ' + searchField" />
+    <HeroImage
+      :title="searchResults.length + ' results ' + (searchResults.length!=0 ? 'found for ' + searchField : '')"
+    />
     <div class="flex justify-center">
       <div
         class="flex w-4/5 lg:w-1/2 justify-center items-center bg-white py-6 px-2 rounded-xl shadow-xl"

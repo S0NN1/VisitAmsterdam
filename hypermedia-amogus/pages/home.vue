@@ -1,8 +1,10 @@
 <template>
-  <div class="mb-40">
-    <div class="container mx-auto w-11/12 lg:w-10/12 justify-center mt-20">
-      <h2>Latest Events</h2>
-      <CarouselItem />
+  <div>
+    <div class="container mx-auto w-11/12 lg:w-10/12 justify-center mt-11">
+      <h2 class="mb-5">
+        Latest Events
+      </h2>
+      <CarouselItem :carousel-images="events" />
       <div class="divider" />
 
       <div class="grid grid-cols-1 sm:grid-cols-2">
@@ -47,7 +49,9 @@
     </div>
 
     <div class="container mx-auto w-11/12 lg:w-10/12 justify-center mt-20">
-      <h2>Services provided by the city</h2>
+      <h2 class="mb-8">
+        Services provided by the city
+      </h2>
       <div class="flex justify-center">
         <div class="w-full grid gap-32 mb-20 m-4 grid-cols-1 sm:grid-cols-3">
           <div v-for="service in services" :key="service.id">
@@ -85,8 +89,25 @@ export default Vue.extend({
         })
       }
     )
+    const latestEvents = await fetch(BACKEND_URL + '/api/v1/events/getUpcoming').then(
+      res => res.json()
+    )
+    const craftedEvents = []
+    latestEvents.forEach(
+      (event) => {
+        craftedEvents.push({
+          id: event.id,
+          name: event.name,
+          description: event.description,
+          heroImage: event.heroImage,
+          date: event.eventDays[0].date,
+          time: event.eventDays[0].time
+        })
+      }
+    )
     return {
-      services: craftedServices
+      services: craftedServices,
+      events: craftedEvents
     }
   },
   data () {

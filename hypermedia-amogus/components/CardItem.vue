@@ -10,7 +10,7 @@
   </div>
   <div v-else-if="cardType==='EVENT'" class="card w-full bg-base-100 carousel-card shadow-xl">
     <div class="card-body" style="max-height: 80%">
-      <h2 class="card-title text-sm lg:text-2xl">
+      <h2 class="card-title text-sm md:text-base lg:text-2xl">
         {{ object.name }}
       </h2>
       <div class="line-clamp-5">

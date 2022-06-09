@@ -79,7 +79,7 @@
                       id="searchField"
                       v-model="searchField"
                       type="text"
-                      class="text-white placeholder-white appearance-none bg-transparent py-1 w-64"
+                      class="text-white placeholder-white appearance-none bg-transparent py-1 w-64 outline-none"
                       placeholder=""
                       @keyup.enter="search()"
                     >
@@ -120,22 +120,32 @@
           <div class="hero-overlay" style="background-color: transparent !important;">
             <div class="flex h-5/6" />
             <div
-              class="h-1/6"
+              class="flex h-1/6 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 align-baseline gap-6 text-white fill-white"
             >
-              <div class="flex w-full p-6">
-                <div class="flex fill-white">
-                  <div class="mx-6">
-                    <IconsSocialInstagramIcon width="2rem" height="2rem" />
-                  </div>
-                  <div class="mx-6">
-                    <IconsSocialYoutubeIcon width="2rem" height="2rem" />
-                  </div>
-                  <div class="mx-6">
-                    <IconsSocialFacebookIcon width="2rem" height="2rem" />
-                  </div>
-                  <div class="mx-6">
-                    <IconsSocialTwitterIcon width="2rem" height="2rem" />
-                  </div>
+              <div class="flex w-full justify-center grid grid-cols-4 gap-3 items-center">
+                <div class="flex w-full justify-center">
+                  <IconsSocialInstagramIcon
+                    :width="mobileDev ? '2rem' : '2.5rem'"
+                    :height="mobileDev ? '2rem' : '2.5rem'"
+                  />
+                </div>
+                <div class="flex w-full justify-center">
+                  <IconsSocialYoutubeIcon
+                    :width="mobileDev ? '2rem' : '2.5rem'"
+                    :height="mobileDev ? '2rem' : '2.5rem'"
+                  />
+                </div>
+                <div class="flex w-full justify-center">
+                  <IconsSocialFacebookIcon
+                    :width="mobileDev ? '2rem' : '2.5rem'"
+                    :height="mobileDev ? '2rem' : '2.5rem'"
+                  />
+                </div>
+                <div class="flex w-full justify-center">
+                  <IconsSocialTwitterIcon
+                    :width="mobileDev ? '2rem' : '2.5rem'"
+                    :height="mobileDev ? '2rem' : '2.5rem'"
+                  />
                 </div>
               </div>
             </div>
@@ -285,7 +295,20 @@ export default Vue.extend({
   layout: 'empty',
   data () {
     return {
+      mediaQuery: null,
+      mobileDev: false,
       searchField: ''
+    }
+  },
+  mounted () {
+    // eslint-disable-next-line nuxt/no-env-in-hooks
+    if (process.client) {
+      this.mediaQuery = matchMedia('(max-width: 1024px)')
+      this.mobileDev = this.mediaQuery.matches
+      const that = this
+      this.mediaQuery.addListener(() => {
+        that.mobileDev = that.mediaQuery.matches
+      })
     }
   },
   methods: {
