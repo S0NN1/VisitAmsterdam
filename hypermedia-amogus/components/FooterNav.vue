@@ -225,9 +225,9 @@ export default Vue.extend({
 
 <style scoped>
 .footer {
-  position: fixed;
+  /*position: fixed;*/
   display: block;
-  bottom: 0;
+  /*bottom: 0;*/
   background: linear-gradient(
     to top,
     #f05a28 0%,
