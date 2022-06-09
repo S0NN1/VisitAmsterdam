@@ -59,19 +59,21 @@
   </div>
   <div
     v-else-if="cardType==='ITINERARY'"
-    class="card w-full bg-base-100 box-shadow-card carousel-card no-rounded-left aspect-video h-full "
+    class="card w-full bg-base-100 box-shadow-card carousel-card no-rounded-left aspect-video h-72 lg:h-full "
   >
-    <div class="box-shadow-card-figure-alt h-full">
+    <div class="box-shadow-card-figure-alt h-full ">
       <div class="card-body">
-        <h3>
+        <h2 class="text-xl md:text-2xl lg:text-2xl">
           {{ object.name }}
-        </h3>
-        <h4 class="mb-2">
+        </h2>
+        <h4 class="text-base md:text-2xl lg:text-2xl mb-2">
           Duration: {{ object.duration }}h
         </h4>
-        <p class="line-clamp-3 justify-end">
-          {{ object.description }}
-        </p>
+        <div class="line-clamp-3 justify-end">
+          <p class=" text-sm md:text-2xl lg:text-2xl ">
+            {{ object.description }}
+          </p>
+        </div>
       </div>
       <div class="flex card-actions p-9 justify-end items-end">
         <NuxtLink
@@ -85,18 +87,32 @@
   </div>
   <div
     v-else-if="cardType==='COMPLEX'"
-    class=" w-full carousel-card"
   >
-    <div class="grid w-full grid-cols-3 gap-2" style="min-height: 100%">
-      <figure>
-        <img class="h-full rounded-xl" :src="object.heroImage" :alt="object.name">
-      </figure>
-      <figure class="col-span-2 row-span-2">
-        <img class="h-full rounded-xl" :src="object.heroImage" :alt="object.name">
-      </figure>
-      <figure>
-        <img :src="object.heroImage" class="h-full rounded-xl" :alt="object.name">
-      </figure>
+    <div
+      v-if="!mobile"
+      class=" h-full w-full carousel-card"
+    >
+      <div class="grid w-full grid-cols-3 gap-2" style="min-height: 100%">
+        <figure>
+          <img class="h-full rounded-xl" :src="object.stops[0].heroImage" :alt="object.name">
+        </figure>
+        <figure class="col-span-2 row-span-2">
+          <img class="h-full rounded-xl" :src="object.stops[1].heroImage" :alt="object.name">
+        </figure>
+        <figure>
+          <img :src="object.stops[2].heroImage" class="h-full rounded-xl" :alt="object.name">
+        </figure>
+      </div>
+    </div>
+    <div
+      v-else
+      class=" w-full h-full"
+    >
+      <CarouselItem
+        class="aspect-square h-30"
+        :is-complex="false"
+        :carousel-images="[{image: object.stops[0].heroImage},{image: object.stops[1].heroImage},{image: object.stops[2].heroImage},]"
+      />
     </div>
   </div>
 </template>
@@ -111,9 +127,13 @@ export default Vue.extend({
       type: String,
       default: 'FIGURE'
     },
+    mobile: {
+      type: Boolean,
+      default: false
+    },
     object: {
       type: Object,
-      default: () => JSON.parse('{ "heroImage": "https://via.placeholder.com/1920x1080", "name": "sus", "description": "' + Paragraph() + '", "date": "Wednesday 17", "time": "20.30", "link": "https://google.com", "duration": 8}')
+      default: () => JSON.parse('{ "heroImage": "https://via.placeholder.com/1920x1080", "name": "sus", "description": "' + Paragraph() + '", "date": "Wednesday 17", "time": "20.30", "link": "https://google.com", "duration": 8, "images": []}')
     }
   },
   data () {

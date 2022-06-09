@@ -4,12 +4,12 @@
       <h2 class="flex w-full mb-9">
         All itineraries
       </h2>
-      <AllCardsSection :page-type="'itineraries'" :elements="itineraries" />
+      <AllCardsSection :page-type="'itineraries'" :mobile="mobileDev" :elements="itineraries" />
     </div>
   </div>
 </template>
 
-<script lang="ts">
+<script>
 
 import Vue from 'vue'
 import { BACKEND_URL } from '~/assets/js/constants'
@@ -26,7 +26,23 @@ export default Vue.extend({
   },
   data () {
     return {
-      filter: 'All'
+      filter: 'All',
+      mediaQuery: {
+        type: Object,
+        default: null
+      },
+      mobileDev: false
+    }
+  },
+  mounted () {
+    // eslint-disable-next-line nuxt/no-env-in-hooks
+    if (process.client) {
+      this.mediaQuery = matchMedia('(max-width: 700px)')
+      this.mobileDev = this.mediaQuery.matches
+      const that = this
+      this.mediaQuery.addListener(() => {
+        that.mobileDev = that.mediaQuery.matches
+      })
     }
   }
 })

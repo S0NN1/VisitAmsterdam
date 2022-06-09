@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="drawer drawer-end">
-      <input id="my-drawer-3" type="checkbox" class="drawer-toggle">
+      <input id="my-drawer-3" type="checkbox" class="drawer-toggle" :checked="checked">
       <div class="drawer-content flex flex-col ">
         <!-- Navbar -->
         <div class="w-full navbar bg-primary">
@@ -179,19 +179,19 @@
               >
             </button>
           </li>
-          <!--          <li class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />-->
           <li class="sidebar-li w-full px-4">
             <NuxtLink
               to="/home"
               class="w-full text-white justify-center border-b-2 border-[#601616] border-opacity-20"
             >
-              <!--              <button class="flex items-center justify-center text-white">-->
               Home
-              <!--              </button>-->
             </NuxtLink>
           </li>
           <li class="sidebar-li w-full px-4">
-            <NuxtLink to="/events" class="w-full justify-center border-b-2 border-[#601616] border-opacity-20">
+            <NuxtLink
+              to="/events"
+              class="w-full justify-center border-b-2 border-[#601616] border-opacity-20"
+            >
               Events
             </NuxtLink>
           </li>
@@ -212,22 +212,34 @@
             </NuxtLink>
           </li>
           <li class="sidebar-li w-full px-4">
-            <NuxtLink to="/services" class="w-full justify-center border-b-2 border-[#601616] border-opacity-20">
+            <NuxtLink
+              to="/services"
+              class="w-full justify-center border-b-2 border-[#601616] border-opacity-20"
+            >
               Services
             </NuxtLink>
           </li>
           <li class="sidebar-li w-full px-4">
-            <NuxtLink to="/about" class="w-full justify-center border-b-2 border-[#601616] border-opacity-20">
+            <NuxtLink
+              to="/about"
+              class="w-full justify-center border-b-2 border-[#601616] border-opacity-20"
+            >
               About Us
             </NuxtLink>
           </li>
           <li class="sidebar-li w-full px-4">
-            <NuxtLink to="/contacts" class="w-full justify-center border-b-2 border-[#601616] border-opacity-20">
+            <NuxtLink
+              to="/contacts"
+              class="w-full justify-center border-b-2 border-[#601616] border-opacity-20"
+            >
               Contacts
             </NuxtLink>
           </li>
           <li class="sidebar-li w-full px-4">
-            <NuxtLink to="/tos" class="w-full justify-center border-b-2 border-[#601616] border-opacity-20">
+            <NuxtLink
+              to="/tos"
+              class="w-full justify-center border-b-2 border-[#601616] border-opacity-20"
+            >
               Terms Of Use
             </NuxtLink>
           </li>
@@ -270,8 +282,12 @@ export default {
     return {
       mediaQuery: null,
       mobileDev: false,
-      searchField: ''
+      searchField: '',
+      checked: false
     }
+  },
+  created () {
+    this.$nuxt.$on('closeDrawer', $event => this.closeDrawer($event))
   },
   mounted () {
     // eslint-disable-next-line nuxt/no-env-in-hooks
@@ -285,6 +301,9 @@ export default {
     }
   },
   methods: {
+    closeDrawer (event) {
+      this.checked = event
+    },
     search () {
       if (process.client) {
         window.location.href = '/search?input=' + this.searchField

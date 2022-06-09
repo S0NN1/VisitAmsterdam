@@ -9,7 +9,7 @@
         class="carousel-item w-full justify-center"
       >
         <div class="grid grid-cols-1 gap-y-5 lg:gap-4 lg:grid-cols-2">
-          <CardItem class="flex w-full sm:mb-5 lg:w-fit lg:max-w-2xl lg:h-full" :card-type="'FIGURE'" :object="image" />
+          <CardItem class="flex w-full sm:mb-5 " :card-type="'FIGURE'" :object="image" />
           <CardItem class="flex w-full" :card-type="'EVENT'" :object="image" />
         </div>
       </div>
@@ -26,7 +26,7 @@
     </div>
   </div>
   <div v-else>
-    <div class="carousel w-full h-full rounded-3xl sm:rounded-none">
+    <div class="carousel w-full h-full lg:rounded-3xl">
       <div
         v-for="(image, index) in carouselImages"
         :id="'imageCarousel' + index"
@@ -93,6 +93,9 @@ export default Vue.extend({
   },
   mounted () {
     this.timer()
+  },
+  created () {
+    console.log(this.carouselImages)
   },
   methods: {
     selectedIndex (index) {

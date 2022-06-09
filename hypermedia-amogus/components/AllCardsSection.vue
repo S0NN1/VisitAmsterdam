@@ -36,9 +36,13 @@
               class="hover:shadow-2xl transition ease-in-out duration-200"
             />
           </NuxtLink>
-          <NuxtLink v-else :to="'/itineraries/' + element.id.toString()" class="flex mb-10">
-            <CardItem :object="element" :card-type="pageCardType[pageType]" class="mr-4" />
-            <CardItem card-type="COMPLEX" />
+          <NuxtLink
+            v-else
+            :to="'/itineraries/' + element.id.toString()"
+            class="flex w-full grid grid-cols-1 gap-0 lg:grid-cols-2 lg:gap-3 mb-10"
+          >
+            <CardItem :object="element" :card-type="pageCardType[pageType]" class="flex w-full" />
+            <CardItem card-type="COMPLEX" :mobile="mobile" :object="element" class="flex w-full" />
           </NuxtLink>
         </div>
       </div>
@@ -55,6 +59,10 @@ export default {
     pageType: {
       type: String,
       default: 'events'
+    },
+    mobile: {
+      type: Boolean,
+      default: false
     },
     elements: {
       type: Array,
