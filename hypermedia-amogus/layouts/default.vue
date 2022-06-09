@@ -136,7 +136,7 @@
           </div>
           <div class="w-1/6" />
         </div>
-        <Nuxt :class="mobileDev ? 'mb-72' : 'mb-24'" :style="mobileDev ? '' : 'margin-top: -2.75rem'" />
+        <Nuxt :class="mobileDev ? 'mb-0' : 'mb-24'" :style="mobileDev ? '' : 'margin-top: -2.75rem'" />
         <FooterNav :mobile="mobileDev" />
       </div>
       <div class="drawer-side">

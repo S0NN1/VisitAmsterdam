@@ -1,5 +1,5 @@
 <template>
-  <footer class="footer w-full justify-center p-5">
+  <footer class="footer w-full justify-center p-5 lg:fixed sm:bottom-0">
     <div class="grid grid-cols-12">
       <div class="flex w-full md:col-span-2" />
       <div class="flex w-full col-span-10 md:col-span-8">
@@ -225,9 +225,7 @@ export default Vue.extend({
 
 <style scoped>
 .footer {
-  /*position: fixed;*/
   display: block;
-  /*bottom: 0;*/
   background: linear-gradient(
     to top,
     #f05a28 0%,
