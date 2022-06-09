@@ -7,9 +7,11 @@
       <CarouselItem :carousel-images="events" />
       <div class="divider" />
 
-      <div class="grid grid-cols-1 sm:grid-cols-2">
+      <div class="grid grid-cols-1 lg:grid-cols-2">
         <div>
-          <h2>Brief history of Amsterdam</h2>
+          <h2>
+            Brief history of Amsterdam
+          </h2>
           <p class="m-4 text-justify">
             YĪN YĪN is inspired by the psychedelic Thai funk of the 60s and 70s and combines this with disco, funk and
             electronica to create drawn-out spaced-out improvisations and dance floor squats.
@@ -17,15 +19,15 @@
             debut The Rabbit That Hunts Tigers on tape, followed by two 7” vinyl singles (with the Paradiso Vinyl Club
             and Bongo Joe Records). The record took them to stages all over Europe.
           </p>
-          <div class="text-center">
-            <div class="btn btn-lg btn-primary rounded-full fill-white my-4 sm:my-0 normal-case">
+          <div class="text-center mb-10 lg:mb-0">
+            <div class="btn btn-lg btn-primary rounded-full fill-white my-4 sm:my-0 normal-case ">
               Discover &emsp;
               <IconsPaperPlane width="1.7rem" height="1.7rem" />
             </div>
           </div>
         </div>
-        <div class="flex justify-center">
-          <CardItem type="FIGURE" class="sm:w-3/4" :object="amsterdamImage" />
+        <div class="flex w-full justify-center">
+          <CardItem type="FIGURE" :object="amsterdamImage" />
         </div>
       </div>
     </div>
@@ -53,7 +55,7 @@
         Services provided by the city
       </h2>
       <div class="flex justify-center">
-        <div class="w-full grid gap-32 mb-20 m-4 grid-cols-1 sm:grid-cols-3">
+        <div class="w-full grid gap-32 mb-20 m-4 grid gap-10 grid-cols-1 lg:grid-cols-3">
           <div v-for="service in services" :key="service.id">
             <NuxtLink :to="'/services/' + service.id">
               <CardItem
@@ -71,7 +73,7 @@
 
 <script>
 import Vue from 'vue'
-import { BACKEND_URL } from '~/assets/js/constants'
+import { BACKEND_URL, MONTHS, WEEK_DAYS } from '~/assets/js/constants'
 
 export default Vue.extend({
   name: 'HomePage',
@@ -95,13 +97,14 @@ export default Vue.extend({
     const craftedEvents = []
     latestEvents.forEach(
       (event) => {
+        const parsedDate = new Date(event.eventDays[0].date)
         craftedEvents.push({
           id: event.id,
           name: event.name,
           description: event.description,
           heroImage: event.heroImage,
-          date: event.eventDays[0].date,
-          time: event.eventDays[0].time
+          date: WEEK_DAYS[parsedDate.getDay()] + ' ' + parsedDate.getDate() + ' ' + MONTHS[parsedDate.getMonth()],
+          time: event.eventDays[0].startTime.substring(0, 5)
         })
       }
     )
