@@ -8,11 +8,10 @@
     </div>
   </div>
 </template>
-<script lang="ts">
-import Vue from 'vue'
+<script>
 import { BACKEND_URL } from '~/assets/js/constants'
 
-export default Vue.extend({
+export default {
   name: 'ServicesPage',
   async asyncData () {
     const services = await fetch(BACKEND_URL + '/api/v1/services/getAll').then(
@@ -27,5 +26,5 @@ export default Vue.extend({
       filter: 'All'
     }
   }
-})
+}
 </script>

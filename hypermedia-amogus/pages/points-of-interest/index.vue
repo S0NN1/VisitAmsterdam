@@ -9,12 +9,11 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 
-import Vue from 'vue'
 import { BACKEND_URL } from '~/assets/js/constants'
 
-export default Vue.extend({
+export default {
   name: 'PointsOfInterestPage',
   async asyncData () {
     const pois = await fetch(BACKEND_URL + '/api/v1/points-of-interest/getAll').then(
@@ -29,5 +28,5 @@ export default Vue.extend({
       filter: 'All'
     }
   }
-})
+}
 </script>

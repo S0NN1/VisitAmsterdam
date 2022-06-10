@@ -209,10 +209,9 @@
   </footer>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script>
 
-export default Vue.extend({
+export default {
   name: 'FooterNav',
   props: {
     mobile: {
@@ -220,7 +219,7 @@ export default Vue.extend({
       default: false
     }
   }
-})
+}
 </script>
 
 <style scoped>

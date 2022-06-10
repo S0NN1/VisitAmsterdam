@@ -52,6 +52,7 @@
 
 <script>
 import { Paragraph } from 'beemovie'
+import { BACKEND_URL } from 'assets/js/constants'
 
 export default {
   name: 'AllCardsSection',
@@ -71,7 +72,7 @@ export default {
   },
   data () {
     return {
-      filters: ['All', 'Summer', 'Winter', 'Spring', 'Autumn'],
+      filters: ['All'/*, 'Summer', 'Winter', 'Spring', 'Autumn' */],
       activeFilter: 'All',
       elementsFiltered: [],
       pageCardType: {
@@ -83,8 +84,16 @@ export default {
       }
     }
   },
-  mounted () {
+  async mounted () {
+    const filters = await fetch(BACKEND_URL + '/api/v1/tags/' + this.pageType.toLowerCase() + '/getAll').then(res => res.json())
+    const that = this
+    filters.forEach(function (filter) {
+      that.filters.push(filter.name.substring(0, 1).toUpperCase() + filter.name.substring(1).toLowerCase())
+    })
     this.fetchElements()
+    if (this.$route.query.filter !== undefined) {
+      this.applyFilter(this.$route.query.filter, this.pageType)
+    }
   },
   methods: {
     craftElementObj (item, pageType) {
@@ -147,10 +156,10 @@ export default {
       })
     },
     applyFilter (filter, pageType) {
-      this.activeFilter = filter
+      this.activeFilter = filter.substring(0, 1).toUpperCase() + filter.substring(1).toLowerCase()
       this.elementsFiltered = []
       const that = this
-      if (filter === 'ALL') {
+      if (filter === 'All') {
         this.elements.forEach(function (item) {
           const obj = that.craftElementObj(item, that.pageType)
           that.elementsFiltered.push(obj)
@@ -166,7 +175,9 @@ export default {
             })
             break
 
-          case 'itineraries' || 'points-of-interest':
+          case 'points-of-interest':
+          case 'itineraries':
+            console.log('SAS')
             filteredTemp = this.elements.filter((element) => {
               return element.tags.some((item) => {
                 return item.name.toUpperCase() === filter.toUpperCase()

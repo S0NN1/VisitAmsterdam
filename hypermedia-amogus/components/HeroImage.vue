@@ -6,10 +6,9 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script>
 
-export default Vue.extend({
+export default {
   name: 'HeroImage',
   props: {
     imageUrl: {
@@ -21,7 +20,7 @@ export default Vue.extend({
       default: 'IMG'
     }
   }
-})
+}
 </script>
 
 <style scoped>

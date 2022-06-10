@@ -99,7 +99,6 @@ export default Vue.extend({
       })
     }
     const poiEvents = []
-    console.log(poiDetailsData.events)
     if (poiDetailsData.events !== undefined) {
       poiDetailsData.events.forEach(function (event) {
         poiEvents.push({

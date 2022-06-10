@@ -57,14 +57,14 @@
                 </div>
               </li>
               <li>
-                <button class="flex items-center justify-center text-white fill-white">
+                <a href="tel:+3114020" class="flex items-center justify-center text-white fill-white">
                   <IconsPhoneIcon class="icon-shadow fill-white" width="1.5rem" height="1.5rem" />
-                </button>
+                </a>
               </li>
               <li>
-                <button class="flex items-center justify-center text-white fill-white">
+                <NuxtLink to="/contacts" class="flex items-center justify-center text-white fill-white">
                   <IconsQuestionIcon class="icon-shadow" width="1.5rem" height="1.5rem" />
-                </button>
+                </NuxtLink>
               </li>
               <li>
                 <button class="flex items-center justify-center text-white fill-white">

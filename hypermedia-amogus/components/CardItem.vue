@@ -117,11 +117,10 @@
   </div>
 </template>
 
-<script lang="ts">
-import Vue from 'vue'
+<script>
 import { Paragraph } from 'beemovie'
 
-export default Vue.extend({
+export default {
   props: {
     cardType: {
       type: String,
@@ -140,5 +139,5 @@ export default Vue.extend({
     return {}
   },
   methods: {}
-})
+}
 </script>
