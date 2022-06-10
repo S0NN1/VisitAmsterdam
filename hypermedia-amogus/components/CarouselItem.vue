@@ -10,7 +10,9 @@
       >
         <div class="grid grid-cols-1 gap-y-5 lg:gap-4 lg:grid-cols-2">
           <CardItem class="flex w-full sm:mb-5 " :card-type="'FIGURE'" :object="image" />
-          <CardItem class="flex w-full" :card-type="'EVENT'" :object="image" />
+          <NuxtLink :to="image.path">
+            <CardItem class="flex w-full" :card-type="'EVENT'" :object="image" />
+          </NuxtLink>
         </div>
       </div>
     </div>

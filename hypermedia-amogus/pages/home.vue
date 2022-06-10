@@ -104,7 +104,8 @@ export default Vue.extend({
           description: event.description,
           heroImage: event.heroImage,
           date: WEEK_DAYS[parsedDate.getDay()] + ' ' + parsedDate.getDate() + ' ' + MONTHS[parsedDate.getMonth()],
-          time: event.eventDays[0].startTime.substring(0, 5)
+          time: event.eventDays[0].startTime.substring(0, 5),
+          path: '/events/' + event.id
         })
       }
     )

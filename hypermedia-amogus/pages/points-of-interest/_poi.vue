@@ -50,6 +50,7 @@
       <MapItem
         :markers="[{latitude: poiDetails.latitude, longitude: poiDetails.longitude, address: poiDetails.address}]"
       />
+
       <div class="flex divider" />
       <div class="flex w-full justify-start">
         <div
@@ -62,6 +63,11 @@
           </NuxtLink>
         </div>
       </div>
+
+      <h2 class="mt-8">
+        Upcoming Events
+      </h2>
+      <CarouselItem :carousel-images="poiEvents" class="mt-4" />
     </div>
   </div>
 </template>
@@ -77,8 +83,8 @@ export default Vue.extend({
       res => res.json()
     )
     const carouselImagesData = []
-    if (poiDetailsData.poiPictures !== undefined) {
-      poiDetailsData.poiPictures.forEach(function (picture) {
+    if (poiDetailsData.pictures !== undefined) {
+      poiDetailsData.pictures.forEach(function (picture) {
         carouselImagesData.push(
           {
             image: picture.path,
@@ -86,14 +92,31 @@ export default Vue.extend({
             description: '',
             date: '',
             time: '',
-            link: ''
+            link: '',
+            path: '#'
           }
         )
       })
     }
+    const poiEvents = []
+    console.log(poiDetailsData.events)
+    if (poiDetailsData.events !== undefined) {
+      poiDetailsData.events.forEach(function (event) {
+        poiEvents.push({
+          heroImage: event.heroImage,
+          name: event.name,
+          description: event.description,
+          date: event.eventDays[0].date,
+          time: event.eventDays[0].startTime,
+          link: event.infoUrl,
+          path: '/events/' + event.id
+        })
+      })
+    }
     return {
       poiDetails: poiDetailsData,
-      carouselImages: carouselImagesData
+      carouselImages: carouselImagesData,
+      poiEvents
     }
   },
   data () {

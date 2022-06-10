@@ -89,7 +89,8 @@ export default Vue.extend({
           description: event.description,
           date: WEEK_DAYS[eventDate.getDay()] + ' ' + eventDate.getDate() + ' ' + MONTHS[eventDate.getMonth()],
           time: event.eventDays[0].startTime.substring(0, 5),
-          link: '/events/' + event.id
+          link: '/events/' + event.id,
+          path: '/events/' + event.id
         })
         chosenEvents.push(event.id)
       }

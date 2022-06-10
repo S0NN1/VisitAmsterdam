@@ -34,7 +34,13 @@
             <div />
             <!--            TODO pipe-->
             <div class="flex items-center text-right justify-end" :class="!mobileDev ? 'col-span-4' : 'col-span-10'">
-              <h4><b>{{ eventDetails.location.name }}</b></h4>
+              <h4>
+                <NuxtLink :to="'/points-of-interest/' + eventDetails.location.id">
+                  <b>{{
+                    eventDetails.location.name
+                  }}</b>
+                </NuxtLink>
+              </h4>
             </div>
           </div>
           <div class="mt-4 text-justify">
