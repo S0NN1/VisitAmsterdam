@@ -10,23 +10,23 @@
             </h1>
             <div v-if="!mobileDev" class="flex" />
           </div>
-          <div class="grid grid-cols-2 mt-10 gap-y-4 justify-center gap-x-4">
-            <p class="text-right lg:text-left">
+          <div class="grid grid-cols-1 md:grid-cols-2 mt-10 gap-y-4 justify-center gap-x-4">
+            <p class="text-center md:text-right lg:text-left">
               <b>Tourism Office Phone</b>
             </p>
-            <p class="text-left lg:text-center">
+            <p class="text-center md:text-left lg:text-center">
               <a href="tel:+3114020">+31 14020</a>
             </p>
-            <p class="text-right lg:text-left">
+            <p class="text-center md:text-right lg:text-left">
               <b>Tourism Office Email</b>
             </p>
-            <p class="text-left lg:text-center">
+            <p class="text-center md:text-left lg:text-center">
               <a href="mailto:tourism@amsterdam.ol">tourism@amsterdam.ol</a>
             </p>
-            <p class="text-right lg:text-left">
+            <p class="text-center md:text-right lg:text-left">
               <b>Tourism Office Website</b>
             </p>
-            <p class="text-left lg:text-center">
+            <p class="text-center md:text-left lg:text-center">
               <a href="https://www.amsterdam.info/tips/touristoffice/" target="_blank">www.amsterdam.info</a>
             </p>
           </div>
