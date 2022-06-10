@@ -63,7 +63,7 @@
                 </NuxtLink>
               </li>
               <li>
-                <NuxtLink to="#">
+                <NuxtLink to="/about">
                   <b>About</b>
                 </NuxtLink>
               </li>

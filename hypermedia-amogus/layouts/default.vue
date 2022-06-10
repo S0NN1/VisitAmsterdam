@@ -125,7 +125,7 @@
                 </NuxtLink>
               </li>
               <li>
-                <NuxtLink to="#">
+                <NuxtLink to="/about">
                   <b
                     class="text-[#16215b]"
                     :class="$nuxt.$route.name==='about' ? 'underline decoration-2 decoration-sky-500' : ''"

@@ -60,7 +60,7 @@
                 <p
                   class="text-sm font-medium truncate"
                 >
-                  About Us
+                  About
                 </p>
               </NuxtLink>
               <NuxtLink class="flex w-full" to="tos">
