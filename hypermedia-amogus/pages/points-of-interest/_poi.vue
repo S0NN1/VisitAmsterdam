@@ -58,7 +58,7 @@
           :key="tag+index"
           class="badge mr-4 p-5 font-bold tag-badge text-white cursor-pointer hover:bg-primary"
         >
-          <NuxtLink :to="'/points-of-interests?tag=' + tag.name">
+          <NuxtLink :to="'/points-of-interest?tag=' + tag.name">
             {{ tag.name }}
           </NuxtLink>
         </div>

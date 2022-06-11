@@ -64,7 +64,7 @@
           :key="tag.name"
           class="badge mr-4 p-5 font-bold tag-badge text-white cursor-pointer hover:bg-primary"
         >
-          <NuxtLink :to="'/itineraries?tag=' + tag">
+          <NuxtLink :to="'/itineraries?tag=' + tag.name">
             {{ tag.name }}
           </NuxtLink>
         </div>

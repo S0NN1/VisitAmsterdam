@@ -92,12 +92,16 @@
         </div>
       </div>
       <div class="divider" />
-      <div
-        v-for="category in eventDetails.categories"
-        :key="category.name"
-        class="badge badge-lg badge-neutral p-4 m-2"
-      >
-        <b>{{ category.name }}</b>
+      <div class="flex w-full justify-start">
+        <div
+          v-for="category in eventDetails.categories"
+          :key="category.name"
+          class="badge mr-4 p-5 font-bold tag-badge text-white cursor-pointer hover:bg-primary"
+        >
+          <NuxtLink :to="'/events?category=' + category.name">
+            {{ category.name }}
+          </NuxtLink>
+        </div>
       </div>
     </div>
   </div>
