@@ -154,6 +154,7 @@ export default {
         const obj = that.craftElementObj(item, that.pageType)
         that.elementsFiltered.push(obj)
       })
+      console.log(this.elementsFiltered)
     },
     applyFilter (filter, pageType) {
       this.activeFilter = filter.substring(0, 1).toUpperCase() + filter.substring(1).toLowerCase()
@@ -177,7 +178,6 @@ export default {
 
           case 'points-of-interest':
           case 'itineraries':
-            console.log('SAS')
             filteredTemp = this.elements.filter((element) => {
               return element.tags.some((item) => {
                 return item.name.toUpperCase() === filter.toUpperCase()

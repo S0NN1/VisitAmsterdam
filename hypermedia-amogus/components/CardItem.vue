@@ -99,7 +99,7 @@
         <figure class="col-span-2 row-span-2">
           <img class="h-full rounded-xl" :src="object.stops[1].heroImage" :alt="object.name">
         </figure>
-        <figure>
+        <figure v-if="object.stops[2]!==undefined">
           <img :src="object.stops[2].heroImage" class="h-full rounded-xl" :alt="object.name">
         </figure>
       </div>
