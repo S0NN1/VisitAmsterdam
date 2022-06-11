@@ -15,7 +15,7 @@ public class ItineraryPicture {
     private String description;
     @ManyToOne
     @JoinColumn(name = "itinerary_id", nullable = false)
-    @JsonBackReference("poi-picture")
+    @JsonBackReference("itinerary-picture")
     private Itinerary itinerary;
 
     public ItineraryPicture(){}
