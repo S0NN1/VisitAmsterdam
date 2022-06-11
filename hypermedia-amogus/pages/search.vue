@@ -93,7 +93,6 @@ export default {
         this.searchResults = this.results
       } else {
         that.searchResults = this.results.filter((element) => {
-          console.log(element.type.toUpperCase())
           return element.type.toUpperCase() === filter.toUpperCase()
         })
       }

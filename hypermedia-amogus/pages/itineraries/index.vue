@@ -20,6 +20,7 @@ export default Vue.extend({
     const itineraries = await fetch(BACKEND_URL + '/api/v1/itineraries/getAll').then(
       res => res.json()
     )
+    console.log(itineraries)
     return {
       itineraries
     }
