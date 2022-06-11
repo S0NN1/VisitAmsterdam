@@ -1,6 +1,6 @@
-export const BACKEND_URL = 'http://localhost:8080'
+// export const BACKEND_URL = 'http://localhost:8080'
 // export const BACKEND_URL = 'http://192.168.178.20:8080'
-// export const BACKEND_URL = 'https://hypbackend.lucapirovano.com'
+export const BACKEND_URL = 'https://hypbackend.lucapirovano.com'
 export const MONTHS = {
   0: 'Jan',
   1: 'Feb',
