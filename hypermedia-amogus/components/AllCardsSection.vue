@@ -91,8 +91,23 @@ export default {
       that.filters.push(filter.name.substring(0, 1).toUpperCase() + filter.name.substring(1).toLowerCase())
     })
     this.fetchElements()
-    if (this.$route.query.filter !== undefined) {
-      this.applyFilter(this.$route.query.filter, this.pageType)
+    switch (that.pageType.toLowerCase()) {
+      case 'events':
+        if (this.$route.query.category !== undefined) {
+          this.applyFilter(this.$route.query.category, this.pageType)
+        }
+        break
+      case 'itineraries':
+      case 'points-of-interest':
+        if (this.$route.query.tag !== undefined) {
+          this.applyFilter(this.$route.query.tag, this.pageType)
+        }
+        break
+      case 'services':
+        if (this.$route.query.serviceTag !== undefined) {
+          this.applyFilter(this.$route.query.serviceTag, this.pageType)
+        }
+        break
     }
   },
   methods: {
