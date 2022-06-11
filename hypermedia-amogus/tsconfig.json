@@ -26,8 +26,8 @@
     "types": [
       "@nuxt/types",
       "@nuxtjs/axios",
-      "nuxt-leaflet",
-      "@types/node"
+      "@types/node",
+      "nuxt-leaflet"
     ]
   },
   "exclude": [

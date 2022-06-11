@@ -1,14 +1,19 @@
+<!--TODO: Responsive-->
 <template>
   <div v-if="isComplex">
-    <div id="carousel" class="carousel w-full carousel-container pb-3">
+    <div id="carousel" class="carousel w-full h-3/4 lg:h-96 carousel-container pb-3">
       <div
         v-for="(image, index) in carouselImages"
         :id="'imageCarousel' + index"
         :key="index"
-        class="carousel-item w-full justify-center p-4"
+        class="carousel-item w-full justify-center"
       >
-        <CardItem class="flex-none mr-10 w-fit max-w-2xl h-fit" />
-        <CardItem class="flex-none w-fit max-w-2xl" :card-type="'EVENT'" />
+        <div class="grid grid-cols-1 gap-y-5 lg:gap-4 lg:grid-cols-2">
+          <CardItem class="flex w-full sm:mb-5 " :card-type="'FIGURE'" :object="image" />
+          <NuxtLink :to="image.path">
+            <CardItem class="flex w-full" :card-type="'EVENT'" :object="image" />
+          </NuxtLink>
+        </div>
       </div>
     </div>
     <div class="flex justify-center w-full gap-2">
@@ -23,7 +28,7 @@
     </div>
   </div>
   <div v-else>
-    <div class="carousel w-full h-full">
+    <div class="carousel w-full h-full lg:rounded-3xl">
       <div
         v-for="(image, index) in carouselImages"
         :id="'imageCarousel' + index"
@@ -31,10 +36,9 @@
         class="carousel-item w-full"
         :style="{'background-image': 'url(\'' + image.image + '\')'}"
         style="background-position: center; background-size: cover"
-      >
-      </div>
+      />
     </div>
-    <div class="flex justify-center w-full py-2 gap-2">
+    <div v-if="carouselImages.length>1" class="flex justify-center w-full py-2 gap-2">
       <a
         v-for="(image, index) in carouselImages"
         :key="'imageCarousel' + index"
@@ -47,7 +51,7 @@
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
 import { Paragraph } from 'beemovie'
 
@@ -56,21 +60,21 @@ export default Vue.extend({
     carouselImages: {
       type: Array,
       default: () => [{
-        image: 'https://via.placeholder.com/1920x1080',
+        heroImage: 'https://via.placeholder.com/1920x1080',
         name: 'sus',
         description: +Paragraph(),
         date: 'Wednesday 17',
         time: '20.30',
         link: 'https://google.com'
       }, {
-        image: 'https://via.placeholder.com/1920x1080',
+        heroImage: 'https://via.placeholder.com/1920x1080',
         name: 'sus',
         description: +Paragraph(),
         date: 'Wednesday 17',
         time: '20.30',
         link: 'https://google.com'
       }, {
-        image: 'https://via.placeholder.com/1920x1080',
+        heroImage: 'https://via.placeholder.com/1920x1080',
         name: 'sus',
         description: +Paragraph(),
         date: 'Wednesday 17',
@@ -92,8 +96,11 @@ export default Vue.extend({
   mounted () {
     this.timer()
   },
+  created () {
+    console.log(this.carouselImages)
+  },
   methods: {
-    selectedIndex (index: number) {
+    selectedIndex (index) {
       this.activeIndex = index
       this.clearTimer()
     },
@@ -114,7 +121,7 @@ export default Vue.extend({
       window.clearTimeout(this.timerId)
       this.timer()
     },
-    isElementInViewport (el: any) {
+    isElementInViewport (el) {
       const rect = el.getBoundingClientRect()
 
       return (
@@ -124,7 +131,7 @@ export default Vue.extend({
         rect.right <= (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */
       )
     },
-    scrollToElement (id: any) {
+    scrollToElement (id) {
       // takes input id with hash
       // eg. #cafe-menu
       const el = document.querySelector(id)

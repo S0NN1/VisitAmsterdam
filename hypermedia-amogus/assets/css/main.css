@@ -1,4 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -10,6 +11,12 @@
   h1 {
     @apply font-extrabold;
     @apply text-4xl;
+    color: #16215B;
+  }
+
+  h2 {
+    @apply font-bold;
+    @apply text-3xl;
     color: #16215B;
   }
 
@@ -27,9 +34,14 @@
 
   p {
     font-size: 1.15rem;
+    color: #16215B;
+  }
+
+  li {
+    font-size: 1.15rem;
+    color: #16215B;
   }
 }
-
 
 .box-shadow-card {
   box-shadow: 0px 0px 20px rgb(97, 188, 255, 0.19);
@@ -64,12 +76,4 @@
 
 .no-rounded-left {
   border-radius: 0 0.75rem 0.75rem 0;
-}
-
-.icon-footer {
-  background-color: #263049;
-}
-
-.basic-layout {
-  margin-top: -2.75rem;
 }

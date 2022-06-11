@@ -1,8 +1,8 @@
 package it.polimi.hypermedia.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
-import it.polimi.hypermedia.backend.model.enums.ServiceType;
 
 import javax.persistence.*;
 import java.util.List;
@@ -14,27 +14,35 @@ public class Service {
     private Long id;
     @NotNull
     private String name;
+    @ManyToOne
+    @JoinColumn(name = "service_id")
+    @JsonIgnoreProperties("services")
     @NotNull
-    private ServiceType serviceType;
+    private ServiceTag serviceTag;
     @NotNull
     private String address;
     @NotNull
     private double latitude;
     @NotNull
     private double longitude;
-
+    @OneToOne(cascade = CascadeType.ALL)
+    private VisitInfo visitInfo;
     @OneToMany(cascade = CascadeType.ALL)
     @JsonManagedReference("service-picture")
-    private List<ServicePicture> servicePicture;
-    public Service(String name, ServiceType serviceType, String address, double latitude, double longitude) {
+    private List<ServicePicture> pictures;
+
+    private String heroImage;
+
+    public Service(String name, ServiceTag serviceTag, String address, double latitude, double longitude) {
         this.name = name;
-        this.serviceType = serviceType;
+        this.serviceTag = serviceTag;
         this.address = address;
         this.latitude = latitude;
         this.longitude = longitude;
     }
 
-    protected Service() {}
+    protected Service() {
+    }
 
     public Long getId() {
         return id;
@@ -46,14 +54,6 @@ public class Service {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public ServiceType getServiceType() {
-        return serviceType;
-    }
-
-    public void setServiceType(ServiceType serviceType) {
-        this.serviceType = serviceType;
     }
 
     public String getAddress() {
@@ -80,11 +80,39 @@ public class Service {
         this.longitude = longitude;
     }
 
-    public List<ServicePicture> getServicePicture() {
-        return servicePicture;
+    public List<ServicePicture> getPictures() {
+        return pictures;
     }
 
-    public void setServicePicture(List<ServicePicture> servicePicture) {
-        this.servicePicture = servicePicture;
+    public void setPictures(List<ServicePicture> pictures) {
+        this.pictures = pictures;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public VisitInfo getVisitInfo() {
+        return visitInfo;
+    }
+
+    public void setVisitInfo(VisitInfo visitInfo) {
+        this.visitInfo = visitInfo;
+    }
+
+    public ServiceTag getServiceTag() {
+        return serviceTag;
+    }
+
+    public void setServiceTag(ServiceTag serviceTag) {
+        this.serviceTag = serviceTag;
+    }
+
+    public String getHeroImage() {
+        return heroImage;
+    }
+
+    public void setHeroImage(String heroImage) {
+        this.heroImage = heroImage;
     }
 }

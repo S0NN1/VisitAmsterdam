@@ -1,16 +1,13 @@
 package it.polimi.hypermedia.backend.entities;
 
-import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
-import java.net.URL;
 import java.util.List;
 
 @Entity
-@JsonIdentityInfo(generator = ObjectIdGenerators.UUIDGenerator.class, property = "@UUID")
 public class Event {
     @Id
     @GeneratedValue
@@ -24,10 +21,10 @@ public class Event {
     @NotNull
     private double price = 0.0;
 
-    private String heroImageUrl;
+    private String heroImage;
     @OneToMany(mappedBy = "event", cascade = CascadeType.ALL)
     @JsonManagedReference("event-picture")
-    private List<EventPicture> eventPictures;
+    private List<EventPicture> pictures;
 
     private String infoUrl;
     private String bookingUrl;
@@ -43,6 +40,7 @@ public class Event {
 
     @ManyToOne
     @JoinColumn(name = "poi_id", nullable = false)
+    @JsonIgnoreProperties("events")
     private PointOfInterest location;
 
     public Long getId() {
@@ -73,20 +71,20 @@ public class Event {
         this.price = price;
     }
 
-    public String getHeroImageUrl() {
-        return heroImageUrl;
+    public String getHeroImage() {
+        return heroImage;
     }
 
-    public void setHeroImageUrl(String heroImageUrl) {
-        this.heroImageUrl = heroImageUrl;
+    public void setHeroImage(String heroImageUrl) {
+        this.heroImage = heroImageUrl;
     }
 
     public List<EventPicture> getPictures() {
-        return eventPictures;
+        return pictures;
     }
 
     public void addPicture(EventPicture eventPicture) {
-        this.eventPictures.add(eventPicture);
+        this.pictures.add(eventPicture);
     }
 
     public String getInfoUrl() {

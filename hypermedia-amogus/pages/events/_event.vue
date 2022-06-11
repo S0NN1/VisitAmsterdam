@@ -1,7 +1,7 @@
 <template>
   <div>
-    <CarouselItem class="w-full" :is-complex="false" style="height: 45vh" :carousel-images="carouselImages" />
-    <div v-if="ready" class="container mx-auto w-10/12 justify-center mt-14 mb-24">
+    <CarouselItem class="w-full aspect-video h-96" :is-complex="false" :carousel-images="carouselImages" />
+    <div class="container mx-auto w-11/12 lg:w-10/12 justify-center mt-14 mb-24">
       <!--      TODO breadcrumbs-->
       <div class="grid grid-cols-10">
         <div :class="!mobileDev ? 'col-span-4' : 'col-span-10'">
@@ -34,7 +34,13 @@
             <div />
             <!--            TODO pipe-->
             <div class="flex items-center text-right justify-end" :class="!mobileDev ? 'col-span-4' : 'col-span-10'">
-              <h4><b>{{ eventDetails.location.name }}</b></h4>
+              <h4>
+                <NuxtLink :to="'/points-of-interest/' + eventDetails.location.id">
+                  <b>{{
+                    eventDetails.location.name
+                  }}</b>
+                </NuxtLink>
+              </h4>
             </div>
           </div>
           <div class="mt-4 text-justify">
@@ -55,7 +61,7 @@
             </div>
             <h3><b>Price:</b> &euro; {{ parseFloat(eventDetails.price).toFixed(2) }}</h3>
             <h3>
-              <b>Availability:</b>
+              <b>Availability: </b>
               <div class="badge badge-lg badge-success text-white">
                 Yes
               </div>
@@ -86,27 +92,47 @@
         </div>
       </div>
       <div class="divider" />
-      <div v-for="category in eventDetails.categories" class="badge badge-lg badge-neutral p-4">
+      <div
+        v-for="category in eventDetails.categories"
+        :key="category.name"
+        class="badge badge-lg badge-neutral p-4 m-2"
+      >
         <b>{{ category.name }}</b>
       </div>
     </div>
   </div>
 </template>
 
-<script lang="ts">
+<script>
 import Vue from 'vue'
-import { BACKEND_URL, MONTHS } from 'assets/js/constants'
+import { BACKEND_URL, MONTHS } from '~/assets/js/constants'
 
 export default Vue.extend({
   name: 'EventPage',
+  async asyncData ({ params }) {
+    const eventDetailsData = await fetch(BACKEND_URL + '/api/v1/events/get?id=' + params.event).then(
+      res => res.json()
+    )
+    const carouselImagesData = []
+    eventDetailsData.pictures.forEach(function (picture) {
+      carouselImagesData.push(
+        {
+          image: picture.path,
+          name: '',
+          description: '',
+          date: '',
+          time: '',
+          link: ''
+        }
+      )
+    })
+    return {
+      eventDetails: eventDetailsData,
+      carouselImages: carouselImagesData
+    }
+  },
   data () {
     return {
-      eventDetails: {
-        type: Object,
-        default: null
-      },
-      carouselImages: [] as Array<any>,
-      ready: false,
       months: MONTHS,
       mediaQuery: {
         type: Object,
@@ -115,7 +141,8 @@ export default Vue.extend({
       mobileDev: false
     }
   },
-  async mounted () {
+  mounted () {
+    // eslint-disable-next-line nuxt/no-env-in-hooks
     if (process.client) {
       this.mediaQuery = matchMedia('(max-width: 700px)')
       this.mobileDev = this.mediaQuery.matches
@@ -124,28 +151,6 @@ export default Vue.extend({
         that.mobileDev = that.mediaQuery.matches
       })
     }
-    this.eventDetails = await this.$axios.$get(BACKEND_URL + '/api/v1/event/getById?id=' + this.$route.query.id)
-    this.carouselImages = this.craftCarouselImages(this.eventDetails)
-    this.ready = true
-  },
-  methods: {
-    craftCarouselImages (event: { type?: ObjectConstructor; default?: null; pictures?: any; }) {
-      const pictureObj: any[] = []
-      event.pictures.forEach(function (picture, index) {
-        pictureObj.push(
-          {
-            image: picture.path,
-            name: '',
-            description: '',
-            date: '',
-            time: '',
-            link: ''
-          }
-        )
-      })
-      return pictureObj
-    }
-
   }
 })
 </script>

@@ -1,5 +1,6 @@
 package it.polimi.hypermedia.backend.entities;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.sun.istack.NotNull;
 
 import javax.persistence.*;
@@ -21,10 +22,15 @@ public class Itinerary {
     @NotNull
     @Positive
     private int duration;
+
+    @OneToMany(cascade = CascadeType.ALL)
+    @JsonManagedReference("itinerary-picture")
+    private List<ItineraryPicture> pictures;
+
     private String heroImage;
 
     @NotNull
-    @OneToMany
+    @ManyToMany
     private List<PointOfInterest> stops;
 
     public Itinerary(String name, String description, List<ItineraryTag> tags, int duration, String heroImage) {
@@ -88,5 +94,13 @@ public class Itinerary {
 
     public void setStops(List<PointOfInterest> stops) {
         this.stops = stops;
+    }
+
+    public List<ItineraryPicture> getPictures() {
+        return pictures;
+    }
+
+    public void setPictures(List<ItineraryPicture> pictures) {
+        this.pictures = pictures;
     }
 }
