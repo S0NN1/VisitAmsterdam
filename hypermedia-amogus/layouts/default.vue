@@ -4,7 +4,7 @@
       <input id="my-drawer-3" type="checkbox" class="drawer-toggle" :checked="checked">
       <div class="drawer-content flex flex-col ">
         <!-- Navbar -->
-        <div class="w-full navbar bg-primary">
+        <div class="w-full navbar bg-primary h-12">
           <div class="flex-1 sm:px-2 sm:mx-2">
             <NuxtLink to="/" class="w-full">
               <span class="flex text-2xl text-white">
