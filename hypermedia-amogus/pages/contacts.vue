@@ -33,7 +33,8 @@
         </div>
         <img
           v-if="!mobileDev"
-          src="https://images.unsplash.com/photo-1516909973415-3ab32de56569?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1025"
+          :src="require('@/static/img/contacts.webp')"
+          alt="amsterdam-canal"
           class="w-full"
         >
       </div>
@@ -61,10 +62,27 @@ import Vue from 'vue'
 
 export default Vue.extend({
   name: 'ContactsPage',
+  title: 'Contact Us',
   data () {
     return {
       mobileDev: false,
       mediaQuery: null
+    }
+  },
+  head () {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Contacts related to the website and Amsterdam'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'contacts, contact-us, help'
+        }
+      ]
     }
   },
   mounted () {

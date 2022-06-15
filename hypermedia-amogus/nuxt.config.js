@@ -4,7 +4,7 @@ export default {
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
-    title: 'hypermedia-amogus',
+    title: 'AMG',
     htmlAttrs: {
       lang: 'en'
     },
@@ -17,7 +17,7 @@ export default {
       {
         hid: 'description',
         name: 'description',
-        content: ''
+        content: 'Amsterdam local guide site, discover the local services, hottest events, and main attractions'
       },
       {
         name: 'format-detection',

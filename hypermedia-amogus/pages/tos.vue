@@ -20,12 +20,25 @@
         license you may not:
       </p>
 
-      <ul>
+      <ul class="list-disc list-inside">
         <li>modify or copy the materials;</li>
         <li>use the materials for any commercial purpose or for any public display;</li>
         <li>attempt to reverse engineer any software contained on Amogus's Website;</li>
         <li>remove any copyright or other proprietary notations from the materials; or</li>
-        <li>transferring the materials to another person or "mirror" the materials on any other server.</li>
+        <li
+          class="mb-5"
+        >
+          transferring the materials to another person or "
+          mirror"
+          the
+          materials
+          on
+          any
+          other
+          server.<
+          li
+          />
+        </li>
       </ul>
 
       <p>
@@ -135,7 +148,7 @@
 
       <p>We use the information we collect in various ways, including to:</p>
 
-      <ul>
+      <ul class="list-disc list-inside">
         <li>Provide, operate, and maintain our website</li>
         <li>Improve, personalize, and expand our website</li>
         <li>Understand and analyze how you use our website</li>
@@ -270,17 +283,28 @@
         to contact us immediately and we will do our best efforts to promptly remove such information from our
         records.
       </p>
-      ```
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  name: 'Tos',
+  name: 'TosPage',
   head () {
     return {
-      title: 'Terms of Services'
+      title: 'Terms of Services',
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Terms of Use and Privacy Policy of the website'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'terms-of-use, terms-of-services, privacy-policy'
+        }
+      ]
     }
   }
 }
@@ -294,6 +318,17 @@ h3 {
 
 h2 {
   @apply mt-4;
+}
+
+h1 {
+  @apply text-4xl;
+
+}
+
+li {
+  color: #16215B;
+  font-size: 1.15rem;
+  margin-top: 1rem;
 }
 
 </style>

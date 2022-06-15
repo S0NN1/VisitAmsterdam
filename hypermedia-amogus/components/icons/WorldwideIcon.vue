@@ -1,6 +1,6 @@
 <template>
   <img
-    :src="require('@/static/img/' + image + '.png')"
+    :src="require('@/static/img/' + image + '.webp')"
     :style="'height: ' + height + '; width: ' + width"
     alt="language"
   >

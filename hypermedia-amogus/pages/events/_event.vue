@@ -113,6 +113,7 @@ import { BACKEND_URL, MONTHS } from '~/assets/js/constants'
 
 export default Vue.extend({
   name: 'EventPage',
+  title: 'Event',
   async asyncData ({ params }) {
     const eventDetailsData = await fetch(BACKEND_URL + '/api/v1/events/get?id=' + params.event).then(
       res => res.json()
@@ -143,6 +144,22 @@ export default Vue.extend({
         default: null
       },
       mobileDev: false
+    }
+  },
+  head () {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Event Amsterdam'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'event'
+        }
+      ]
     }
   },
   mounted () {

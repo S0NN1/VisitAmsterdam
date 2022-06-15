@@ -104,25 +104,42 @@
 <script>
 export default {
   name: 'AboutPage',
+  title: 'About Us',
   data () {
     return {
       amsterdamHistory: [
         {
-          heroImage: 'https://images.unsplash.com/photo-1580679047323-855ab261a52b?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80'
+          heroImage: require('@/static/img/about-1.webp')
         },
         {
-          heroImage: 'https://images.unsplash.com/photo-1534351590666-13e3e96b5017?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80'
+          heroImage: require('@/static/img/about-2.webp')
         },
         {
-          heroImage: 'https://images.unsplash.com/photo-1468436385273-8abca6dfd8d3?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80'
+          heroImage: require('@/static/img/about-3.webp')
         },
         {
-          heroImage: 'https://images.unsplash.com/photo-1576924542622-772281b13aa8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80'
+          heroImage: require('@/static/img/about-4.webp')
         },
         {
-          heroImage: 'https://images.unsplash.com/photo-1549701455-d0d42354b009?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1920&q=80'
+          heroImage: require('@/static/img/about-5.webp')
         }
 
+      ]
+    }
+  },
+  head () {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'About us, about Amsterdam'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'about-us, Amsterdam'
+        }
       ]
     }
   }

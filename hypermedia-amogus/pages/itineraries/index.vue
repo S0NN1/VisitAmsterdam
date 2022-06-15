@@ -16,6 +16,7 @@ import { BACKEND_URL } from '~/assets/js/constants'
 
 export default Vue.extend({
   name: 'ItinerariesPage',
+  title: 'Itineraries',
   async asyncData () {
     const itineraries = await fetch(BACKEND_URL + '/api/v1/itineraries/getAll').then(
       res => res.json()
@@ -33,6 +34,22 @@ export default Vue.extend({
         default: null
       },
       mobileDev: false
+    }
+  },
+  head () {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Itineraries or tours in Amsterdam'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'itineraries, tour'
+        }
+      ]
     }
   },
   mounted () {

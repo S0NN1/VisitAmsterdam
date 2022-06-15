@@ -80,6 +80,7 @@ import { BACKEND_URL, MONTHS } from 'assets/js/constants'
 
 export default Vue.extend({
   name: 'ServicePage',
+  title: 'Service',
   async asyncData ({ params }) {
     const serviceDetailsData = await fetch(BACKEND_URL + '/api/v1/services/get?id=' + params.service).then(
       res => res.json()
@@ -96,6 +97,22 @@ export default Vue.extend({
         default: null
       },
       mobileDev: false
+    }
+  },
+  head () {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Amsterdam service'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'service'
+        }
+      ]
     }
   },
   mounted () {

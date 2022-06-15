@@ -78,6 +78,7 @@ import { BACKEND_URL, MONTHS } from 'assets/js/constants'
 
 export default Vue.extend({
   name: 'PoiPage',
+  title: 'Point of Interest',
   async asyncData ({ params }) {
     const poiDetailsData = await fetch(BACKEND_URL + '/api/v1/points-of-interest/get?id=' + params.poi).then(
       res => res.json()
@@ -126,6 +127,22 @@ export default Vue.extend({
         default: null
       },
       mobileDev: false
+    }
+  },
+  head () {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Attraction or point of interest in Amsterdam'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'point-of-interest'
+        }
+      ]
     }
   },
   mounted () {
