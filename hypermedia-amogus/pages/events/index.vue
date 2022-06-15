@@ -28,6 +28,7 @@ import { BACKEND_URL, MONTHS, WEEK_DAYS } from 'assets/js/constants'
 
 export default Vue.extend({
   name: 'EventsPage',
+  title: 'Events',
   async asyncData () {
     const events = await fetch(BACKEND_URL + '/api/v1/events/getUpcoming').then(
       res => res.json()
@@ -50,6 +51,38 @@ export default Vue.extend({
     return {
       filter: 'All',
       hottestEvents: []
+    }
+  },
+  head () {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Events in Amsterdam'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'events, shows, festivals'
+        }
+      ]
+    }
+  },
+  head () {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Events or  Amsterdam'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'contacts, contact-us, help'
+        }
+      ]
     }
   },
   mounted () {

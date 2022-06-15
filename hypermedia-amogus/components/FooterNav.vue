@@ -4,12 +4,12 @@
       <div class="flex w-full md:col-span-2" />
       <div class="flex w-full col-span-10 md:col-span-8">
         <div v-if="!mobile" class="flex grid grid-cols-12 w-full">
-          <div class="col-span-8 h-24 bg-base-100 w-full box-shadow-card rounded-xl">
-            <div class="grid grid-rows-2 grid-cols-5 gap-y-0 gap-x-3 py-3 px-2 h-full flex">
+          <div class="col-span-8 h-20 bg-base-100 w-full box-shadow-card rounded-xl">
+            <div class="grid grid-rows-2 grid-cols-5 gap-y-0 gap-x-3 p-2 h-full flex items-center">
               <div class="flex  h-full  row-span-2 col-span-2 items-center">
-                <IconsSiteLogo class="pr-3 mr-3 border-r-2 border-r-warning w-6/12" height="75%" />
+                <IconsSiteLogo class="pr-5 mx-3 border-r-2 border-r-warning w-6/12" height="75%" />
 
-                <div class="flex w-6/12 h-full w-full grid grid-rows-2 gap-y-0 gap-x-3">
+                <div class="flex w-6/12 h-full w-full grid grid-rows-2 gap-y-0 gap-x-3 items-center">
                   <NuxtLink class="flex w-full ml-5" to="/home">
                     <p
                       class="text-sm font-medium truncate text-error"
@@ -74,11 +74,11 @@
             </div>
           </div>
           <div class="flex col-span-1" />
-          <div class="col-span-3 h-24 bg-base-100 w-full box-shadow-card rounded-xl">
+          <div class="col-span-3 h-20 bg-base-100 w-full box-shadow-card rounded-xl">
             <div class="grid grid-cols-5 w-full p-1 h-full align-middle">
               <div class="flex" />
               <div class="col-span-3 grid grid-cols-6 grid-rows-3 w-full h-full items-center">
-                <div class="col-span-6">
+                <div class="col-span-6 mt-auto align-bottom">
                   <p class="text-center text-sm truncate">
                     Follow Us
                   </p>

@@ -92,12 +92,16 @@
         </div>
       </div>
       <div class="divider" />
-      <div
-        v-for="category in eventDetails.categories"
-        :key="category.name"
-        class="badge badge-lg badge-neutral p-4 m-2"
-      >
-        <b>{{ category.name }}</b>
+      <div class="flex w-full justify-start">
+        <div
+          v-for="category in eventDetails.categories"
+          :key="category.name"
+          class="badge mr-4 p-5 font-bold tag-badge text-white cursor-pointer hover:bg-primary"
+        >
+          <NuxtLink :to="'/events?category=' + category.name">
+            {{ category.name }}
+          </NuxtLink>
+        </div>
       </div>
     </div>
   </div>
@@ -109,6 +113,7 @@ import { BACKEND_URL, MONTHS } from '~/assets/js/constants'
 
 export default Vue.extend({
   name: 'EventPage',
+  title: 'Event',
   async asyncData ({ params }) {
     const eventDetailsData = await fetch(BACKEND_URL + '/api/v1/events/get?id=' + params.event).then(
       res => res.json()
@@ -139,6 +144,22 @@ export default Vue.extend({
         default: null
       },
       mobileDev: false
+    }
+  },
+  head () {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Event Amsterdam'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'event'
+        }
+      ]
     }
   },
   mounted () {

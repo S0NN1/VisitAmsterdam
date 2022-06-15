@@ -15,6 +15,7 @@ import { BACKEND_URL } from '~/assets/js/constants'
 
 export default {
   name: 'PointsOfInterestPage',
+  title: 'Points Of Interest',
   async asyncData () {
     const pois = await fetch(BACKEND_URL + '/api/v1/points-of-interest/getAll').then(
       res => res.json()
@@ -26,6 +27,22 @@ export default {
   data () {
     return {
       filter: 'All'
+    }
+  },
+  head () {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Attractions and points of interest in Amsterdam'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'points-of-interest, attractions'
+        }
+      ]
     }
   }
 }

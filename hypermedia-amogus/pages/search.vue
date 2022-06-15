@@ -22,7 +22,7 @@
             </div>
             <div v-if="!mobileDev" />
             <div>
-              <button @click="search(searchField)">
+              <button aria-label="Search" @click="search(searchField)">
                 <IconsSearchIcon />
               </button>
             </div>
@@ -58,6 +58,7 @@ import { BACKEND_URL } from 'assets/js/constants'
 
 export default {
   name: 'SearchPage',
+  title: 'Search',
   data () {
     return {
       filters: ['All', 'Events', 'Point of Interests', 'Services', 'Itineraries'],
@@ -68,6 +69,22 @@ export default {
       ready: false,
       elementFiltered: [],
       results: []
+    }
+  },
+  head () {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Search for content on the website: events, services, attractions'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'search, find'
+        }
+      ]
     }
   },
   async mounted () {

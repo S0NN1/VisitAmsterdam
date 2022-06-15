@@ -13,6 +13,7 @@ import { BACKEND_URL } from '~/assets/js/constants'
 
 export default {
   name: 'ServicesPage',
+  title: 'Services',
   async asyncData () {
     const services = await fetch(BACKEND_URL + '/api/v1/services/getAll').then(
       res => res.json()
@@ -24,6 +25,22 @@ export default {
   data () {
     return {
       filter: 'All'
+    }
+  },
+  head () {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Amsterdam local services'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'local, guide, support, services'
+        }
+      ]
     }
   }
 }

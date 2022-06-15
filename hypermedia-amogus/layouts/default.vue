@@ -4,7 +4,7 @@
       <input id="my-drawer-3" type="checkbox" class="drawer-toggle" :checked="checked">
       <div class="drawer-content flex flex-col ">
         <!-- Navbar -->
-        <div class="w-full navbar bg-primary">
+        <div class="w-full navbar bg-primary h-12">
           <div class="flex-1 sm:px-2 sm:mx-2">
             <NuxtLink to="/" class="w-full">
               <span class="flex text-2xl text-white">
@@ -41,7 +41,7 @@
                 <div class="flex-none">
                   <div class="flex appearance-none my-1 sm:max-w-screen-sm text-stone-900 border-b-2">
                     <input
-                      id="searchField"
+                      id="searchField-navbar"
                       v-model="searchField"
                       type="text"
                       class="text-white placeholder-white appearance-none bg-transparent py-1 w-64"
@@ -49,7 +49,7 @@
                       @keyup.enter="search()"
                     >
                     <NuxtLink :to="'/search?input=' + searchField">
-                      <button class="flex items-center justify-center text-white fill-white">
+                      <button aria-label="Search" class="flex items-center justify-center text-white fill-white">
                         <IconsSearchIcon />
                       </button>
                     </NuxtLink>
@@ -67,13 +67,8 @@
                 </NuxtLink>
               </li>
               <li>
-                <button class="flex items-center justify-center text-white fill-white">
+                <button aria-label="Language Switch" class="flex items-center justify-center text-white fill-white">
                   <IconsWorldwideIcon class="icon-shadow" width="1.5rem" height="1.5rem" />
-                </button>
-              </li>
-              <li>
-                <button class="flex items-center justify-center text-white fill-white">
-                  <IconsUserIcon class="icon-shadow" width="1.5rem" height="1.5rem" />
                 </button>
               </li>
             </ul>
@@ -152,11 +147,8 @@
               </label>
             </div>
             <div class="flex col-span-2 justify-end">
-              <button class="flex items-center justify-center text-white fill-white mr-4">
+              <button aria-label="Language Switch" class="flex items-center justify-center text-white fill-white mr-4">
                 <IconsWorldwideIcon class="icon-shadow fill-white" width="1.5rem" height="1.5rem" />
-              </button>
-              <button class="flex items-center justify-center text-white fill-white">
-                <IconsUserIcon class="icon-shadow fill-white" width="1.5rem" height="1.5rem" />
               </button>
             </div>
           </li>
@@ -164,13 +156,14 @@
           <!-- Sidebar content here -->
           <li class="sidebar-li w-full ">
             <button
+              aria-label="Search"
               class="flex items-center justify-center text-white fill-white border-b-2 border-[#601616] border-opacity-20 mx-2"
             >
               <NuxtLink :to="'/search?input=' + searchField" class="fill-white">
                 <IconsSearchIcon />
               </NuxtLink>
               <input
-                id="searchField"
+                id="searchField-sidebar"
                 v-model="searchField"
                 type="text"
                 class="text-white text-center placeholder-white appearance-none bg-transparent py-1 w-full"
@@ -284,6 +277,16 @@ export default {
       mobileDev: false,
       searchField: '',
       checked: false
+    }
+  },
+  head () {
+    return {
+      link: [
+        {
+          rel: 'canonical',
+          href: 'https://hyp.lucapirovano.com' + this.$route.path
+        }
+      ]
     }
   },
   created () {

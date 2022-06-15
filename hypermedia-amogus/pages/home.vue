@@ -34,7 +34,7 @@
 
     <div
       class="hero py-32 mt-16 parallaxBg"
-      :style="{'background-image': 'url(\'' + require('@/static/img/amsterdam-map.png') + '\')'}"
+      :style="{'background-image': 'url(\'' + require('@/static/img/amsterdam-map.webp') + '\')'}"
     >
       <div class="hero-content text-center text-neutral-content">
         <div class="w-full">
@@ -42,6 +42,7 @@
             Build your own itinerary!
           </h1>
           <button
+            aria-label="Create your Custom Itinerary"
             class="btn btn-lg btn-primary rounded-full bg-white border-none customItinerary mt-6 font-bold normal-case"
           >
             Start now!
@@ -77,6 +78,7 @@ import { BACKEND_URL, MONTHS, WEEK_DAYS } from '~/assets/js/constants'
 
 export default Vue.extend({
   name: 'HomePage',
+  title: 'Home',
   async asyncData () {
     const services = await fetch(BACKEND_URL + '/api/v1/services/getAll').then(
       res => res.json()
@@ -117,7 +119,7 @@ export default Vue.extend({
   data () {
     return {
       amsterdamImage: {
-        heroImage: 'https://images.unsplash.com/photo-1605101100278-5d1deb2b6498?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80',
+        heroImage: '',
         name: '',
         description: '',
         date: '',
@@ -127,6 +129,22 @@ export default Vue.extend({
       },
       mediaQuery: null,
       mobileDev: false
+    }
+  },
+  head () {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Amsterdam local guide website, '
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'index, Amsterdam, guide, tour, events, services, attractions'
+        }
+      ]
     }
   },
   mounted () {

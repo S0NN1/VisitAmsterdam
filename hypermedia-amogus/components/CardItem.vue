@@ -4,9 +4,7 @@
     v-if="cardType==='FIGURE'"
     class="card w-full bg-base-100 bg-contain box-shadow-card-figure carousel-card"
   >
-    <figure>
-      <img :src="object.heroImage" :alt="object.name">
-    </figure>
+    <img :src="object.heroImage" class="object-cover h-full" :alt="object.name">
   </div>
   <div v-else-if="cardType==='EVENT'" class="card w-full bg-base-100 carousel-card shadow-xl">
     <div class="card-body" style="max-height: 80%">

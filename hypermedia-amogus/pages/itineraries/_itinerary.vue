@@ -64,7 +64,7 @@
           :key="tag.name"
           class="badge mr-4 p-5 font-bold tag-badge text-white cursor-pointer hover:bg-primary"
         >
-          <NuxtLink :to="'/itineraries?tag=' + tag">
+          <NuxtLink :to="'/itineraries?tag=' + tag.name">
             {{ tag.name }}
           </NuxtLink>
         </div>
@@ -79,6 +79,7 @@ import { BACKEND_URL, MONTHS } from 'assets/js/constants'
 
 export default Vue.extend({
   name: 'ItineraryPage',
+  title: 'Itinerary',
   async asyncData ({ params }) {
     const itineraryDetailsData = await fetch(BACKEND_URL + '/api/v1/itineraries/get?id=' + params.itinerary).then(
       res => res.json()
@@ -116,6 +117,22 @@ export default Vue.extend({
         default: null
       },
       mobileDev: false
+    }
+  },
+  head () {
+    return {
+      meta: [
+        {
+          hid: 'description',
+          name: 'description',
+          content: 'Itinerary or tour in Amsterdam'
+        },
+        {
+          hid: 'keywords',
+          name: 'keywords',
+          content: 'itinerary, tour'
+        }
+      ]
     }
   },
   mounted () {

@@ -1,5 +1,5 @@
 <template>
-  <div class="bg-cover" :style="{'background-image': 'url(' + require('@/static/img/amsterdam.jpg') + ')'}">
+  <div class="bg-cover" :style="{'background-image': 'url(' + require('@/static/img/amsterdam-index.webp') + ')'}">
     <div class="drawer drawer-end">
       <input id="my-drawer-3" type="checkbox" class="drawer-toggle">
       <div class="drawer-content flex flex-col max-h-full">
@@ -76,7 +76,7 @@
                 <div class="flex-none">
                   <div class="flex appearance-none my-1 sm:max-w-screen-sm text-stone-900 border-b-2">
                     <input
-                      id="searchField"
+                      id="searchField-navbar"
                       v-model="searchField"
                       type="text"
                       class="text-white placeholder-white appearance-none bg-transparent py-1 w-64 outline-none"
@@ -84,7 +84,7 @@
                       @keyup.enter="search()"
                     >
                     <NuxtLink :to="'/search?input=' + searchField">
-                      <button class="flex items-center justify-center text-white fill-white">
+                      <button aria-label="Search" class="flex items-center justify-center text-white fill-white">
                         <IconsSearchIcon />
                       </button>
                     </NuxtLink>
@@ -102,13 +102,8 @@
                 </NuxtLink>
               </li>
               <li>
-                <button class="flex items-center justify-center text-white fill-white">
+                <button aria-label="Language Switch" class="flex items-center justify-center text-white fill-white">
                   <IconsWorldwideIcon class="icon-shadow" width="1.5rem" height="1.5rem" />
-                </button>
-              </li>
-              <li>
-                <button class="flex items-center justify-center text-white fill-white">
-                  <IconsUserIcon class="icon-shadow" width="1.5rem" height="1.5rem" />
                 </button>
               </li>
             </ul>
@@ -155,7 +150,7 @@
               <h1 class="mb-5 text-5xl sm:text-8xl font-bold text-white drop-shadow-lg">
                 Amsterdam
               </h1>
-              <button class="btn btn-primary">
+              <button aria-label="Go to About Page" class="btn btn-primary">
                 //TODO
               </button>
             </div>
@@ -175,11 +170,8 @@
               </label>
             </div>
             <div class="flex col-span-2 justify-end">
-              <button class="flex items-center justify-center text-white fill-white mr-4">
+              <button aria-label="Language Switch" class="flex items-center justify-center text-white fill-white mr-4">
                 <IconsWorldwideIcon class="icon-shadow fill-white" width="1.5rem" height="1.5rem" />
-              </button>
-              <button class="flex items-center justify-center text-white fill-white">
-                <IconsUserIcon class="icon-shadow fill-white" width="1.5rem" height="1.5rem" />
               </button>
             </div>
           </li>
@@ -187,13 +179,14 @@
           <!-- Sidebar content here -->
           <li class="sidebar-li w-full ">
             <button
+              aria-label="Search"
               class="flex items-center justify-center text-white fill-white border-b-2 border-[#601616] border-opacity-20 mx-2"
             >
               <NuxtLink :to="'/search?input=' + searchField" class="fill-white">
                 <IconsSearchIcon />
               </NuxtLink>
               <input
-                id="searchField"
+                id="searchField-sidebar"
                 v-model="searchField"
                 type="text"
                 class="text-white text-center placeholder-white appearance-none bg-transparent py-1 w-full"
@@ -202,16 +195,11 @@
               >
             </button>
           </li>
-          <!--          <li class="border-b-2 border-[#601616] border-opacity-20 h-2 w-11/12" />-->
           <li class="sidebar-li w-full px-4">
             <NuxtLink
               to="/home"
               class="w-full text-white justify-center border-b-2 border-[#601616] border-opacity-20"
-            >
-              <!--              <button class="flex items-center justify-center text-white">-->
-              Home
-              <!--              </button>-->
-            </NuxtLink>
+            />
           </li>
           <li class="sidebar-li w-full px-4">
             <NuxtLink to="/events" class="w-full justify-center border-b-2 border-[#601616] border-opacity-20">
@@ -291,12 +279,22 @@
 
 export default {
   name: 'IndexPage',
+  title: 'AMG',
   layout: 'empty',
   data () {
     return {
       mediaQuery: null,
       mobileDev: false,
       searchField: ''
+    }
+  },
+  head () {
+    return {
+      meta: [{
+        hid: 'keywords',
+        name: 'keywords',
+        content: 'index, Amsterdam, guide, tour, events, services, attractions'
+      }]
     }
   },
   mounted () {
