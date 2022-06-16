@@ -21,7 +21,7 @@ frontend-deploy:
   only:
     - dev
   script:
-    - cd hypermedia-amogus
+    - cd frontend
     - npm install
     - pm2 kill
     - pm2 start app-config.json

@@ -1,4 +1,4 @@
-# hypermedia-amogus
+# frontend
 
 ## Build Setup
 

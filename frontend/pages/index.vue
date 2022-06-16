@@ -151,7 +151,7 @@
                 Amsterdam
               </h1>
               <button aria-label="Go to About Page" class="btn btn-primary">
-                //TODO
+                Discover the city
               </button>
             </div>
           </div>
