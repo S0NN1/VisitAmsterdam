@@ -1,9 +1,9 @@
 <template>
   <svg
-    xmlns="http://www.w3.org/2000/svg"
-    viewBox="0 0 192.06 192.06"
-    :width="width"
     :height="height"
+    :width="width"
+    viewBox="0 0 192.06 192.06"
+    xmlns="http://www.w3.org/2000/svg"
   >
     <g id="a" />
     <g id="b">

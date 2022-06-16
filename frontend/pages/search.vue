@@ -14,9 +14,9 @@
             <div class="lg:col-span-9 border-b-2">
               <input
                 v-model="searchField"
-                type="text"
                 class="appearance-none bg-transparent py-1 lg:w-full"
                 placeholder="Search"
+                type="text"
                 @keyup.enter="search(searchField)"
               >
             </div>
@@ -31,8 +31,8 @@
             <div
               v-for="(filter, index) in filters"
               :key="filter+index"
-              class="badge mr-4 p-5 font-bold tag-badge text-white cursor-pointer"
               :class="activeFilter===filter ? 'badge-primary': 'text-[#787caa]'"
+              class="badge mr-4 p-5 font-bold tag-badge text-white cursor-pointer"
               @click="applyFilter(filter)"
             >
               {{ filter }}
@@ -45,7 +45,7 @@
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
         <div v-for="result in searchResults" :key="result.id">
           <NuxtLink :to="result.link">
-            <CardItem card-type="SEARCH" :object="result" />
+            <CardItem :object="result" card-type="SEARCH" />
           </NuxtLink>
         </div>
       </div>

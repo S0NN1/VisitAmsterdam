@@ -86,23 +86,23 @@
                 <div class="flex col-span-6 row-span-2 justify-center">
                   <IconsSocialFacebookIcon
                     class="rounded-full icon-footer fill-white p-1 aspect-square mx-auto my-auto h-fit"
-                    width="1.7rem"
                     height="1.7rem"
+                    width="1.7rem"
                   />
                   <IconsSocialInstagramIcon
                     class="rounded-full icon-footer fill-white p-1 aspect-square mx-auto my-auto h-fit"
-                    width="1.7rem"
                     height="1.7rem"
+                    width="1.7rem"
                   />
                   <IconsSocialTwitterIcon
                     class="rounded-full icon-footer fill-white p-1 aspect-square mx-auto my-auto h-fit"
-                    width="1.7rem"
                     height="1.7rem"
+                    width="1.7rem"
                   />
                   <IconsSocialYoutubeIcon
                     class="rounded-full icon-footer fill-white p-1 aspect-square mx-auto my-auto h-fit"
-                    width="1.7rem"
                     height="1.7rem"
+                    width="1.7rem"
                   />
                 </div>
               </div>
@@ -178,23 +178,23 @@
               <div class="flex col-span-6 row-span-2 justify-center mt-3">
                 <IconsSocialFacebookIcon
                   class="rounded-full icon-footer fill-white p-1.5 aspect-square mx-auto my-auto h-fit"
-                  width="2rem"
                   height="2rem"
+                  width="2rem"
                 />
                 <IconsSocialInstagramIcon
                   class="rounded-full icon-footer fill-white p-1.5 aspect-square mx-auto my-auto h-fit"
-                  width="2rem"
                   height="2rem"
+                  width="2rem"
                 />
                 <IconsSocialTwitterIcon
                   class="rounded-full icon-footer fill-white p-1.5 aspect-square mx-auto my-auto h-fit"
-                  width="2rem"
                   height="2rem"
+                  width="2rem"
                 />
                 <IconsSocialYoutubeIcon
                   class="rounded-full icon-footer fill-white p-1.5 aspect-square mx-auto my-auto h-fit"
-                  width="2rem"
                   height="2rem"
+                  width="2rem"
                 />
               </div>
               <div />

@@ -22,19 +22,19 @@
           <div class="text-center mb-10 lg:mb-0">
             <div class="btn btn-lg btn-primary rounded-full fill-white my-4 sm:my-0 normal-case ">
               Discover &emsp;
-              <IconsPaperPlane width="1.7rem" height="1.7rem" />
+              <IconsPaperPlane height="1.7rem" width="1.7rem" />
             </div>
           </div>
         </div>
         <div class="flex w-full justify-center">
-          <CardItem type="FIGURE" :object="amsterdamImage" />
+          <CardItem :object="amsterdamImage" type="FIGURE" />
         </div>
       </div>
     </div>
 
     <div
-      class="hero py-32 mt-16 parallaxBg"
       :style="{'background-image': 'url(\'' + require('@/static/img/amsterdam-map.webp') + '\')'}"
+      class="hero py-32 mt-16 parallaxBg"
     >
       <div class="hero-content text-center text-neutral-content">
         <div class="w-full">

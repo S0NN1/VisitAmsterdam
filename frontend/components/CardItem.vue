@@ -4,7 +4,7 @@
     v-if="cardType==='FIGURE'"
     class="card w-full bg-base-100 bg-contain box-shadow-card-figure carousel-card"
   >
-    <img :src="object.heroImage" class="object-cover h-full" :alt="object.name">
+    <img :alt="object.name" :src="object.heroImage" class="object-cover h-full">
   </div>
   <div v-else-if="cardType==='EVENT'" class="card w-full bg-base-100 carousel-card shadow-xl">
     <div class="card-body" style="max-height: 80%">
@@ -26,7 +26,7 @@
   <div v-else-if="cardType==='MULTIPLE'">
     <div class="card w-full aspect-square bg-base-100 shadow-xl no-rounded-bottom">
       <figure class="box-shadow-card-figure">
-        <img :src="object.heroImage" :alt="object.name">
+        <img :alt="object.name" :src="object.heroImage">
       </figure>
       <div class="card-body items-center">
         <h2 class="card-title text-sm md:text-2xl lg:text-2xl">
@@ -51,7 +51,7 @@
         </div>
       </div>
       <figure class="box-shadow-card-figure">
-        <img :src="object.heroImage" :alt="object.name">
+        <img :alt="object.name" :src="object.heroImage">
       </figure>
     </div>
   </div>
@@ -75,8 +75,8 @@
       </div>
       <div class="flex card-actions p-9 justify-end items-end">
         <NuxtLink
-          class="flex underline decoration-2 decoration-sky-500 text-sky-500"
           :to="`/itineraries/${object.id}`"
+          class="flex underline decoration-2 decoration-sky-500 text-sky-500"
         >
           See more >
         </NuxtLink>
@@ -92,13 +92,13 @@
     >
       <div class="grid w-full grid-cols-3 gap-2" style="min-height: 100%">
         <figure>
-          <img class="h-full rounded-xl" :src="object.stops[0].heroImage" :alt="object.name">
+          <img :alt="object.name" :src="object.stops[0].heroImage" class="h-full rounded-xl">
         </figure>
         <figure class="col-span-2 row-span-2">
-          <img class="h-full rounded-xl" :src="object.stops[1].heroImage" :alt="object.name">
+          <img :alt="object.name" :src="object.stops[1].heroImage" class="h-full rounded-xl">
         </figure>
         <figure v-if="object.stops[2]!==undefined">
-          <img :src="object.stops[2].heroImage" class="h-full rounded-xl" :alt="object.name">
+          <img :alt="object.name" :src="object.stops[2].heroImage" class="h-full rounded-xl">
         </figure>
       </div>
     </div>
@@ -107,9 +107,9 @@
       class=" w-full h-full"
     >
       <CarouselItem
-        class="aspect-square h-30"
-        :is-complex="false"
         :carousel-images="[{image: object.stops[0].heroImage},{image: object.stops[1].heroImage},{image: object.stops[2].heroImage},]"
+        :is-complex="false"
+        class="aspect-square h-30"
       />
     </div>
   </div>

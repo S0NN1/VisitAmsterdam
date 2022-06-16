@@ -1,7 +1,7 @@
 const leaflet = require('leaflet')
 <template>
   <div class="mt-10">
-    <div id="mapid" ref="mapElement" class="flex w-full z-0 aspect-square sm:aspect-auto" :style="'height: ' + height"/>
+    <div id="mapid" ref="mapElement" :style="'height: ' + height" class="flex w-full z-0 aspect-square sm:aspect-auto" />
   </div>
 </template>
 

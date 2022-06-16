@@ -46,7 +46,7 @@
     <div />
     <div />
     <div class="col-span-8">
-      <h1 class="my-8" :class="mobileDev ? 'text-center' : ''">
+      <h1 :class="mobileDev ? 'text-center' : ''" class="my-8">
         Interactive Map & Infopoint
       </h1>
       <MapItem

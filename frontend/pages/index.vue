@@ -1,14 +1,14 @@
 <template>
-  <div class="bg-cover" :style="{'background-image': 'url(' + require('@/static/img/amsterdam-index.webp') + ')'}">
+  <div :style="{'background-image': 'url(' + require('@/static/img/amsterdam-index.webp') + ')'}" class="bg-cover">
     <div class="drawer drawer-end">
-      <input id="my-drawer-3" type="checkbox" class="drawer-toggle">
+      <input id="my-drawer-3" class="drawer-toggle" type="checkbox">
       <div class="drawer-content flex flex-col max-h-full">
         <!-- Navbar -->
         <div class="w-full navbar bg-none">
           <div class="flex-1 sm:px-2 sm:mx-2">
-            <NuxtLink to="/" class="w-full">
+            <NuxtLink class="w-full" to="/">
               <span class="flex text-2xl text-white">
-                <svg width="2.3rem" height="2.3rem" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg fill="none" height="2.3rem" viewBox="0 0 20 20" width="2.3rem" xmlns="http://www.w3.org/2000/svg">
                   <path
                     d="M7.17158 14.2426C6.78106 14.6332 6.14789 14.6332 5.75737 14.2426C5.36684 13.8521 5.36684 13.2189 5.75737 12.8284L12.8284 5.75735C13.219 5.36682 13.8521 5.36682 14.2427 5.75735C14.6332 6.14787 14.6332 6.78104 14.2427 7.17156L7.17158 14.2426Z"
                     fill="currentColor"
@@ -23,14 +23,14 @@
             </NuxtLink>
           </div>
           <div class="flex-none lg:hidden">
-            <label for="my-drawer-3" class="btn btn-square btn-ghost">
+            <label class="btn btn-square btn-ghost" for="my-drawer-3">
               <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="2.3rem"
-                viewBox="0 0 24 24"
                 class="inline-block w-6 h-6 stroke-white"
+                viewBox="0 0 24 24"
+                width="2.3rem"
+                xmlns="http://www.w3.org/2000/svg"
               >
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
               </svg>
             </label>
           </div>
@@ -78,9 +78,9 @@
                     <input
                       id="searchField-navbar"
                       v-model="searchField"
-                      type="text"
                       class="text-white placeholder-white appearance-none bg-transparent py-1 w-64 outline-none"
                       placeholder=""
+                      type="text"
                       @keyup.enter="search()"
                     >
                     <NuxtLink :to="'/search?input=' + searchField">
@@ -92,18 +92,18 @@
                 </div>
               </li>
               <li>
-                <a href="tel:+3114020" class="flex items-center justify-center text-white fill-white">
-                  <IconsPhoneIcon class="icon-shadow fill-white" width="1.5rem" height="1.5rem" />
+                <a class="flex items-center justify-center text-white fill-white" href="tel:+3114020">
+                  <IconsPhoneIcon class="icon-shadow fill-white" height="1.5rem" width="1.5rem" />
                 </a>
               </li>
               <li>
-                <NuxtLink to="/contacts" class="flex items-center justify-center text-white fill-white">
-                  <IconsQuestionIcon class="icon-shadow" width="1.5rem" height="1.5rem" />
+                <NuxtLink class="flex items-center justify-center text-white fill-white" to="/contacts">
+                  <IconsQuestionIcon class="icon-shadow" height="1.5rem" width="1.5rem" />
                 </NuxtLink>
               </li>
               <li>
                 <button aria-label="Language Switch" class="flex items-center justify-center text-white fill-white">
-                  <IconsWorldwideIcon class="icon-shadow" width="1.5rem" height="1.5rem" />
+                  <IconsWorldwideIcon class="icon-shadow" height="1.5rem" width="1.5rem" />
                 </button>
               </li>
             </ul>
@@ -120,26 +120,26 @@
               <div class="flex w-full justify-center grid grid-cols-4 gap-3 items-center">
                 <div class="flex w-full justify-center">
                   <IconsSocialInstagramIcon
-                    :width="mobileDev ? '2rem' : '2.5rem'"
                     :height="mobileDev ? '2rem' : '2.5rem'"
+                    :width="mobileDev ? '2rem' : '2.5rem'"
                   />
                 </div>
                 <div class="flex w-full justify-center">
                   <IconsSocialYoutubeIcon
-                    :width="mobileDev ? '2rem' : '2.5rem'"
                     :height="mobileDev ? '2rem' : '2.5rem'"
+                    :width="mobileDev ? '2rem' : '2.5rem'"
                   />
                 </div>
                 <div class="flex w-full justify-center">
                   <IconsSocialFacebookIcon
-                    :width="mobileDev ? '2rem' : '2.5rem'"
                     :height="mobileDev ? '2rem' : '2.5rem'"
+                    :width="mobileDev ? '2rem' : '2.5rem'"
                   />
                 </div>
                 <div class="flex w-full justify-center">
                   <IconsSocialTwitterIcon
-                    :width="mobileDev ? '2rem' : '2.5rem'"
                     :height="mobileDev ? '2rem' : '2.5rem'"
+                    :width="mobileDev ? '2rem' : '2.5rem'"
                   />
                 </div>
               </div>
@@ -150,7 +150,7 @@
               <h1 class="mb-5 text-5xl sm:text-8xl font-bold text-white drop-shadow-lg">
                 Amsterdam
               </h1>
-              <button aria-label="Go to About Page" class="btn btn-primary">
+              <button aria-label="Go to About Page" class="btn btn-primary normal-case text-base">
                 Discover the city
               </button>
             </div>
@@ -158,20 +158,20 @@
         </div>
       </div>
       <div class="drawer-side">
-        <label for="my-drawer-3" class="drawer-overlay" />
+        <label class="drawer-overlay" for="my-drawer-3" />
         <ul class="menu overflow-y-auto w-80 bg-primary rounded-tl-3xl items-center">
           <li class="flex w-full grid grid-cols-3 p-0">
             <div class="flex justify-start">
               <label
-                for="my-drawer-3"
                 class="flex border-none text-white fill-white drawer-button pl-0"
+                for="my-drawer-3"
               >
-                <IconsCloseIcon class="icon-shadow fill-white" width="2rem" height="2rem" />
+                <IconsCloseIcon class="icon-shadow fill-white" height="2rem" width="2rem" />
               </label>
             </div>
             <div class="flex col-span-2 justify-end">
               <button aria-label="Language Switch" class="flex items-center justify-center text-white fill-white mr-4">
-                <IconsWorldwideIcon class="icon-shadow fill-white" width="1.5rem" height="1.5rem" />
+                <IconsWorldwideIcon class="icon-shadow fill-white" height="1.5rem" width="1.5rem" />
               </button>
             </div>
           </li>
@@ -188,57 +188,59 @@
               <input
                 id="searchField-sidebar"
                 v-model="searchField"
-                type="text"
                 class="text-white text-center placeholder-white appearance-none bg-transparent py-1 w-full"
                 placeholder="Search"
+                type="text"
                 @keyup.enter="search()"
               >
             </button>
           </li>
           <li class="sidebar-li w-full px-4">
             <NuxtLink
-              to="/home"
               class="w-full text-white justify-center border-b-2 border-[#601616] border-opacity-20"
-            />
+              to="/home"
+            >
+              Home
+            </NuxtLink>
           </li>
           <li class="sidebar-li w-full px-4">
-            <NuxtLink to="/events" class="w-full justify-center border-b-2 border-[#601616] border-opacity-20">
+            <NuxtLink class="w-full justify-center border-b-2 border-[#601616] border-opacity-20" to="/events">
               Events
             </NuxtLink>
           </li>
           <li class="sidebar-li w-full px-4">
             <NuxtLink
-              to="/itineraries"
               class="w-full justify-center border-b-2 border-[#601616] border-opacity-20"
+              to="/itineraries"
             >
               Itineraries
             </NuxtLink>
           </li>
           <li class="sidebar-li w-full px-4">
             <NuxtLink
-              to="/points-of-interest"
               class="w-full justify-center border-b-2 border-[#601616] border-opacity-20"
+              to="/points-of-interest"
             >
               Points of Interest
             </NuxtLink>
           </li>
           <li class="sidebar-li w-full px-4">
-            <NuxtLink to="/services" class="w-full justify-center border-b-2 border-[#601616] border-opacity-20">
+            <NuxtLink class="w-full justify-center border-b-2 border-[#601616] border-opacity-20" to="/services">
               Services
             </NuxtLink>
           </li>
           <li class="sidebar-li w-full px-4">
-            <NuxtLink to="/about" class="w-full justify-center border-b-2 border-[#601616] border-opacity-20">
+            <NuxtLink class="w-full justify-center border-b-2 border-[#601616] border-opacity-20" to="/about">
               About Us
             </NuxtLink>
           </li>
           <li class="sidebar-li w-full px-4">
-            <NuxtLink to="/contacts" class="w-full justify-center border-b-2 border-[#601616] border-opacity-20">
+            <NuxtLink class="w-full justify-center border-b-2 border-[#601616] border-opacity-20" to="/contacts">
               Contacts
             </NuxtLink>
           </li>
           <li class="sidebar-li w-full px-4">
-            <NuxtLink to="/tos" class="w-full justify-center border-b-2 border-[#601616] border-opacity-20">
+            <NuxtLink class="w-full justify-center border-b-2 border-[#601616] border-opacity-20" to="/tos">
               Terms Of Use
             </NuxtLink>
           </li>
@@ -248,23 +250,23 @@
               <div class=" grid grid-cols-4 gap-0 w-full h-full items-center">
                 <IconsSocialFacebookIcon
                   class="rounded-full icon-footer fill-primary p-1.5 aspect-square mx-auto my-auto h-fit"
-                  width="2rem"
                   height="2rem"
+                  width="2rem"
                 />
                 <IconsSocialInstagramIcon
                   class="rounded-full icon-footer fill-primary p-1.5 aspect-square mx-auto my-auto h-fit"
-                  width="2rem"
                   height="2rem"
+                  width="2rem"
                 />
                 <IconsSocialTwitterIcon
                   class="rounded-full icon-footer fill-primary p-1.5 aspect-square mx-auto my-auto h-fit"
-                  width="2rem"
                   height="2rem"
+                  width="2rem"
                 />
                 <IconsSocialYoutubeIcon
                   class="rounded-full icon-footer fill-primary p-1.5 aspect-square mx-auto my-auto h-fit"
-                  width="2rem"
                   height="2rem"
+                  width="2rem"
                 />
               </div>
             </div>

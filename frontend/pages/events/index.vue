@@ -15,7 +15,7 @@
         <h2 class="flex w-full mb-9">
           All events
         </h2>
-        <AllCardsSection :page-type="'events'" :elements="events" />
+        <AllCardsSection :elements="events" :page-type="'events'" />
       </div>
     </div>
   </div>

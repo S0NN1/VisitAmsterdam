@@ -2,7 +2,7 @@
   <div class="hero min-h-screen space">
     <div class="hero-content text-center">
       <div class="max-w-10/12">
-        <img class="h-72 mx-auto mb-4" src="@/static/img/amogus.webp" alt="error-icon">
+        <img alt="error-icon" class="h-72 mx-auto mb-4" src="@/static/img/amogus.webp">
         <h1 class="text-white font-ibm font-semibold mb-4">
           This page was ejected.
         </h1>

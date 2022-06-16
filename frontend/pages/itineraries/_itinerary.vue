@@ -2,9 +2,9 @@
   <div>
     <CarouselItem
       v-if="!mobileDev"
-      class="w-full aspect-video h-96"
-      :is-complex="false"
       :carousel-images="[carouselImage]"
+      :is-complex="false"
+      class="w-full aspect-video h-96"
     />
     <div class="container mx-auto w-11/12 lg:w-10/12 justify-center mt-14 mb-24">
       <!--      TODO breadcrumbs-->
@@ -24,10 +24,10 @@
         </div>
         <CarouselItem
           v-if="mobileDev"
-          class="w-full mb-10"
-          :is-complex="false"
-          style="height: 45vh"
           :carousel-images="[carouselImage]"
+          :is-complex="false"
+          class="w-full mb-10"
+          style="height: 45vh"
         />
         <div v-if="mobileDev" class="flex justify-start mt-5">
           <h3>Stops</h3>
@@ -53,9 +53,9 @@
         </div>
       </div>
       <MapItem
-        :waypoints="waypoints"
-        :height="mobileDev ? '15rem': ''"
         :class="mobileDev ? 'rounded-3xl' : ''"
+        :height="mobileDev ? '15rem': ''"
+        :waypoints="waypoints"
       />
       <div class="flex divider" />
       <div class="flex w-full justify-start">

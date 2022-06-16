@@ -9,9 +9,9 @@
         class="carousel-item w-full justify-center"
       >
         <div class="grid grid-cols-1 gap-y-5 lg:gap-4 lg:grid-cols-2">
-          <CardItem class="flex w-full sm:mb-5 " :card-type="'FIGURE'" :object="image" />
+          <CardItem :card-type="'FIGURE'" :object="image" class="flex w-full sm:mb-5 " />
           <NuxtLink :to="image.path">
-            <CardItem class="flex w-full" :card-type="'EVENT'" :object="image" />
+            <CardItem :card-type="'EVENT'" :object="image" class="flex w-full" />
           </NuxtLink>
         </div>
       </div>
@@ -20,9 +20,9 @@
       <a
         v-for="(image, index) in carouselImages"
         :key="'imageCarousel' + index"
+        :class="{'btn-active': activeIndex===index, 'ml-5': index>0}"
         :href="'#imageCarousel'+ index"
         class="btn btn-circle btn-xs carousel-btn mt-5"
-        :class="{'btn-active': activeIndex===index, 'ml-5': index>0}"
         @click="selectedIndex(index)"
       />
     </div>
@@ -33,8 +33,8 @@
         v-for="(image, index) in carouselImages"
         :id="'imageCarousel' + index"
         :key="index"
-        class="carousel-item w-full"
         :style="{'background-image': 'url(\'' + image.image + '\')'}"
+        class="carousel-item w-full"
         style="background-position: center; background-size: cover"
       />
     </div>
@@ -42,9 +42,9 @@
       <a
         v-for="(image, index) in carouselImages"
         :key="'imageCarousel' + index"
+        :class="{'btn-active': activeIndex===index, 'ml-5': index>0}"
         :href="'#imageCarousel'+ index"
         class="btn btn-circle btn-xs carousel-btn mt-5"
-        :class="{'btn-active': activeIndex===index, 'ml-5': index>0}"
         @click="selectedIndex(index)"
       />
     </div>

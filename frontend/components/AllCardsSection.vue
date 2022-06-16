@@ -7,8 +7,8 @@
       <div
         v-for="(filter, index) in filters"
         :key="filter+index"
-        class="flex w-full badge p-5 font-bold tag-badge text-white cursor-pointer text-xs lg:text-base"
         :class="activeFilter===filter ? 'badge-primary': 'text-[#787caa]'"
+        class="flex w-full badge p-5 font-bold tag-badge text-white cursor-pointer text-xs lg:text-base"
         @click="applyFilter(filter, pageType)"
       >
         {{ filter }}
@@ -31,8 +31,8 @@
         >
           <NuxtLink v-if="pageType.toUpperCase()!=='ITINERARIES'" :to="'/' + pageType + '/' + element.id.toString()">
             <CardItem
-              :object="element"
               :card-type="pageCardType[pageType]"
+              :object="element"
               class="hover:shadow-2xl transition ease-in-out duration-200"
             />
           </NuxtLink>
@@ -41,8 +41,8 @@
             :to="'/itineraries/' + element.id.toString()"
             class="flex w-full grid grid-cols-1 gap-0 lg:grid-cols-2 lg:gap-3 mb-10"
           >
-            <CardItem :object="element" :card-type="pageCardType[pageType]" class="flex w-full" />
-            <CardItem card-type="COMPLEX" :mobile="mobile" :object="element" class="flex w-full" />
+            <CardItem :card-type="pageCardType[pageType]" :object="element" class="flex w-full" />
+            <CardItem :mobile="mobile" :object="element" card-type="COMPLEX" class="flex w-full" />
           </NuxtLink>
         </div>
       </div>

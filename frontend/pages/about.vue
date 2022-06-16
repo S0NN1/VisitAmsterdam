@@ -20,11 +20,11 @@
           </p>
         </div>
         <div class="flex w-full justify-center px-4">
-          <CardItem type="FIGURE" :object="amsterdamHistory[0]" />
+          <CardItem :object="amsterdamHistory[0]" type="FIGURE" />
         </div>
 
         <div class="flex w-full justify-center mt-8 px-4">
-          <CardItem type="FIGURE" :object="amsterdamHistory[1]" />
+          <CardItem :object="amsterdamHistory[1]" type="FIGURE" />
         </div>
         <div class="mt-8 px-4">
           <h2 class="mt-4">
@@ -60,11 +60,11 @@
         </div>
 
         <div class="flex w-full justify-center mt-8 px-4">
-          <CardItem type="FIGURE" :object="amsterdamHistory[2]" />
+          <CardItem :object="amsterdamHistory[2]" type="FIGURE" />
         </div>
 
         <div class="flex w-full justify-center mt-8 px-4">
-          <CardItem type="FIGURE" :object="amsterdamHistory[3]" />
+          <CardItem :object="amsterdamHistory[3]" type="FIGURE" />
         </div>
         <div class="mt-8 px-4">
           <h2 class="mt-8">
@@ -94,7 +94,7 @@
           </p>
         </div>
         <div class="flex w-full justify-center mt-8 px-4">
-          <CardItem type="FIGURE" :object="amsterdamHistory[4]" />
+          <CardItem :object="amsterdamHistory[4]" type="FIGURE" />
         </div>
       </div>
     </div>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CarouselItem class="w-full aspect-video h-96" :is-complex="false" :carousel-images="carouselImages" />
+    <CarouselItem :carousel-images="carouselImages" :is-complex="false" class="w-full aspect-video h-96" />
     <div class="container mx-auto w-11/12 lg:w-10/12 justify-center mt-14 mb-24">
       <!--      TODO breadcrumbs-->
       <div class="grid grid-cols-10">
@@ -8,7 +8,7 @@
           <h1>{{ eventDetails.name }}</h1>
           <div class="divider" />
           <div class="grid grid-cols-10">
-            <div class="flex items-center" :class="!mobileDev ? 'col-span-5' : 'col-span-10'">
+            <div :class="!mobileDev ? 'col-span-5' : 'col-span-10'" class="flex items-center">
               <div v-if="eventDetails.eventDays.length > 1">
                 <h4>
                   <b>
@@ -33,7 +33,7 @@
             </div>
             <div />
             <!--            TODO pipe-->
-            <div class="flex items-center text-right justify-end" :class="!mobileDev ? 'col-span-4' : 'col-span-10'">
+            <div :class="!mobileDev ? 'col-span-4' : 'col-span-10'" class="flex items-center text-right justify-end">
               <h4>
                 <NuxtLink :to="'/points-of-interest/' + eventDetails.location.id">
                   <b>{{

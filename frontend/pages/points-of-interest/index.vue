@@ -4,7 +4,7 @@
       <h2 class="flex w-full mb-9">
         All points of interest
       </h2>
-      <AllCardsSection :page-type="'points-of-interest'" :elements="pois" />
+      <AllCardsSection :elements="pois" :page-type="'points-of-interest'" />
     </div>
   </div>
 </template>

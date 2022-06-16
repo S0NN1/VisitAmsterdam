@@ -1,9 +1,9 @@
 <template>
   <svg
-    xmlns="http://www.w3.org/2000/svg"
-    :width="width"
     :height="height"
+    :width="width"
     viewBox="0 0 2500 735.36"
+    xmlns="http://www.w3.org/2000/svg"
   >
     <defs>
       <style>.b {
