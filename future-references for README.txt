@@ -1,0 +1,1 @@
+cambiare constants BACKEND_URL in frontend in backend:8080
