@@ -96,9 +96,6 @@ export default Vue.extend({
   mounted () {
     this.timer()
   },
-  created () {
-    console.log(this.carouselImages)
-  },
   methods: {
     selectedIndex (index) {
       this.activeIndex = index

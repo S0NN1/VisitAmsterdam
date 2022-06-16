@@ -169,7 +169,6 @@ export default {
         const obj = that.craftElementObj(item, that.pageType)
         that.elementsFiltered.push(obj)
       })
-      console.log(this.elementsFiltered)
     },
     applyFilter (filter, pageType) {
       this.activeFilter = filter.substring(0, 1).toUpperCase() + filter.substring(1).toLowerCase()

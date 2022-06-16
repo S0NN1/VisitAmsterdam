@@ -39,14 +39,62 @@
             </p>
           </div>
         </div>
-      </div>
-      <div v-if="poiDetails.visitInfo.url!==''" class="flex w-full justify-center mt-5 sm:mt-0 sm:justify-end">
-        <a :href="poiDetails.visitInfo.url" target="_blank">
-          <div class="btn btn-md btn-secondary rounded-full text-white normal-case">
-            <b class="text-base">Visit the site</b>
+        <div class="flex w-full justify-center mt-5 sm:mt-0 sm:justify-end sm:col-span-5">
+          <div
+            class="btn btn-md btn-secondary rounded-full text-white normal-case"
+            @click="addToItinerary(poiDetails.id)"
+          >
+            <b class="text-base">Add to itinerary</b>
           </div>
-        </a>
+        </div>
+        <div
+          v-if="poiDetails.visitInfo.url!==''"
+          class="flex w-full justify-center mt-5 sm:mt-0 sm:justify-end sm:col-span-5"
+        >
+          <a :href="poiDetails.visitInfo.url" target="_blank">
+            <div class="btn btn-md btn-secondary rounded-full text-white normal-case">
+              <b class="text-base">Visit the site</b>
+            </div>
+          </a>
+        </div>
       </div>
+      <transition
+        name="fade"
+      >
+        <div
+          v-if="toast"
+          class="flex items-center justify-between w-3/5 lg:w-1/5 p-4 bg-white border rounded-md shadow-sm absolute top-0 right-0 lg:top-28 lg:right-10"
+        >
+          <div class="flex items-center">
+            <svg
+              class="w-8 h-8 text-green-500"
+              fill="currentColor"
+              viewBox="0 0 20 20"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path
+                clip-rule="evenodd"
+                d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z"
+                fill-rule="evenodd"
+              />
+            </svg>
+            <p class="ml-3 text-base font-bold text-green-600">
+              {{ $store }}
+            </p>
+          </div>
+          <span class="inline-flex items-center cursor-pointer">
+            <svg
+              class="w-4 h-4 text-gray-600"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24"
+              xmlns="http://www.w3.org/2000/svg"
+            >
+              <path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" />
+            </svg>
+          </span>
+        </div>
+      </transition>
       <MapItem
         :markers="[{latitude: poiDetails.latitude, longitude: poiDetails.longitude, address: poiDetails.address}]"
       />
@@ -126,7 +174,8 @@ export default Vue.extend({
         type: Object,
         default: null
       },
-      mobileDev: false
+      mobileDev: false,
+      toast: false
     }
   },
   head () {
@@ -155,6 +204,28 @@ export default Vue.extend({
         that.mobileDev = that.mediaQuery.matches
       })
     }
+  },
+  methods: {
+    addToItinerary (id) {
+      console.log(this.$store.state.itinerary.stops)
+      if (!this.$store.state.itinerary.stops.includes(id)) {
+        this.$store.commit('ADD', id)
+        this.toast = true
+        this.timerId = setTimeout(() => {
+          this.toast = false
+        }, 2000)
+      }
+    }
   }
-})
+}
+)
 </script>
+<style scoped>
+.fade-enter-active, .fade-leave-active {
+  transition: opacity .5s;
+}
+
+.fade-enter, .fade-leave-to {
+  opacity: 0;
+}
+</style>
