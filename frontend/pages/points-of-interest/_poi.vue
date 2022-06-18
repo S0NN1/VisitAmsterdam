@@ -79,7 +79,7 @@
               />
             </svg>
             <p class="ml-3 text-base font-bold text-green-600">
-              {{ $store }}
+              Successfully added stop to itinerary!
             </p>
           </div>
           <span class="inline-flex items-center cursor-pointer">
@@ -175,7 +175,8 @@ export default Vue.extend({
         default: null
       },
       mobileDev: false,
-      toast: false
+      toast: false,
+      timerId: undefined
     }
   },
   head () {
@@ -207,14 +208,11 @@ export default Vue.extend({
   },
   methods: {
     addToItinerary (id) {
-      console.log(this.$store.state.itinerary.stops)
-      if (!this.$store.state.itinerary.stops.includes(id)) {
-        this.$store.commit('ADD', id)
-        this.toast = true
-        this.timerId = setTimeout(() => {
-          this.toast = false
-        }, 2000)
-      }
+      this.$store.commit('custom_itinerary/ADD_STOP', id)
+      this.toast = true
+      this.timerId = setTimeout(() => {
+        this.toast = false
+      }, 2000)
     }
   }
 }
