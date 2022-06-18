@@ -41,12 +41,14 @@
           <h1 class="mb-5 text-5xl font-bold text-white drop-shadow-xl">
             Build your own itinerary!
           </h1>
-          <button
-            aria-label="Create your Custom Itinerary"
-            class="btn btn-lg btn-primary rounded-full bg-white border-none customItinerary mt-6 font-bold normal-case"
-          >
-            Start now!
-          </button>
+          <NuxtLink :to="'/custom_itinerary'">
+            <button
+              aria-label="Create your Custom Itinerary"
+              class="btn btn-lg btn-primary rounded-full bg-white border-none customItinerary mt-6 font-bold normal-case"
+            >
+              Start now!
+            </button>
+          </NuxtLink>
         </div>
       </div>
     </div>
@@ -119,9 +121,9 @@ export default Vue.extend({
   data () {
     return {
       amsterdamImage: {
-        heroImage: '',
-        name: '',
-        description: '',
+        heroImage: require('@/static/img/amsterdam-home.webp'),
+        name: 'Amsterdam Home Image',
+        description: 'Amsterdam Home Image',
         date: '',
         time: '',
         link: '',

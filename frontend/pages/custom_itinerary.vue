@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto w-11/12 lg:w-10/12 justify-center mt-14 mb-24">
+  <div class="container mx-auto w-11/12 lg:w-10/12 justify-center mt-14 h-full">
     <transition
       name="fade"
     >
@@ -37,35 +37,158 @@
         </span>
       </div>
     </transition>
-    <div class="grid grid-cols-2 gap-0 mt-10 w-fit   justify-start">
-      <h1 class="text-4xl">
-        Name:
-      </h1>
-      <p class="text-4xl">
-        {{ $store.state.custom_itinerary.name === '' ? 'Unnamed Itinerary' : $store.state.custom_itinerary.name }}
-      </p>
+    <div class="flex h-12" />
+    <div class="flex grid grid-cols-12 gap-3 mt-10 w-full justify-start">
+      <div class="col-span-6 justify-start">
+        <h1 class="text-4xl inline-flex">
+          <span class="mr-10">{{
+            $store.state.custom_itinerary.name === '' ? 'Custom Itinerary' : $store.state.custom_itinerary.name
+          }}</span>
+          <span><IconsEditIcon :height="'2.5rem'" :width="'2.5rem'" class="fill-secondary" /></span>
+        </h1>
+      </div>
+      <div class="flex col-span-6 justify-end">
+        <IconsDownloadIcon :height="'2.5rem'" :width="'2.5rem'" class="fill-secondary" />
+      </div>
+      <div class="divider col-span-4" />
+      <div class="flex col-span-8" />
+      <div class="col-span-6 justify-start">
+        <p class=" inline-flex font-bold text-2xl">
+          <span class="mr-2">
+            Duration:
+          </span>
+          <span>{{ ' ' + '' === '' ? '0h' : $store.state.custom_itinerary.name + 'h' }} </span>
+        </p>
+      </div>
+      <div class="flex col-span-6" />
+      <div class="col-span-12 justify-start mt-5">
+        <h2 class=" inline-flex">
+          Stops
+        </h2>
+      </div>
     </div>
-    <div v-if="$store.state.custom_itinerary.stops.length===0">
-      <p> Currently no stops added to custom itinerary, add them to display them here</p>
-      <NuxtLink to="/points-of-interest">
-        <button aria-label="Find Points of Interest" class="btn btn-primary normal-case text-base">
-          Find points of interest
-        </button>
-      </NuxtLink>
+    <div class="flex mt-10 justify-center">
+      <div class="h-fit bg-base-100 w-full box-shadow-card rounded-3xl px-6 py-5">
+        <div
+          class="card-body h-full text-ellipsis overflow-auto box-scrollbar p-0 m-5 grid grid-cols-4 group transition-all"
+        >
+          <div
+            v-for="(stop, index) in stops"
+            :key="stop.name"
+            class="flex mt-1 w-full col-span-4"
+          >
+            <li
+              class="text-secondary py-2 px-3 rounded-xl w-full col-span-2"
+            >
+              <b class="text-lg text-black">{{ stop.name }}</b><br>
+              <p class="text-gray-400">
+                {{ stop.address }}
+              </p>
+            </li>
+            <div class="flex w-full col-span-2 justify-center grid grid-cols-4">
+              <div class="flex" />
+              <div class="flex justify-center">
+                <button @click="index!==0 ? move(true, index) : null">
+                  <IconsArrowUpIcon
+                    :class="index!==0 ? 'fill-secondary' : 'fill-neutral'"
+                    :height="'2.5rem'"
+                    :width="'2.5rem'"
+                  />
+                </button>
+              </div>
+              <div class="flex justify-center">
+                <IconsArrowDownIcon
+                  :class="index!==stops.length-1 ? 'fill-secondary' : 'fill-neutral'"
+                  :height="'2.5rem'"
+                  :width="'2.5rem'"
+                  @click="index!==stops.length-1 ? move(false, index) : null"
+                />
+              </div>
+              <div class="flex w-full justify-end">
+                <button
+                  aria-label="Go to About Page"
+                  class="btn btn-neutral normal-case text-base "
+                  @click="remove(index)"
+                >
+                  Delete
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="flex col-span-4 justify-center ">
+          <div class="flex" />
+
+          <div class="w-20 h-20 col-span-2">
+            <NuxtLink to="/points-of-interest">
+              <button class="w-full h-full btn btn-circle btn-secondary">
+                <svg
+                  class="fill-white"
+                  height="3rem"
+                  viewBox="0 0 24 24"
+                  width="3rem"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
+                  <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
+                </svg>
+              </button>
+            </NuxtLink>
+          </div>
+          <div class="flex" />
+        </div>
+      </div>
     </div>
-    <div v-else />
+    <div class="flex h-full">
+      <MapItem
+        :class="mobileDev ? 'rounded-3xl' : ''"
+        :waypoints="waypoints"
+        class="w-full h-64 lg:h-96"
+      />
+    </div>
   </div>
 </template>
 
 <script>
+import { BACKEND_URL } from 'assets/js/constants'
+
 export default {
   name: 'CustomItineraryPage',
   title: 'Custom Itinerary',
+  async asyncData ({ store }) {
+    const pois = await fetch(BACKEND_URL + '/api/v1/points-of-interest/getAll').then(
+      res => res.json()
+    )
+    const stops = []
+    pois.forEach(function (poi) {
+      if (store.state.custom_itinerary.stops.includes(poi.id)) {
+        stops.push(poi)
+      }
+    })
+    const waypoints = []
+    stops.forEach((stop) => {
+      waypoints.push(
+        {
+          latitude: stop.latitude,
+          longitude: stop.longitude,
+          address: stop.address
+        }
+      )
+    })
+    return {
+      stops,
+      waypoints
+    }
+  },
   data () {
     return {
       toast: false,
       timerId: undefined,
-      toastText: ''
+      toastText: '',
+      mediaQuery: {
+        type: Object,
+        default: null
+      },
+      mobileDev: false
     }
   },
   head () {
@@ -84,7 +207,31 @@ export default {
       ]
     }
   },
+  mounted () {
+    // eslint-disable-next-line nuxt/no-env-in-hooks
+    if (process.client) {
+      this.mediaQuery = matchMedia('(max-width: 700px)')
+      this.mobileDev = this.mediaQuery.matches
+      const that = this
+      this.mediaQuery.addListener(() => {
+        that.mobileDev = that.mediaQuery.matches
+      })
+    }
+  },
   methods: {
+    move (isUp, index) {
+      const newIndex = isUp ? index - 1 : index + 1
+      this.moveItem(index, newIndex)
+      this.reorderItinerary(this.stops)
+    },
+    moveItem (from, to) {
+      const f = this.stops.splice(from, 1)[0]
+      this.stops.splice(to, 0, f)
+    },
+    remove (index) {
+      this.stops.splice(index, 1)
+      this.removeItinerary(index)
+    },
     removeItinerary (id) {
       this.$store.commit('custom_itinerary/REMOVE_STOP', id)
       this.toastText = 'Successfully removed stop from itinerary!'
@@ -114,5 +261,4 @@ export default {
 </script>
 
 <style scoped>
-
 </style>

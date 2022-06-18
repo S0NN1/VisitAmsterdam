@@ -28,7 +28,7 @@
     </div>
   </div>
   <div v-else>
-    <div class="carousel w-full h-full lg:rounded-3xl">
+    <div class="carousel w-full h-full">
       <div
         v-for="(image, index) in carouselImages"
         :id="'imageCarousel' + index"

@@ -4,9 +4,9 @@
       v-if="!mobileDev"
       :carousel-images="[carouselImage]"
       :is-complex="false"
-      class="w-full aspect-video h-96"
+      class="w-full aspect-video h-96 rounded-none"
     />
-    <div class="container mx-auto w-11/12 lg:w-10/12 justify-center mt-14 mb-24">
+    <div class="container mx-auto w-11/12 lg:w-10/12 h-full justify-center mt-14 mb-24">
       <!--      TODO breadcrumbs-->
       <div class="grid grid-cols-1 sm:grid-cols-10 ">
         <div class="flex sm:col-span-10 justify-start">
@@ -54,8 +54,8 @@
       </div>
       <MapItem
         :class="mobileDev ? 'rounded-3xl' : ''"
-        :height="mobileDev ? '15rem': ''"
         :waypoints="waypoints"
+        class="w-full h-64 lg:h-96"
       />
       <div class="flex divider" />
       <div class="flex w-full justify-start">
