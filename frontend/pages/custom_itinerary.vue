@@ -37,7 +37,7 @@
         </span>
       </div>
     </transition>
-    <div class="grid grid-cols-2 lg:grid-cols-12 gap-1 lg:gap-2 mt-10 w-full justify-start">
+    <div class="grid grid-cols-2 lg:grid-cols-12 gap-1 lg:gap-2 mt-16 w-full justify-start">
       <div class="flex col-span-2 lg:col-span-6 justify-start">
         <h1 class="text-4xl inline-flex">
           <input
