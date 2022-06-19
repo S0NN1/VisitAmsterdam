@@ -39,6 +39,10 @@ public class PointOfInterest {
     @JsonIgnoreProperties("location")
     private List<Event> events;
 
+    @ManyToMany(mappedBy = "stops", cascade = CascadeType.ALL)
+    @JsonIgnoreProperties("stops")
+    private List<Itinerary> itineraries;
+
     public PointOfInterest() {
     }
 
@@ -133,5 +137,13 @@ public class PointOfInterest {
 
     public void setHeroImage(String heroImage) {
         this.heroImage = heroImage;
+    }
+
+    public List<Itinerary> getItineraries() {
+        return itineraries;
+    }
+
+    public void setItineraries(List<Itinerary> itineraries) {
+        this.itineraries = itineraries;
     }
 }

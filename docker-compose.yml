@@ -1,0 +1,64 @@
+version: "3.9"
+services:
+  db:
+    image: mysql:latest
+    cap_add:
+      - SYS_NICE
+    restart: always
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      - MYSQL_DATABASE=hyp
+      - MYSQL_ROOT_PASSWORD=sus
+    ports:
+      - '3306:3306'
+    volumes:
+      - db:/var/lib/mysql
+      - ./db/init.sql:/docker-entrypoint-initdb.d/init.sql
+    networks:
+      - hyp
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 10s
+      retries: 10
+
+  frontend:
+    image: node:16.15-alpine
+    stdin_open: true
+    restart: always
+    ports:
+      - '3000:3000'
+    volumes:
+      - ./frontend:/app
+    command: sh -c "cd app && sed -i 's/localhost/backend/g' ./assets/js/constants.js && npm install && HOST=0 npm run dev"
+    networks:
+      - hyp
+
+  backend:
+    image: openjdk:17
+    stdin_open: true
+    restart: always
+    environment:
+      - SPRING.DATASOURCE.URL=jdbc:mysql://db:3306/hyp
+      - SPRING.DATASOURCE.USERNAME=root
+      - SPRING.DATASOURCE.PASSWORD=sus
+    depends_on:
+      db:
+        condition: service_healthy
+    ports:
+      - '8080:8080'
+    volumes:
+          - type: bind
+            source: ./backend.jar
+            target: /backend.jar
+    command: bash -c "java -jar backend.jar"
+    networks:
+      - hyp
+
+networks:
+  hyp:
+    driver: bridge
+
+volumes:
+  db:
+    driver: local
+  frontend:
