@@ -25,7 +25,9 @@
         </div>
         <div v-if="!mobileDev" class="sm:col-span-5">
           <MapItem
+            :height="!mobileDev ? '24rem' : '22rem'"
             :markers="[{latitude: serviceDetails.latitude, longitude: serviceDetails.longitude, address: serviceDetails.address}]"
+            class="w-full"
           />
         </div>
         <div v-if="mobileDev" class="flex justify-center mt-5">
@@ -66,7 +68,9 @@
         </div>
         <div v-if="mobileDev">
           <MapItem
+            :height="!mobileDev ? '24rem' : '22rem'"
             :markers="[{latitude: serviceDetails.latitude, longitude: serviceDetails.longitude, address: serviceDetails.address}]"
+            class="w-full"
           />
         </div>
       </div>
@@ -118,7 +122,7 @@ export default Vue.extend({
   mounted () {
     // eslint-disable-next-line nuxt/no-env-in-hooks
     if (process.client) {
-      this.mediaQuery = matchMedia('(max-width: 700px)')
+      this.mediaQuery = matchMedia('(max-width: 1024px)')
       this.mobileDev = this.mediaQuery.matches
       const that = this
       this.mediaQuery.addListener(() => {

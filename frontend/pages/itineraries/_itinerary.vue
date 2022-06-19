@@ -8,18 +8,18 @@
     />
     <div class="container mx-auto w-11/12 lg:w-10/12 h-full justify-center mt-14 mb-24">
       <!--      TODO breadcrumbs-->
-      <div class="grid grid-cols-1 sm:grid-cols-10 ">
-        <div class="flex sm:col-span-10 justify-start">
+      <div class="grid grid-cols-1 lg:grid-cols-10 ">
+        <div class="flex lg:col-span-10 justify-start">
           <h1>{{ itineraryDetails.name }}</h1>
         </div>
-        <div class="flex divider sm:col-span-5" />
-        <div v-if="!mobileDev" class="flex sm:col-span-5 start grid grid-cols-3">
+        <div class="flex divider lg:col-span-5" />
+        <div v-if="!mobileDev" class="flex lg:col-span-5 start grid grid-cols-3">
           <div class="flex" />
           <h3 class="flex col-span-2">
             Stops
           </h3>
         </div>
-        <div class="mt-4 text-justify sm:col-span-5 mb-10 sm:mb-0">
+        <div class="mt-4 text-justify lg:col-span-5 mb-10 lg:mb-0">
           <p>{{ itineraryDetails.description }}</p>
         </div>
         <CarouselItem
@@ -32,9 +32,9 @@
         <div v-if="mobileDev" class="flex justify-start mt-5">
           <h3>Stops</h3>
         </div>
-        <div class="flex mt-5 sm:mt-0 sm:col-span-5 justify-center grid grid-cols-3">
+        <div class="flex mt-5 lg:mt-0 lg:col-span-5 justify-center grid grid-cols-3">
           <div v-if="!mobileDev" class="flex" />
-          <div class="h-96 bg-base-100 w-full box-shadow-card rounded-3xl col-span-3 sm:col-span-2 px-6 py-5">
+          <div class="h-96 bg-base-100 w-full box-shadow-card rounded-3xl col-span-3 lg:col-span-2 px-6 py-5">
             <div class="card-body h-full text-ellipsis overflow-auto box-scrollbar p-0">
               <div v-for="stop in itineraryDetails.stops" :key="stop.name" class="mt-1">
                 <NuxtLink :to="'/points-of-interest/' + stop.id">
@@ -54,8 +54,9 @@
       </div>
       <MapItem
         :class="mobileDev ? 'rounded-3xl' : ''"
+        :height="!mobileDev ? '24rem' : '22rem'"
         :waypoints="waypoints"
-        class="w-full h-64 lg:h-96"
+        class="w-full"
       />
       <div class="flex divider" />
       <div class="flex w-full justify-start">
@@ -138,7 +139,7 @@ export default Vue.extend({
   mounted () {
     // eslint-disable-next-line nuxt/no-env-in-hooks
     if (process.client) {
-      this.mediaQuery = matchMedia('(max-width: 700px)')
+      this.mediaQuery = matchMedia('(max-width: 1024px)')
       this.mobileDev = this.mediaQuery.matches
       const that = this
       this.mediaQuery.addListener(() => {

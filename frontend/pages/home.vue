@@ -152,7 +152,7 @@ export default Vue.extend({
   mounted () {
     // eslint-disable-next-line nuxt/no-env-in-hooks
     if (process.client) {
-      this.mediaQuery = matchMedia('(max-width: 700px)')
+      this.mediaQuery = matchMedia('(max-width: 1024px)')
       this.mobileDev = this.mediaQuery.matches
       const that = this
       this.mediaQuery.addListener(() => {

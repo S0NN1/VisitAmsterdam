@@ -50,7 +50,9 @@
         Interactive Map & Infopoint
       </h1>
       <MapItem
+        :height="!mobileDev ? '24rem' : '22rem'"
         :markers="[{latitude: 52.379551503365654, longitude: 4.900806771481708, address: 'De Ruijterkade 28, 1012 AA Amsterdam'}]"
+        class="w-full"
       />
     </div>
     <div />

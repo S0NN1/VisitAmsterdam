@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto w-11/12 lg:w-10/12 justify-center mt-14 h-full">
+  <div class="container mx-auto w-11/12 lg:w-10/12 h-full justify-center mt-14 mb-96 lg:mb-24">
     <transition
       name="fade"
     >
@@ -37,9 +37,8 @@
         </span>
       </div>
     </transition>
-    <div class="flex h-12" />
-    <div class="flex grid grid-cols-12 gap-3 mt-10 w-full justify-start">
-      <div class="col-span-6 justify-start">
+    <div class="grid grid-cols-2 lg:grid-cols-12 gap-1 lg:gap-2 mt-10 w-full justify-start">
+      <div class="flex col-span-2 lg:col-span-6 justify-start">
         <h1 class="text-4xl inline-flex">
           <span class="mr-10">{{
             $store.state.custom_itinerary.name === '' ? 'Custom Itinerary' : $store.state.custom_itinerary.name
@@ -47,21 +46,12 @@
           <span><IconsEditIcon :height="'2.5rem'" :width="'2.5rem'" class="fill-secondary" /></span>
         </h1>
       </div>
-      <div class="flex col-span-6 justify-end">
+      <div v-if="!mobileDev" class="flex col-span-6 justify-end">
         <IconsDownloadIcon :height="'2.5rem'" :width="'2.5rem'" class="fill-secondary" />
       </div>
-      <div class="divider col-span-4" />
-      <div class="flex col-span-8" />
-      <div class="col-span-6 justify-start">
-        <p class=" inline-flex font-bold text-2xl">
-          <span class="mr-2">
-            Duration:
-          </span>
-          <span>{{ ' ' + '' === '' ? '0h' : $store.state.custom_itinerary.name + 'h' }} </span>
-        </p>
-      </div>
-      <div class="flex col-span-6" />
-      <div class="col-span-12 justify-start mt-5">
+      <div class="flex divider col-span-2" />
+      <div v-if="!mobileDev" class="flex col-span-8" />
+      <div class="col-span-2 lg:col-span-12 justify-start mt-5">
         <h2 class=" inline-flex">
           Stops
         </h2>
@@ -140,9 +130,11 @@
     </div>
     <div class="flex h-full">
       <MapItem
+        ref="map"
         :class="mobileDev ? 'rounded-3xl' : ''"
+        :height="!mobileDev ? '24rem' : '22rem'"
         :waypoints="waypoints"
-        class="w-full h-64 lg:h-96"
+        class="w-full"
       />
     </div>
   </div>
@@ -210,7 +202,7 @@ export default {
   mounted () {
     // eslint-disable-next-line nuxt/no-env-in-hooks
     if (process.client) {
-      this.mediaQuery = matchMedia('(max-width: 700px)')
+      this.mediaQuery = matchMedia('(max-width: 1024px)')
       this.mobileDev = this.mediaQuery.matches
       const that = this
       this.mediaQuery.addListener(() => {
@@ -230,7 +222,9 @@ export default {
     },
     remove (index) {
       this.stops.splice(index, 1)
+      this.waypoints.splice(index, 1)
       this.removeItinerary(index)
+      this.$refs.map.updateWaypoints(this.waypoints)
     },
     removeItinerary (id) {
       this.$store.commit('custom_itinerary/REMOVE_STOP', id)

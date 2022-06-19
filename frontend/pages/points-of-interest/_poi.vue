@@ -96,7 +96,9 @@
         </div>
       </transition>
       <MapItem
+        :height="!mobileDev ? '24rem' : '22rem'"
         :markers="[{latitude: poiDetails.latitude, longitude: poiDetails.longitude, address: poiDetails.address}]"
+        class="w-full"
       />
 
       <div class="flex divider" />
@@ -198,7 +200,7 @@ export default Vue.extend({
   mounted () {
     // eslint-disable-next-line nuxt/no-env-in-hooks
     if (process.client) {
-      this.mediaQuery = matchMedia('(max-width: 700px)')
+      this.mediaQuery = matchMedia('(max-width: 1024px)')
       this.mobileDev = this.mediaQuery.matches
       const that = this
       this.mediaQuery.addListener(() => {
