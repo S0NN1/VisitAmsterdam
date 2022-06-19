@@ -42,11 +42,11 @@
         <h1 class="text-4xl inline-flex">
           <input
             ref="itineraryName"
-            type="text"
-            class="input mr-10 text-lg lg:text-3xl"
             :class="editItineraryName ? 'input-bordered input-secondary' : ''"
-            :value="$store.state.custom_itinerary.name === '' ? 'Custom Itinerary' : $store.state.custom_itinerary.name"
             :disabled="!editItineraryName"
+            :value="$store.state.custom_itinerary.name === '' ? 'Custom Itinerary' : $store.state.custom_itinerary.name"
+            class="input mr-10 text-lg lg:text-3xl"
+            type="text"
           >
           <span class="flex items-center">
             <button aria-label="Toggle edit itinerary name" @click="editName">
@@ -165,7 +165,7 @@
             <div class="flex w-full justify-end">
               <button
                 aria-label="Delete Stop"
-                class="btn btn-neutral normal-case text-sm "
+                class="btn btn-neutral normal-case text-sm rounded-full "
                 @click="remove(index)"
               >
                 Delete
@@ -180,10 +180,10 @@
             <NuxtLink to="/points-of-interest">
               <button class="w-full h-full btn btn-circle btn-secondary">
                 <svg
-                  class="fill-white"
                   :height="mobileDev ? '2rem' : '3rem'"
-                  viewBox="0 0 24 24"
                   :width="mobileDev ? '2rem' : '3rem'"
+                  class="fill-white"
+                  viewBox="0 0 24 24"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
@@ -208,8 +208,8 @@
     </div>
     <div v-if="mobileDev" class="flex w-full justify-center mb-4">
       <button
-        class="btn btn-lg btn-secondary rounded-full fill-white text-white my-4 sm:my-0 normal-case"
         aria-label="Download Itinerary"
+        class="btn btn-lg btn-secondary rounded-full fill-white text-white my-4 sm:my-0 normal-case"
         onclick="print()"
       >
         Download &emsp;
@@ -218,8 +218,8 @@
     </div>
     <div v-if="$store.state.custom_itinerary.stops.length>0" class="flex w-full justify-center mb-8">
       <button
-        class="btn btn-lg btn-error rounded-full fill-white text-white sm:my-0 normal-case "
         aria-label="Delete Itinerary"
+        class="btn btn-lg btn-error rounded-full fill-white text-white sm:my-0 normal-case "
         @click="deleteItinerary"
       >
         Delete Itinerary &emsp;

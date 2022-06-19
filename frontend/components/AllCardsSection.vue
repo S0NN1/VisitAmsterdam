@@ -33,7 +33,7 @@
             <CardItem
               :card-type="pageCardType[pageType]"
               :object="element"
-              class="hover:shadow-2xl transition ease-in-out duration-200"
+              class="hover:shadow-2xl transition ease-in-out duration-200 box-shadow-card"
             />
           </NuxtLink>
           <NuxtLink

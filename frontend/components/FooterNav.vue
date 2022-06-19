@@ -84,26 +84,52 @@
                   </p>
                 </div>
                 <div class="flex col-span-6 row-span-2 justify-center">
-                  <IconsSocialFacebookIcon
-                    class="rounded-full icon-footer fill-white p-1 aspect-square mx-auto my-auto h-fit"
-                    height="1.7rem"
-                    width="1.7rem"
-                  />
-                  <IconsSocialInstagramIcon
-                    class="rounded-full icon-footer fill-white p-1 aspect-square mx-auto my-auto h-fit"
-                    height="1.7rem"
-                    width="1.7rem"
-                  />
-                  <IconsSocialTwitterIcon
-                    class="rounded-full icon-footer fill-white p-1 aspect-square mx-auto my-auto h-fit"
-                    height="1.7rem"
-                    width="1.7rem"
-                  />
-                  <IconsSocialYoutubeIcon
-                    class="rounded-full icon-footer fill-white p-1 aspect-square mx-auto my-auto h-fit"
-                    height="1.7rem"
-                    width="1.7rem"
-                  />
+                  <a
+                    class="justify-center mx-auto my-auto"
+                    href="https://www.facebook.com/iamsterdam/"
+                    target="_blank"
+                  >
+                    <IconsSocialFacebookIcon
+                      class="rounded-full icon-footer fill-white p-1 aspect-square h-fit"
+                      height="1.7rem"
+                      width="1.7rem"
+                    />
+                  </a>
+                  <a
+                    class="justify-center mx-auto my-auto"
+                    href="https://www.instagram.com/iamsterdam/?hl=en"
+                    target="_blank"
+                  >
+                    <IconsSocialInstagramIcon
+                      class="rounded-full icon-footer fill-white p-1 aspect-square h-fit"
+                      height="1.7rem"
+                      width="1.7rem"
+                    />
+                  </a>
+
+                  <a
+                    class="justify-center mx-auto my-auto"
+                    href="https://twitter.com/Iamsterdam?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+                    target="_blank"
+                  >
+                    <IconsSocialTwitterIcon
+                      class="rounded-full icon-footer fill-white p-1 aspect-square h-fit"
+                      height="1.7rem"
+                      width="1.7rem"
+                    />
+                  </a>
+
+                  <a
+                    class="justify-center mx-auto my-auto"
+                    href="https://www.youtube.com/channel/UCWx6OvwjIbSDpoc3L0vVPIg"
+                    target="_blank"
+                  >
+                    <IconsSocialYoutubeIcon
+                      class="rounded-full icon-footer fill-white p-1 aspect-square  h-fit"
+                      height="1.7rem"
+                      width="1.7rem"
+                    />
+                  </a>
                 </div>
               </div>
             </div>

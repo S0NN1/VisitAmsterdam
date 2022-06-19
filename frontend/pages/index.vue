@@ -119,28 +119,56 @@
             >
               <div class="flex w-full justify-center grid grid-cols-4 gap-3 items-center">
                 <div class="flex w-full justify-center">
-                  <IconsSocialInstagramIcon
-                    :height="mobileDev ? '2rem' : '2.5rem'"
-                    :width="mobileDev ? '2rem' : '2.5rem'"
-                  />
+                  <div class="flex w-full justify-center">
+                    <a
+                      class="justify-center"
+                      href="https://www.facebook.com/iamsterdam/"
+                      target="_blank"
+                    >
+                      <IconsSocialFacebookIcon
+                        :height="mobileDev ? '2rem' : '2.5rem'"
+                        :width="mobileDev ? '2rem' : '2.5rem'"
+                        class="fill-white"
+                      />
+                    </a>
+                  </div>
+                  <a
+                    class="justify-center mx-auto my-auto"
+                    href="https://www.facebook.com/iamsterdam/"
+                    target="_blank"
+                  >
+                    <IconsSocialInstagramIcon
+                      :height="mobileDev ? '2rem' : '2.5rem'"
+                      :width="mobileDev ? '2rem' : '2.5rem'"
+                      class="fill-white"
+                    />
+                  </a>
                 </div>
                 <div class="flex w-full justify-center">
-                  <IconsSocialYoutubeIcon
-                    :height="mobileDev ? '2rem' : '2.5rem'"
-                    :width="mobileDev ? '2rem' : '2.5rem'"
-                  />
+                  <a
+                    class="justify-center mx-auto my-auto"
+                    href="https://www.facebook.com/iamsterdam/"
+                    target="_blank"
+                  >
+                    <IconsSocialTwitterIcon
+                      :height="mobileDev ? '2rem' : '2.5rem'"
+                      :width="mobileDev ? '2rem' : '2.5rem'"
+                      class="fill-white"
+                    />
+                  </a>
                 </div>
                 <div class="flex w-full justify-center">
-                  <IconsSocialFacebookIcon
-                    :height="mobileDev ? '2rem' : '2.5rem'"
-                    :width="mobileDev ? '2rem' : '2.5rem'"
-                  />
-                </div>
-                <div class="flex w-full justify-center">
-                  <IconsSocialTwitterIcon
-                    :height="mobileDev ? '2rem' : '2.5rem'"
-                    :width="mobileDev ? '2rem' : '2.5rem'"
-                  />
+                  <a
+                    class="justify-center mx-auto my-auto"
+                    href="https://www.facebook.com/iamsterdam/"
+                    target="_blank"
+                  >
+                    <IconsSocialYoutubeIcon
+                      :height="mobileDev ? '2rem' : '2.5rem'"
+                      :width="mobileDev ? '2rem' : '2.5rem'"
+                      class="fill-white"
+                    />
+                  </a>
                 </div>
               </div>
             </div>
@@ -250,26 +278,52 @@
             <div class=" flex h-full grid grid-rows-2">
               <div class="flex " />
               <div class=" grid grid-cols-4 gap-0 w-full h-full items-center">
-                <IconsSocialFacebookIcon
-                  class="rounded-full icon-footer fill-primary p-1.5 aspect-square mx-auto my-auto h-fit"
-                  height="2rem"
-                  width="2rem"
-                />
-                <IconsSocialInstagramIcon
-                  class="rounded-full icon-footer fill-primary p-1.5 aspect-square mx-auto my-auto h-fit"
-                  height="2rem"
-                  width="2rem"
-                />
-                <IconsSocialTwitterIcon
-                  class="rounded-full icon-footer fill-primary p-1.5 aspect-square mx-auto my-auto h-fit"
-                  height="2rem"
-                  width="2rem"
-                />
-                <IconsSocialYoutubeIcon
-                  class="rounded-full icon-footer fill-primary p-1.5 aspect-square mx-auto my-auto h-fit"
-                  height="2rem"
-                  width="2rem"
-                />
+                <a
+                  class="justify-center mx-auto my-auto"
+                  href="https://www.facebook.com/iamsterdam/"
+                  target="_blank"
+                >
+                  <IconsSocialFacebookIcon
+                    class="rounded-full icon-footer fill-primary p-1.5 aspect-square h-fit"
+                    height="1.7rem"
+                    width="1.7rem"
+                  />
+                </a>
+                <a
+                  class="justify-center mx-auto my-auto"
+                  href="https://www.instagram.com/iamsterdam/?hl=en"
+                  target="_blank"
+                >
+                  <IconsSocialInstagramIcon
+                    class="rounded-full icon-footer fill-primary p-1.5 aspect-square h-fit"
+                    height="1.7rem"
+                    width="1.7rem"
+                  />
+                </a>
+
+                <a
+                  class="justify-center mx-auto my-auto"
+                  href="https://twitter.com/Iamsterdam?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+                  target="_blank"
+                >
+                  <IconsSocialTwitterIcon
+                    class="rounded-full icon-footer fill-primary p-1.5 aspect-square h-fit"
+                    height="1.7rem"
+                    width="1.7rem"
+                  />
+                </a>
+
+                <a
+                  class="justify-center mx-auto my-auto"
+                  href="https://www.youtube.com/channel/UCWx6OvwjIbSDpoc3L0vVPIg"
+                  target="_blank"
+                >
+                  <IconsSocialYoutubeIcon
+                    class="rounded-full icon-footer fill-primary p-1.5 aspect-square  h-fit"
+                    height="1.7rem"
+                    width="1.7rem"
+                  />
+                </a>
               </div>
             </div>
           </li>

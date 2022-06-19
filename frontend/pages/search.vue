@@ -1,38 +1,38 @@
 <template>
-  <div v-if="ready">
+  <div v-if="ready" class="h-full">
     <HeroImage
-      :title="searchResults.length + ' results ' + (searchResults.length!=0 ? 'found for ' + searchField : '')"
+      :title="searchResults.length + ' results ' + (searchResults.length!==0 ? 'found for ' + searchField : 'found')"
     />
     <div class="flex justify-center">
       <div
         class="flex w-4/5 lg:w-1/2 justify-center items-center bg-white py-6 px-2 rounded-xl shadow-xl"
         style="margin: -2.5rem"
       >
-        <div class="grid grid-rows-2 gap-4 w-full">
-          <div class="grid grid-cols-2 lg:grid-cols-12 w-full mt-4">
-            <div v-if="!mobileDev" />
-            <div class="lg:col-span-9 border-b-2">
+        <div class="w-full">
+          <div class="flex h-fit w-full px-2">
+            <div class="w-full border-b-2 border-secondary">
               <input
                 v-model="searchField"
-                class="appearance-none bg-transparent py-1 lg:w-full"
+                class="appearance-none bg-transparent py-1 text-secondary placeholder-secondary lg:w-full"
                 placeholder="Search"
                 type="text"
                 @keyup.enter="search(searchField)"
               >
             </div>
-            <div v-if="!mobileDev" />
-            <div>
+            <div class="items-center">
               <button aria-label="Search" @click="search(searchField)">
-                <IconsSearchIcon />
+                <IconsSearchIcon class="fill-secondary" />
               </button>
             </div>
           </div>
-          <div class="flex w-full justify-center">
+          <div
+            class="flex grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-full justify-center items-center gap-x-6 gap-y-3 text-center mt-5 px-3"
+          >
             <div
               v-for="(filter, index) in filters"
               :key="filter+index"
               :class="activeFilter===filter ? 'badge-primary': 'text-[#787caa]'"
-              class="badge mr-4 p-5 font-bold tag-badge text-white cursor-pointer"
+              class="badge p-6 font-bold tag-badge badge-md text-white cursor-pointer w-full mx-auto"
               @click="applyFilter(filter)"
             >
               {{ filter }}

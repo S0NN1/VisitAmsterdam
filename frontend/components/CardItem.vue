@@ -2,11 +2,16 @@
 <template>
   <div
     v-if="cardType==='FIGURE'"
-    class="card w-full bg-base-100 bg-contain box-shadow-card-figure carousel-card"
+    class="card bg-base-100 bg-contain box-shadow-card-figure carousel-card"
+    style="width: 95%"
   >
     <img :alt="object.name" :src="object.heroImage" class="object-cover h-full">
   </div>
-  <div v-else-if="cardType==='EVENT'" class="card w-full bg-base-100 carousel-card shadow-xl">
+  <div
+    v-else-if="cardType==='EVENT'"
+    class="card bg-base-100 carousel-card box-shadow-card"
+    style="width: 95%"
+  >
     <div class="card-body" style="max-height: 80%">
       <h2 class="card-title text-sm md:text-base lg:text-2xl">
         {{ object.name }}
@@ -76,7 +81,7 @@
       <div class="flex card-actions p-9 justify-end items-end">
         <NuxtLink
           :to="`/itineraries/${object.id}`"
-          class="flex underline decoration-2 decoration-sky-500 text-sky-500"
+          class="flex underline decoration-2 decoration-secondary text-secondary"
         >
           See more >
         </NuxtLink>

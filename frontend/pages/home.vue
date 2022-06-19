@@ -5,33 +5,44 @@
         Latest Events
       </h2>
       <CarouselItem :carousel-images="events" />
+      <div class="flex w-full justify-end items-end mt-3">
+        <NuxtLink
+          class="flex underline decoration-2 decoration-secondary text-secondary text-xl"
+          to="/events"
+        >
+          See more >
+        </NuxtLink>
+      </div>
       <div class="divider" />
 
       <div class="grid grid-cols-1 lg:grid-cols-2">
         <div>
-          <h2>
+          <div v-if="mobileDev" class="flex w-full justify-center mb-10">
+            <CardItem :object="amsterdamImage" type="FIGURE" />
+          </div>
+          <h2 class="mb-5">
             Brief history of Amsterdam
           </h2>
-          <p class="m-4 text-justify">
+          <p class="lg:m-4 text-justify">
             YĪN YĪN is inspired by the psychedelic Thai funk of the 60s and 70s and combines this with disco, funk and
             electronica to create drawn-out spaced-out improvisations and dance floor squats.
             YĪN YĪN's second album The Age Of Aquarius was released on Glitterbeat on March 4th. They released their
             debut The Rabbit That Hunts Tigers on tape, followed by two 7” vinyl singles (with the Paradiso Vinyl Club
             and Bongo Joe Records). The record took them to stages all over Europe.
           </p>
-          <div class="text-center mb-10 lg:mb-0">
+          <div class="text-center mb-0">
             <NuxtLink to="/about">
               <button
                 aria-label="Go to About Us Page"
-                class="btn btn-lg btn-primary rounded-full fill-white my-4 sm:my-0 normal-case "
+                class="btn btn-xl btn-primary rounded-full fill-white text-white my-4 sm:my-0 normal-case text-xl "
               >
                 Discover &emsp;
-                <IconsPaperPlane height="1.7rem" width="1.7rem" />
+                <IconsPaperPlane height="2rem" width="2rem" />
               </button>
             </NuxtLink>
           </div>
         </div>
-        <div class="flex w-full justify-center">
+        <div v-if="!mobileDev" class="flex w-full justify-center">
           <CardItem :object="amsterdamImage" type="FIGURE" />
         </div>
       </div>
@@ -62,14 +73,16 @@
       <h2 class="mb-8">
         Services provided by the city
       </h2>
-      <div class="flex justify-center">
-        <div class="w-full grid gap-32 mb-20 m-4 grid gap-10 grid-cols-1 lg:grid-cols-3">
+      <div class="flex w-full justify-center">
+        <div
+          class="flex grid gap-10 grid-cols-1 lg:grid-cols-3 mb-20"
+        >
           <div v-for="service in services" :key="service.id">
             <NuxtLink :to="'/services/' + service.id">
               <CardItem
                 :object="service"
                 card-type="MULTIPLE"
-                class="hover:shadow-2xl transition ease-in-out duration-200"
+                class="hover:shadow-2xl transition ease-in-out duration-200 box-shadow-card"
               />
             </NuxtLink>
           </div>

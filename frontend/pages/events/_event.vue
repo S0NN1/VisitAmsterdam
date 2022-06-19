@@ -8,8 +8,8 @@
           <h1>{{ eventDetails.name }}</h1>
           <div class="divider" />
           <div class="grid grid-cols-10">
-            <div :class="!mobileDev ? 'col-span-5' : 'col-span-10'" class="flex items-center">
-              <div v-if="eventDetails.eventDays.length > 1">
+            <div class="flex items-center col-span-10">
+              <span v-if="eventDetails.eventDays.length > 1">
                 <h4>
                   <b>
                     {{
@@ -20,8 +20,8 @@
                     }}
                   </b>
                 </h4>
-              </div>
-              <div v-else>
+              </span>
+              <span v-else>
                 <h4>
                   <b>
                     {{
@@ -29,18 +29,17 @@
                     }}
                   </b>
                 </h4>
-              </div>
-            </div>
-            <div />
-            <!--            TODO pipe-->
-            <div :class="!mobileDev ? 'col-span-4' : 'col-span-10'" class="flex items-center text-right justify-end">
-              <h4>
-                <NuxtLink :to="'/points-of-interest/' + eventDetails.location.id">
-                  <b>{{
-                    eventDetails.location.name
-                  }}</b>
-                </NuxtLink>
-              </h4>
+              </span>
+              <span class="divider divider-horizontal before:bg-secondary after:bg-secondary col-span-2" />
+              <span>
+                <h4>
+                  <NuxtLink :to="'/points-of-interest/' + eventDetails.location.id">
+                    <b>{{
+                      eventDetails.location.name
+                    }}</b>
+                  </NuxtLink>
+                </h4>
+              </span>
             </div>
           </div>
           <div class="mt-4 text-justify">
@@ -72,9 +71,12 @@
                 :class="(eventDetails.infoUrl!=='' && !mobileDev) ? '' : 'col-span-2 mb-2'"
               >
                 <a :href="eventDetails.infoUrl" target="_blank">
-                  <div class="btn btn-md btn-secondary rounded-full text-white">
+                  <button
+                    aria-label="Go to event url"
+                    class="btn btn-lg btn-secondary rounded-full text-white normal-case"
+                  >
                     Official Website
-                  </div>
+                  </button>
                 </a>
               </div>
               <div
@@ -82,9 +84,12 @@
                 :class="(eventDetails.bookingUrl!=='' && !mobileDev) ? '' : 'col-span-2'"
               >
                 <a :href="eventDetails.bookingUrl" target="_blank">
-                  <div class="btn btn-md btn-secondary rounded-full text-white">
+                  <button
+                    aria-label="Go to booking url"
+                    class="btn btn-lg btn-secondary rounded-full text-white normal-case"
+                  >
                     Book Now
-                  </div>
+                  </button>
                 </a>
               </div>
             </div>
@@ -104,6 +109,7 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </template>
 

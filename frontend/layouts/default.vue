@@ -80,7 +80,7 @@
               <li>
                 <NuxtLink to="/home">
                   <b
-                    :class="$nuxt.$route.name==='home' ? 'underline decoration-2 decoration-sky-500' : ''"
+                    :class="$nuxt.$route.name==='home' ? 'underline decoration-2 decoration-secondary' : ''"
                     class="text-[#16215b]"
                   >Home</b>
                 </NuxtLink>
@@ -88,7 +88,7 @@
               <li tabindex="0">
                 <NuxtLink to="/events">
                   <b
-                    :class="$nuxt.$route.name==='events' ? 'underline decoration-2 decoration-sky-500' : ''"
+                    :class="$nuxt.$route.name==='events' ? 'underline decoration-2 decoration-secondary' : ''"
                     class="text-[#16215b]"
                   >Events</b>
                 </NuxtLink>
@@ -96,7 +96,7 @@
               <li>
                 <NuxtLink to="/itineraries">
                   <b
-                    :class="$nuxt.$route.name==='itineraries' ? 'underline decoration-2 decoration-sky-500' : ''"
+                    :class="$nuxt.$route.name==='itineraries' ? 'underline decoration-2 decoration-secondary' : ''"
                     class="text-[#16215b]"
                   >Itineraries</b>
                 </NuxtLink>
@@ -104,7 +104,7 @@
               <li>
                 <NuxtLink to="/points-of-interest">
                   <b
-                    :class="$nuxt.$route.name==='points-of-interest' ? 'underline decoration-2 decoration-sky-500' : ''"
+                    :class="$nuxt.$route.name==='points-of-interest' ? 'underline decoration-2 decoration-secondary' : ''"
                     class="text-[#16215b]"
                   >Point
                     of
@@ -114,7 +114,7 @@
               <li>
                 <NuxtLink to="/services">
                   <b
-                    :class="$nuxt.$route.name==='services' ? 'underline decoration-2 decoration-sky-500' : ''"
+                    :class="$nuxt.$route.name==='services' ? 'underline decoration-2 decoration-secondary' : ''"
                     class="text-[#16215b]"
                   >Services</b>
                 </NuxtLink>
@@ -122,7 +122,7 @@
               <li>
                 <NuxtLink to="/about">
                   <b
-                    :class="$nuxt.$route.name==='about' ? 'underline decoration-2 decoration-sky-500' : ''"
+                    :class="$nuxt.$route.name==='about' ? 'underline decoration-2 decoration-secondary' : ''"
                     class="text-[#16215b]"
                   >About</b>
                 </NuxtLink>
@@ -285,28 +285,53 @@
           </li>
           <li class="flex h-full w-full align-baseline justify-center">
             <div class=" flex h-full grid grid-rows-2">
-              <div class="flex " />
               <div class=" grid grid-cols-4 gap-0 w-full h-full items-center">
-                <IconsSocialFacebookIcon
-                  class="rounded-full icon-footer fill-primary p-1.5 aspect-square mx-auto my-auto h-fit"
-                  height="2rem"
-                  width="2rem"
-                />
-                <IconsSocialInstagramIcon
-                  class="rounded-full icon-footer fill-primary p-1.5 aspect-square mx-auto my-auto h-fit"
-                  height="2rem"
-                  width="2rem"
-                />
-                <IconsSocialTwitterIcon
-                  class="rounded-full icon-footer fill-primary p-1.5 aspect-square mx-auto my-auto h-fit"
-                  height="2rem"
-                  width="2rem"
-                />
-                <IconsSocialYoutubeIcon
-                  class="rounded-full icon-footer fill-primary p-1.5 aspect-square mx-auto my-auto h-fit"
-                  height="2rem"
-                  width="2rem"
-                />
+                <a
+                  class="justify-center mx-auto my-auto"
+                  href="https://www.facebook.com/iamsterdam/"
+                  target="_blank"
+                >
+                  <IconsSocialFacebookIcon
+                    class="rounded-full icon-footer fill-primary p-1.5 aspect-square h-fit"
+                    height="1.7rem"
+                    width="1.7rem"
+                  />
+                </a>
+                <a
+                  class="justify-center mx-auto my-auto"
+                  href="https://www.instagram.com/iamsterdam/?hl=en"
+                  target="_blank"
+                >
+                  <IconsSocialInstagramIcon
+                    class="rounded-full icon-footer fill-primary p-1.5 aspect-square h-fit"
+                    height="1.7rem"
+                    width="1.7rem"
+                  />
+                </a>
+
+                <a
+                  class="justify-center mx-auto my-auto"
+                  href="https://twitter.com/Iamsterdam?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+                  target="_blank"
+                >
+                  <IconsSocialTwitterIcon
+                    class="rounded-full icon-footer fill-primary p-1.5 aspect-square h-fit"
+                    height="1.7rem"
+                    width="1.7rem"
+                  />
+                </a>
+
+                <a
+                  class="justify-center mx-auto my-auto"
+                  href="https://www.youtube.com/channel/UCWx6OvwjIbSDpoc3L0vVPIg"
+                  target="_blank"
+                >
+                  <IconsSocialYoutubeIcon
+                    class="rounded-full icon-footer fill-primary p-1.5 aspect-square  h-fit"
+                    height="1.7rem"
+                    width="1.7rem"
+                  />
+                </a>
               </div>
             </div>
           </li>

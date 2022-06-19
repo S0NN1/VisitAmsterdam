@@ -1,10 +1,15 @@
 <template>
   <div>
     <div class="container mx-auto w-11/12 lg:w-10/12 justify-center mt-20 mb-20">
-      <h1>History of Amsterdam</h1>
+      <h1 class="text-3xl mb-10">
+        History of Amsterdam
+      </h1>
       <div class="grid grid-cols-1 lg:grid-cols-2">
+        <div v-if="mobileDev" class="flex w-full justify-center px-4 mb-10">
+          <CardItem :object="amsterdamHistory[0]" type="FIGURE" />
+        </div>
         <div class="px-4">
-          <h2 class="mt-4">
+          <h2 class="mb-5">
             1200-1585: The Early History
           </h2>
           <p class="lg:m-4 text-justify">
@@ -19,15 +24,14 @@
             timber frames.
           </p>
         </div>
-        <div class="flex w-full justify-center px-4">
+        <div v-if="!mobileDev" class="flex w-full justify-center px-4">
           <CardItem :object="amsterdamHistory[0]" type="FIGURE" />
         </div>
-
-        <div class="flex w-full justify-center mt-8 px-4">
+        <div class="flex w-full justify-center mt-8 px-4 mb-10">
           <CardItem :object="amsterdamHistory[1]" type="FIGURE" />
         </div>
         <div class="mt-8 px-4">
-          <h2 class="mt-4">
+          <h2 class="mb-5">
             1585-1672: The Golden Age of Amsterdam
           </h2>
           <p class="lg:m-4 text-justify">
@@ -41,9 +45,11 @@
             (built for the Trip family), the Van Raey-huizen, Keizersgracht 672-674, and Sweedenrijk, Herengracht 462.
           </p>
         </div>
-
+        <div v-if="mobileDev" class="flex w-full justify-center mt-8 px-4 mb-10">
+          <CardItem :object="amsterdamHistory[2]" type="FIGURE" />
+        </div>
         <div class="mt-8 px-4">
-          <h2 class="mt-8">
+          <h2 class="mb-5">
             1672-1795: An Age of Gold and Silver
           </h2>
           <p class="lg:m-4 text-justify">
@@ -59,7 +65,7 @@
           </p>
         </div>
 
-        <div class="flex w-full justify-center mt-8 px-4">
+        <div v-if="!mobileDev" class="flex w-full justify-center mt-8 px-4">
           <CardItem :object="amsterdamHistory[2]" type="FIGURE" />
         </div>
 
@@ -67,7 +73,7 @@
           <CardItem :object="amsterdamHistory[3]" type="FIGURE" />
         </div>
         <div class="mt-8 px-4">
-          <h2 class="mt-8">
+          <h2 class="mb-5">
             1795-1813: Recession and Decline
           </h2>
           <p class="lg:m-4 text-justify">
@@ -78,9 +84,11 @@
             dating back to the Empire period survive today.
           </p>
         </div>
-
+        <div v-if="mobileDev" class="flex w-full justify-center mt-8 px-4">
+          <CardItem :object="amsterdamHistory[4]" type="FIGURE" />
+        </div>
         <div class="mt-8 px-4">
-          <h2 class="mt-8">
+          <h2 class="mb-5">
             1813-1940: Recovery and Expansion beyond the Singelgracht
           </h2>
           <p class="lg:m-4 text-justify">
@@ -93,7 +101,7 @@
             historical city centre; canals were filled in and new traffic breakthroughs were realised.
           </p>
         </div>
-        <div class="flex w-full justify-center mt-8 px-4">
+        <div v-if="!mobileDev" class="flex w-full justify-center mt-8 px-4">
           <CardItem :object="amsterdamHistory[4]" type="FIGURE" />
         </div>
       </div>
@@ -107,6 +115,11 @@ export default {
   title: 'About Us',
   data () {
     return {
+      mediaQuery: {
+        type: Object,
+        default: null
+      },
+      mobileDev: false,
       amsterdamHistory: [
         {
           heroImage: require('@/static/img/about-1.webp')
@@ -142,10 +155,23 @@ export default {
         }
       ]
     }
+  },
+  mounted () {
+    // eslint-disable-next-line nuxt/no-env-in-hooks
+    if (process.client) {
+      this.mediaQuery = matchMedia('(max-width: 1024px)')
+      this.mobileDev = this.mediaQuery.matches
+      const that = this
+      this.mediaQuery.addListener(() => {
+        that.mobileDev = that.mediaQuery.matches
+      })
+    }
   }
 }
 </script>
 
 <style scoped>
-
+h2 {
+  @apply text-2xl
+}
 </style>
