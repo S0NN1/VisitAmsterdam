@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto w-11/12 lg:w-10/12 h-full justify-center mt-14 mb-96 lg:mb-24">
+  <div class="container mx-auto w-11/12 lg:w-10/12 h-full justify-center mt-16 mb-96 lg:mb-24">
     <transition
       name="fade"
     >
@@ -63,7 +63,7 @@
           class="card-body h-full text-ellipsis overflow-auto box-scrollbar p-0 m-5 grid grid-cols-4 group transition-all"
         >
           <div
-            v-for="(stop, index) in stops"
+            v-for="(stop, index) in $store.state.custom_itinerary.stops"
             :key="stop.name"
             class="flex mt-1 w-full col-span-4"
           >
@@ -88,10 +88,10 @@
               </div>
               <div class="flex justify-center">
                 <IconsArrowDownIcon
-                  :class="index!==stops.length-1 ? 'fill-secondary' : 'fill-neutral'"
+                  :class="index!==$store.state.custom_itinerary.stops.length-1 ? 'fill-secondary' : 'fill-neutral'"
                   :height="'2.5rem'"
                   :width="'2.5rem'"
-                  @click="index!==stops.length-1 ? move(false, index) : null"
+                  @click="index!==$store.state.custom_itinerary.stops.length-1 ? move(false, index) : null"
                 />
               </div>
               <div class="flex w-full justify-end">
@@ -128,49 +128,29 @@
         </div>
       </div>
     </div>
-    <div class="flex h-full">
+    <div class="flex">
       <MapItem
         ref="map"
         :class="mobileDev ? 'rounded-3xl' : ''"
         :height="!mobileDev ? '24rem' : '22rem'"
-        :waypoints="waypoints"
+        :waypoints="createWaypoints()"
         class="w-full"
       />
+    </div>
+    <div v-if="mobileDev" class="flex w-full justify-center">
+      <div class="btn btn-lg btn-secondary rounded-full fill-white text-white my-4 sm:my-0 normal-case ">
+        Download &emsp;
+        <IconsDownloadIcon height="1.7rem" width="1.7rem" />
+      </div>
     </div>
   </div>
 </template>
 
 <script>
-import { BACKEND_URL } from 'assets/js/constants'
 
 export default {
   name: 'CustomItineraryPage',
   title: 'Custom Itinerary',
-  async asyncData ({ store }) {
-    const pois = await fetch(BACKEND_URL + '/api/v1/points-of-interest/getAll').then(
-      res => res.json()
-    )
-    const stops = []
-    pois.forEach(function (poi) {
-      if (store.state.custom_itinerary.stops.includes(poi.id)) {
-        stops.push(poi)
-      }
-    })
-    const waypoints = []
-    stops.forEach((stop) => {
-      waypoints.push(
-        {
-          latitude: stop.latitude,
-          longitude: stop.longitude,
-          address: stop.address
-        }
-      )
-    })
-    return {
-      stops,
-      waypoints
-    }
-  },
   data () {
     return {
       toast: false,
@@ -211,20 +191,26 @@ export default {
     }
   },
   methods: {
+    createWaypoints () {
+      const waypoints = []
+      this.$store.state.custom_itinerary.stops.forEach((stop) => {
+        waypoints.push(
+          {
+            latitude: stop.latitude,
+            longitude: stop.longitude,
+            address: stop.address
+          }
+        )
+      })
+      return waypoints
+    },
     move (isUp, index) {
       const newIndex = isUp ? index - 1 : index + 1
-      this.moveItem(index, newIndex)
-      this.reorderItinerary(this.stops)
-    },
-    moveItem (from, to) {
-      const f = this.stops.splice(from, 1)[0]
-      this.stops.splice(to, 0, f)
+      this.reorderItinerary(index, newIndex)
     },
     remove (index) {
-      this.stops.splice(index, 1)
-      this.waypoints.splice(index, 1)
       this.removeItinerary(index)
-      this.$refs.map.updateWaypoints(this.waypoints)
+      this.$refs.map.updateWaypoints(this.createWaypoints())
     },
     removeItinerary (id) {
       this.$store.commit('custom_itinerary/REMOVE_STOP', id)
@@ -234,8 +220,8 @@ export default {
         this.toast = false
       }, 2000)
     },
-    reorderItinerary (stops) {
-      this.$store.commit('custom_itinerary/REORDER_STOP', stops)
+    reorderItinerary (index, newIndex) {
+      this.$store.commit('custom_itinerary/REORDER_STOP', index, newIndex)
       this.toastText = 'Successfully updated itinerary!'
       this.toast = true
       this.timerId = setTimeout(() => {

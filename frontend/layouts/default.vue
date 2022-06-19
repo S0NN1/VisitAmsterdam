@@ -289,8 +289,18 @@ export default {
       ]
     }
   },
+  beforeCreate () {
+    if (process.client) {
+      this.$store.commit('custom_itinerary/RETRIEVE_STATE')
+    }
+  },
   created () {
     this.$nuxt.$on('closeDrawer', $event => this.closeDrawer($event))
+    if (process.client) {
+      this.$store.subscribe((mutation, state) => {
+        localStorage.setItem('store', JSON.stringify(state))
+      })
+    }
   },
   mounted () {
     // eslint-disable-next-line nuxt/no-env-in-hooks

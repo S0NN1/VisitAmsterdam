@@ -42,7 +42,7 @@
         <div class="flex w-full justify-center mt-5 sm:mt-0 sm:justify-end sm:col-span-5">
           <div
             class="btn btn-md btn-secondary rounded-full text-white normal-case"
-            @click="addToItinerary(poiDetails.id)"
+            @click="addToItinerary(poiDetails)"
           >
             <b class="text-base">Add to itinerary</b>
           </div>
@@ -209,8 +209,8 @@ export default Vue.extend({
     }
   },
   methods: {
-    addToItinerary (id) {
-      this.$store.commit('custom_itinerary/ADD_STOP', id)
+    addToItinerary (poiDetails) {
+      this.$store.commit('custom_itinerary/ADD_STOP', poiDetails)
       this.toast = true
       this.timerId = setTimeout(() => {
         this.toast = false
