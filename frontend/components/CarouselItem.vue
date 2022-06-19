@@ -8,12 +8,12 @@
         :key="index"
         class="carousel-item w-full justify-center"
       >
-        <div class=" grid grid-cols-1 gap-y-5 lg:gap-4 lg:grid-cols-2">
-          <CardItem :card-type="'FIGURE'" :object="image" class="flex w-full sm:mb-5 " />
-          <NuxtLink :to="image.path" class="h-full">
+        <NuxtLink :to="image.path" class="h-full">
+          <div class=" grid grid-cols-1 gap-y-5 lg:gap-4 lg:grid-cols-2">
+            <CardItem :card-type="'FIGURE'" :object="image" class="flex w-full sm:mb-5 " />
             <CardItem :card-type="'EVENT'" :object="image" class="flex w-full h-full" />
-          </NuxtLink>
-        </div>
+          </div>
+        </NuxtLink>
       </div>
     </div>
     <div class="flex justify-center w-full gap-2">

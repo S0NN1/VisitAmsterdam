@@ -96,10 +96,10 @@
         <div
           v-for="category in eventDetails.categories"
           :key="category.name"
-          class="badge mr-4 p-5 font-bold tag-badge text-white cursor-pointer hover:bg-primary"
+          class="flex badge p-5 font-bold tag-badge cursor-pointer text-xs lg:text-base text-[#232539] hover:bg-primary normal-case"
         >
           <NuxtLink :to="'/events?category=' + category.name">
-            {{ category.name }}
+            {{ category.name.substring(0, 1).toUpperCase() + category.name.substring(1).toLowerCase() }}
           </NuxtLink>
         </div>
       </div>

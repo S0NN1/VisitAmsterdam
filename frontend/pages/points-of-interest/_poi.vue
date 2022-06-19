@@ -3,25 +3,25 @@
     <CarouselItem :carousel-images="carouselImages" :is-complex="false" class="w-full aspect-video h-96" />
     <div class="container mx-auto w-11/12 lg:w-10/12 justify-center mt-14 mb-24">
       <!--      TODO breadcrumbs-->
-      <div class="grid grid-cols-1 sm:grid-cols-10 ">
-        <div class="flex sm:col-span-10 justify-start">
+      <div class="grid grid-cols-1 lg:grid-cols-10 ">
+        <div class="flex lg:col-span-10 justify-start">
           <h1>{{ poiDetails.name }}</h1>
         </div>
-        <div class="flex divider sm:col-span-5" />
-        <div v-if="!mobileDev" class="flex sm:col-span-5 justify-center">
+        <div class="flex divider lg:col-span-5" />
+        <div v-if="!mobileDev" class="flex lg:col-span-5 justify-center">
           <h3>Booking Details</h3>
         </div>
-        <div class="flex justify-start sm:col-span-5">
+        <div class="flex justify-start lg:col-span-5">
           <h4><b>{{ poiDetails.address }}</b></h4>
         </div>
-        <div class="flex sm:col-span-5" />
-        <div class="mt-4 text-justify sm:col-span-5">
+        <div class="flex lg:col-span-5" />
+        <div class="mt-4 text-justify lg:col-span-5">
           <p>{{ poiDetails.description }}</p>
         </div>
         <div v-if="mobileDev" class="flex justify-center mt-5">
           <h3>Booking Details</h3>
         </div>
-        <div class="flex mt-5 sm:mt-0 sm:col-span-5 justify-center grid grid-rows-7 grid-cols-1">
+        <div class="flex mt-5 lg:mt-0 lg:col-span-5 justify-center grid grid-rows-7 grid-cols-1">
           <div
             v-for="day in poiDetails.visitInfo.openingHours"
             :key="day.day"
@@ -39,7 +39,7 @@
             </p>
           </div>
         </div>
-        <div class="flex w-full justify-center mt-5 sm:mt-0 sm:justify-end sm:col-span-5">
+        <div class="flex w-full justify-center mt-5 lg:mt-0 lg:justify-end lg:col-span-5">
           <div
             class="btn btn-md btn-secondary rounded-full text-white normal-case"
             @click="addToItinerary(poiDetails)"
@@ -49,7 +49,7 @@
         </div>
         <div
           v-if="poiDetails.visitInfo.url!==''"
-          class="flex w-full justify-center mt-5 sm:mt-0 sm:justify-end sm:col-span-5"
+          class="flex w-full justify-center mt-5 lg:mt-0 lg:justify-end lg:col-span-5"
         >
           <a :href="poiDetails.visitInfo.url" target="_blank">
             <div class="btn btn-md btn-secondary rounded-full text-white normal-case">
@@ -106,10 +106,10 @@
         <div
           v-for="(tag, index) in poiDetails.tags"
           :key="tag+index"
-          class="badge mr-4 p-5 font-bold tag-badge text-white cursor-pointer hover:bg-primary"
+          class="flex badge p-5 font-bold tag-badge cursor-pointer text-xs lg:text-base text-[#232539] hover:bg-primary normal-case"
         >
           <NuxtLink :to="'/points-of-interest?tag=' + tag.name">
-            {{ tag.name }}
+            {{ tag.name.substring(0, 1).toUpperCase() + tag.name.substring(1).toLowerCase() }}
           </NuxtLink>
         </div>
       </div>

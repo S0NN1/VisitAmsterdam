@@ -7,7 +7,7 @@
       <div
         v-for="(filter, index) in filters"
         :key="filter+index"
-        :class="activeFilter===filter ? 'badge-primary': 'text-[#787caa]'"
+        :class="activeFilter===filter ? 'badge-primary': 'text-[#232539]'"
         class="flex w-full badge p-5 font-bold tag-badge text-white cursor-pointer text-xs lg:text-base"
         @click="applyFilter(filter, pageType)"
       >

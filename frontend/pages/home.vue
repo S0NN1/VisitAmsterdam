@@ -20,10 +20,15 @@
             and Bongo Joe Records). The record took them to stages all over Europe.
           </p>
           <div class="text-center mb-10 lg:mb-0">
-            <div class="btn btn-lg btn-primary rounded-full fill-white my-4 sm:my-0 normal-case ">
-              Discover &emsp;
-              <IconsPaperPlane height="1.7rem" width="1.7rem" />
-            </div>
+            <NuxtLink to="/about">
+              <button
+                aria-label="Go to About Us Page"
+                class="btn btn-lg btn-primary rounded-full fill-white my-4 sm:my-0 normal-case "
+              >
+                Discover &emsp;
+                <IconsPaperPlane height="1.7rem" width="1.7rem" />
+              </button>
+            </NuxtLink>
           </div>
         </div>
         <div class="flex w-full justify-center">
