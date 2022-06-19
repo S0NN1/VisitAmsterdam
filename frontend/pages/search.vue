@@ -1,7 +1,7 @@
 <template>
-  <div v-if="ready" class="h-full">
+  <div v-if="ready" class="">
     <HeroImage
-      :title="searchResults.length + ' results ' + (searchResults.length!==0 ? 'found for ' + searchField : 'found')"
+      :title="searchResults.length + ' results ' + (searchResults.length!==0 ? 'found for \'' + searchField + '\'' : 'found')"
     />
     <div class="flex justify-center">
       <div
@@ -41,7 +41,7 @@
         </div>
       </div>
     </div>
-    <div class="container mx-auto w-11/12 lg:w-10/12 justify-center mt-16 mb-10">
+    <div class="container mx-auto w-11/12 lg:w-10/12 h-fit justify-center mt-16 mb-10">
       <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
         <div v-for="result in searchResults" :key="result.id">
           <NuxtLink :to="result.link">

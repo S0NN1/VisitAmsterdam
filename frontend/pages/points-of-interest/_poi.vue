@@ -102,11 +102,13 @@
       />
 
       <div class="flex divider" />
-      <div class="flex w-full justify-start">
+      <div
+        class="flex grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-full justify-center items-center gap-x-6 gap-y-3 text-center mt-5 px-3"
+      >
         <div
           v-for="(tag, index) in poiDetails.tags"
           :key="tag+index"
-          class="flex badge p-5 font-bold tag-badge cursor-pointer text-xs lg:text-base text-[#232539] hover:bg-primary normal-case"
+          class="flex badge p-5 font-bold w-full mx-auto tag-badge cursor-pointer text-xs lg:text-base text-[#232539] hover:bg-primary normal-case"
         >
           <NuxtLink :to="'/points-of-interest?tag=' + tag.name">
             {{ tag.name.substring(0, 1).toUpperCase() + tag.name.substring(1).toLowerCase() }}
@@ -118,6 +120,10 @@
         Upcoming Events
       </h2>
       <CarouselItem :carousel-images="poiEvents" class="mt-4" />
+      <h2 class="mt-8">
+        Recommended Itineraries
+      </h2>
+      <CarouselItem :carousel-images="poiItineraries" :is-itinerary="true" :mobile="true" class="mt-4" />
     </div>
   </div>
 </template>
@@ -163,10 +169,22 @@ export default Vue.extend({
         })
       })
     }
+    const poiItineraries = []
+    if (poiDetailsData.itineraries !== undefined) {
+      poiDetailsData.itineraries.forEach(function (itinerary) {
+        poiItineraries.push({
+          heroImage: itinerary.heroImage,
+          name: itinerary.name,
+          description: itinerary.description,
+          path: '/itineraries/' + itinerary.id
+        })
+      })
+    }
     return {
       poiDetails: poiDetailsData,
       carouselImages: carouselImagesData,
-      poiEvents
+      poiEvents,
+      poiItineraries
     }
   },
   data () {

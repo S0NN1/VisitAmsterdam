@@ -54,16 +54,18 @@
       </div>
       <MapItem
         :class="mobileDev ? 'rounded-3xl' : ''"
-        :height="!mobileDev ? '24rem' : '22rem'"
+        :height="!mobileDev ? '32rem' : '22rem'"
         :waypoints="waypoints"
         class="w-full"
       />
       <div class="flex divider" />
-      <div class="flex w-full justify-start">
+      <div
+        class="flex grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-full justify-center items-center gap-x-6 gap-y-3 text-center mt-5 px-3"
+      >
         <div
           v-for="tag in itineraryDetails.tags"
           :key="tag.name"
-          class="flex badge p-5 font-bold tag-badge cursor-pointer text-xs lg:text-base text-[#232539] hover:bg-primary normal-case"
+          class="flex badge p-5 font-bold w-full mx-auto tag-badge cursor-pointer text-xs lg:text-base text-[#232539] hover:bg-primary normal-case"
         >
           <NuxtLink :to="'/itineraries?tag=' + tag.name">
             {{ tag.name.substring(0, 1).toUpperCase() + tag.name.substring(1).toLowerCase() }}

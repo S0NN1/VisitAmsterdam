@@ -291,13 +291,13 @@ export default {
     },
     deleteItinerary () {
       this.$store.commit('custom_itinerary/RESET_STATE')
-      this.$forceUpdate()
       this.toastText = 'Successfully deleted!'
       this.toast = true
       this.timerId = setTimeout(() => {
         this.toast = false
       })
       this.$refs.map.updateWaypoints(this.createWaypoints())
+      this.$forceUpdate()
     },
     editName () {
       this.editItineraryName = !this.editItineraryName

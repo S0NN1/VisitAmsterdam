@@ -22,6 +22,13 @@
             </NuxtLink>
           </div>
         </div>
+        <div v-if="mobileDev">
+          <MapItem
+            :height="!mobileDev ? '24rem' : '22rem'"
+            :markers="[{latitude: serviceDetails.latitude, longitude: serviceDetails.longitude, address: serviceDetails.address}]"
+            class="w-full"
+          />
+        </div>
         <div v-if="!mobileDev" class="flex lg:col-span-5 justify-center items-end align-baseline pb-3">
           <h3>Booking Details</h3>
         </div>
@@ -57,23 +64,16 @@
             </div>
           </div>
           <div v-if="serviceDetails.visitInfo.url!==''" class="flex grid grid-cols-3 justify-center mt-5 lg:mt-10 ">
-            <div class="flex col-span-2" />
-            <div class="flex">
+            <div v-if="!mobileDev" class="flex" />
+            <div class="flex col-span-3 lg:col-span-1 w-full justify-center lg:justify-end">
               <div class="btn btn-md btn-secondary rounded-full text-white normal-case">
                 <a :href="serviceDetails.visitInfo.url" target="_blank">
                   <b class="text-base">Visit the site</b>
                 </a>
               </div>
             </div>
+            <div v-if="!mobileDev" class="flex" />
           </div>
-          <div v-if="!mobileDev" class="flex" />
-        </div>
-        <div v-if="mobileDev">
-          <MapItem
-            :height="!mobileDev ? '24rem' : '22rem'"
-            :markers="[{latitude: serviceDetails.latitude, longitude: serviceDetails.longitude, address: serviceDetails.address}]"
-            class="w-full"
-          />
         </div>
       </div>
     </div>

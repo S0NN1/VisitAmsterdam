@@ -9,9 +9,9 @@
         class="carousel-item w-full justify-center"
       >
         <NuxtLink :to="image.path">
-          <div class=" grid grid-cols-1 gap-y-5 lg:gap-4 lg:grid-cols-2 justify-items-center pt-2">
+          <div class=" grid grid-cols-1 gap-y-5 lg:gap-4 lg:grid-cols-2 justify-items-center">
             <CardItem :card-type="'FIGURE'" :object="image" class="flex sm:mb-5 " />
-            <CardItem :card-type="'EVENT'" :object="image" class="flex " />
+            <CardItem :card-type="'EVENT'" :object="image" class="flex mt-1" />
           </div>
         </NuxtLink>
       </div>

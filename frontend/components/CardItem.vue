@@ -22,7 +22,11 @@
         </p>
       </div>
     </div>
-    <div class="card-actions justify-end m-5" style="max-height: 20%">
+    <div
+      v-if="object.date !== undefined && object.time !== undefined"
+      class="card-actions justify-end m-5"
+      style="max-height: 20%"
+    >
       <h3 class="text-s lg:text-xl">
         {{ object.date }} - {{ object.time }}h
       </h3>
@@ -41,7 +45,7 @@
     </div>
   </div>
   <div v-else-if="cardType==='SEARCH'">
-    <div class="card w-full aspect-square bg-base-100 shadow-xl no-rounded-bottom">
+    <div class="card w-full aspect-square bg-base-100 box-shadow-card rounded-none">
       <div class="card-body box-shadow-card-figure-alt justify-start">
         <h2 class="card-title text-sm lg:text-2xl">
           {{ object.name }}
@@ -51,8 +55,11 @@
             {{ object.description }}
           </p>
         </div>
-        <div class="badge badge-neutral">
-          {{ object.type }}
+        <div class="w-full h-fit grid grid-cols-2">
+          <div class="badge p-4 font-bold tag-badge badge-md text-[#787caa] cursor-pointer w-full mx-auto">
+            {{ object.type }}
+          </div>
+          <div class="flex" />
         </div>
       </div>
       <figure class="box-shadow-card-figure">

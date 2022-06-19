@@ -97,11 +97,13 @@
         </div>
       </div>
       <div class="divider" />
-      <div class="flex w-full justify-start">
+      <div
+        class="flex grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-full justify-center items-center gap-x-6 gap-y-3 text-center mt-5 px-3"
+      >
         <div
           v-for="category in eventDetails.categories"
           :key="category.name"
-          class="flex badge p-5 font-bold tag-badge cursor-pointer text-xs lg:text-base text-[#232539] hover:bg-primary normal-case"
+          class="flex badge p-5 font-bold w-full mx-auto tag-badge cursor-pointer text-xs lg:text-base text-[#232539] hover:bg-primary normal-case"
         >
           <NuxtLink :to="'/events?category=' + category.name">
             {{ category.name.substring(0, 1).toUpperCase() + category.name.substring(1).toLowerCase() }}
@@ -109,7 +111,6 @@
         </div>
       </div>
     </div>
-  </div>
   </div>
 </template>
 

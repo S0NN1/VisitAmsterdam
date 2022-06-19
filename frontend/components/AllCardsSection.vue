@@ -3,15 +3,17 @@
     <h3 class="flex w-full mb-5">
       Filters
     </h3>
-    <div class="flex w-full grid grid-cols-4 gap-3 lg:grid-cols-10 lg:gap-10 justify-start">
+    <div
+      class="flex grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 w-full justify-center items-center gap-x-6 gap-y-3 text-center mt-5 px-3"
+    >
       <div
         v-for="(filter, index) in filters"
         :key="filter+index"
-        :class="activeFilter===filter ? 'badge-primary': 'text-[#232539]'"
-        class="flex w-full badge p-5 font-bold tag-badge text-white cursor-pointer text-xs lg:text-base"
+        :class="activeFilter===filter ? 'badge-primary text-white': 'text-[#232539]'"
+        class="flex badge p-5 font-bold w-full mx-auto tag-badge cursor-pointer text-xs lg:text-base text-[#232539] hover:bg-primary normal-case"
         @click="applyFilter(filter, pageType)"
       >
-        {{ filter }}
+        {{ filter.substring(0, 1).toUpperCase() + filter.substring(1).toLowerCase() }}
       </div>
     </div>
     <div class="divider mb-5" />
