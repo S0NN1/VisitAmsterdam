@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto w-11/12 lg:w-10/12 justify-center">
+  <div class="container mx-auto w-11/12 lg:w-10/12 h-full justify-center">
     <div class="w-full">
       <div class="grid grid-cols-1 lg:grid-cols-2">
         <div>

@@ -142,7 +142,7 @@
               </h3>
               <div class="flex justify-end">
                 <button aria-label="Close itinerary popup" @click="toggleModal">
-                  <IconsCollapseIcon width="1.5rem" height="1.5rem" class="fill-secondary" />
+                  <IconsCollapseIcon class="fill-secondary" height="1.5rem" width="1.5rem" />
                 </button>
               </div>
             </div>
@@ -158,7 +158,7 @@
                   </NuxtLink>
                 </div>
               </div>
-              <NuxtLink to="/custom_itinerary" class="w-full">
+              <NuxtLink class="w-full" to="/custom_itinerary">
                 <button class="btn btn-secondary text-white normal-case text-xl mb-6 w-full rounded-full">
                   <b>Modify</b>
                 </button>
@@ -175,7 +175,7 @@
             class="btn btn-circle btn-secondary h-16 w-16 opacity-70"
             @click="toggleModal"
           >
-            <IconsExpandIcon width="2rem" height="2rem" class="fill-white" />
+            <IconsExpandIcon class="fill-white" height="2rem" width="2rem" />
           </button>
         </div>
         <Nuxt :class="mobileDev ? 'mb-0' : 'mb-24'" :style="mobileDev ? '' : 'margin-top: -2.75rem'" />
