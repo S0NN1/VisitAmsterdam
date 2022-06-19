@@ -2,13 +2,15 @@ export const strict = false
 
 export const state = () => ({
   name: '',
-  stops: []
+  stops: [],
+  modalOpened: true
 })
 
 const getDefaultState = () => {
   return {
     name: '',
-    stops: []
+    stops: [],
+    modalOpened: true
   }
 }
 
@@ -21,6 +23,9 @@ export const getter = {
   }
 }
 export const mutations = {
+  TOGGLE_MODAL (state) {
+    state.modalOpened = !state.modalOpened
+  },
   RETRIEVE_STATE (state) {
     // Check if the ID exists
     if (localStorage.getItem('store')) {

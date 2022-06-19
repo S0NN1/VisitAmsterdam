@@ -206,9 +206,9 @@
         class="w-full mb-10"
       />
     </div>
-    <div v-if="mobileDev" class="flex w-full justify-center">
+    <div v-if="mobileDev" class="flex w-full justify-center mb-4">
       <button
-        class="btn btn-lg btn-secondary rounded-full fill-white text-white my-4 sm:my-0 normal-case "
+        class="btn btn-lg btn-secondary rounded-full fill-white text-white my-4 sm:my-0 normal-case"
         aria-label="Download Itinerary"
         onclick="print()"
       >

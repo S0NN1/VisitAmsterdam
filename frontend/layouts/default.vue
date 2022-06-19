@@ -131,6 +131,53 @@
           </div>
           <div class="w-1/6" />
         </div>
+        <div
+          v-show="$store.state.custom_itinerary.stops.length > 0 && $store.state.custom_itinerary.modalOpened"
+          class="absolute bottom-5 right-5 lg:bottom-20 lg:right-20 z-50 mt-5 lg:mt-0 lg:col-span-5 justify-center"
+        >
+          <div class="h-96 bg-base-100 w-full box-shadow-card rounded-3xl col-span-3 lg:col-span-2 px-6 py-5">
+            <div class="card-title grid grid-cols-4">
+              <h3 class="text-xl col-span-3">
+                Your custom itinerary
+              </h3>
+              <div class="flex justify-end">
+                <button aria-label="Close itinerary popup" @click="toggleModal">
+                  <IconsCollapseIcon width="1.5rem" height="1.5rem" class="fill-secondary" />
+                </button>
+              </div>
+            </div>
+            <div class="card-body h-full text-ellipsis p-0 mt-2">
+              <div class="overflow-auto box-scrollbar w-full">
+                <div v-for="stop in $store.state.custom_itinerary.stops" :key="stop.name" class="mt-1">
+                  <NuxtLink :to="'/points-of-interest/' + stop.id">
+                    <li
+                      class="text-secondary py-2 px-3 rounded-xl hover:bg-primary group transition-all hover:text-white"
+                    >
+                      <b class="text-md text-black group-hover:text-white">{{ stop.name }}</b>
+                    </li>
+                  </NuxtLink>
+                </div>
+              </div>
+              <NuxtLink to="/custom_itinerary" class="w-full">
+                <button class="btn btn-secondary text-white normal-case text-xl mb-6 w-full rounded-full">
+                  <b>Modify</b>
+                </button>
+              </NuxtLink>
+            </div>
+          </div>
+        </div>
+        <div
+          v-show="!$store.state.custom_itinerary.modalOpened"
+          class="absolute bottom-5 right-5 lg:bottom-20 lg:right-20 z-50"
+        >
+          <button
+            aria-label="Show custom itinerary badge"
+            class="btn btn-circle btn-secondary h-16 w-16 opacity-70"
+            @click="toggleModal"
+          >
+            <IconsExpandIcon width="2rem" height="2rem" class="fill-white" />
+          </button>
+        </div>
         <Nuxt :class="mobileDev ? 'mb-0' : 'mb-24'" :style="mobileDev ? '' : 'margin-top: -2.75rem'" />
         <FooterNav :mobile="mobileDev" />
       </div>
@@ -317,6 +364,10 @@ export default {
     closeDrawer (event) {
       this.checked = event
     },
+    toggleModal () {
+      this.$store.commit('custom_itinerary/TOGGLE_MODAL')
+      this.$forceUpdate()
+    },
     search () {
       if (process.client) {
         window.location.href = '/search?input=' + this.searchField
@@ -345,5 +396,22 @@ li {
 
 .icon-footer {
   @apply bg-white
+}
+
+.box-scrollbar::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+.box-scrollbar::-webkit-scrollbar-track {
+  background: #e4e5ee;
+  border-radius: 10px;
+  margin-right: 20px;
+}
+
+/* Handle */
+.box-scrollbar::-webkit-scrollbar-thumb {
+  background: #0d99ff;
+  border-radius: 10px;
 }
 </style>
