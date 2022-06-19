@@ -1,11 +1,11 @@
 <template>
-  <div class="container mx-auto w-11/12 lg:w-10/12 h-full justify-center mt-16 mb-96 lg:mb-24">
+  <div class="container mx-auto w-11/12 lg:w-10/12 justify-center lg:mt-16">
     <transition
       name="fade"
     >
       <div
         v-if="toast"
-        class="flex items-center justify-between w-3/5 lg:w-1/5 p-4 bg-white border rounded-md shadow-sm absolute top-0 right-0 lg:top-28 lg:right-10"
+        class="flex items-center justify-between w-3/5 lg:w-1/5 p-4 bg-white border rounded-md shadow-sm absolute top-10 right-0 lg:top-28 lg:right-10"
       >
         <div class="flex items-center">
           <svg
@@ -40,18 +40,40 @@
     <div class="grid grid-cols-2 lg:grid-cols-12 gap-1 lg:gap-2 mt-10 w-full justify-start">
       <div class="flex col-span-2 lg:col-span-6 justify-start">
         <h1 class="text-4xl inline-flex">
-          <span class="mr-10">{{
-            $store.state.custom_itinerary.name === '' ? 'Custom Itinerary' : $store.state.custom_itinerary.name
-          }}</span>
-          <span><IconsEditIcon :height="'2.5rem'" :width="'2.5rem'" class="fill-secondary" /></span>
+          <input
+            ref="itineraryName"
+            type="text"
+            class="input mr-10 text-lg lg:text-3xl"
+            :class="editItineraryName ? 'input-bordered input-secondary' : ''"
+            :value="$store.state.custom_itinerary.name === '' ? 'Custom Itinerary' : $store.state.custom_itinerary.name"
+            :disabled="!editItineraryName"
+          >
+          <span class="flex items-center">
+            <button aria-label="Toggle edit itinerary name" @click="editName">
+              <IconsEditIcon
+                v-if="!editItineraryName"
+                :height="!mobileDev ? '2.5rem' : '2rem'"
+                :width="!mobileDev ? '2.5rem' : '2rem'"
+                class="fill-secondary"
+              />
+              <IconsSaveIcon
+                v-if="editItineraryName"
+                :height="!mobileDev ? '2.5rem' : '2rem'"
+                :width="!mobileDev ? '2.5rem' : '2rem'"
+                class="fill-secondary"
+              />
+            </button>
+          </span>
         </h1>
       </div>
       <div v-if="!mobileDev" class="flex col-span-6 justify-end">
-        <IconsDownloadIcon :height="'2.5rem'" :width="'2.5rem'" class="fill-secondary" />
+        <button onclick="print()">
+          <IconsDownloadIcon :height="'2.5rem'" :width="'2.5rem'" class="fill-secondary" />
+        </button>
       </div>
       <div class="flex divider col-span-2" />
       <div v-if="!mobileDev" class="flex col-span-8" />
-      <div class="col-span-2 lg:col-span-12 justify-start mt-5">
+      <div class="col-span-2 lg:col-span-12 text-center lg:text-left">
         <h2 class=" inline-flex">
           Stops
         </h2>
@@ -60,7 +82,8 @@
     <div class="flex mt-10 justify-center">
       <div class="h-fit bg-base-100 w-full box-shadow-card rounded-3xl px-6 py-5">
         <div
-          class="card-body h-full text-ellipsis overflow-auto box-scrollbar p-0 m-5 grid grid-cols-4 group transition-all"
+          v-if="!mobileDev"
+          class="card-body h-full text-ellipsis overflow-auto box-scrollbar p-0 m-5 grid grid-cols-4"
         >
           <div
             v-for="(stop, index) in $store.state.custom_itinerary.stops"
@@ -68,7 +91,7 @@
             class="flex mt-1 w-full col-span-4"
           >
             <li
-              class="text-secondary py-2 px-3 rounded-xl w-full col-span-2"
+              class="text-secondary py-2 px-3 rounded-xl w-full"
             >
               <b class="text-lg text-black">{{ stop.name }}</b><br>
               <p class="text-gray-400">
@@ -77,7 +100,7 @@
             </li>
             <div class="flex w-full col-span-2 justify-center grid grid-cols-4">
               <div class="flex" />
-              <div class="flex justify-center">
+              <div class="flex justify-center items-center">
                 <button @click="index!==0 ? move(true, index) : null">
                   <IconsArrowUpIcon
                     :class="index!==0 ? 'fill-secondary' : 'fill-neutral'"
@@ -86,7 +109,7 @@
                   />
                 </button>
               </div>
-              <div class="flex justify-center">
+              <div class="flex justify-center items-center">
                 <IconsArrowDownIcon
                   :class="index!==$store.state.custom_itinerary.stops.length-1 ? 'fill-secondary' : 'fill-neutral'"
                   :height="'2.5rem'"
@@ -96,7 +119,7 @@
               </div>
               <div class="flex w-full justify-end">
                 <button
-                  aria-label="Go to About Page"
+                  aria-label="Delete Stop"
                   class="btn btn-neutral normal-case text-base "
                   @click="remove(index)"
                 >
@@ -106,17 +129,61 @@
             </div>
           </div>
         </div>
-        <div class="flex col-span-4 justify-center ">
-          <div class="flex" />
+        <div v-else class="card-body h-full text-ellipsis overflow-auto box-scrollbar p-0 m-5">
+          <div
+            v-for="(stop, index) in $store.state.custom_itinerary.stops"
+            :key="stop.name"
+            class="flex mt-1 w-full grid grid-cols-2"
+          >
+            <li
+              class="text-secondary py-2 px-3 rounded-xl w-full col-span-2"
+            >
+              <b class="text-md text-black">{{ stop.name }}</b><br>
+              <p class="text-gray-400 text-sm">
+                {{ stop.address }}
+              </p>
+            </li>
+            <div class="flex w-full justify-center">
+              <div class="flex justify-center items-center">
+                <button @click="index!==0 ? move(true, index) : null">
+                  <IconsArrowUpIcon
+                    :class="index!==0 ? 'fill-secondary' : 'fill-neutral'"
+                    :height="'2.5rem'"
+                    :width="'2.5rem'"
+                  />
+                </button>
+              </div>
+              <div class="flex justify-center items-center">
+                <IconsArrowDownIcon
+                  :class="index!==$store.state.custom_itinerary.stops.length-1 ? 'fill-secondary' : 'fill-neutral'"
+                  :height="'2.5rem'"
+                  :width="'2.5rem'"
+                  @click="index!==$store.state.custom_itinerary.stops.length-1 ? move(false, index) : null"
+                />
+              </div>
+            </div>
+            <div class="flex w-full justify-end">
+              <button
+                aria-label="Delete Stop"
+                class="btn btn-neutral normal-case text-sm "
+                @click="remove(index)"
+              >
+                Delete
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="flex col-span-2 lg:col-span-4 justify-center ">
+          <div v-if="!mobileDev" class="flex" />
 
-          <div class="w-20 h-20 col-span-2">
+          <div class="w-16 lg:w-20 h-16 lg:h-20 lg:col-span-2">
             <NuxtLink to="/points-of-interest">
               <button class="w-full h-full btn btn-circle btn-secondary">
                 <svg
                   class="fill-white"
-                  height="3rem"
+                  :height="mobileDev ? '2rem' : '3rem'"
                   viewBox="0 0 24 24"
-                  width="3rem"
+                  :width="mobileDev ? '2rem' : '3rem'"
                   xmlns="http://www.w3.org/2000/svg"
                 >
                   <path d="M24 10h-10v-10h-4v10h-10v4h10v10h4v-10h10z" />
@@ -124,24 +191,40 @@
               </button>
             </NuxtLink>
           </div>
-          <div class="flex" />
+          <div v-if="!mobileDev" class="flex" />
         </div>
       </div>
     </div>
-    <div class="flex">
+    <div
+      class="flex h-fit"
+    >
       <MapItem
         ref="map"
         :class="mobileDev ? 'rounded-3xl' : ''"
         :height="!mobileDev ? '24rem' : '22rem'"
         :waypoints="createWaypoints()"
-        class="w-full"
+        class="w-full mb-10"
       />
     </div>
     <div v-if="mobileDev" class="flex w-full justify-center">
-      <div class="btn btn-lg btn-secondary rounded-full fill-white text-white my-4 sm:my-0 normal-case ">
+      <button
+        class="btn btn-lg btn-secondary rounded-full fill-white text-white my-4 sm:my-0 normal-case "
+        aria-label="Download Itinerary"
+        onclick="print()"
+      >
         Download &emsp;
         <IconsDownloadIcon height="1.7rem" width="1.7rem" />
-      </div>
+      </button>
+    </div>
+    <div v-if="$store.state.custom_itinerary.stops.length>0" class="flex w-full justify-center mb-8">
+      <button
+        class="btn btn-lg btn-error rounded-full fill-white text-white sm:my-0 normal-case "
+        aria-label="Delete Itinerary"
+        @click="deleteItinerary"
+      >
+        Delete Itinerary &emsp;
+        <IconsCloseIcon height="1.7rem" width="1.7rem" />
+      </button>
     </div>
   </div>
 </template>
@@ -160,7 +243,9 @@ export default {
         type: Object,
         default: null
       },
-      mobileDev: false
+      mobileDev: false,
+      editItineraryName: false,
+      itineraryName: ''
     }
   },
   head () {
@@ -203,6 +288,22 @@ export default {
         )
       })
       return waypoints
+    },
+    deleteItinerary () {
+      this.$store.commit('custom_itinerary/RESET_STATE')
+      this.$forceUpdate()
+      this.toastText = 'Successfully deleted!'
+      this.toast = true
+      this.timerId = setTimeout(() => {
+        this.toast = false
+      })
+      this.$refs.map.updateWaypoints(this.createWaypoints())
+    },
+    editName () {
+      this.editItineraryName = !this.editItineraryName
+      if (!this.editItineraryName) {
+        this.renameItinerary(this.$refs.itineraryName.value)
+      }
     },
     move (isUp, index) {
       const newIndex = isUp ? index - 1 : index + 1

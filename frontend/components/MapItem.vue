@@ -27,8 +27,12 @@ export default {
     time: {
       type: Number,
       default: 0
-    },
-    routing: undefined
+    }
+  },
+  data () {
+    return {
+      routing: undefined
+    }
   },
   mounted () {
     // center map to Amsterdam

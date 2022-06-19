@@ -4,6 +4,14 @@ export const state = () => ({
   name: '',
   stops: []
 })
+
+const getDefaultState = () => {
+  return {
+    name: '',
+    stops: []
+  }
+}
+
 export const getter = {
   getName: (state) => {
     return state.name
@@ -26,6 +34,9 @@ export const mutations = {
     // if (!state.stops.includes(stop)) {
     state.stops.push(stop)
     // }
+  },
+  RESET_STATE (state) {
+    Object.assign(state, getDefaultState())
   },
   REMOVE_STOP (state, { stop }) {
     state.stops.splice(state.stops.indexOf(stop), 1)

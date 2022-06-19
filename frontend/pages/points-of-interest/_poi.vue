@@ -63,7 +63,7 @@
       >
         <div
           v-if="toast"
-          class="flex items-center justify-between w-3/5 lg:w-1/5 p-4 bg-white border rounded-md shadow-sm absolute top-0 right-0 lg:top-28 lg:right-10"
+          class="flex items-center justify-between w-3/5 lg:w-1/5 p-4 bg-white border rounded-md shadow-sm absolute top-10 right-0 lg:top-28 lg:right-10"
         >
           <div class="flex items-center">
             <svg
