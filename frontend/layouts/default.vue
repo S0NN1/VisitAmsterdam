@@ -420,7 +420,6 @@ export default {
     this.$nuxt.$on('closeDrawer', $event => this.closeDrawer($event))
     if (process.client) {
       this.$store.subscribe((mutation, state) => {
-        console.log(state)
         localStorage.setItem('store', JSON.stringify(state))
       })
     }
