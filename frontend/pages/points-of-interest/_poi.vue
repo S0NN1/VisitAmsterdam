@@ -110,7 +110,7 @@
           :key="tag+index"
           class="flex badge p-5 font-bold w-full mx-auto tag-badge cursor-pointer text-xs lg:text-base text-[#232539] hover:bg-primary normal-case"
         >
-          <NuxtLink :to="'/points-of-interest?tag=' + tag.name">
+          <NuxtLink :to="'/points-of-interest?tag=' + tag.name" class="w-full">
             {{ tag.name.substring(0, 1).toUpperCase() + tag.name.substring(1).toLowerCase() }}
           </NuxtLink>
         </div>
