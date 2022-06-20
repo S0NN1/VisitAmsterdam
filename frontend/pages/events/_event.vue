@@ -105,7 +105,7 @@
           :key="category.name"
           class="flex badge p-5 font-bold w-full mx-auto tag-badge cursor-pointer text-xs lg:text-base text-[#232539] hover:bg-primary normal-case"
         >
-          <NuxtLink :to="'/events?category=' + category.name">
+          <NuxtLink :to="'/events?category=' + category.name" class="w-full">
             {{ category.name.substring(0, 1).toUpperCase() + category.name.substring(1).toLowerCase() }}
           </NuxtLink>
         </div>
