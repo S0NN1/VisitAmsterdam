@@ -10,7 +10,7 @@
         v-for="(filter, index) in filters"
         :key="filter+index"
         :class="activeFilter===filter ? 'badge-primary text-white': 'text-[#232539]'"
-        class="flex badge p-5 font-bold w-full mx-auto tag-badge cursor-pointer text-xs lg:text-base text-[#232539] hover:bg-primary normal-case"
+        class="flex badge p-5 font-bold w-full mx-auto tag-badge cursor-pointer text-xs lg:text-base hover:bg-primary normal-case"
         @click="applyFilter(filter, pageType)"
       >
         {{ filter.substring(0, 1).toUpperCase() + filter.substring(1).toLowerCase() }}

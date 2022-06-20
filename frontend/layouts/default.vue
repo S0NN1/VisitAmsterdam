@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="drawer drawer-end">
-      <input id="my-drawer-3" :checked="checked" class="drawer-toggle" type="checkbox">
+      <input id="my-drawer-3" v-model="checked" class="drawer-toggle" type="checkbox">
       <div class="drawer-content flex flex-col ">
         <!-- Navbar -->
         <div class="w-full navbar bg-primary h-12">
@@ -223,6 +223,7 @@
             <NuxtLink
               class="w-full text-white justify-center border-b-2 border-[#601616] border-opacity-20"
               to="/home"
+              @click.native="closeDrawer()"
             >
               Home
             </NuxtLink>
@@ -231,6 +232,7 @@
             <NuxtLink
               class="w-full justify-center border-b-2 border-[#601616] border-opacity-20"
               to="/events"
+              @click.native="closeDrawer()"
             >
               Events
             </NuxtLink>
@@ -239,6 +241,7 @@
             <NuxtLink
               class="w-full justify-center border-b-2 border-[#601616] border-opacity-20"
               to="/itineraries"
+              @click.native="closeDrawer()"
             >
               Itineraries
             </NuxtLink>
@@ -247,6 +250,7 @@
             <NuxtLink
               class="w-full justify-center border-b-2 border-[#601616] border-opacity-20"
               to="/points-of-interest"
+              @click.native="closeDrawer()"
             >
               Points of Interest
             </NuxtLink>
@@ -255,6 +259,7 @@
             <NuxtLink
               class="w-full justify-center border-b-2 border-[#601616] border-opacity-20"
               to="/services"
+              @click.native="closeDrawer()"
             >
               Services
             </NuxtLink>
@@ -263,6 +268,7 @@
             <NuxtLink
               class="w-full justify-center border-b-2 border-[#601616] border-opacity-20"
               to="/about"
+              @click.native="closeDrawer()"
             >
               About Us
             </NuxtLink>
@@ -271,6 +277,7 @@
             <NuxtLink
               class="w-full justify-center border-b-2 border-[#601616] border-opacity-20"
               to="/contacts"
+              @click.native="closeDrawer()"
             >
               Contacts
             </NuxtLink>
@@ -279,6 +286,7 @@
             <NuxtLink
               class="w-full justify-center border-b-2 border-[#601616] border-opacity-20"
               to="/tos"
+              @click.native="closeDrawer()"
             >
               Terms Of Use
             </NuxtLink>

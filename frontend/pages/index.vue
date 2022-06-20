@@ -1,7 +1,7 @@
 <template>
   <div :style="{'background-image': 'url(' + require('@/static/img/amsterdam-index.webp') + ')'}" class="bg-cover">
     <div class="drawer drawer-end">
-      <input id="my-drawer-3" class="drawer-toggle" type="checkbox">
+      <input id="my-drawer-3" :v-model="checked" class="drawer-toggle" type="checkbox">
       <div class="drawer-content flex flex-col max-h-full">
         <!-- Navbar -->
         <div class="w-full navbar bg-none">
@@ -234,7 +234,11 @@
             </NuxtLink>
           </li>
           <li class="sidebar-li w-full px-4">
-            <NuxtLink class="w-full justify-center border-b-2 border-[#601616] border-opacity-20" to="/events">
+            <NuxtLink
+              class="w-full justify-center border-b-2 border-[#601616] border-opacity-20"
+              to="/events"
+              @click.native="closeDrawer()"
+            >
               Events
             </NuxtLink>
           </li>
@@ -242,6 +246,7 @@
             <NuxtLink
               class="w-full justify-center border-b-2 border-[#601616] border-opacity-20"
               to="/itineraries"
+              @click.native="closeDrawer()"
             >
               Itineraries
             </NuxtLink>
@@ -250,27 +255,44 @@
             <NuxtLink
               class="w-full justify-center border-b-2 border-[#601616] border-opacity-20"
               to="/points-of-interest"
+              @click.native="closeDrawer()"
             >
               Points of Interest
             </NuxtLink>
           </li>
           <li class="sidebar-li w-full px-4">
-            <NuxtLink class="w-full justify-center border-b-2 border-[#601616] border-opacity-20" to="/services">
+            <NuxtLink
+              class="w-full justify-center border-b-2 border-[#601616] border-opacity-20"
+              to="/services"
+              @click.native="closeDrawer()"
+            >
               Services
             </NuxtLink>
           </li>
           <li class="sidebar-li w-full px-4">
-            <NuxtLink class="w-full justify-center border-b-2 border-[#601616] border-opacity-20" to="/about">
+            <NuxtLink
+              class="w-full justify-center border-b-2 border-[#601616] border-opacity-20"
+              to="/about"
+              @click.native="closeDrawer()"
+            >
               About Us
             </NuxtLink>
           </li>
           <li class="sidebar-li w-full px-4">
-            <NuxtLink class="w-full justify-center border-b-2 border-[#601616] border-opacity-20" to="/contacts">
+            <NuxtLink
+              class="w-full justify-center border-b-2 border-[#601616] border-opacity-20"
+              to="/contacts"
+              @click.native="closeDrawer()"
+            >
               Contacts
             </NuxtLink>
           </li>
           <li class="sidebar-li w-full px-4">
-            <NuxtLink class="w-full justify-center border-b-2 border-[#601616] border-opacity-20" to="/tos">
+            <NuxtLink
+              class="w-full justify-center border-b-2 border-[#601616] border-opacity-20"
+              to="/tos"
+              @click.native="closeDrawer()"
+            >
               Terms Of Use
             </NuxtLink>
           </li>
@@ -343,7 +365,8 @@ export default {
     return {
       mediaQuery: null,
       mobileDev: false,
-      searchField: ''
+      searchField: '',
+      checked: false
     }
   },
   head () {
@@ -367,6 +390,9 @@ export default {
     }
   },
   methods: {
+    closeDrawer (event) {
+      this.checked = event
+    },
     search () {
       if (process.client) {
         window.location.href = '/search?input=' + this.searchField

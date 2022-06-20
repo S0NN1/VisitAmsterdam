@@ -1,12 +1,17 @@
 <!--TODO: Responsive-->
 <template>
   <div v-if="isComplex">
-    <div id="carousel" class="carousel w-full h-3/4 lg:h-96 carousel-container pb-3">
+    <div
+      id="carousel"
+      class="carousel w-full h-3/4 lg:h-96 carousel-container pb-3"
+    >
       <div
         v-for="(image, index) in carouselImages"
         :id="'imageCarousel' + index"
         :key="index"
         class="carousel-item w-full justify-center"
+        @touchend="handleTouchEnd"
+        @touchstart="handleTouchStart"
       >
         <NuxtLink :to="image.path">
           <div class=" grid grid-cols-1 gap-y-5 lg:gap-4 lg:grid-cols-2 justify-items-center">
@@ -90,13 +95,39 @@ export default Vue.extend({
   data () {
     return {
       activeIndex: 0,
-      timerId: undefined
+      timerId: undefined,
+      tx: 0
     }
   },
   mounted () {
     this.timer()
   },
   methods: {
+    handleTouchStart (event) {
+      this.tx = event.touches[0].clientX
+    },
+    handleTouchEnd (event) {
+      const te = event.changedTouches[0].clientX
+      console.log(this.tx, te)
+      if (this.tx < te) {
+        if (this.activeIndex === 0) {
+          this.activeIndex = this.carouselImages?.length - 1
+        } else {
+          this.activeIndex--
+        }
+      } else if (this.tx > te) {
+        if (this.activeIndex === this.carouselImages?.length - 1) {
+          this.activeIndex = 0
+        } else {
+          this.activeIndex++
+        }
+      }
+      console.log(this.activeIndex)
+      this.clearTimer()
+      if (this.isElementInViewport(document.getElementById('carousel'))) {
+        this.scrollToElement('#imageCarousel' + this.activeIndex)
+      }
+    },
     selectedIndex (index) {
       this.activeIndex = index
       this.clearTimer()
