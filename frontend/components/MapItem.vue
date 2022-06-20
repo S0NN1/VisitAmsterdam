@@ -69,10 +69,6 @@ export default {
         },
         draggableWaypoints: false
       }).addTo(amsterdamMap)
-      // routing.on('routesfound', function (e) {
-      //   const routes = e.routes
-      //   this.time = routes[0].summary.totalTime
-      // })
       const routingControlContainer = routing.getContainer()
       const controlContainerParent = routingControlContainer.parentNode
       controlContainerParent.removeChild(routingControlContainer)

@@ -110,12 +110,13 @@
                 </button>
               </div>
               <div class="flex justify-center items-center">
-                <IconsArrowDownIcon
-                  :class="index!==$store.state.custom_itinerary.stops.length-1 ? 'fill-secondary' : 'fill-neutral'"
-                  :height="'2.5rem'"
-                  :width="'2.5rem'"
-                  @click="index!==$store.state.custom_itinerary.stops.length-1 ? move(false, index) : null"
-                />
+                <button @click="index!==$store.state.custom_itinerary.stops.length-1 ? move(false, index) : null">
+                  <IconsArrowDownIcon
+                    :class="index!==$store.state.custom_itinerary.stops.length-1 ? 'fill-secondary' : 'fill-neutral'"
+                    :height="'2.5rem'"
+                    :width="'2.5rem'"
+                  />
+                </button>
               </div>
               <div class="flex w-full justify-end">
                 <button
@@ -304,14 +305,18 @@ export default {
       if (!this.editItineraryName) {
         this.renameItinerary(this.$refs.itineraryName.value)
       }
+      this.$forceUpdate()
     },
     move (isUp, index) {
       const newIndex = isUp ? index - 1 : index + 1
       this.reorderItinerary(index, newIndex)
+      this.$refs.map.updateWaypoints(this.createWaypoints())
+      this.$forceUpdate()
     },
     remove (index) {
       this.removeItinerary(index)
       this.$refs.map.updateWaypoints(this.createWaypoints())
+      this.$forceUpdate()
     },
     removeItinerary (id) {
       this.$store.commit('custom_itinerary/REMOVE_STOP', id)
@@ -322,7 +327,7 @@ export default {
       }, 2000)
     },
     reorderItinerary (index, newIndex) {
-      this.$store.commit('custom_itinerary/REORDER_STOP', index, newIndex)
+      this.$store.commit('custom_itinerary/REORDER_STOP', { from: index, to: newIndex })
       this.toastText = 'Successfully updated itinerary!'
       this.toast = true
       this.timerId = setTimeout(() => {
