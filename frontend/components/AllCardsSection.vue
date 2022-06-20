@@ -89,6 +89,7 @@ export default {
   async mounted () {
     const filters = await fetch(BACKEND_URL + '/api/v1/tags/' + this.pageType.toLowerCase() + '/getAll').then(res => res.json())
     const that = this
+    console.log(filters)
     filters.forEach(function (filter) {
       that.filters.push(filter.name.substring(0, 1).toUpperCase() + filter.name.substring(1).toLowerCase())
     })
@@ -106,8 +107,8 @@ export default {
         }
         break
       case 'services':
-        if (this.$route.query.serviceTag !== undefined) {
-          this.applyFilter(this.$route.query.serviceTag, this.pageType)
+        if (this.$route.query.tag !== undefined) {
+          this.applyFilter(this.$route.query.tag, this.pageType)
         }
         break
     }
