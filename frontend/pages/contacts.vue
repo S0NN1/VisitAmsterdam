@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto w-11/12 lg:w-10/12 justify-center lg:mt-16">
+  <div class="container mx-auto w-11/12 lg:w-10/12 justify-center lg:mt-16 lg:mb-32">
     <div class="flex w-full grid grid-cols-1 lg:grid-cols-2 h-fit">
       <div>
         <div class="flex grid lg:grid-rows-3">
@@ -41,13 +41,14 @@
     <h2 :class="mobileDev ? 'text-center' : 'text-left'" class="flex w-full my-8">
       Interactive Map & Infopoint
     </h2>
-    <MapItem
-      :class="mobileDev ? 'rounded-3xl' : ''"
-      :height="'28rem'"
-      :markers="[{latitude: 52.379551503365654, longitude: 4.900806771481708, address: 'De Ruijterkade 28, 1012 AA Amsterdam'}]"
-      class="w-full"
-    />
-    <div class="flex" />
+    <div class="flex h-fit">
+      <MapItem
+        :class="mobileDev ? 'rounded-3xl' : ''"
+        :height="'28rem'"
+        :markers="[{latitude: 52.379551503365654, longitude: 4.900806771481708, address: 'De Ruijterkade 28, 1012 AA Amsterdam'}]"
+        class="w-full"
+      />
+    </div>
   </div>
 </template>
 
