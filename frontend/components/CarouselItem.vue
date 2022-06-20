@@ -108,21 +108,11 @@ export default Vue.extend({
     },
     handleTouchEnd (event) {
       const te = event.changedTouches[0].clientX
-      console.log(this.tx, te)
-      if (this.tx < te) {
-        if (this.activeIndex === 0) {
-          this.activeIndex = this.carouselImages?.length - 1
-        } else {
-          this.activeIndex--
-        }
-      } else if (this.tx > te) {
-        if (this.activeIndex === this.carouselImages?.length - 1) {
-          this.activeIndex = 0
-        } else {
-          this.activeIndex++
-        }
+      if (this.tx < te && this.activeIndex !== 0) {
+        this.activeIndex--
+      } else if (this.tx > te && this.activeIndex !== this.carouselImages?.length - 1) {
+        this.activeIndex++
       }
-      console.log(this.activeIndex)
       this.clearTimer()
       if (this.isElementInViewport(document.getElementById('carousel'))) {
         this.scrollToElement('#imageCarousel' + this.activeIndex)
