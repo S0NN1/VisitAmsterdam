@@ -6,7 +6,7 @@
         <!-- Navbar -->
         <div class="w-full navbar bg-primary h-12">
           <div class="flex-1 sm:px-2 sm:mx-2">
-            <NuxtLink class="w-full" to="/">
+            <NuxtLink id="logo-amsterdam" class="w-full" to="/">
               <span class="flex text-2xl text-white">
                 <svg fill="none" height="2.3rem" viewBox="0 0 20 20" width="2.3rem" xmlns="http://www.w3.org/2000/svg">
                   <path
@@ -48,8 +48,11 @@
                       type="text"
                       @keyup.enter="search()"
                     >
-                    <NuxtLink :to="'/search?input=' + searchField">
-                      <button aria-label="Search" class="flex items-center justify-center text-white fill-white">
+                    <NuxtLink
+                      :to="'/search?input=' + searchField"
+                      class="flex"
+                    >
+                      <button aria-label="Search" class="flex items-center justify-centertext-white fill-white">
                         <IconsSearchIcon />
                       </button>
                     </NuxtLink>
@@ -367,6 +370,17 @@ export default {
           href: 'https://hyp.lucapirovano.com' + this.$route.path
         }
       ]
+    }
+  },
+  watch: {
+    $route () {
+      setTimeout(function () {
+        document.getElementById('logo-amsterdam').scrollIntoView({
+          behavior: 'smooth',
+          block: 'nearest',
+          inline: 'nearest'
+        })
+      }, 100)
     }
   },
   beforeCreate () {
