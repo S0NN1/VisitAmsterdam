@@ -6,19 +6,47 @@
         <!-- Navbar -->
         <div class="w-full navbar bg-primary h-12">
           <div class="flex-1 sm:px-2 sm:mx-2">
-            <NuxtLink id="logo-amsterdam" class="w-full" to="/">
+            <NuxtLink id="logo-amsterdam" to="/">
               <span class="flex text-2xl text-white">
-                <svg fill="none" height="2.3rem" viewBox="0 0 20 20" width="2.3rem" xmlns="http://www.w3.org/2000/svg">
+                <svg
+                  class="mr-3"
+                  fill="none"
+                  height="2rem"
+                  viewBox="0 0 176 176"
+                  width="2rem"
+                  xmlns="http://www.w3.org/2000/svg"
+                >
                   <path
-                    d="M7.17158 14.2426C6.78106 14.6332 6.14789 14.6332 5.75737 14.2426C5.36684 13.8521 5.36684 13.2189 5.75737 12.8284L12.8284 5.75735C13.219 5.36682 13.8521 5.36682 14.2427 5.75735C14.6332 6.14787 14.6332 6.78104 14.2427 7.17156L7.17158 14.2426Z"
-                    fill="currentColor"
+                    d="M108.93 137.18L131.11 159.36C139.07 167.32 151.96 167.32 159.92 159.36C167.88 151.4 167.88 138.51 159.92 130.55L132.99 103.62C125.03 95.6604 112.14 95.6604 104.18 103.62L60.1602 147.64"
+                    stroke="white"
+                    stroke-linecap="round"
+                    stroke-miterlimit="10"
+                    stroke-width="20"
                   />
                   <path
-                    d="M5.75737 7.17152C5.36684 6.781 5.36684 6.14783 5.75737 5.75731C6.14789 5.36679 6.78106 5.36679 7.17158 5.75731L14.2427 12.8284C14.6332 13.2189 14.6332 13.8521 14.2427 14.2426C13.8521 14.6331 13.219 14.6331 12.8284 14.2426L5.75737 7.17152Z"
-                    fill="currentColor"
+                    d="M28.19 115.73L15.97 127.95C8.01 135.91 8.01 148.8 15.97 156.76L18.8 159.53L19.12 159.85C27.08 167.81 39.97 167.81 47.93 159.85L60.15 147.63"
+                    stroke="white"
+                    stroke-linecap="round"
+                    stroke-miterlimit="10"
+                    stroke-width="20"
+                  />
+                  <path
+                    d="M28.1902 115.73L72.2102 71.71C80.1702 63.75 80.1702 50.86 72.2102 42.9L45.2702 15.97C37.3102 8.01 24.4202 8.01 16.4602 15.97C8.50023 23.93 8.50023 36.82 16.4602 44.78L38.6402 66.96"
+                    stroke="white"
+                    stroke-linecap="round"
+                    stroke-miterlimit="10"
+                    stroke-width="20"
+                  />
+                  <path
+                    d="M141.689 57.6893C153.608 57.6893 163.269 48.0276 163.269 36.1093C163.269 24.191 153.608 14.5293 141.689 14.5293C129.771 14.5293 120.109 24.191 120.109 36.1093C120.109 48.0276 129.771 57.6893 141.689 57.6893Z"
+                    stroke="white"
+                    stroke-linecap="round"
+                    stroke-miterlimit="10"
+                    stroke-width="20"
                   />
                 </svg>
-                <b>Amsterdam</b>
+
+                <b>VisitAmsterdam</b>
               </span>
             </NuxtLink>
           </div>
