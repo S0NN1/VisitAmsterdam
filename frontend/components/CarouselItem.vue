@@ -1,12 +1,17 @@
 <!--TODO: Responsive-->
 <template>
   <div v-if="isComplex">
-    <div id="carousel" class="carousel w-full h-3/4 lg:h-96 carousel-container pb-3">
+    <div
+      id="carousel"
+      class="carousel w-full h-3/4 lg:h-96 carousel-container pb-3"
+    >
       <div
         v-for="(image, index) in carouselImages"
         :id="'imageCarousel' + index"
         :key="index"
         class="carousel-item w-full justify-center"
+        @touchend="handleTouchEnd"
+        @touchstart="handleTouchStart"
       >
         <NuxtLink :to="image.path">
           <div class=" grid grid-cols-1 gap-y-5 lg:gap-4 lg:grid-cols-2 justify-items-center">
@@ -90,13 +95,29 @@ export default Vue.extend({
   data () {
     return {
       activeIndex: 0,
-      timerId: undefined
+      timerId: undefined,
+      tx: 0
     }
   },
   mounted () {
     this.timer()
   },
   methods: {
+    handleTouchStart (event) {
+      this.tx = event.touches[0].clientX
+    },
+    handleTouchEnd (event) {
+      const te = event.changedTouches[0].clientX
+      if (this.tx < te && this.activeIndex !== 0) {
+        this.activeIndex--
+      } else if (this.tx > te && this.activeIndex !== this.carouselImages?.length - 1) {
+        this.activeIndex++
+      }
+      this.clearTimer()
+      if (this.isElementInViewport(document.getElementById('carousel'))) {
+        this.scrollToElement('#imageCarousel' + this.activeIndex)
+      }
+    },
     selectedIndex (index) {
       this.activeIndex = index
       this.clearTimer()
@@ -119,13 +140,11 @@ export default Vue.extend({
       this.timer()
     },
     isElementInViewport (el) {
-      const rect = el.getBoundingClientRect()
-
-      return (
-        rect.top >= 0 &&
-        rect.left >= 0 &&
-        rect.bottom <= (window.innerHeight || document.documentElement.clientHeight) && /* or $(window).height() */
-        rect.right <= (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */
+      return el != null && (
+        el.getBoundingClientRect().top >= 0 &&
+        el.getBoundingClientRect().left >= 0 &&
+        el.getBoundingClientRect().bottom <= (window.innerHeight || document.documentElement.clientHeight) && /* or $(window).height() */
+        el.getBoundingClientRect().right <= (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */
       )
     },
     scrollToElement (id) {
