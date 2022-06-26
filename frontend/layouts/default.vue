@@ -190,7 +190,10 @@
                 </div>
               </div>
               <NuxtLink class="w-full" to="/custom_itinerary">
-                <button class="btn btn-secondary text-white normal-case text-xl mb-6 w-full rounded-full">
+                <button
+                  aria-label="Modify itinerary"
+                  class="btn btn-secondary text-white normal-case text-xl mb-6 w-full rounded-full"
+                >
                   <b>Modify</b>
                 </button>
               </NuxtLink>

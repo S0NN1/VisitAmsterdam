@@ -67,7 +67,7 @@
         </h1>
       </div>
       <div v-if="!mobileDev" class="flex col-span-6 justify-end">
-        <button onclick="print()">
+        <button aria-label="Download itinerary" onclick="print()">
           <IconsDownloadIcon :height="'2.5rem'" :width="'2.5rem'" class="fill-secondary" />
         </button>
       </div>
@@ -101,7 +101,7 @@
             <div class="flex w-full col-span-2 justify-center grid grid-cols-4">
               <div class="flex" />
               <div class="flex justify-center items-center">
-                <button @click="index!==0 ? move(true, index) : null">
+                <button aria-label="Move up stop" @click="index!==0 ? move(true, index) : null">
                   <IconsArrowUpIcon
                     :class="index!==0 ? 'fill-secondary' : 'fill-neutral'"
                     :height="'2.5rem'"
@@ -110,7 +110,10 @@
                 </button>
               </div>
               <div class="flex justify-center items-center">
-                <button @click="index!==$store.state.custom_itinerary.stops.length-1 ? move(false, index) : null">
+                <button
+                  aria-label="Move down stop"
+                  @click="index!==$store.state.custom_itinerary.stops.length-1 ? move(false, index) : null"
+                >
                   <IconsArrowDownIcon
                     :class="index!==$store.state.custom_itinerary.stops.length-1 ? 'fill-secondary' : 'fill-neutral'"
                     :height="'2.5rem'"
@@ -146,7 +149,7 @@
             </li>
             <div class="flex w-full justify-center">
               <div class="flex justify-center items-center">
-                <button @click="index!==0 ? move(true, index) : null">
+                <button aria-label="Move up stop" @click="index!==0 ? move(true, index) : null">
                   <IconsArrowUpIcon
                     :class="index!==0 ? 'fill-secondary' : 'fill-neutral'"
                     :height="'2.5rem'"
@@ -179,7 +182,10 @@
 
           <div class="w-16 lg:w-20 h-16 lg:h-20 lg:col-span-2">
             <NuxtLink to="/points-of-interest">
-              <button class="w-full h-full btn btn-circle btn-secondary">
+              <button
+                aria-label="Add point of interest to itinerary"
+                class="w-full h-full btn btn-circle btn-secondary"
+              >
                 <svg
                   :height="mobileDev ? '2rem' : '3rem'"
                   :width="mobileDev ? '2rem' : '3rem'"
