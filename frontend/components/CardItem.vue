@@ -32,10 +32,10 @@
       </h3>
     </div>
   </div>
-  <div v-else-if="cardType==='MULTIPLE'">
-    <div class="card w-full aspect-square bg-base-100 shadow-xl no-rounded-bottom">
-      <figure class="box-shadow-card-figure">
-        <img :alt="object.name" :src="object.heroImage">
+  <div v-else-if="cardType==='MULTIPLE'" class="no-rounded-bottom">
+    <div class="card w-full aspect-square bg-base-100 shadow-xl h-96">
+      <figure class="box-shadow-card-figure max-h-60">
+        <img :alt="object.name" :src="object.heroImage" class=" w-full h-60">
       </figure>
       <div class="card-body items-center">
         <h2 class="card-title text-sm md:text-2xl lg:text-2xl">
