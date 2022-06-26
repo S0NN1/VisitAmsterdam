@@ -15,7 +15,7 @@
           <div
             class="flex badge p-5 font-bold tag-badge cursor-pointer text-xs lg:text-base text-[#232539] hover:bg-primary normal-case"
           >
-            <NuxtLink :to="'/services?tag=' + serviceDetails.serviceTag.name">
+            <NuxtLink :to="'/services?tag=' + serviceDetails.serviceTag.name" class="w-full">
               {{
                 serviceDetails.serviceTag.name.substring(0, 1).toUpperCase() + serviceDetails.serviceTag.name.substring(1).toLowerCase()
               }}

@@ -26,7 +26,6 @@
         v-for="(image, index) in carouselImages"
         :key="'imageCarousel' + index"
         :class="{'btn-active': activeIndex===index, 'ml-5': index>0}"
-        :href="'#imageCarousel'+ index"
         class="btn btn-circle btn-xs carousel-btn mt-5"
         @click="selectedIndex(index)"
       />
@@ -41,6 +40,8 @@
         :style="{'background-image': 'url(\'' + image.image + '\')'}"
         class="carousel-item w-full"
         style="background-position: center; background-size: cover"
+        @touchend="handleTouchEnd"
+        @touchstart="handleTouchStart"
       />
     </div>
     <div v-if="carouselImages.length>1" class="flex justify-center w-full py-2 gap-2">
@@ -48,7 +49,6 @@
         v-for="(image, index) in carouselImages"
         :key="'imageCarousel' + index"
         :class="{'btn-active': activeIndex===index, 'ml-5': index>0}"
-        :href="'#imageCarousel'+ index"
         class="btn btn-circle btn-xs carousel-btn mt-5"
         @click="selectedIndex(index)"
       />
@@ -120,6 +120,7 @@ export default Vue.extend({
     },
     selectedIndex (index) {
       this.activeIndex = index
+      this.scrollToElement('#imageCarousel' + this.activeIndex)
       this.clearTimer()
     },
     timer () {

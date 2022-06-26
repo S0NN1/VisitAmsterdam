@@ -46,9 +46,13 @@ export const mutations = {
   REMOVE_STOP (state, { stop }) {
     state.stops.splice(state.stops.indexOf(stop), 1)
   },
-  REORDER_STOP (state, from, to) {
+  REORDER_STOP (state, { from, to }) {
     const f = state.stops.splice(from, 1)[0]
+    console.log(f)
+    console.log(to)
+    console.log(from)
     state.stops.splice(to, 0, f)
+    console.log(state.stops)
   },
   RENAME (state, name) {
     state.name = name
