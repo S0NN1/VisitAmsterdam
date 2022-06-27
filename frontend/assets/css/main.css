@@ -77,3 +77,7 @@
 .no-rounded-left {
   border-radius: 0 0.75rem 0.75rem 0;
 }
+
+.no-rounded-left-bottom {
+  border-radius: 0 0.75rem 0 0;
+}

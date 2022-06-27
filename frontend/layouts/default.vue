@@ -201,7 +201,7 @@
           </div>
         </div>
         <div
-          v-show="!$store.state.custom_itinerary.modalOpened"
+          v-show="!$store.state.custom_itinerary.modalOpened && $store.state.custom_itinerary.stops.length > 0"
           class="absolute bottom-5 right-5 lg:bottom-20 lg:right-20 z-50"
         >
           <button

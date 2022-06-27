@@ -69,22 +69,6 @@ export default Vue.extend({
       ]
     }
   },
-  head () {
-    return {
-      meta: [
-        {
-          hid: 'description',
-          name: 'description',
-          content: 'Events or  Amsterdam'
-        },
-        {
-          hid: 'keywords',
-          name: 'keywords',
-          content: 'contacts, contact-us, help'
-        }
-      ]
-    }
-  },
   mounted () {
     // eslint-disable-next-line nuxt/no-env-in-hooks
     if (process.client) {
