@@ -27,7 +27,7 @@
       class="card-actions justify-end m-5"
       style="max-height: 20%"
     >
-      <h3 class="text-s lg:text-xl">
+      <h3 class="text-sm lg:text-xl">
         {{ object.date }} - {{ object.time }}h
       </h3>
     </div>
@@ -35,7 +35,7 @@
   <div v-else-if="cardType==='MULTIPLE'" class="no-rounded-bottom">
     <div class="card w-full aspect-square bg-base-100 shadow-xl md:h-96 md:w-96 md:max-h-96 md:max-w-96 h-60 w-60">
       <figure class="box-shadow-card-figure h-36 max-h-36 md:h-60 md:w-full md:max-h-60">
-        <img :alt="object.name" :src="object.heroImage" class=" w-full max-h-36  md:h-60 md:max-h-60">
+        <img :alt="object.name" :src="object.heroImage" class=" w-full max-h-36 h-36  md:h-60 md:max-h-60">
       </figure>
       <div class="card-body items-center">
         <h2 class="card-title text-base md:text-2xl lg:text-2xl">
