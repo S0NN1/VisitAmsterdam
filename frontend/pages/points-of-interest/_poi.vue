@@ -116,11 +116,11 @@
         </div>
       </div>
 
-      <h2 class="mt-8">
+      <h2 v-if="poiEvents.length>0" class="mt-8">
         Upcoming Events
       </h2>
       <CarouselItem :carousel-images="poiEvents" class="mt-4" />
-      <h2 class="mt-8">
+      <h2 v-if="poiItineraries.length>0" class="mt-8">
         Recommended Itineraries
       </h2>
       <CarouselItem :carousel-images="poiItineraries" :is-itinerary="true" :mobile="true" class="mt-4" />

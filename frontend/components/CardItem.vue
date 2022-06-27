@@ -33,12 +33,12 @@
     </div>
   </div>
   <div v-else-if="cardType==='MULTIPLE'" class="no-rounded-bottom">
-    <div class="card w-full aspect-square bg-base-100 shadow-xl h-96">
-      <figure class="box-shadow-card-figure max-h-60">
-        <img :alt="object.name" :src="object.heroImage" class=" w-full h-60">
+    <div class="card w-full aspect-square bg-base-100 shadow-xl md:h-96 md:w-96 md:max-h-96 md:max-w-96 h-60 w-60">
+      <figure class="box-shadow-card-figure h-36 max-h-36 md:h-60 md:w-full md:max-h-60">
+        <img :alt="object.name" :src="object.heroImage" class=" w-full max-h-36  md:h-60 md:max-h-60">
       </figure>
       <div class="card-body items-center">
-        <h2 class="card-title text-sm md:text-2xl lg:text-2xl">
+        <h2 class="card-title text-base md:text-2xl lg:text-2xl">
           {{ object.name }}
         </h2>
       </div>
@@ -69,7 +69,7 @@
   </div>
   <div
     v-else-if="cardType==='ITINERARY'"
-    class="card w-full bg-base-100 box-shadow-card carousel-card no-rounded-left aspect-video h-72 lg:h-full "
+    class=" w-full bg-base-100 box-shadow-card carousel-card rounded-tr-xl lg:rounded-r-xl aspect-video h-72 lg:h-full "
   >
     <div class="box-shadow-card-figure-alt h-full ">
       <div class="card-body">

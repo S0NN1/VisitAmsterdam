@@ -100,7 +100,7 @@ export default Vue.extend({
     }
   },
   mounted () {
-    this.timer()
+    // this.timer()
   },
   methods: {
     handleTouchStart (event) {
@@ -121,7 +121,7 @@ export default Vue.extend({
     selectedIndex (index) {
       this.activeIndex = index
       this.scrollToElement('#imageCarousel' + this.activeIndex)
-      this.clearTimer()
+      // this.clearTimer()
     },
     timer () {
       this.timerId = setTimeout(() => {
