@@ -138,8 +138,6 @@ export default Vue.extend({
         }
       )
     })
-    console.log(eventDetailsData.eventDays)
-    console.log(new Date(eventDetailsData.eventDays[0].date).getMonth())
     return {
       eventDetails: eventDetailsData,
       carouselImages: carouselImagesData
