@@ -53,7 +53,7 @@
             <div class="mb-4">
               <div v-for="day in eventDetails.eventDays" class="badge badge-lg m-2 p-4">
                 {{
-                  new Date(day.date).getDate() + '/' + new Date(day.date).getMonth() + '/' + new Date(day.date).getFullYear()
+                  new Date(day.date).getDate() + '/' + (new Date(day.date).getMonth() + 1) + '/' + new Date(day.date).getFullYear()
                 }} &bull;
                 {{ day.startTime.substring(0, 5) }} - {{ day.endTime.substring(0, 5) }}
               </div>
@@ -138,6 +138,8 @@ export default Vue.extend({
         }
       )
     })
+    console.log(eventDetailsData.eventDays)
+    console.log(new Date(eventDetailsData.eventDays[0].date).getMonth())
     return {
       eventDetails: eventDetailsData,
       carouselImages: carouselImagesData
