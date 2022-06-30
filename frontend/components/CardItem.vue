@@ -33,7 +33,7 @@
     </div>
   </div>
   <div v-else-if="cardType==='MULTIPLE'" class="no-rounded-bottom">
-    <div class="card w-full aspect-square bg-base-100 shadow-xl md:h-96 md:w-96 md:max-h-96 md:max-w-96 h-60 w-60">
+    <div class="card w-full aspect-square bg-base-100 md:h-96 md:w-96 md:max-h-96 md:max-w-96 h-60 w-60">
       <figure class="box-shadow-card-figure h-36 max-h-36 md:h-60 md:w-full md:max-h-60">
         <img :alt="object.name" :src="object.heroImage" class=" w-full max-h-36 h-36  md:h-60 md:max-h-60">
       </figure>

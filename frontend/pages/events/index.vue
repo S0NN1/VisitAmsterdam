@@ -26,6 +26,9 @@
 import Vue from 'vue'
 import { BACKEND_URL, MONTHS, WEEK_DAYS } from 'assets/js/constants'
 
+/**
+ * EventsPage
+ */
 export default Vue.extend({
   name: 'EventsPage',
   title: 'Events',
@@ -82,11 +85,13 @@ export default Vue.extend({
     this.fetchEvents()
   },
   methods: {
+
     /**
-     * Populate two different lists:
-     * - events, containing all the upcoming events
-     * - hotEvents, containing a small collection of the previous category
-     * @returns {Promise<void>}
+     * Gets called when the user clicks on the button
+     *
+     * @param {SyntheticEvent} event The react `SyntheticEvent`
+     * @param {Number} num Numbers of examples
+     * @public This is a public method
      */
     async fetchEvents () {
       const chosenEvents = []

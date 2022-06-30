@@ -7,12 +7,24 @@
 </template>
 
 <script>
+/**
+ * Arrow Up icon used in custom itinerary page to change stops' order. Moving up a stop results in switching
+ * the selected stop with its previous one.
+ */
 export default {
   props: {
+    /**
+     * The width of the icon
+     * @values rm, px
+     */
     width: {
       type: [Number, String],
       default: 18
     },
+    /**
+     * The height of the icon
+     * @values rm, px
+     */
     height: {
       type: [Number, String],
       default: 18
