@@ -2,7 +2,6 @@
   <div>
     <CarouselItem :carousel-images="carouselImages" :is-complex="false" class="w-full aspect-video h-96" />
     <div class="container mx-auto w-11/12 lg:w-10/12 justify-center mt-14 mb-24">
-      <!--      TODO breadcrumbs-->
       <div class="grid grid-cols-1 lg:grid-cols-10 ">
         <div class="flex lg:col-span-10 justify-start">
           <h1>{{ poiDetails.name }}</h1>

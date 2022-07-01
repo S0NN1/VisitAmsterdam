@@ -32,35 +32,43 @@ module.exports = async () => {
   }
 
   return {
+    template: {
+      favicon: 'static/favicon.ico'
+    },
     title: 'Visit Amsterdam Docs',
     components: 'components/**/[A-Z]*.vue',
-    pagePerSection: true,
     copyCodeButton: true,
-    exampleMode: 'expand',
-    tocMode: 'collapse',
+    usageMode: 'expand',
+    exampleMode: 'collapse',
     theme: {
       color: {
-        link: '#ffffff',
-        linkHover: 'gray',
-        sidebarBackground: '#f15a27',
-        ribbonBackground: '#f15a27'
+        link: 'inherit',
+        linkHover: 'black',
+        sidebarBackground: '#ffffff',
+        sidebarWidth: 400
       }
     },
     styles: {
-      StyleGuide: {
-        logo: {
-          border: 'none'
+      Sections: {
+        root: {
+          marginTop: '20px'
+        }
+      },
+      ComponentsList: {
+        item: {
+          color: '#f15a27'
         }
       },
       Logo: {
         logo: {
-          color: '#ffffff'
+          color: '#f15a27'
         }
       },
 
       Heading: {
         heading1: {
-          fontWeight: 'bold '
+          fontWeight: 'bold ',
+          color: '#f15a27'
         },
         heading2: {
           fontWeight: 'bold ',
@@ -73,34 +81,34 @@ module.exports = async () => {
     },
     sections: [
       {
-        name: 'Project Description',
+        name: '📖 Project Documentation',
         content: 'docs/README.md'
       },
       {
-        name: 'Documentation',
-        sectionDepth: 2,
+        name: '🏗️ Installation',
+        content: 'docs/installation.md',
+        description: 'The description for the installation section'
+      },
+      {
+        name: '🔧 Configuration',
+        content: 'docs/configuration.md'
+      },
+      {
+        name: '👁️‍🗨️ Style',
         sections: [
+
           {
-            name: 'Installation',
-            content: 'docs/installation.md',
-            description: 'The description for the installation section'
-          },
-          {
-            name: 'Configuration',
-            content: 'docs/configuration.md'
-          },
-          {
-            name: 'Main Components',
+            name: '🧩 Main Components',
             content: 'docs/main-components.md',
             components: 'components/[A-Z]*.vue'
           },
           {
-            name: 'Icons components',
+            name: '🧱 Icons components',
             content: 'docs/icons.md',
             components: 'components/icons/[A-Z]*.vue'
           },
           {
-            name: 'Pages',
+            name: '📄 Pages',
             content: 'docs/pages.md'
           }
         ]
@@ -109,10 +117,10 @@ module.exports = async () => {
     renderRootJsx: resolve(__dirname, 'styleguide/styleguide.root.js'),
     webpackConfig,
     styleguideDir: 'dist',
-    // styleguideComponents: {
-    //   LogoRenderer: resolve(__dirname, 'styleguide/components/Logo'),
-    //   StyleGuideRenderer: resolve(__dirname, 'styleguide/components/StyleGuide')
-    // },
+    styleguideComponents: {
+      LogoRenderer: resolve(__dirname, 'styleguide/components/Logo'),
+      StyleGuideRenderer: resolve(__dirname, 'styleguide/components/StyleGuide')
+    },
     ribbon: {
       text: 'Gitlab source code',
       url: 'https://gitlab.com/polimi-sonny-piro/hyp-project'

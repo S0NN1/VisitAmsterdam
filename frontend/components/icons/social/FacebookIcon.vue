@@ -23,13 +23,24 @@
 </template>
 
 <script>
+/**
+ * Facebook icon used in external Facebook links.
+ */
 export default {
   name: 'FacebookIcon',
   props: {
+    /**
+     * The width of the icon
+     * @values rm, px
+     */
     width: {
       type: [Number, String],
       default: 18
     },
+    /**
+     * The height of the icon
+     * @values rm, px
+     */
     height: {
       type: [Number, String],
       default: 18

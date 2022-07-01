@@ -3,6 +3,6 @@ WorldwideIcon example:
 ```vue
 
 <template>
-  <WorldwideIcon></WorldwideIcon>
+  <WorldwideIcon style="height: 18px;  width: 18px"></WorldwideIcon>
 </template>
 ```

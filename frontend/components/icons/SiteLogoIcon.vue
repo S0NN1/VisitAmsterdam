@@ -38,13 +38,24 @@
 </template>
 
 <script>
+/**
+ * Website logo used in navbar (mobile/desktop) landmark to index page.
+ */
 export default {
-  name: 'SiteLogo',
+  name: 'SiteLogoIcon',
   props: {
+    /**
+     * The width of the icon
+     * @values rm, px
+     */
     width: {
       type: [Number, String],
       default: 18
     },
+    /**
+     * The height of the icon
+     * @values rm, px
+     */
     height: {
       type: [Number, String],
       default: 18

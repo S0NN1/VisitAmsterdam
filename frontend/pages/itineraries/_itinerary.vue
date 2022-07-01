@@ -7,7 +7,6 @@
       class="w-full aspect-video h-96 rounded-none"
     />
     <div class="container mx-auto w-11/12 lg:w-10/12 h-full justify-center mt-14 mb-24">
-      <!--      TODO breadcrumbs-->
       <div class="grid grid-cols-1 lg:grid-cols-10 ">
         <div class="flex lg:col-span-10 justify-start">
           <h1>{{ itineraryDetails.name }}</h1>
