@@ -1,4 +1,3 @@
-const leaflet = require('leaflet')
 <template>
   <div class="mt-10">
     <div id="mapid" ref="mapElement" :style="'height: ' + height" class="flex w-full z-0 aspect-square sm:aspect-auto" />
@@ -10,23 +9,37 @@ if (process.browser) {
   require('leaflet')
   require('leaflet-routing-machine')
 }
+/**
+ * Map component used to display points of interest, itineraries or custom ones.
+ * It uses leaflet API to retrieve the Open Street Maps frame with waypoints in case of an itinerary
+ * (leaflet-routing-machine).
+ */
 export default {
   props: {
+    /**
+     * Marker used to highlight single POIs or itinerary's stops; when clicked it redirects to Google Maps destination
+     * route APIs.
+     * @values [], [...]
+     */
     markers: {
       type: Array,
       default: () => []
     },
+    /**
+     *Waypoints used to create an itinerary through Leaflet Routing Machine API.
+     * @values [], [...]
+     */
     waypoints: {
       type: Array,
       default: () => []
     },
+    /**
+     * The height of the map.
+     * @values rm, px
+     */
     height: {
       type: String,
       default: '40rem'
-    },
-    time: {
-      type: Number,
-      default: 0
     }
   },
   data () {
@@ -35,7 +48,7 @@ export default {
     }
   },
   mounted () {
-    // center map to Amsterdam
+    // Initialize map with markers and waypoints
     const amsterdamMap = L.map(this.$refs.mapElement).setView([52.3676, 4.9041], 12)
     L.tileLayer('https://api.maptiler.com/maps/streets/{z}/{x}/{y}.png?key=6UTZST2LyhoL0xf1DsSd#12.9/50.86639/4.31451', {
       maxZoom: 18,
@@ -76,6 +89,11 @@ export default {
     }
   },
   methods: {
+    /**
+     * Method used to update waypoints when their order is changed in custom itinerary page.
+     * @param waypoints updated waypoints.
+     * @public
+     */
     updateWaypoints (waypoints) {
       const leafletWaypoints = []
       waypoints.forEach(function (waypoint) {

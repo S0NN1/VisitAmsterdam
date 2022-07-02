@@ -238,8 +238,15 @@
 <script>
 
 export default {
+  /**
+   * Website footer containing landmarks and social links.
+   */
   name: 'FooterNav',
   props: {
+    /**
+     * The flag used to specify mobile or desktop visualization of the component.
+     * @values true, false
+     */
     mobile: {
       type: Boolean,
       default: false
