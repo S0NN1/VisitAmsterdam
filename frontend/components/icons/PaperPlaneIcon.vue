@@ -2,11 +2,7 @@
   <svg
     :height="height"
     :width="width"
-    enable-background="new 0 0 16 16"
-    height="16"
-    version="1.1"
     viewBox="0 0 16 16"
-    width="16"
     xmlns="http://www.w3.org/2000/svg"
   >
     <path
@@ -16,12 +12,23 @@
 </template>
 
 <script>
+/**
+ * Paper Plane icon used in home page Discover button, it redirects to the About Us page.
+ */
 export default {
   props: {
+    /**
+     * The width of the icon
+     * @values rm, px
+     */
     width: {
       type: [Number, String],
       default: 18
     },
+    /**
+     * The height of the icon
+     * @values rm, px
+     */
     height: {
       type: [Number, String],
       default: 18

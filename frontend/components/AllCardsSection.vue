@@ -53,28 +53,46 @@
 </template>
 
 <script>
-import { Paragraph } from 'beemovie'
 import { BACKEND_URL } from 'assets/js/constants'
 
+/**
+ * Component used in Events/Services/Points of Interest/Itineraries pages to display filters and items.
+ */
 export default {
   name: 'AllCardsSection',
   props: {
+    /**
+     * The page type specifying the two possible versions of the component and also the API call to the corresponding
+     * topic.
+     * itineraries => filters + list of rows containing two [**CardItems**](#carditem) each: one COMPLEX and one ITINERARY
+     * services/events/point of interests => filters + list of [**CardItems**](#carditem) MULTIPLE
+     * @values events, services, points-of-interest , itineraries
+     */
     pageType: {
       type: String,
       default: 'events'
     },
+    /**
+     * The flag used to specify mobile or desktop visualization of the component.
+     * @values true, false
+     */
     mobile: {
       type: Boolean,
       default: false
     },
+    /**
+     * The elements passed down to this component, based on the parent page's topic.
+     * @values {}, {..}
+     */
     elements: {
       type: Array,
-      default: () => [JSON.parse('{ "name": "Test Element", "id": "42", "duration": 0, "description": "' + Paragraph() + '", "categories": [{"name": "Summer"}], "pois": [{"image": "https://api.lorem.space/image/movie?w=1920&h=1080"}, {"image": "https://api.lorem.space/image/movie?w=1920&h=1080"}, {"image": "https://api.lorem.space/image/movie?w=1920&h=1080"}]} '), JSON.parse('{ "name": "Test Element", "id": "69", "duration": 0, "description": "' + Paragraph() + '", "categories": [{"name": "Summer"}], "pois": [{"image": "https://api.lorem.space/image/movie?w=1920&h=1080"}, {"image": "https://api.lorem.space/image/movie?w=1920&h=1080"}, {"image": "https://api.lorem.space/image/movie?w=1920&h=1080"}]} ')]
+      default: () => {
+      }
     }
   },
   data () {
     return {
-      filters: ['All'/*, 'Summer', 'Winter', 'Spring', 'Autumn' */],
+      filters: ['All'],
       activeFilter: 'All',
       elementsFiltered: [],
       pageCardType: {
@@ -113,6 +131,13 @@ export default {
     }
   },
   methods: {
+    /**
+     * Method that creates an item compatible with the [**CardItem**](#carditem) based on its topic (event/service/itinerary/points of interest).
+     *
+     * @param {Object} item to be converted.
+     * @param {String} pageType prop identifying the parent page.
+     * @public
+     */
     craftElementObj (item, pageType) {
       switch (pageType.toLowerCase()) {
         case 'events':
@@ -164,7 +189,11 @@ export default {
           }
       }
     },
-    /* async */
+    /**
+     * Method that converts elements props and filter them.
+     *
+     * @public
+     */
     fetchElements () {
       const that = this
       this.elements.forEach(function (item) {
@@ -172,6 +201,14 @@ export default {
         that.elementsFiltered.push(obj)
       })
     },
+    /**
+     * Method fired when clicking a filter tag, triggering a change of filter and elements' reorder.
+     *
+     * @param {Object} filter to apply to the page's elements.
+     * @param {String} pageType prop identifying the parent page.
+     *
+     * @public
+     */
     applyFilter (filter, pageType) {
       this.activeFilter = filter.substring(0, 1).toUpperCase() + filter.substring(1).toLowerCase()
       this.elementsFiltered = []
@@ -191,7 +228,6 @@ export default {
               })
             })
             break
-
           case 'points-of-interest':
           case 'itineraries':
             filteredTemp = this.elements.filter((element) => {
@@ -200,7 +236,6 @@ export default {
               })
             })
             break
-
           case 'services':
             filteredTemp = this.elements.filter((element) => {
               return element.serviceTag.name.toUpperCase() === filter.toUpperCase()

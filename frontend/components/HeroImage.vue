@@ -12,10 +12,17 @@
 </template>
 
 <script>
-
+/**
+ * Hero image used to display single topic image when [**CarouselItem**](#carouselitem) is not used.
+ * Also used in search/events pages with a title.
+ */
 export default {
   name: 'HeroImage',
   props: {
+    /**
+     * Hero image title, replacing the default background image.
+     * @values null, '...'
+     */
     title: {
       type: String,
       default: null

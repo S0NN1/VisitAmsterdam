@@ -21,13 +21,22 @@
 </template>
 
 <script>
+
 export default {
   name: 'YoutubeIcon',
   props: {
+    /**
+     * The width of the icon
+     * @values rm, px
+     */
     width: {
       type: [Number, String],
       default: 18
     },
+    /**
+     * The height of the icon
+     * @values rm, px
+     */
     height: {
       type: [Number, String],
       default: 18

@@ -1,4 +1,3 @@
-<!--TODO: Responsive-->
 <template>
   <div v-if="isComplex">
     <div
@@ -7,7 +6,7 @@
     >
       <div
         v-for="(image, index) in carouselImages"
-        :id="'imageCarousel' + index"
+        :id="'imageCarousel' + image.heroImage.replaceAll('.webp', '').replaceAll('/', '') + index"
         :key="index"
         class="carousel-item w-full justify-center"
         @touchend="handleTouchEnd"
@@ -24,7 +23,7 @@
     <div class="flex justify-center w-full gap-2">
       <a
         v-for="(image, index) in carouselImages"
-        :key="'imageCarousel' + index"
+        :key="'imageCarousel' + image.heroImage.replaceAll('.webp', '').replaceAll('/', '') + index"
         :class="{'btn-active': activeIndex===index, 'ml-5': index>0}"
         class="btn btn-circle btn-xs carousel-btn mt-5"
         @click="selectedIndex(index)"
@@ -35,7 +34,7 @@
     <div class="carousel w-full h-full">
       <div
         v-for="(image, index) in carouselImages"
-        :id="'imageCarousel' + index"
+        :id="'imageCarousel' + image.image.replaceAll('.webp', '').replaceAll('/', '') + index"
         :key="index"
         :style="{'background-image': 'url(\'' + image.image + '\')'}"
         class="carousel-item w-full"
@@ -47,7 +46,7 @@
     <div v-if="carouselImages.length>1" class="flex justify-center w-full py-2 gap-2">
       <a
         v-for="(image, index) in carouselImages"
-        :key="'imageCarousel' + index"
+        :key="'imageCarousel' + image.image.replaceAll('.webp', '').replaceAll('/', '') + index"
         :class="{'btn-active': activeIndex===index, 'ml-5': index>0}"
         class="btn btn-circle btn-xs carousel-btn mt-5"
         @click="selectedIndex(index)"
@@ -58,35 +57,25 @@
 
 <script>
 import Vue from 'vue'
-import { Paragraph } from 'beemovie'
 
+/**
+ * Carousel used for displaying single topic's pictures, the hottest events (events page), recommended itineraries and
+ * upcoming events (single point of interest page)
+ */
 export default Vue.extend({
   props: {
+    /**
+     * Images used for the creation of the carousel.
+     * @values [], [{...}, {...}]
+     */
     carouselImages: {
       type: Array,
-      default: () => [{
-        heroImage: 'https://via.placeholder.com/1920x1080',
-        name: 'sus',
-        description: +Paragraph(),
-        date: 'Wednesday 17',
-        time: '20.30',
-        link: 'https://google.com'
-      }, {
-        heroImage: 'https://via.placeholder.com/1920x1080',
-        name: 'sus',
-        description: +Paragraph(),
-        date: 'Wednesday 17',
-        time: '20.30',
-        link: 'https://google.com'
-      }, {
-        heroImage: 'https://via.placeholder.com/1920x1080',
-        name: 'sus',
-        description: +Paragraph(),
-        date: 'Wednesday 17',
-        time: '20.30',
-        link: 'https://google.com'
-      }]
+      default: () => []
     },
+    /**
+     * Flag used to differentiate the two types of CarouselItem.
+     * @values true,false
+     */
     isComplex: {
       type: Boolean,
       default: true
@@ -99,13 +88,22 @@ export default Vue.extend({
       tx: 0
     }
   },
-  mounted () {
-    // this.timer()
-  },
   methods: {
+    /**
+     * Method capturing the start of a touch event on the carousel item, storing the first position.
+     * @param event touch start.
+     * @public
+     */
     handleTouchStart (event) {
       this.tx = event.touches[0].clientX
     },
+    /**
+     * Method capturing the end of a touch event on the carousel item, it compares the first and last position: if the
+     * first one is minor than the second one it means the user scrolled to the left and vice-versa.
+     * Based on the scroll direction the activeIndex and the carousel are changed.
+     * @param event touch start.
+     * @public
+     */
     handleTouchEnd (event) {
       const te = event.changedTouches[0].clientX
       if (this.tx < te && this.activeIndex !== 0) {
@@ -113,33 +111,27 @@ export default Vue.extend({
       } else if (this.tx > te && this.activeIndex !== this.carouselImages?.length - 1) {
         this.activeIndex++
       }
-      this.clearTimer()
       if (this.isElementInViewport(document.getElementById('carousel'))) {
-        this.scrollToElement('#imageCarousel' + this.activeIndex)
+        const imageName = this.isComplex ? this.carouselImages[this.activeIndex].heroImage.replaceAll('.webp', '').replaceAll('/', '') : this.carouselImages[this.activeIndex].image.replaceAll('.webp', '').replaceAll('/', '')
+        this.scrollToElement('#imageCarousel' + imageName + this.activeIndex)
       }
     },
+    /**
+     * Method used when clicking a carousel point to change the selected carousel-item, it scrolls to the selected item.
+     * @param index changed index.
+     * @public
+     */
     selectedIndex (index) {
       this.activeIndex = index
-      this.scrollToElement('#imageCarousel' + this.activeIndex)
+      const imageName = this.isComplex ? this.carouselImages[this.activeIndex].heroImage.replaceAll('.webp', '').replaceAll('/', '') : this.carouselImages[this.activeIndex].image.replaceAll('.webp', '').replaceAll('/', '')
+      this.scrollToElement('#imageCarousel' + imageName + this.activeIndex)
       // this.clearTimer()
     },
-    timer () {
-      this.timerId = setTimeout(() => {
-        if (this.isElementInViewport(document.getElementById('carousel'))) {
-          if (this.activeIndex === this.carouselImages?.length - 1) {
-            this.activeIndex = 0
-          } else {
-            this.activeIndex++
-          }
-          this.scrollToElement('#imageCarousel' + this.activeIndex)
-        }
-        this.timer()
-      }, 10000)
-    },
-    clearTimer () {
-      window.clearTimeout(this.timerId)
-      this.timer()
-    },
+    /**
+     * Method checking if provided element is visible to the user.
+     * @param el element to be analyzed.
+     * @returns {boolean} true if it's visible, false otherwise.
+     */
     isElementInViewport (el) {
       return el != null && (
         el.getBoundingClientRect().top >= 0 &&
@@ -148,9 +140,11 @@ export default Vue.extend({
         el.getBoundingClientRect().right <= (window.innerWidth || document.documentElement.clientWidth) /* or $(window).width() */
       )
     },
+    /**
+     * Method firing the scrollIntoView action to the element with the provided id.
+     * @param id element id.
+     */
     scrollToElement (id) {
-      // takes input id with hash
-      // eg. #cafe-menu
       const el = document.querySelector(id)
       el && el.scrollIntoView({
         behavior: 'smooth',

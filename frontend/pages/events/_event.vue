@@ -2,7 +2,6 @@
   <div>
     <CarouselItem :carousel-images="carouselImages" :is-complex="false" class="w-full aspect-video h-96" />
     <div class="container mx-auto w-11/12 lg:w-10/12 justify-center mt-14 mb-24">
-      <!--      TODO breadcrumbs-->
       <div class="grid grid-cols-10">
         <div :class="!mobileDev ? 'col-span-4' : 'col-span-10'">
           <h1>{{ eventDetails.name }}</h1>
@@ -53,7 +52,7 @@
             <div class="mb-4">
               <div v-for="day in eventDetails.eventDays" class="badge badge-lg m-2 p-4">
                 {{
-                  new Date(day.date).getDate() + '/' + new Date(day.date).getMonth() + '/' + new Date(day.date).getFullYear()
+                  new Date(day.date).getDate() + '/' + (new Date(day.date).getMonth() + 1) + '/' + new Date(day.date).getFullYear()
                 }} &bull;
                 {{ day.startTime.substring(0, 5) }} - {{ day.endTime.substring(0, 5) }}
               </div>
