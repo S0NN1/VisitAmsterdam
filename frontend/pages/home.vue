@@ -37,7 +37,7 @@
                 class="btn btn-xl btn-primary rounded-full fill-white text-white my-4 sm:my-0 normal-case text-xl "
               >
                 Discover &emsp;
-                <IconsPaperPlane height="2rem" width="2rem" />
+                <IconsPaperPlaneIcon height="2rem" width="2rem" />
               </button>
             </NuxtLink>
           </div>

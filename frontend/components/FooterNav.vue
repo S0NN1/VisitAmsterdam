@@ -7,7 +7,7 @@
           <div class="col-span-8 h-20 bg-base-100 w-full box-shadow-card rounded-xl">
             <div class="grid grid-rows-2 grid-cols-5 gap-y-0 gap-x-3 p-2 h-full flex items-center">
               <div class="flex  h-full  row-span-2 col-span-2 items-center">
-                <IconsSiteLogo class="pr-5 mx-3 border-r-2 border-r-warning w-6/12" height="75%" />
+                <IconsSiteLogoIcon class="pr-5 mx-3 border-r-2 border-r-warning w-6/12" height="75%" />
 
                 <div class="flex w-6/12 h-full w-full grid grid-rows-2 gap-y-0 gap-x-3 items-center">
                   <NuxtLink class="flex w-full ml-5" to="/home">

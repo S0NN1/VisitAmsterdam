@@ -8,11 +8,22 @@
 
 <script>
 export default {
+  /**
+   * Download icon used in custom itinerary page to print the current itinerary.
+   */
   props: {
+    /**
+     * The width of the icon
+     * @values rm, px
+     */
     width: {
       type: [Number, String],
       default: 18
     },
+    /**
+     * The height of the icon
+     * @values rm, px
+     */
     height: {
       type: [Number, String],
       default: 18

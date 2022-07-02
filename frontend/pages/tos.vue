@@ -35,9 +35,7 @@
           on
           any
           other
-          server.<
-          li
-          />
+          server.
         </li>
       </ul>
 

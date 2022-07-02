@@ -1,4 +1,3 @@
-<!--TODO: Responsive-->
 <template>
   <div v-if="isComplex">
     <div
@@ -7,7 +6,7 @@
     >
       <div
         v-for="(image, index) in carouselImages"
-        :id="'imageCarousel' + index"
+        :id="'imageCarousel' + image.heroImage.replaceAll('.webp', '').replaceAll('/', '') + index"
         :key="index"
         class="carousel-item w-full justify-center"
         @touchend="handleTouchEnd"
@@ -24,7 +23,7 @@
     <div class="flex justify-center w-full gap-2">
       <a
         v-for="(image, index) in carouselImages"
-        :key="'imageCarousel' + index"
+        :key="'imageCarousel' + image.heroImage.replaceAll('.webp', '').replaceAll('/', '') + index"
         :class="{'btn-active': activeIndex===index, 'ml-5': index>0}"
         class="btn btn-circle btn-xs carousel-btn mt-5"
         @click="selectedIndex(index)"
@@ -35,7 +34,7 @@
     <div class="carousel w-full h-full">
       <div
         v-for="(image, index) in carouselImages"
-        :id="'imageCarousel' + index"
+        :id="'imageCarousel' + image.image.replaceAll('.webp', '').replaceAll('/', '') + index"
         :key="index"
         :style="{'background-image': 'url(\'' + image.image + '\')'}"
         class="carousel-item w-full"
@@ -47,7 +46,7 @@
     <div v-if="carouselImages.length>1" class="flex justify-center w-full py-2 gap-2">
       <a
         v-for="(image, index) in carouselImages"
-        :key="'imageCarousel' + index"
+        :key="'imageCarousel' + image.image.replaceAll('.webp', '').replaceAll('/', '') + index"
         :class="{'btn-active': activeIndex===index, 'ml-5': index>0}"
         class="btn btn-circle btn-xs carousel-btn mt-5"
         @click="selectedIndex(index)"
@@ -58,34 +57,12 @@
 
 <script>
 import Vue from 'vue'
-import { Paragraph } from 'beemovie'
 
 export default Vue.extend({
   props: {
     carouselImages: {
       type: Array,
-      default: () => [{
-        heroImage: 'https://via.placeholder.com/1920x1080',
-        name: 'sus',
-        description: +Paragraph(),
-        date: 'Wednesday 17',
-        time: '20.30',
-        link: 'https://google.com'
-      }, {
-        heroImage: 'https://via.placeholder.com/1920x1080',
-        name: 'sus',
-        description: +Paragraph(),
-        date: 'Wednesday 17',
-        time: '20.30',
-        link: 'https://google.com'
-      }, {
-        heroImage: 'https://via.placeholder.com/1920x1080',
-        name: 'sus',
-        description: +Paragraph(),
-        date: 'Wednesday 17',
-        time: '20.30',
-        link: 'https://google.com'
-      }]
+      default: () => []
     },
     isComplex: {
       type: Boolean,
@@ -115,12 +92,14 @@ export default Vue.extend({
       }
       this.clearTimer()
       if (this.isElementInViewport(document.getElementById('carousel'))) {
-        this.scrollToElement('#imageCarousel' + this.activeIndex)
+        const imageName = this.isComplex ? this.carouselImages[this.activeIndex].heroImage.replaceAll('.webp', '').replaceAll('/', '') : this.carouselImages[this.activeIndex].image.replaceAll('.webp', '').replaceAll('/', '')
+        this.scrollToElement('#imageCarousel' + imageName + this.activeIndex)
       }
     },
     selectedIndex (index) {
       this.activeIndex = index
-      this.scrollToElement('#imageCarousel' + this.activeIndex)
+      const imageName = this.isComplex ? this.carouselImages[this.activeIndex].heroImage.replaceAll('.webp', '').replaceAll('/', '') : this.carouselImages[this.activeIndex].image.replaceAll('.webp', '').replaceAll('/', '')
+      this.scrollToElement('#imageCarousel' + imageName + this.activeIndex)
       // this.clearTimer()
     },
     timer () {
@@ -131,7 +110,8 @@ export default Vue.extend({
           } else {
             this.activeIndex++
           }
-          this.scrollToElement('#imageCarousel' + this.activeIndex)
+          const imageName = this.isComplex ? this.carouselImages[this.activeIndex].heroImage.replaceAll('.webp', '').replaceAll('/', '') : this.carouselImages[this.activeIndex].image.replaceAll('.webp', '').replaceAll('/', '')
+          this.scrollToElement('#imageCarousel' + imageName + this.activeIndex)
         }
         this.timer()
       }, 10000)

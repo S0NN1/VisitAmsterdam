@@ -17,13 +17,25 @@
 </template>
 
 <script>
+/**
+ * Search icon used in both Search page and desktop navbar (mobile drawer).
+ * It redirects to Search Page with input query parameter equal to related input value.
+ */
 export default {
   name: 'SearchIcon',
   props: {
+    /**
+     * The width of the icon
+     * @values rm, px
+     */
     width: {
       type: [Number, String],
       default: 18
     },
+    /**
+     * The height of the icon
+     * @values rm, px
+     */
     height: {
       type: [Number, String],
       default: 18
