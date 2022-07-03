@@ -1,6 +1,6 @@
 export default {
   // Target: https://go.nuxtjs.dev/config-target
-  target: 'static',
+  target: 'server',
 
   // Global page headers: https://go.nuxtjs.dev/config-head
   head: {
@@ -55,8 +55,27 @@ export default {
   modules: [
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    'nuxt-leaflet'
+    'nuxt-leaflet',
+    '@nuxtjs/sitemap',
+    '@nuxtjs/robots'
   ],
+
+  robots: () => {
+    return {
+      UserAgent: '*',
+      Disallow: '/',
+
+      // Be aware that this will NOT work on target: 'static' mode
+      Sitemap: req => `https://${req.headers.host}/sitemap.xml`
+    }
+  },
+
+  sitemap: {
+    hostname: 'https://hyp.lucapirovano.com',
+    gzip: true,
+    exclude: [],
+    routes: []
+  },
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {

@@ -106,10 +106,6 @@ module.exports = async () => {
             name: '🧱 Icons components',
             content: 'docs/icons.md',
             components: 'components/icons/[A-Z]*.vue'
-          },
-          {
-            name: '📄 Pages',
-            content: 'docs/pages.md'
           }
         ]
       }
