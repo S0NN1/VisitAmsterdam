@@ -23,5 +23,6 @@ frontend-deploy:
   script:
     - cd frontend
     - npm install
+    - npm run build
     - pm2 kill
     - pm2 start app-config.json
