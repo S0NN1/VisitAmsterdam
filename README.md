@@ -1,7 +1,7 @@
 # VisitAmsterdam
 
 <a href="https://hyp.lucapirovano.com/"><img src="https://img.shields.io/badge/Live%20Demo-00C58E?style=for-the-badge&logo=nuxtdotjs&logoColor=white"/></a>
-<a href=""><img src="https://img.shields.io/badge/Docs-1363DF?style=for-the-badge&logo=readthedocs&logoColor=white"/></a>
+<a href="https://hyp-docs.vercel.app/"><img src="https://img.shields.io/badge/Docs-1363DF?style=for-the-badge&logo=readthedocs&logoColor=white"/></a>
 
 VisitAmsterdam is the final test of "Hypermedia Web Applications", course of "Master in Computer Science Engineering"
 held at Politecnico di Milano (2021/2022).
@@ -296,7 +296,7 @@ Our NuxtJS directory tree is structured as follows:
 - **store**: containing Vuex files for custom itinerary feature.
 - **styleguide**: containing Vue Styleguidist files to customize docs style.
 
-Follow the whole docs here to see components docs in-depth.
+Follow the whole docs [here](https://hyp-docs.vercel.app/) to see components docs in-depth.
 
 ## Additional Features
 
