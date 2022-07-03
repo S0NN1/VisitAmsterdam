@@ -1,4 +1,7 @@
-## Docker-Compose (Recommended)
+## Docker-Compose (Recommended) [Currently Broken]
+
+> ⚠️ Currently NuxtJS fails to connect to backend inside a docker container, we suspects that is a bug of our NuxtJS version so if you want you can still deploy both database and backend via Docker Compose, just remember to delete the frontend directive in the `docker-compose.yml` file.
+
 
 If you decided to deploy via docker/docker-compose, configuration is not needed.
 
@@ -18,9 +21,10 @@ and insert your filename in **{SQL_SCRIPT_NAME}**.
 
 Moreover change `frontend/assets/js/constants.js` file and BACKEND_URL variable with the name of your backend service, right below the default case:
 
-```js
+```bash
 export const BACKEND_URL = 'http://backend:8080'
 ```
+
 ## Vanilla
 
 Use the following section to configure/customize each component used in the webapp (backend, frontend, database)

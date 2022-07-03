@@ -1,4 +1,6 @@
-## Docker Compose deploy (Recommended)
+## Docker Compose deploy (Recommended) [Currently Broken]
+
+> ⚠️ Currently NuxtJS fails to connect to backend inside a docker container, we suspects that is a bug of our NuxtJS version so if you want you can still deploy both database and backend via Docker Compose, just remember to delete the frontend directive in the `docker-compose.yml` file.
 
 Install [**Docker**](https://docs.docker.com/get-docker/) and [**Docker Compose**](https://docs.docker.com/compose/install/).
 
@@ -67,7 +69,7 @@ npm install
 
 Define the backend url under `frontedn/assets/js/constants.js`, in our example it would be the following:
 
-```js
+```bash
 export const BACKEND_URL = 'http://localhost:8080'
 ```
 
