@@ -66,8 +66,8 @@
             </h3>
             <div class="w-full justify-center text-center mt-12 grid grid-cols-2">
               <div
-                v-if="eventDetails.infoUrl!==''"
-                :class="(eventDetails.infoUrl!=='' && !mobileDev) ? '' : 'col-span-2 mb-2'"
+                v-if="eventDetails.infoUrl!==null"
+                :class="!mobileDev ? '' : 'col-span-2 mb-2'"
               >
                 <a :href="eventDetails.infoUrl" target="_blank">
                   <button

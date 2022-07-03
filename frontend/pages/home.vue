@@ -117,8 +117,12 @@ export default Vue.extend({
       res => res.json()
     )
     const craftedEvents = []
+    let counter = 0
     latestEvents.forEach(
       (event) => {
+        if (counter === 5) {
+          return
+        }
         const parsedDate = new Date(event.eventDays[0].date)
         craftedEvents.push({
           id: event.id,
@@ -129,6 +133,7 @@ export default Vue.extend({
           time: event.eventDays[0].startTime.substring(0, 5),
           path: '/events/' + event.id
         })
+        counter++
       }
     )
     return {
