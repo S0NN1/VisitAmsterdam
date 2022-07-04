@@ -206,8 +206,8 @@
               <h1 class="mb-5 text-5xl sm:text-8xl font-bold text-white drop-shadow-lg">
                 Amsterdam
               </h1>
-              <NuxtLink to="/about">
-                <button aria-label="Go to About Page" class="btn btn-primary normal-case text-base">
+              <NuxtLink to="/home">
+                <button aria-label="Go to Home Page" class="btn btn-primary normal-case text-base">
                   Discover the city
                 </button>
               </NuxtLink>
