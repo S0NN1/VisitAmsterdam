@@ -62,7 +62,7 @@
               </p>
             </div>
           </div>
-          <div v-if="serviceDetails.visitInfo.url!==''" class="flex grid grid-cols-3 justify-center mt-5 lg:mt-10 ">
+          <div v-if="serviceDetails.visitInfo.url!==null" class="flex grid grid-cols-3 justify-center mt-5 lg:mt-10 ">
             <div v-if="!mobileDev" class="flex" />
             <div class="flex col-span-3 lg:col-span-1 w-full justify-center lg:justify-end">
               <div class="btn btn-md btn-secondary rounded-full text-white normal-case">

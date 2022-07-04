@@ -1,0 +1,970 @@
+{
+	"info": {
+		"_postman_id": "3a07638a-e1c1-4e0c-be7e-3aa34779a174",
+		"name": "Hypermedia",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "11872393"
+	},
+	"item": [
+		{
+			"name": "Events",
+			"item": [
+				{
+					"name": "Post New Event",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Hands-on chemistry\",\r\n    \"description\": \"In the NEMO chemistry laboratory, visitors can become scientists in their own right – for a little while at least. Lab coat? Check! Safety glasses? Check! It’s time to get to work on your own experiments. You’ll discover the hidden properties of baking powder, vinegar and other household items.\",\r\n    \"price\": 5,\r\n    \"heroImage\": \"/img/chemistry.webp\",\r\n    \"infoUrl\": \"https://www.nemosciencemuseum.nl/en/activities-at-nemo/activities/laboratory/\",\r\n    \"bookingUrl\": \"\",\r\n    \"pictures\": [\r\n        {\r\n            \"path\": \"/img/chemistry.webp\",\r\n            \"description\": \"Hands-on chemistry\"\r\n        }\r\n    ],\r\n    \"categories\": [\r\n        {\r\n            \"name\": \"WINTER\"\r\n        }\r\n    ],\r\n    \"eventDays\": [\r\n        {\r\n            \"date\": \"2022-11-01\",\r\n            \"startTime\": \"11:00:00\",\r\n            \"endTime\": \"18:00:00\"\r\n        },\r\n        {\r\n            \"date\": \"2022-11-02\",\r\n            \"startTime\": \"11:00:00\",\r\n            \"endTime\": \"18:00:00\"\r\n        },\r\n                {\r\n            \"date\": \"2022-11-03\",\r\n            \"startTime\": \"11:00:00\",\r\n            \"endTime\": \"18:00:00\"\r\n        },\r\n                {\r\n            \"date\": \"2022-11-04\",\r\n            \"startTime\": \"11:00:00\",\r\n            \"endTime\": \"18:00:00\"\r\n        }\r\n    ],\r\n    \"location\": 242\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}add",
+							"host": [
+								"{{base_url}}add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Events",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}getAll",
+							"host": [
+								"{{base_url}}getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Event By ID",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}get?id=1",
+							"host": [
+								"{{base_url}}get"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Hosted Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/api/v1/getHosted?location=2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"getHosted"
+							],
+							"query": [
+								{
+									"key": "location",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Upcoming Events",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}getUpcoming",
+							"host": [
+								"{{base_url}}getUpcoming"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.collectionVariables.set(\"base_url\", pm.collectionVariables.get(\"initial_url\") + \"events/\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Points Of Interest",
+			"item": [
+				{
+					"name": "Post New POI",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Hortus Botanicus\",\r\n    \"address\": \"Plantage Middenlaan 2a, 1018 DD\",\r\n    \"latitude\": 52.36822029491067,\r\n    \"longitude\": 4.912015415667091,\r\n    \"heroImage\": \"/img/hortus-botanicus.webp\",\r\n    \"description\": \"Hortus Botanicus is a botanical garden in the Plantage district of Amsterdam, the Netherlands. It is one of the world's oldest botanical gardens.\",\r\n    \"visitInfo\": {\r\n        \"price\": 12,\r\n        \"url\": \"https://www.dehortus.nl/\",\r\n        \"openingHours\": [\r\n            {\r\n                \"day\": \"MONDAY\",\r\n                \"openingHours\": \"09:00:00\",\r\n                \"closingHours\": \"16:00:00\"\r\n            },\r\n            {\r\n                \"day\": \"TUESDAY\",\r\n                \"openingHours\": \"09:00:00\",\r\n                \"closingHours\": \"16:00:00\"\r\n            },\r\n            {\r\n                \"day\": \"WEDNESDAY\",\r\n                \"openingHours\": \"09:00:00\",\r\n                \"closingHours\": \"18:00:00\"\r\n            },\r\n            {\r\n                \"day\": \"THURSDAY\",\r\n                \"openingHours\": \"09:00:00\",\r\n                \"closingHours\": \"16:00:00\"\r\n            },\r\n            {\r\n                \"day\": \"FRIDAY\",\r\n                \"openingHours\": \"09:00:00\",\r\n                \"closingHours\": \"16:00:00\"\r\n            },\r\n            {\r\n                \"day\": \"SATURDAY\",\r\n                \"openingHours\": \"09:00:00\",\r\n                \"closingHours\": \"16:00:00\"\r\n            },\r\n            {\r\n                \"day\": \"SUNDAY\",\r\n                \"openingHours\": \"09:00:00\",\r\n                \"closingHours\": \"16:00:00\"\r\n            }\r\n        ]\r\n    },\r\n    \"tags\": [\r\n        \"MUSEUM\"\r\n    ],\r\n    \"pictures\": [\r\n        {\r\n            \"path\": \"/img/hortus-botanicus.webp\",\r\n            \"description\": \"Hortus Botanicus\"\r\n        },\r\n        {\r\n            \"path\": \"/img/hortus-botanicus-2.webp\",\r\n            \"description\": \"Hortus Botanicus 2\"\r\n        },\r\n                {\r\n            \"path\": \"/img/hortus-botanicus-3.webp\",\r\n            \"description\": \"Hortus Botanicus 3\"\r\n        }\r\n    ],\r\n    \"events\": []\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}add",
+							"host": [
+								"{{base_url}}add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All POIs",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}getAll",
+							"host": [
+								"{{base_url}}getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get POI by id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}get?id=11",
+							"host": [
+								"{{base_url}}get"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All POIs Containing Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}getAllByName?name=su",
+							"host": [
+								"{{base_url}}getAllByName"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "su"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All POI by tags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}getAllByTags?tags=piazza,gay",
+							"host": [
+								"{{base_url}}getAllByTags"
+							],
+							"query": [
+								{
+									"key": "tags",
+									"value": "piazza,gay"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Existing POI",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n    \"op\":\"replace\", \r\n    \"path\":\"/name\",\r\n    \"value\":\"sbirro\"\r\n}\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/api/v1/poi/2",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"api",
+								"v1",
+								"poi",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.collectionVariables.set(\"base_url\", pm.collectionVariables.get(\"initial_url\") + \"points-of-interest/\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Itineraries",
+			"item": [
+				{
+					"name": "Post New Itinerary",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"A look into Amsterdam culture history\",\r\n    \"description\": \"Take a look to the beautiful Amsterdam culture of the past by visiting the most important museums in the city.\",\r\n    \"price\": 0.0,\r\n    \"tags\": [\"CULTURAL\"],\r\n    \"duration\": 6,\r\n    \"heroImage\": \"/img/itinerary-culture-1\",\r\n    \"stops\": [1,138,210,126]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}add",
+							"host": [
+								"{{base_url}}add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Itineraries",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}getAll",
+							"host": [
+								"{{base_url}}getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Itinerary By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}get?id=46",
+							"host": [
+								"{{base_url}}get"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "46"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Itineraries Containing Name",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}getAllByName?name=s",
+							"host": [
+								"{{base_url}}getAllByName"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "s"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Itineraries By Tags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}getAllByTags?tags=piazza,gay",
+							"host": [
+								"{{base_url}}getAllByTags"
+							],
+							"query": [
+								{
+									"key": "tags",
+									"value": "piazza,gay"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Patch Existing Itinerary",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json-patch+json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "[\r\n    {\r\n    \"op\":\"replace\", \r\n    \"path\":\"/name\",\r\n    \"value\":\"sbirro\"\r\n}\r\n]",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}21",
+							"host": [
+								"{{base_url}}21"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.collectionVariables.set(\"base_url\", pm.collectionVariables.get(\"initial_url\") + \"itineraries/\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Services",
+			"item": [
+				{
+					"name": "Post New Service",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Farmacia Lo Scienziato Homo\",\r\n    \"serviceTag\": \"PHARMACY\",\r\n    \"address\": \"Via le mani dal naso 11\",\r\n    \"latitude\": 12.123,\r\n    \"longitude\": 41.1210,\r\n    \"heroImage\": \"https://images.unsplash.com/photo-1545569341-9eb8b30979d9?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170\",\r\n    \"visitInfo\": {\r\n        \"price\": 0,\r\n        \"url\": \"https://susu.it\",\r\n        \"openingHours\": [\r\n            {\r\n                \"day\": \"MONDAY\",\r\n                \"openingHours\": \"16:00:00\",\r\n                \"closingHours\": \"18:00:00\"\r\n            },\r\n            {\r\n                \"day\": \"TUESDAY\",\r\n                \"openingHours\": \"16:00:00\",\r\n                \"closingHours\": \"18:00:00\"\r\n            },\r\n            {\r\n                \"day\": \"WEDNESDAY\",\r\n                \"openingHours\": \"16:00:00\",\r\n                \"closingHours\": \"18:00:00\"\r\n            },\r\n            {\r\n                \"day\": \"THURSDAY\",\r\n                \"openingHours\": \"16:00:00\",\r\n                \"closingHours\": \"18:00:00\"\r\n            },\r\n            {\r\n                \"day\": \"FRIDAY\",\r\n                \"openingHours\": \"16:00:00\",\r\n                \"closingHours\": \"18:00:00\"\r\n            },\r\n            {\r\n                \"day\": \"SATURDAY\",\r\n                \"openingHours\": \"16:00:00\",\r\n                \"closingHours\": \"18:00:00\"\r\n            },\r\n            {\r\n                \"day\": \"SUNDAY\",\r\n                \"openingHours\": \"16:00:00\",\r\n                \"closingHours\": \"18:00:00\"\r\n            }\r\n        ]\r\n    },\r\n    \"pictures\": [\r\n        {\r\n            \"path\": \"https://images.unsplash.com/photo-1545569341-9eb8b30979d9?crop=entropy&cs=tinysrgb&fm=jpg&ixlib=rb-1.2.1&q=80&raw_url=true&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170\",\r\n            \"description\": \"abd\"\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}add",
+							"host": [
+								"{{base_url}}add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Services",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}getAll",
+							"host": [
+								"{{base_url}}getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Service By Id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}get?id=35",
+							"host": [
+								"{{base_url}}get"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "35"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Service By Tag",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}getByType?type=PHARMACY",
+							"host": [
+								"{{base_url}}getByType"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "PHARMACY"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.collectionVariables.set(\"base_url\", pm.collectionVariables.get(\"initial_url\") + \"services/\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Tags",
+			"item": [
+				{
+					"name": "Get All Events Tags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}events/getAll",
+							"host": [
+								"{{base_url}}events"
+							],
+							"path": [
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Services Tags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}services/getAll",
+							"host": [
+								"{{base_url}}services"
+							],
+							"path": [
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Itineraries Tags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}itineraries/getAll",
+							"host": [
+								"{{base_url}}itineraries"
+							],
+							"path": [
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All POIs Tags",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}points-of-interest/getAll",
+							"host": [
+								"{{base_url}}points-of-interest"
+							],
+							"path": [
+								"getAll"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post New Service Tag",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"PHARMACY\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}services/add",
+							"host": [
+								"{{base_url}}services"
+							],
+							"path": [
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post New Event Tag",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"FESTIVAL\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}events/add",
+							"host": [
+								"{{base_url}}events"
+							],
+							"path": [
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post New Itinerary Tag",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"RELAX\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}itineraries/add",
+							"host": [
+								"{{base_url}}itineraries"
+							],
+							"path": [
+								"add"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Post New POI Tag",
+					"request": {
+						"auth": {
+							"type": "basic",
+							"basic": [
+								{
+									"key": "password",
+									"value": "password",
+									"type": "string"
+								},
+								{
+									"key": "username",
+									"value": "user",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"AMOGUS\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}points-of-interest/add",
+							"host": [
+								"{{base_url}}points-of-interest"
+							],
+							"path": [
+								"add"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							"pm.collectionVariables.set(\"base_url\", pm.collectionVariables.get(\"initial_url\") + \"tags/\");"
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"name": "Search",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"base_url\", pm.collectionVariables.get(\"initial_url\"));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}search/search?input=fontana",
+					"host": [
+						"{{base_url}}search"
+					],
+					"path": [
+						"search"
+					],
+					"query": [
+						{
+							"key": "input",
+							"value": "fontana"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Logout",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.collectionVariables.set(\"base_url\", pm.collectionVariables.get(\"initial_url\"));"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}auth/logout",
+					"host": [
+						"{{base_url}}auth"
+					],
+					"path": [
+						"logout"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "https://localhost:8080/api/v1/",
+			"type": "string"
+		},
+		{
+			"key": "initial_url",
+			"value": "http://localhost:8080/api/v1/"
+		},
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080/api/v1/",
+			"type": "string",
+			"disabled": true
+		},
+		{
+			"key": "initial_url",
+			"value": "http://localhost:8080/api/v1/",
+			"type": "string",
+			"disabled": true
+		}
+	]
+}

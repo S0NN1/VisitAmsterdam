@@ -1,0 +1,1 @@
+These are the major components of our webapp, each residing in the main pages.

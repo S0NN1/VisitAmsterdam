@@ -1,1 +1,0 @@
-Il docker è settato in dev mode

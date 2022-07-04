@@ -47,7 +47,7 @@
           </div>
         </div>
         <div
-          v-if="poiDetails.visitInfo.url!==''"
+          v-if="poiDetails.visitInfo.url!==null"
           class="flex w-full justify-center mt-5 lg:mt-0 lg:justify-end lg:col-span-5"
         >
           <a :href="poiDetails.visitInfo.url" target="_blank">
