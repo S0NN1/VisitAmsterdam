@@ -23,7 +23,7 @@ The project consists in 3 main components:
 
 ### ER Diagram
 
-![er-diagram](https://gitlab.com/polimi-sonny-piro/hyp-project/-/raw/main/frontend/docs/er-diagram.png)
+![er-diagram](/frontend/docs/er-diagram.png)
 The Entity-Relationship model is described in figure above and contains the following entities:
 
 - **Itinerary**
@@ -58,7 +58,7 @@ For sake of standards and application speed we decided to use the Java™
 Programming Language, which is one of the most used languages in web and
 distributed applications.
 
-![graph-languages](https://gitlab.com/polimi-sonny-piro/hyp-project/-/raw/main/frontend/docs/languages-graph.jpg)
+![graph-languages](/frontend/docs/languages-graph.jpg)
 
 Of course, there are some positive aspects and drawbacks of using this type
 of language.
@@ -101,7 +101,7 @@ Of course, using a framework means works on a solid base, which is well
 tested and documented. In fact, Spring contains a proper paradigm in order
 to build web services on its API.
 
-![spring-arch](https://gitlab.com/polimi-sonny-piro/hyp-project/-/raw/main/frontend/docs/spring.png)
+![spring-arch](/frontend/docs/spring.png)
 
 As shown in figure 34, the architecture of Spring is very simple and easy-to-
 
@@ -208,7 +208,7 @@ directory.
 The frontend part is realized in NuxtJS 2 (whose architecture is described below), which is written on top of Vue.js
 framework.
 
-![nuxt-arch](https://gitlab.com/polimi-sonny-piro/hyp-project/-/raw/main/frontend/docs/nuxt-schema.png)
+![nuxt-arch](/frontend/docs/nuxt-schema.png)
 
 NuxtJS enables developers to build Server Side Rendered applications in
 which a Node.js server will deliver HTML to the client based on your Vue components (rather than running JavaScript on
